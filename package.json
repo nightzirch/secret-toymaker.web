@@ -5,18 +5,18 @@
   "scripts": {
     "watch:css": "postcss styles/styles.scss -o styles/styles.css -w",
     "build:css": "postcss styles/styles.scss -o styles/styles.css",
-    "next:dev": "next dev",
+    "server": "node server.js",
     "next:build": "next build",
-    "next:start": "next start",
-    "dev": "npm-run-all --parallel watch:css next:dev",
+    "dev": "npm-run-all --parallel watch:css server",
     "build": "npm-run-all --parallel build:css next:build",
-    "start": "npm-run-all --parallel watch:css next:start"
+    "start": "npm-run-all --parallel watch:css server"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "classnames": "^2.2.6",
     "css-loader": "^3.2.0",
+    "express": "^4.17.1",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "next": "9.0.8",
