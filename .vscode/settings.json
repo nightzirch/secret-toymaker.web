@@ -4,5 +4,5 @@
     "source.organizeImports": true
   },
   "vetur.format.options.tabSize": 2,
-  "prettier.eslintIntegration": true
+  "prettier-eslint.eslintIntegration": true
 }
