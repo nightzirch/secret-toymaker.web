@@ -13,24 +13,28 @@ if (typeof require !== "undefined") {
   require.extensions[".css"] = file => { };
 }
 
-module.exports = withCSS({
-  cssLoaderOptions: {
-    url: false
-  },
-  ...withSass({
-    webpack(config, options) {
-      config.module.rules.push(
-        {
-          test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/,
-          use: [
-            {
-              loader: "file-loader"
-            }
-          ]
-        }
-      );
-      
-      return config;
-    }
+module.exports = {
+  distDir: 'dist',
+  ...withCSS(
+    {
+    cssLoaderOptions: {
+      url: false
+    },
+    ...withSass({
+      webpack(config, options) {
+        config.module.rules.push(
+          {
+            test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/,
+            use: [
+              {
+                loader: "file-loader"
+              }
+            ]
+          }
+        );
+        
+        return config;
+      }
+    })
   })
-});
+};
