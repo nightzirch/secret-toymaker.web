@@ -7,9 +7,9 @@
     "build:css": "postcss styles/styles.scss -o styles/styles.css",
     "server": "node server.js",
     "next:build": "next build",
-    "dev": "npm-run-all --parallel watch:css server",
-    "build": "npm-run-all --parallel build:css next:build",
-    "start": "npm-run-all --parallel watch:css server"
+    "dev": "npm-run-all -p watch:css server",
+    "build": "npm-run-all -s build:css next:build",
+    "start": "npm-run-all -p watch:css server"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
