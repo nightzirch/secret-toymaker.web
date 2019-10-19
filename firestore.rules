@@ -1,0 +1,14 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	// Timebox
+  	match /timebox/{document=**} {
+    	allow read: if true;
+    }
+  
+  	// Participants
+    match /participants/{participantId} {
+      allow read, update: if request.auth.uid == participantId;
+      allow create: if request.auth.uid != null;
+    }
+  }
+}
