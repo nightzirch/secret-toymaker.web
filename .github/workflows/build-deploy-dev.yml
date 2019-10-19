@@ -15,6 +15,10 @@ jobs:
         run: npm i
       - name: Build
         run: npm run build
+      - name: Remove dist directory
+        run: rm -rf dist-dev
+      - name: Create dist directory
+        run: mkdir dist-dev
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
