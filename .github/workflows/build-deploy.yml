@@ -1,8 +1,8 @@
-name: Build and Deploy (Dev)
+name: Build and Deploy
 on:
   push:
     branches:
-      - develop
+      - master
 
 jobs:
   build:
@@ -41,4 +41,4 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          PROJECT_ID: secret-toymaker-dev
+          PROJECT_ID: secret-toymaker
