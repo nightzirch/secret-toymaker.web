@@ -5,12 +5,14 @@
   "scripts": {
     "watch:css": "postcss styles/styles.scss -o styles/styles.css -w",
     "build:css": "postcss styles/styles.scss -o styles/styles.css",
-    "server": "node server.js",
+    "next:dev": "next",
     "next:build": "next build",
-    "dev": "npm-run-all -p watch:css server",
+    "next:start": "next start",
+    "next:export": "next export",
+    "dev": "npm-run-all -p watch:css next:dev",
     "build": "npm-run-all -s build:css next:build",
-    "now-build": "npm run build",
-    "start": "npm-run-all -p watch:css server"
+    "start": "npm-run-all -p watch:css next:dev",
+    "export": "npm-run-all -s build next:export"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -21,7 +23,6 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "next": "9.0.8",
-    "next-routes": "^1.4.2",
     "node-fetch": "^2.6.0",
     "object-path": "^0.11.4",
     "prop-types": "^15.7.2",

@@ -1,0 +1,44 @@
+name: Build and Deploy (Dev)
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm i
+      - name: Remove dist directory
+        run: rm -rf out
+      - name: Create dist directory
+        run: mkdir out
+      - name: Build and export
+        run: npm run export
+      - name: Archive
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: out
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Archive
+        uses: actions/download-artifact@master
+        with:
+          name: dist
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN_DEV }}
+          PROJECT_ID: secret-toymaker-dev

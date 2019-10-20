@@ -14,7 +14,6 @@ if (typeof require !== "undefined") {
 }
 
 module.exports = {
-  target: 'serverless',
   ...withCSS(
     {
     cssLoaderOptions: {
