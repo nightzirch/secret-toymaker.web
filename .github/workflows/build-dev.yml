@@ -1,0 +1,26 @@
+name: Build (Dev)
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm i
+      - name: Remove dist directory
+        run: rm -rf dist
+      - name: Create dist directory
+        run: mkdir dist
+      - name: Build
+        run: npm run build
+      - name: Archive
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
