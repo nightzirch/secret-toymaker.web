@@ -9,7 +9,7 @@
     "next:build": "next build",
     "dev": "npm-run-all -p watch:css server",
     "build": "npm-run-all -s build:css next:build",
-    "now-build": "build",
+    "now-build": "npm run build",
     "start": "npm-run-all -p watch:css server"
   },
   "dependencies": {
