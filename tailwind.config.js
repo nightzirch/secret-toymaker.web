@@ -4,6 +4,13 @@ module.exports = {
       center: true,
       padding: "1rem"
     },
+    extend: {
+      colors: {
+        apple: "#62aa4a",
+        mariner: "#2877da",
+        hopbush: "#c867b1"
+      }
+    },
     scale: {
       "50": "0.5",
       "100": "1"
