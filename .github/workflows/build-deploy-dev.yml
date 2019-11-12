@@ -13,17 +13,13 @@ jobs:
         uses: actions/checkout@master
       - name: Install Dependencies
         run: npm i
-      - name: Remove dist directory
-        run: rm -rf dist
-      - name: Create dist directory
-        run: mkdir dist
-      - name: Build and export
-        run: npm run export
+      - name: Build
+        run: npm run build
       - name: Archive
         uses: actions/upload-artifact@master
         with:
-          name: dist
-          path: dist
+          name: build
+          path: build
   deploy:
     name: Deploy
     needs: build
@@ -34,7 +30,7 @@ jobs:
       - name: Download Archive
         uses: actions/download-artifact@master
         with:
-          name: dist
+          name: build
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
