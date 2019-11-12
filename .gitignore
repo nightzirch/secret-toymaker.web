@@ -25,4 +25,4 @@ yarn-error.log*
 .env.development
 
 # Design
-*.psd
+/src/images/psd/*.psd
