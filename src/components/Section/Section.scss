@@ -1,0 +1,44 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.section {
+  &--with-padding {
+    padding: 1em 0;
+  }
+
+  &--extra-light {
+    background-color: $white;
+  }
+
+  &--dark {
+    background-color: $dark;
+  }
+
+  &--primary {
+    background-color: $primary-color;
+  }
+
+  &--primary-light {
+    background-color: $primary-color-light;
+  }
+
+  &--primary-dark {
+    background-color: $primary-color-dark;
+  }
+
+  &--secondary-light {
+    background-color: $secondary-color-light;
+  }
+
+  &--secondary-light {
+    background-color: $secondary-color-light;
+  }
+
+  &--secondary-dark {
+    background-color: $secondary-color-dark;
+  }
+
+  &__inner {
+    @include container;
+  }
+}

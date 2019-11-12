@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "baseUrl": "./"
-  },
-  "exclude": ["node_modules", "dist"]
+    "baseUrl": "./src"
+  }
 }

@@ -1,0 +1,119 @@
+@import "../../styles/variables";
+
+$primary-color: $primary-color;
+$secondary-color: $secondary-color;
+$tertiary-color: $tertiary-color;
+$danger-color: $state-error;
+
+.buttons-container {
+  margin: 5rem 0;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem 0;
+
+  &--centered {
+    justify-content: center;
+  }
+
+  .button {
+    font-size: 1.6rem;
+    line-height: 2.5em;
+    padding: 0 2em;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.05s ease-in-out;
+    text-decoration: none;
+    border-radius: 10rem;
+    border: none;
+
+    &--primary {
+      color: $white;
+      background-color: $primary-color;
+
+      &:hover {
+        background-color: darken($primary-color, 5%);
+      }
+    }
+
+    &--secondary {
+      color: $white;
+      background-color: $secondary-color;
+
+      &:hover {
+        background-color: darken($secondary-color, 5%);
+      }
+    }
+
+    &--tertiary {
+      color: $white;
+      background-color: $tertiary-color;
+
+      &:hover {
+        background-color: darken($tertiary-color, 5%);
+      }
+    }
+
+    &--danger {
+      color: $white;
+      background-color: $danger-color;
+
+      &:hover {
+        background-color: darken($danger-color, 5%);
+      }
+    }
+
+    &--with-icon {
+      padding-left: 1.5em;
+
+      .button__icon {
+        padding-right: 1em;
+      }
+    }
+
+    &[disabled] {
+      cursor: default;
+      color: $grey;
+      background-color: lighten($grey, 45%);
+    }
+
+    &--link {
+      background-color: transparent;
+      padding-left: 0;
+      padding-right: 0;
+
+      &:hover {
+        background-color: transparent;
+      }
+      &.button--primary {
+        color: $primary-color;
+        &:hover {
+          color: darken($primary-color, 20%);
+        }
+      }
+
+      &.button--secondary {
+        color: $secondary-color;
+        &:hover {
+          color: darken($secondary-color, 20%);
+        }
+      }
+
+      &.button--tertiary {
+        color: $tertiary-color;
+        &:hover {
+          color: darken($tertiary-color, 20%);
+        }
+      }
+
+      &.button--danger {
+        color: $danger-color;
+        &:hover {
+          color: darken($danger-color, 20%);
+        }
+      }
+    }
+  }
+}

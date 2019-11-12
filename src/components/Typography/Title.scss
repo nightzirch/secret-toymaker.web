@@ -1,0 +1,46 @@
+@import "../../styles/variables";
+
+.title {
+  margin-top: 2em;
+
+  &--page {
+    margin-top: 0;
+    font-size: 4em;
+  }
+
+  &--primary {
+    font-size: 2em;
+  }
+
+  &--secondary {
+  }
+
+  &--tertiary {
+    font-weight: light;
+    color: $dark-grey;
+  }
+
+  &--black {
+    color: $black;
+  }
+
+  &--dark {
+    color: $dark;
+  }
+
+  &--dark-grey {
+    color: $dark-grey;
+  }
+
+  &--grey {
+    color: $grey;
+  }
+
+  &--light {
+    color: $light;
+  }
+
+  &--white {
+    color: $white;
+  }
+}
