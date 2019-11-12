@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1em;
+  color: $secondary-color;
+
+  img {
+    height: 1em;
+    margin-right: 0.5em;
+  }
+}

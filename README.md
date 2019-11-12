@@ -17,4 +17,4 @@
 - Clone the project
 - `npm i`
 - `npm start`
-- Open [localhost:3000](http://localhost:3000) in your browser of choice.
+- The default browser will automatically open [localhost:3000](http://localhost:3000).

@@ -1,0 +1,55 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.alert {
+  background-color: $state-error;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-right: 1em;
+  display: flex;
+  margin: 1em 0;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+
+  &__close-button {
+    background-color: transparent;
+    padding: 0 1em;
+    margin: 0;
+    outline: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    @include hoverOpacity;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    color: $white;
+  }
+
+  &--closing {
+    animation: closing 0.5s;
+  }
+}
+
+@keyframes closing {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}

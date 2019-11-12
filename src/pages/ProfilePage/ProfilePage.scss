@@ -1,0 +1,13 @@
+.profile-page {
+  background-position-x: 75%;
+  background-position-y: top;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  min-height: 100vh;
+  margin: 0 2rem;
+
+  &__profile-picture {
+    padding-bottom: 100%;
+    width: 100%;
+  }
+}

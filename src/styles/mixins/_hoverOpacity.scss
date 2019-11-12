@@ -1,0 +1,9 @@
+@import "../../styles/variables";
+
+@mixin hoverOpacity {
+  opacity: $hover-opacity-off;
+
+  &:hover {
+    opacity: $hover-opacity-on;
+  }
+}

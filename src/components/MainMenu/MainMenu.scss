@@ -1,0 +1,45 @@
+@import "../../styles/variables";
+@import "../../styles/zIndex";
+
+.main-menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $primary-color;
+  transition: ease-in-out all 0.2s;
+  transform: translateX(-100%);
+  z-index: $z-index-main-menu;
+
+  &__nav {
+    padding: 1em;
+  }
+
+  &__item {
+    color: $white;
+    padding: 1em;
+  }
+
+  &--open {
+    transform: translateX(0);
+
+    ~ .main-menu-backdrop {
+      opacity: 1;
+      pointer-events: all;
+      cursor: pointer;
+    }
+  }
+}
+
+.main-menu-backdrop {
+  z-index: $z-index-main-menu-backdrop;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: ease-in-out all 0.2s;
+  pointer-events: none;
+}

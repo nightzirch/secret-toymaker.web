@@ -1,0 +1,21 @@
+@import "../../styles/zIndex";
+
+@mixin backgroundImageWithOpacity($imgURL, $opacity: 1) {
+  position: relative;
+
+  &:after {
+    content: "";
+    background-image: url($imgURL);
+    background-position: top right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: $opacity;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: $z-index-background-with-opacity;
+    @content;
+  }
+}

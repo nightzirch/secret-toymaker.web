@@ -8,18 +8,21 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
+# Production
+/build
 
-# production
-/dist
-
-# misc
+# Misc
 .DS_Store
-.env*
 
-# debug
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Config files
+.env
+.env.production
+.env.development
+
+# Design
+*.psd

@@ -1,0 +1,33 @@
+@import "../../styles/variables";
+
+.paragraph {
+  line-height: 1.5em;
+
+  &--no-margin {
+    margin: 0;
+  }
+
+  &--black {
+    color: $black;
+  }
+
+  &--dark {
+    color: $dark;
+  }
+
+  &--dark-grey {
+    color: $dark-grey;
+  }
+
+  &--grey {
+    color: $grey;
+  }
+
+  &--light {
+    color: $light;
+  }
+
+  &--white {
+    color: $white;
+  }
+}

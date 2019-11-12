@@ -1,0 +1,17 @@
+@import "../../styles/mixins";
+
+.hero {
+  &__content {
+    @include backgroundImageWithOpacity("/images/header_background.png") {
+      background-position: 66%;
+    }
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h1 {
+    margin: 0;
+  }
+}

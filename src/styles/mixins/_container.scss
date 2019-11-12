@@ -1,0 +1,7 @@
+@import "../../styles/variables";
+
+@mixin container {
+  padding: 0 1em;
+  margin: 0 auto;
+  max-width: $laptop;
+}

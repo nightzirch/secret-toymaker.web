@@ -1,0 +1,90 @@
+@import "../../styles/variables";
+@import "../../styles/zIndex";
+
+.input-checkbox {
+  &__label {
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    color: $dark;
+
+    &:hover {
+      // color: $dark;
+
+      .input-checkbox {
+        &__label-title {
+          color: $dark;
+        }
+        // &__box {
+        //   &:before, &:after {
+        //     background-color: white;
+        //   }
+        // }
+      }
+    }
+  }
+
+  &__label-title {
+    color: $grey;
+  }
+
+  &__box {
+    display: inline-block;
+    width: 3em;
+    height: 1.5em;
+    border: 0.1em solid currentColor;
+    font-size: 1em;
+    margin: 0 1rem 0 0;
+    padding: 0;
+    position: relative;
+    border-radius: 0.4rem;
+
+    &:before,
+    &:after {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      font-family: "Ionicons";
+      font-size: 1.3rem;
+    }
+
+    &:before {
+      // Close
+      color: $state-error;
+      content: "\f129";
+    }
+
+    &:after {
+      // Checkmark
+      color: $state-success;
+      content: "\f121";
+      right: 0;
+    }
+  }
+
+  &__handle {
+    width: 50%;
+    height: 100%;
+    background-color: currentColor;
+    display: inline-block;
+    position: absolute;
+    transition: all 0.1s ease-in-out;
+    z-index: $z-index-input-checkbox-handle;
+    // border-radius: .2rem;
+  }
+
+  $border-radius: 0.4rem;
+
+  &__input + &__label &__handle {
+    right: 0;
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+
+  &__input:checked + &__label &__handle {
+    right: 50%;
+    border-radius: 0 $border-radius $border-radius 0;
+  }
+}

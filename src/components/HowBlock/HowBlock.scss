@@ -1,0 +1,284 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.how-block {
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-basis: 100%;
+
+  @include media($tablet) {
+    flex-basis: 50%;
+  }
+
+  &:after {
+    top: 1em !important;
+    left: 1em !important;
+    bottom: 1em !important;
+    right: 1em !important;
+  }
+
+  &__left {
+    display: none;
+    order: 0;
+    width: 3rem;
+
+    &-arrow {
+      width: 3rem;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      > * {
+        width: 3rem;
+        background-color: currentColor;
+      }
+
+      &__top {
+        flex-grow: 1;
+      }
+
+      &__mid-top,
+      &__mid-bottom {
+        width: 6rem;
+        height: 6rem;
+        margin-top: 1.2rem;
+        transform: rotate(45deg);
+      }
+
+      &__mid-top {
+        margin-top: -3rem;
+      }
+
+      &__mid-bottom {
+        margin-bottom: -3rem;
+      }
+
+      &__bottom {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  &__right {
+    display: none;
+    order: 2;
+    width: 3rem;
+
+    &-arrow {
+      order: 3;
+      width: 3rem;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      > * {
+        width: 3rem;
+        background-color: currentColor;
+      }
+
+      &__top {
+        flex-grow: 1;
+      }
+
+      &__mid-top,
+      &__mid-bottom {
+        width: 6rem;
+        height: 6rem;
+        margin-top: 1.2rem;
+        margin-left: -3rem;
+        transform: rotate(45deg);
+      }
+
+      &__mid-top {
+        margin-top: -3rem;
+      }
+
+      &__mid-bottom {
+        margin-bottom: -3rem;
+      }
+
+      &__bottom {
+        flex-grow: 1;
+      }
+    }
+  }
+
+  &__center {
+    order: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .how-block {
+      &__top-arrow {
+        display: none;
+        order: 0;
+        width: 100%;
+        min-height: 3rem;
+        max-height: 3rem;
+        overflow: hidden;
+
+        > * {
+          height: 3rem;
+          background-color: currentColor;
+        }
+
+        &__left {
+          flex-grow: 1;
+        }
+
+        &__mid-left,
+        &__mid-right {
+          width: 6rem;
+          height: 6rem;
+          margin-top: 1.2rem;
+          transform: rotate(45deg);
+        }
+
+        &__mid-left {
+          margin-left: -3rem;
+        }
+
+        &__mid-right {
+          margin-right: -3rem;
+        }
+
+        &__right {
+          flex-grow: 1;
+        }
+      }
+
+      &__content {
+        order: 1;
+        width: 100%;
+        height: 100%;
+        color: $dark-grey;
+        padding: 2em;
+
+        .title {
+          margin-top: 1em;
+        }
+      }
+
+      &__bottom-arrow {
+        display: none;
+        order: 2;
+        height: 3rem;
+        position: absolute;
+        bottom: 0;
+        margin-bottom: -3rem;
+        overflow: hidden;
+        justify-content: center;
+
+        > * {
+          height: 3rem;
+          background-color: currentColor;
+        }
+
+        &__mid {
+          width: 6rem;
+          height: 6rem;
+          margin-top: -4.5rem;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+
+  &--foreground {
+    color: $secondary-color-light;
+    .how-block__content {
+      background-color: $secondary-color-light;
+      padding-top: 0;
+
+      @include media($tablet) {
+        padding-top: 2em;
+      }
+    }
+
+    .how-block {
+      &__top-arrow {
+        display: flex;
+      }
+    }
+
+    @include media($tablet) {
+      .how-block {
+        &__top-arrow,
+        &__bottom-arrow {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &--foreground:last-of-type {
+    .how-block {
+      &__bottom-arrow {
+        display: none;
+      }
+    }
+  }
+
+  &--step-one {
+    @include backgroundImageWithOpacity("/images/sign_t.png", 0.25);
+  }
+
+  &--step-two {
+    @include backgroundImageWithOpacity("/images/check_t.png", 0.25);
+  }
+
+  &--step-three {
+    @include backgroundImageWithOpacity("/images/pack.png", 0.25);
+    @include media($tablet) {
+      order: 4;
+    }
+  }
+
+  &--step-four {
+    @include backgroundImageWithOpacity("/images/receiveg_t.png", 0.25);
+  }
+
+  &--has-top-arrow {
+    .how-block__center {
+      .how-block__content {
+        padding-top: 0;
+      }
+
+      .how-block__top-arrow {
+        display: flex;
+      }
+    }
+  }
+
+  &--has-right-arrow {
+    .how-block__right {
+      @include media($tablet) {
+        display: flex;
+      }
+    }
+  }
+
+  &--has-bottom-arrow {
+    .how-block__center .how-block__bottom-arrow {
+      display: flex;
+    }
+  }
+
+  &--has-left-arrow {
+    .how-block__left {
+      @include media($tablet) {
+        display: flex;
+      }
+    }
+  }
+}
