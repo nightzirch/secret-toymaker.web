@@ -47,6 +47,12 @@
 
 ### Developing
 
+#### Firebase Functions
+
+- If you want to point the Firebase Functions in the frontend to the [backend project](https://github.com/nightzirch/secret-toymaker.backend), set `REACT_APP_USE_LOCAL_FUNCTIONS` to true. Remember to run the backend project as well :)
+
+#### Github
+
 - The develop branch is automatically building to the dev environment: https://secret-toymaker-dev.web.app/
 - The master branch is automatically building to the production environment: https://secrettoymaker.com
 - Therefore, all Pull Requests must be accepted by Chris. Who doesn't like a dictatorship anyway?
