@@ -17,7 +17,9 @@
 
   &__item {
     color: $white;
-    padding: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.2em;
+    display: table;
   }
 
   &--open {
