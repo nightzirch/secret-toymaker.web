@@ -26,3 +26,4 @@ yarn-error.log*
 
 # Design
 /src/images/psd/*.psd
+firebase-debug.log

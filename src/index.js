@@ -1,16 +1,16 @@
 import fastclick from "fastclick";
-import App from "pages/App";
-import FaqPage from "pages/FaqPage";
-import FrontPage from "pages/FrontPage";
-import GiftsPage from "pages/GiftsPage";
-import ProfilePage from "pages/ProfilePage";
-import SigninPage from "pages/SigninPage";
-import SignupPage from "pages/SignupPage";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import React from "reactn";
 import addReactNDevTools from "reactn-devtools";
-import { setGlobalStore, setReducers } from "store";
+import { setGlobalStore, setReducers } from "./store";
+import App from "./pages/App";
+import FaqPage from "./pages/FaqPage";
+import FrontPage from "./pages/FrontPage";
+import GiftsPage from "./pages/GiftsPage";
+import ProfilePage from "./pages/ProfilePage";
+import SigninPage from "./pages/SigninPage";
+import SignupPage from "./pages/SignupPage";
 import * as ROUTES from "./routes";
 import "./styles/style.scss";
 

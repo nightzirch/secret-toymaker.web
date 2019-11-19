@@ -26,7 +26,7 @@ const MainMenu = props => {
       >
         <nav className="main-menu__nav">{renderNavigationItems()}</nav>
       </div>
-      <div className="main-menu-backdrop" onClick={handleBackdropClick} />
+      <div className="main-menu-backdrop" role="presentation" onClick={handleBackdropClick} />
     </>
   );
 };
