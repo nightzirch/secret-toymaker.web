@@ -1,9 +1,8 @@
 import { Grid, GridItem } from "components/Grid";
 import Hamburger from "components/Hamburger";
 import Logo from "components/Logo";
-import ProfilePicture from "components/ProfilePicture";
 import Section from "components/Section";
-import * as ROUTES from "routes";
+import { Title } from "components/Typography";
 import { Link } from "react-router-dom";
 import React from "reactn";
 import "./Header.scss";
@@ -35,19 +34,11 @@ class Header extends React.Component {
     </div>
   );
 
-  renderProfileIcon = () => {
-    const { authUser } = this.global;
-    return (
-      <div className="header__profile-wrapper">
-        <Link
-          className="header__profile"
-          to={authUser ? ROUTES.PROFILE : ROUTES.SIGNIN}
-        >
-          <ProfilePicture />
-        </Link>
-      </div>
-    );
-  };
+  renderTitle = () => (
+    <span className="header__title">
+      <Title colorScheme="white">Secret Toymaker</Title>
+    </span>
+  );
 
   render() {
     return (
@@ -55,15 +46,15 @@ class Header extends React.Component {
         <Section>
           <Grid noMargin>
             <GridItem span={1} spanMobile={1}>
-              {this.renderHamburger()}
-            </GridItem>
-
-            <GridItem offset={6} offsetMobile={2} span={2} spanMobile={2}>
               {this.renderLogo()}
             </GridItem>
 
+            <GridItem offset={2} offsetMobile={2} span={10} spanMobile={2}>
+              {this.renderTitle()}
+            </GridItem>
+
             <GridItem offset={12} offsetMobile={4} span={1} spanMobile={1}>
-              {this.renderProfileIcon()}
+              {this.renderHamburger()}
             </GridItem>
           </Grid>
         </Section>

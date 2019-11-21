@@ -1,8 +1,8 @@
-import List from "List";
-import { Paragraphs, Title } from "Typography";
 import classnames from "classnames";
+import List from "List";
 import t from "prop-types";
 import React from "reactn";
+import { Paragraphs, Title } from "Typography";
 import "./Tooltip.scss";
 
 class Tooltip extends React.Component {

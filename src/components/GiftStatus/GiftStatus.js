@@ -1,6 +1,6 @@
+import classnames from "classnames";
 import Card from "components/Card";
 import { Title } from "components/Typography";
-import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
 import "./GiftStatus.scss";

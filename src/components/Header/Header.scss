@@ -5,16 +5,22 @@
 $iconSize: 3.6rem;
 
 .header {
-  position: sticky;
-  top: 0;
-  background-color: $primary-color;
   z-index: $z-index-header;
   padding: 0.5em 0;
+  margin-bottom: -6.4rem;
 
   &__logo {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    .title {
+      margin: 0;
+    }
   }
 
   &__logo-link {
