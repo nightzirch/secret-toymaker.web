@@ -1,7 +1,7 @@
 import Section from "components/Section";
 import { Paragraph, Title } from "components/Typography";
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./Hero.scss";
 
@@ -22,7 +22,7 @@ const Hero = props => {
 };
 
 Hero.propTypes = {
-  title: PropTypes.string
+  title: t.string
 };
 
 export default Hero;

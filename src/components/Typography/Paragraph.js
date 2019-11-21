@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./Paragraph.scss";
 
@@ -22,9 +22,9 @@ const Paragraph = props => {
 };
 
 Paragraph.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  colorScheme: PropTypes.oneOf([
+  children: t.node,
+  className: t.string,
+  colorScheme: t.oneOf([
     "black",
     "dark",
     "dark-grey",
@@ -32,7 +32,7 @@ Paragraph.propTypes = {
     "light",
     "white"
   ]),
-  noMargin: PropTypes.bool
+  noMargin: t.bool
 };
 
 Paragraph.defaultProps = {

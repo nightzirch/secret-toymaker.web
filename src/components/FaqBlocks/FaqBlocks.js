@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import FaqBlock from "./FaqBlock";
 
@@ -17,7 +17,7 @@ const FaqBlocks = props => (
 );
 
 FaqBlocks.propTypes = {
-  blocks: PropTypes.array.isRequired
+  blocks: t.array.isRequired
 };
 
 export default FaqBlocks;

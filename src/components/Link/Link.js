@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import { Link as RRLink } from "react-router-dom";
 import React from "reactn";
 import "./Link.scss";
@@ -33,11 +33,11 @@ const Link = props => {
 };
 
 Link.propTypes = {
-  isCentered: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isExternal: PropTypes.bool,
-  title: PropTypes.string.isRequired,
-  url: PropTypes.string
+  isCentered: t.bool,
+  isDisabled: t.bool,
+  isExternal: t.bool,
+  title: t.string.isRequired,
+  url: t.string
 };
 
 export default Link;

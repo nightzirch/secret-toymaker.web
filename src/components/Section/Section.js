@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./Section.scss";
 
@@ -18,7 +18,7 @@ const Section = props => {
 };
 
 Section.propTypes = {
-  backgroundColor: PropTypes.oneOf([
+  backgroundColor: t.oneOf([
     "extra-light",
     "dark",
     "primary",
@@ -28,7 +28,7 @@ Section.propTypes = {
     "secondary-light",
     "secondary-dark"
   ]),
-  withPadding: PropTypes.bool
+  withPadding: t.bool
 };
 
 export default Section;

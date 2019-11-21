@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./Logo.scss";
 
@@ -23,8 +23,8 @@ const Logo = props => {
 };
 
 Logo.propTypes = {
-  withGlow: PropTypes.bool,
-  withHover: PropTypes.bool
+  withGlow: t.bool,
+  withHover: t.bool
 };
 
 export default Logo;

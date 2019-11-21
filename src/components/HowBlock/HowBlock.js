@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./HowBlock.scss";
 
@@ -61,12 +61,12 @@ const HowBlock = props => {
 };
 
 HowBlock.propTypes = {
-  hasTopArrow: PropTypes.bool,
-  hasRightArrow: PropTypes.bool,
-  hasBottomArrow: PropTypes.bool,
-  hasLeftArrow: PropTypes.bool,
-  isForeground: PropTypes.bool,
-  step: PropTypes.string.isRequired
+  hasTopArrow: t.bool,
+  hasRightArrow: t.bool,
+  hasBottomArrow: t.bool,
+  hasLeftArrow: t.bool,
+  isForeground: t.bool,
+  step: t.string.isRequired
 };
 
 HowBlock.defaultProps = {

@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "react";
 import "./GridItem.scss";
 
@@ -32,12 +32,12 @@ const GridItem = props => {
 };
 
 GridItem.propTypes = {
-  children: PropTypes.node,
-  hideOnMobile: PropTypes.bool,
-  span: PropTypes.number,
-  spanMobile: PropTypes.number,
-  offset: PropTypes.number,
-  offsetMobile: PropTypes.number
+  children: t.node,
+  hideOnMobile: t.bool,
+  span: t.number,
+  spanMobile: t.number,
+  offset: t.number,
+  offsetMobile: t.number
 };
 
 GridItem.defaultProps = {

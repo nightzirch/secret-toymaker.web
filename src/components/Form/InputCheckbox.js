@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./InputCheckbox.scss";
 
@@ -31,12 +31,12 @@ const InputCheckbox = props => {
 };
 
 InputCheckbox.propTypes = {
-  id: PropTypes.string.isRequired,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  label: PropTypes.string,
-  onChange: PropTypes.func,
-  value: PropTypes.bool
+  id: t.string.isRequired,
+  isDisabled: t.bool,
+  isReadOnly: t.bool,
+  label: t.string,
+  onChange: t.func,
+  value: t.bool
 };
 
 export default InputCheckbox;

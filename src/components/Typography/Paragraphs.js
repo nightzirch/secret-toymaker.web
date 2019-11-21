@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import Paragraph from "./Paragraph";
 
@@ -23,7 +23,7 @@ const Paragraphs = props => {
 };
 
 Paragraphs.propTypes = {
-  colorScheme: PropTypes.oneOf([
+  colorScheme: t.oneOf([
     "black",
     "dark",
     "dark-grey",
@@ -31,7 +31,7 @@ Paragraphs.propTypes = {
     "light",
     "white"
   ]),
-  paragraphs: PropTypes.array.isRequired
+  paragraphs: t.array.isRequired
 };
 
 Paragraphs.defaultProps = {

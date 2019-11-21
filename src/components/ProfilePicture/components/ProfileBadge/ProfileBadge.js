@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import ReactSVG from "react-svg";
 import React, { useGlobal } from "reactn";
 import { BADGES, ROLES } from "../../utils/constants";
@@ -26,7 +26,7 @@ const ProfileBadge = props => {
 };
 
 ProfileBadge.propTypes = {
-  type: PropTypes.func
+  type: t.func
 };
 
 export default ProfileBadge;

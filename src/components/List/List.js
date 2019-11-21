@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./List.scss";
 
@@ -28,8 +28,8 @@ const List = props => {
 };
 
 List.propTypes = {
-  elements: PropTypes.array.isRequired,
-  ordered: PropTypes.bool
+  elements: t.array.isRequired,
+  ordered: t.bool
 };
 
 export default List;

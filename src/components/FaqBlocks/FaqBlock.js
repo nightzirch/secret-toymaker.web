@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import List from "../List";
 import { Paragraphs, Title } from "../Typography";
@@ -21,10 +21,10 @@ const FaqBlock = props => {
 };
 
 FaqBlock.propTypes = {
-  list: PropTypes.array,
-  title: PropTypes.string.isRequired,
-  text: PropTypes.array,
-  quote: PropTypes.string
+  list: t.array,
+  title: t.string.isRequired,
+  text: t.array,
+  quote: t.string
 };
 
 export default FaqBlock;

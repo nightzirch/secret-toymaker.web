@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./Button.scss";
 
@@ -39,17 +39,17 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  icon: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.element,
-    PropTypes.bool
+  icon: t.oneOfType([
+    t.object,
+    t.element,
+    t.bool
   ]),
-  isCentered: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  title: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(["button", "submit"]),
-  onClick: PropTypes.func,
-  theme: PropTypes.oneOf(["primary", "secondary", "tertiary", "danger"])
+  isCentered: t.bool,
+  isDisabled: t.bool,
+  title: t.string.isRequired,
+  type: t.oneOf(["button", "submit"]),
+  onClick: t.func,
+  theme: t.oneOf(["primary", "secondary", "tertiary", "danger"])
 };
 
 Button.defaultProps = {

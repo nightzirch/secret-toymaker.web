@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./Card.scss";
 
@@ -24,10 +24,10 @@ const Card = props => {
 };
 
 Card.propTypes = {
-  buttonLabel: PropTypes.string,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  onButtonClick: PropTypes.func
+  buttonLabel: t.string,
+  children: t.node,
+  className: t.string,
+  onButtonClick: t.func
 };
 
 export default Card;

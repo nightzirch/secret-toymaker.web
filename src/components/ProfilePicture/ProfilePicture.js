@@ -1,6 +1,6 @@
 import Camera from "images/icons/camera.svg";
 import Person from "images/icons/person.svg";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import ReactSVG from "react-svg";
 import React, { useGlobal } from "reactn";
 import ProfileBadge from "./components/ProfileBadge";
@@ -51,7 +51,7 @@ const ProfilePicture = props => {
 };
 
 ProfilePicture.propTypes = {
-  onClick: PropTypes.func
+  onClick: t.func
 };
 
 export default ProfilePicture;

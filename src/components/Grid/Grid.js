@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "react";
 import "./Grid.scss";
 
@@ -14,8 +14,8 @@ const Grid = props => {
 };
 
 Grid.propTypes = {
-  children: PropTypes.node,
-  noMargin: PropTypes.bool
+  children: t.node,
+  noMargin: t.bool
 };
 
 export default Grid;

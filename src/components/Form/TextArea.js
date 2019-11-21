@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./TextArea.scss";
 
@@ -77,17 +77,17 @@ class TextArea extends React.Component {
 }
 
 TextArea.propTypes = {
-  id: PropTypes.string.isRequired,
-  isAutocomplete: PropTypes.bool,
-  isAutofocus: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  isRequired: PropTypes.bool,
-  label: PropTypes.string,
-  minLength: PropTypes.number,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  value: PropTypes.string
+  id: t.string.isRequired,
+  isAutocomplete: t.bool,
+  isAutofocus: t.bool,
+  isDisabled: t.bool,
+  isReadOnly: t.bool,
+  isRequired: t.bool,
+  label: t.string,
+  minLength: t.number,
+  onChange: t.func,
+  placeholder: t.string,
+  value: t.string
 };
 
 TextArea.defaultProps = {

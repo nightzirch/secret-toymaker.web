@@ -1,7 +1,7 @@
+import classnames from "classnames";
 import Card from "components/Card";
 import { Paragraph } from "components/Typography";
-import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React, { useState } from "reactn";
 import "./Alert.scss";
 
@@ -30,7 +30,7 @@ const Alert = props => {
 };
 
 Alert.propTypes = {
-  children: PropTypes.node
+  children: t.node
 };
 
 export default Alert;

@@ -1,7 +1,7 @@
 import List from "List";
 import { Paragraphs, Title } from "Typography";
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./Tooltip.scss";
 
@@ -60,8 +60,8 @@ class Tooltip extends React.Component {
 }
 
 Tooltip.propTypes = {
-  content: PropTypes.object.isRequired,
-  for: PropTypes.string.isRequired
+  content: t.object.isRequired,
+  for: t.string.isRequired
 };
 
 export default Tooltip;
