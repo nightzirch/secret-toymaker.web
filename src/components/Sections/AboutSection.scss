@@ -4,20 +4,24 @@
 .about-section {
   background-color: $pattens-blue;
 
-  * {
-    color: $meteorite;
-  }
-
   &__lead {
     font-size: $text-lg;
     font-weight: 700;
   }
 
-  .section {
-    padding: 6rem 0;
+  &__content {
+    .title {
+      padding-top: 0;
+    }
+
+    .title,
+    .paragraph,
+    .signature {
+      color: $meteorite;
+    }
   }
 
-  .title {
-    padding-top: 0;
+  .section {
+    padding: 6rem 0;
   }
 }
