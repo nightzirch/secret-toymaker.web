@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./PageHeader.scss";
 import Title from "./Title";
@@ -21,8 +21,8 @@ const PageHeader = props => {
 };
 
 PageHeader.propTypes = {
-  type: PropTypes.oneOf(["donations", "gifts", "signup", "match", "profile"]),
-  title: PropTypes.string.isRequired
+  type: t.oneOf(["donations", "gifts", "signup", "match", "profile"]),
+  title: t.string.isRequired
 };
 
 export default PageHeader;

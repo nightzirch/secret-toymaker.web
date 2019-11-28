@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./Hamburger.scss";
 
@@ -20,8 +20,8 @@ const Hamburger = props => {
 };
 
 Hamburger.propTypes = {
-  onClick: PropTypes.func,
-  isMenuOpen: PropTypes.bool
+  onClick: t.func,
+  isMenuOpen: t.bool
 };
 
 export default Hamburger;

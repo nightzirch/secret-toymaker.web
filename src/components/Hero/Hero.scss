@@ -1,17 +1,46 @@
 @import "../../styles/mixins";
 
 .hero {
+  background-color: $vivid-violet;
+  padding-top: 6.4rem;
+
   &__content {
     @include backgroundImageWithOpacity("/images/header_background.png") {
       background-position: 66%;
     }
-    min-height: 30vh;
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-end;
   }
 
-  h1 {
+  &__button {
+    margin-top: 3.6rem;
+  }
+
+  &__image {
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .title {
+    font-weight: 300;
+    // font-size: 5.4rem;
     margin: 0;
+    color: white;
+    text-transform: uppercase;
+    text-align: right;
+
+    small {
+      display: block;
+      font-family: "museo-sans", serif;
+      font-weight: 100;
+      // font-size: 3.6rem;
+      // line-height: 3.6rem;
+    }
   }
 }

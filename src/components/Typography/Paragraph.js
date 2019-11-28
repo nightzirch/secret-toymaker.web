@@ -1,15 +1,16 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./Paragraph.scss";
 
 const Paragraph = props => {
-  const { children, colorScheme, className, noMargin } = props;
-  return props.children ? (
+  const { children, colorScheme, className, noMargin, size } = props;
+  return children ? (
     <p
       className={classnames(
         "paragraph",
         `paragraph--${colorScheme}`,
+        `paragraph--${size}`,
         className,
         {
           "paragraph--no-margin": noMargin
@@ -22,9 +23,9 @@ const Paragraph = props => {
 };
 
 Paragraph.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  colorScheme: PropTypes.oneOf([
+  children: t.node,
+  className: t.string,
+  colorScheme: t.oneOf([
     "black",
     "dark",
     "dark-grey",
@@ -32,11 +33,13 @@ Paragraph.propTypes = {
     "light",
     "white"
   ]),
-  noMargin: PropTypes.bool
+  noMargin: t.bool,
+  size: t.oneOf(["small", "medium"])
 };
 
 Paragraph.defaultProps = {
-  colorScheme: "dark"
+  colorScheme: "dark",
+  size: "medium"
 };
 
 export default Paragraph;

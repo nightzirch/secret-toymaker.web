@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./ParticipantCard.scss";
 
@@ -8,7 +8,7 @@ const ParticipantCardContainer = props =>
   ) : null;
 
 ParticipantCardContainer.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.element)
+  cards: t.arrayOf(t.element)
 };
 
 export default ParticipantCardContainer;

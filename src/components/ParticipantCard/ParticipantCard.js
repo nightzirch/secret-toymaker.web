@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./ParticipantCard.scss";
 
@@ -17,8 +17,8 @@ const ParticipantCard = props => (
 );
 
 ParticipantCard.propTypes = {
-  accname: PropTypes.string.isRequired,
-  notes: PropTypes.string.isRequired
+  accname: t.string.isRequired,
+  notes: t.string.isRequired
 };
 
 export default ParticipantCard;

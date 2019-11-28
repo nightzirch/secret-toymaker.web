@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./SuccessMessage.scss";
 
@@ -8,7 +8,7 @@ const SuccessMessage = props =>
   ) : null;
 
 SuccessMessage.propTypes = {
-  text: PropTypes.string
+  text: t.string
 };
 
 export default SuccessMessage;

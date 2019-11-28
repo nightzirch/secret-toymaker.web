@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import { Link } from "react-router-dom";
 import React from "reactn";
 import "./NavigationItem.scss";
@@ -74,13 +74,13 @@ class NavigationItem extends React.Component {
 }
 
 NavigationItem.propTypes = {
-  icon: PropTypes.string,
-  imageUrl: PropTypes.string,
-  isExternal: PropTypes.bool,
-  onClick: PropTypes.func,
-  title: PropTypes.string,
-  type: PropTypes.oneOf(["default", "block"]),
-  url: PropTypes.string.isRequired
+  icon: t.string,
+  imageUrl: t.string,
+  isExternal: t.bool,
+  onClick: t.func,
+  title: t.string,
+  type: t.oneOf(["default", "block"]),
+  url: t.string.isRequired
 };
 
 NavigationItem.defaultProps = {

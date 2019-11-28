@@ -1,7 +1,7 @@
+import classnames from "classnames";
 import Card from "components/Card";
 import { Title } from "components/Typography";
-import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./GiftStatus.scss";
 import {
@@ -133,9 +133,9 @@ const GiftStatus = props => {
 };
 
 GiftStatus.propTypes = {
-  gifter: PropTypes.string.isRequired,
-  status: PropTypes.oneOf(GIFT_STATUS_ARRAY),
-  direction: PropTypes.oneOf(GIFT_DIRECTION_ARRAY)
+  gifter: t.string.isRequired,
+  status: t.oneOf(GIFT_STATUS_ARRAY),
+  direction: t.oneOf(GIFT_DIRECTION_ARRAY)
 };
 
 GiftStatus.defaultProps = {

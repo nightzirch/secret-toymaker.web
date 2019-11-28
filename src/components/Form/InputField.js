@@ -1,5 +1,5 @@
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import t from "prop-types";
 import React from "reactn";
 import "./InputField.scss";
 
@@ -112,19 +112,19 @@ class InputField extends React.Component {
 }
 
 InputField.propTypes = {
-  id: PropTypes.string.isRequired,
-  isAutocomplete: PropTypes.bool,
-  isAutofocus: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  isRequired: PropTypes.bool,
-  label: PropTypes.string,
-  maxLength: PropTypes.number,
-  minLength: PropTypes.number,
-  onChange: PropTypes.func,
-  placeholder: PropTypes.string,
-  type: PropTypes.oneOf(["apiToken", "email", "password", "text"]).isRequired,
-  value: PropTypes.string
+  id: t.string.isRequired,
+  isAutocomplete: t.bool,
+  isAutofocus: t.bool,
+  isDisabled: t.bool,
+  isReadOnly: t.bool,
+  isRequired: t.bool,
+  label: t.string,
+  maxLength: t.number,
+  minLength: t.number,
+  onChange: t.func,
+  placeholder: t.string,
+  type: t.oneOf(["apiToken", "email", "password", "text"]).isRequired,
+  value: t.string
 };
 
 InputField.defaultProps = {

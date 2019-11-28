@@ -5,8 +5,16 @@ $dark-grey: #666;
 $dark: #333;
 $black: #000;
 
-$primary-color: #26528c;
-$secondary-color: #354b8c;
+$vivid-violet: #92309d;
+$meteorite: #362580;
+$pattens-blue: #dbeeff;
+
+// $primary-color: #26528c;
+// $secondary-color: #354b8c;
+// $tertiary-color: #c867b1;
+
+$primary-color: $meteorite;
+$secondary-color: $vivid-violet;
 $tertiary-color: #c867b1;
 
 $state-error: #d93a30;

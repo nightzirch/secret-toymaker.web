@@ -1,7 +1,9 @@
-import Section from "components/Section";
-import { Paragraph, Title } from "components/Typography";
 import classnames from "classnames";
-import PropTypes from "prop-types";
+import { SignupButton } from "components/Button";
+import { Grid, GridItem } from "components/Grid";
+import Section from "components/Section";
+import { Title } from "components/Typography";
+import t from "prop-types";
 import React from "reactn";
 import "./Hero.scss";
 
@@ -9,20 +11,32 @@ const Hero = props => {
   return (
     <div className={classnames("hero")}>
       <Section>
-        <div className="hero__content">
-          <Title level="primary">Hello friend!</Title>
-          <Paragraph>
-            Welcome to Secret Toymaker, the community-driven secret santa event
-            for Guild Wars 2.
-          </Paragraph>
-        </div>
+        <Grid noMargin>
+          <GridItem span={6} spanMobile={4}>
+            <div className="hero__content">
+              <Title colorScheme="white" level="primary">
+                Participate <small>in the event</small>
+              </Title>
+
+              <div className="hero__button">
+                <SignupButton size="large" />
+              </div>
+            </div>
+          </GridItem>
+
+          <GridItem span={6} spanMobile={4}>
+            <div className="hero__image">
+              <img src="/images/snowman.png" alt="Snowman" title="Snowman" />
+            </div>
+          </GridItem>
+        </Grid>
       </Section>
     </div>
   );
 };
 
 Hero.propTypes = {
-  title: PropTypes.string
+  title: t.string
 };
 
 export default Hero;

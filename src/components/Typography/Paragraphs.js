@@ -1,15 +1,17 @@
-import PropTypes from "prop-types";
+import classnames from "classnames";
+import t from "prop-types";
 import React from "reactn";
 import Paragraph from "./Paragraph";
 
 const Paragraphs = props => {
+  const { className, colorScheme, paragraphs, ...rest } = props;
+
   let renderParagraphs = () => {
     let renderedParagraphs = [];
-    let paragraphs = props.paragraphs;
     if (paragraphs && paragraphs.length > 0) {
       for (let i = 0; i < paragraphs.length; i++) {
         renderedParagraphs.push(
-          <Paragraph colorScheme={props.colorScheme} key={i}>
+          <Paragraph colorScheme={colorScheme} key={i} {...rest}>
             {paragraphs[i]}
           </Paragraph>
         );
@@ -19,11 +21,16 @@ const Paragraphs = props => {
     return;
   };
 
-  return <div className="paragraphs">{renderParagraphs()}</div>;
+  return (
+    <div className={classnames("paragraphs", className)}>
+      {renderParagraphs()}
+    </div>
+  );
 };
 
 Paragraphs.propTypes = {
-  colorScheme: PropTypes.oneOf([
+  className: t.string,
+  colorScheme: t.oneOf([
     "black",
     "dark",
     "dark-grey",
@@ -31,7 +38,7 @@ Paragraphs.propTypes = {
     "light",
     "white"
   ]),
-  paragraphs: PropTypes.array.isRequired
+  paragraphs: t.array.isRequired
 };
 
 Paragraphs.defaultProps = {

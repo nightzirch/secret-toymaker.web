@@ -1,7 +1,8 @@
 @import "../../styles/variables";
 
 .title {
-  margin-top: 2em;
+  margin: 2.75rem 0 1rem;
+  line-height: 1.15;
 
   &--page {
     margin-top: 0;
@@ -9,13 +10,16 @@
   }
 
   &--primary {
-    font-size: 2em;
+    margin-top: 0;
+    font-size: $text-3xl;
   }
 
   &--secondary {
+    font-size: $text-2xl;
   }
 
   &--tertiary {
+    font-size: $text-xl;
     font-weight: light;
     color: $dark-grey;
   }
@@ -42,5 +46,9 @@
 
   &--white {
     color: $white;
+  }
+
+  small {
+    font-size: $text-sm;
   }
 }

@@ -13,8 +13,8 @@
     transition: all $animation-duration ease-in-out;
     transform: rotate(0deg);
     font-size: 1rem;
-    width: 3em;
-    height: 2.25em;
+    width: 2.25em;
+    height: 2em;
     position: relative;
     display: inline-block;
 
@@ -23,7 +23,7 @@
       transform: rotate(0deg);
       display: block;
       position: absolute;
-      height: 0.2em;
+      height: 0.25em;
       width: 100%;
       background: $white;
       border-radius: 0.4em;
@@ -36,6 +36,8 @@
 
       &:nth-child(2) {
         top: 0.9em;
+        width: 80%;
+        left: 20%;
       }
 
       &:nth-child(3) {
