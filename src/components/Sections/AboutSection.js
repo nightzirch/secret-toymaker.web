@@ -11,7 +11,8 @@ const AboutSection = props => (
     <Section>
       {/* TODO: Remove this when pushing to master */}
       <Alert>
-        This is the development site for Secret Toymaker. Proceed with caution
+        This is the development environment for Secret Toymaker. Proceed with
+        caution
         <span aria-label="grin" role="img">
           😄
         </span>
