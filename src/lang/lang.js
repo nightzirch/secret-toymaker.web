@@ -131,18 +131,6 @@ module.exports = {
       "Website by Christian Grimsgaard. Illustrations by Erich Vasburg. Email development by Ryan Field."
     ]
   },
-  how: {
-    step1: [
-      "On the signup page, enter your API token and email, and provide a note for your Secret Toymaker."
-    ],
-    step2: [
-      "Once the deadline for signing up is due, we will remind you by email and web notifications (new this year!) to check to which lucky Tyrian you will send a gift."
-    ],
-    step3: [
-      "Use the note your match provided you to get a sense of what they wish for this Wintersday. Prepare, pack and send the gift to it's new home."
-    ],
-    step4: ["You will also receive a gift from your very own Secret Toymaker!"]
-  },
   signup: {
     intro: [
       "The Wintersday is all about sharing gifts with your friends and celebrating the past year, but what about all the Tyrians you happened to meet and share an adventure with? Those times have already passed, but the feelings are not so easily forgotten.",

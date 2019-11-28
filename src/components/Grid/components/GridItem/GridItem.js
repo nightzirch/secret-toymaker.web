@@ -6,6 +6,7 @@ import "./GridItem.scss";
 const GridItem = props => {
   const {
     children,
+    className,
     hideOnMobile,
     span,
     spanMobile,
@@ -23,7 +24,8 @@ const GridItem = props => {
           [`grid-item--offset-${offset}`]: offset,
           [`grid-item--offset-mobile-${offsetMobile}`]: offsetMobile,
           "grid-item--hide-on-mobile": hideOnMobile
-        }
+        },
+        className
       )}
     >
       {children}
@@ -33,6 +35,7 @@ const GridItem = props => {
 
 GridItem.propTypes = {
   children: t.node,
+  className: t.string,
   hideOnMobile: t.bool,
   span: t.number,
   spanMobile: t.number,
