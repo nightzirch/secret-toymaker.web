@@ -14,12 +14,12 @@ const Hero = props => {
         <Grid noMargin>
           <GridItem span={6} spanMobile={4}>
             <div className="hero__content">
-              <Title level="primary">
+              <Title colorScheme="white" level="primary">
                 Participate <small>in the event</small>
               </Title>
 
               <div className="hero__button">
-                <SignupButton />
+                <SignupButton size="large" />
               </div>
             </div>
           </GridItem>

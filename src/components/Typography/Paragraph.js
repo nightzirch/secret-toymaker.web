@@ -4,12 +4,13 @@ import React from "reactn";
 import "./Paragraph.scss";
 
 const Paragraph = props => {
-  const { children, colorScheme, className, noMargin } = props;
-  return props.children ? (
+  const { children, colorScheme, className, noMargin, size } = props;
+  return children ? (
     <p
       className={classnames(
         "paragraph",
         `paragraph--${colorScheme}`,
+        `paragraph--${size}`,
         className,
         {
           "paragraph--no-margin": noMargin
@@ -32,11 +33,13 @@ Paragraph.propTypes = {
     "light",
     "white"
   ]),
-  noMargin: t.bool
+  noMargin: t.bool,
+  size: t.oneOf(["small", "medium"])
 };
 
 Paragraph.defaultProps = {
-  colorScheme: "dark"
+  colorScheme: "dark",
+  size: "medium"
 };
 
 export default Paragraph;

@@ -11,6 +11,7 @@ const Button = props => {
   let buttonClasses = classnames(
     "button",
     `button--${props.theme}`,
+    `button--${props.size}`,
     `button--${props.type}`,
     {
       "button--with-icon": !!props.icon
@@ -39,21 +40,19 @@ const Button = props => {
 };
 
 Button.propTypes = {
-  icon: t.oneOfType([
-    t.object,
-    t.element,
-    t.bool
-  ]),
+  icon: t.oneOfType([t.object, t.element, t.bool]),
   isCentered: t.bool,
   isDisabled: t.bool,
   title: t.string.isRequired,
   type: t.oneOf(["button", "submit"]),
   onClick: t.func,
+  size: t.oneOf(["small", "medium", "large"]),
   theme: t.oneOf(["primary", "secondary", "tertiary", "danger"])
 };
 
 Button.defaultProps = {
   theme: "primary",
+  size: "medium",
   type: "button"
 };
 

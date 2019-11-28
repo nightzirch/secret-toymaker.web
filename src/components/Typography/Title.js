@@ -47,7 +47,7 @@ Title.propTypes = {
 
 Title.defaultProps = {
   colorScheme: "dark",
-  level: "primary"
+  level: "secondary"
 };
 
 export default Title;

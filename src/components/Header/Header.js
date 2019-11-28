@@ -49,7 +49,13 @@ class Header extends React.Component {
               {this.renderLogo()}
             </GridItem>
 
-            <GridItem offset={2} offsetMobile={2} span={10} spanMobile={2}>
+            <GridItem
+              offset={2}
+              offsetMobile={2}
+              span={10}
+              spanMobile={2}
+              hideOnMobile
+            >
               {this.renderTitle()}
             </GridItem>
 

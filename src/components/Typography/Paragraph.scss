@@ -1,7 +1,16 @@
 @import "../../styles/variables";
 
 .paragraph {
-  line-height: 1.5em;
+  line-height: 1.45;
+  margin-bottom: 1.25em;
+
+  &--small {
+    font-size: $text-sm;
+  }
+
+  &--medium {
+    font-size: $text-md;
+  }
 
   &--no-margin {
     margin: 0;

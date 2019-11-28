@@ -1,0 +1,23 @@
+@import "../../styles/colors";
+@import "../../styles/variables";
+
+.about-section {
+  background-color: $pattens-blue;
+
+  * {
+    color: $meteorite;
+  }
+
+  &__lead {
+    font-size: $text-lg;
+    font-weight: 700;
+  }
+
+  .section {
+    padding: 6rem 0;
+  }
+
+  .title {
+    padding-top: 0;
+  }
+}

@@ -1,9 +1,13 @@
 module.exports = {
-  about: [
-    "Our mission is simple: to make Wintersday more special, to bring joy to the people taking part, and to tie the community closer together.",
-    "With your help we can make this happen. With your help we can make this Wintersday the best yet!",
-    "The idea is to bring the Secret Santa tradition into the realm of Guild Wars 2. The Secret Santa tradition is a gift exchange program where people get randomly matched up. In Secret Toymaker you will be given the account name of someone else for whom to find the perfect gift. And don't worry, someone else will get yours."
-  ],
+  about: {
+    lead: [
+      "Our mission is simple: to make Wintersday more special, to bring joy to the people taking part, and to tie the community closer together."
+    ],
+    body: [
+      "With your help we can make this happen. With your help we can make this Wintersday the best yet!",
+      "The idea is to bring the Secret Santa tradition into the realm of Guild Wars 2. The Secret Santa tradition is a gift exchange program where people get randomly matched up. In Secret Toymaker you will be given the account name of someone else for whom to find the perfect gift. And don't worry, someone else will get yours."
+    ]
+  },
   aboutUs: {
     RandommUser: [
       "I'm RandommUser, an avid member of this community. I've seen and taken part in many awesome community events and I wanted to do something to make the Christmas time special."

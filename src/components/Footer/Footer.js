@@ -10,7 +10,11 @@ const Footer = props => (
     <Section backgroundColor="primary" withPadding>
       <Grid noMargin>
         <GridItem>
-          <Paragraphs colorScheme="white" paragraphs={lang.footer.upper} />
+          <Paragraphs
+            colorScheme="white"
+            size="small"
+            paragraphs={lang.footer.upper}
+          />
         </GridItem>
       </Grid>
     </Section>
@@ -18,7 +22,11 @@ const Footer = props => (
     <Section backgroundColor="primary-dark">
       <Grid noMargin>
         <GridItem>
-          <Paragraphs colorScheme="white" paragraphs={lang.footer.lower} />
+          <Paragraphs
+            colorScheme="white"
+            size="small"
+            paragraphs={lang.footer.lower}
+          />
         </GridItem>
       </Grid>
     </Section>
