@@ -44,7 +44,7 @@ const CreditsSection = props => (
               term="Ryan Field"
               description="Email developer"
             />
-            <DescriptionListItem term="Unesdala" description="Developer" />
+            <DescriptionListItem term="Rhayven Ayers" description="Developer" />
           </DescriptionList>
         </GridItem>
       </Grid>
