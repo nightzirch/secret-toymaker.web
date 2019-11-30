@@ -1,5 +1,5 @@
 import Hero from "components/Hero";
-import { AboutSection, HowSection } from "components/Sections";
+import { AboutSection, CreditsSection, HowSection } from "components/Sections";
 import React from "reactn";
 
 class FrontPage extends React.Component {
@@ -10,6 +10,7 @@ class FrontPage extends React.Component {
 
         <AboutSection />
         <HowSection />
+        <CreditsSection />
       </div>
     );
   }

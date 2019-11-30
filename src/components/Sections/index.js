@@ -1,5 +1,5 @@
 import AboutSection from "./AboutSection";
-import AboutUsSection from "./AboutUsSection";
+import CreditsSection from "./CreditsSection";
 import FaqSection from "./FaqSection";
 import HeaderSection from "./HeaderSection";
 import HowSection from "./HowSection";
@@ -9,7 +9,7 @@ import SupportUsSection from "./SupportUsSection";
 
 export {
   AboutSection,
-  AboutUsSection,
+  CreditsSection,
   FaqSection,
   HeaderSection,
   HowSection,
