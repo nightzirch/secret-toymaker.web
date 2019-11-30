@@ -17,13 +17,13 @@ const StepBlock = props => {
       })}
     >
       <Grid noRowGap noMargin>
-        <GridItem span={6} className="step-block__image-container">
+        <GridItem span={8} className="step-block__image-container">
           <div className="step-block__image">
             <img {...image} />
           </div>
         </GridItem>
 
-        <GridItem span={6} className="step-block__text-container">
+        <GridItem span={4} className="step-block__text-container">
           <span className="step-block__number">{number}</span>
           <div className="step-block__text">
             <Title level="tertiary">{title}</Title>
