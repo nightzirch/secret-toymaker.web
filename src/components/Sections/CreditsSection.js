@@ -32,14 +32,17 @@ const CreditsSection = props => (
               term="Irene Karotsi"
               description="Visual designer"
             />
-            <DescriptionListItem term="Silver" description="Developer" />
+            <DescriptionListItem
+              term="Brendan Golden"
+              description="Developer"
+            />
             <DescriptionListItem
               term="Vasburg"
               description="Art & illustrations"
             />
             <DescriptionListItem
               term="Ryan Field"
-              description="Email templates"
+              description="Email developer"
             />
             <DescriptionListItem term="Unesdala" description="Developer" />
           </DescriptionList>
