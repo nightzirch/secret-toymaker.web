@@ -7,16 +7,16 @@
   align-items: center;
   color: $pattens-blue;
   position: relative;
+  width: 3rem;
 
   & + * {
-    width: 3rem;
     padding-left: 1rem;
 
     &:before {
       content: ":";
       position: absolute;
       font-size: $text-xl;
-      left: 0.25em;
+      left: 0.15em;
       top: 0;
     }
   }
