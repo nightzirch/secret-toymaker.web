@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import { SignupButton } from "components/Button";
+import CountdownBlock from "components/CountdownBlock";
 import { Grid, GridItem } from "components/Grid";
 import Section from "components/Section";
 import { Title } from "components/Typography";
@@ -20,6 +21,10 @@ const Hero = props => {
 
               <div className="hero__button">
                 <SignupButton size="large" />
+              </div>
+
+              <div className="hero__countdown">
+                <CountdownBlock />
               </div>
             </div>
           </GridItem>
