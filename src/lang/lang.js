@@ -123,7 +123,7 @@ module.exports = {
     ]
   },
   footer: [
-    "Secret Toymaker is a non-profit fan-made site for Guild Wars 2. We are is in no way associated with ArenaNet, NCSOFT Corporation or the Guild Wars 2 trademark.",
+    "Secret Toymaker is a non-profit fan-made site for Guild Wars 2. Secret Toymaker is in no way associated with ArenaNet, NCSOFT Corporation or the Guild Wars 2 trademark.",
     "©2010–2020 ArenaNet, LLC. All rights reserved. Guild Wars, Guild Wars 2, Heart of Thorns, Guild Wars 2: Path of Fire, ArenaNet, NCSOFT, the Interlocking NC Logo, and all associated logos and designs are trademarks or registered trademarks of NCSOFT Corporation. All other trademarks are the property of their respective owners."
   ],
   signup: {

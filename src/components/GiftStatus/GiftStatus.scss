@@ -16,9 +16,10 @@ $inactive-color: $grey;
     margin-bottom: 0;
   }
 
-  &__content {
+  &__card {
     position: relative;
-    z-index: $z-index-gift-status-content;
+    z-index: $z-index-gift-status-card;
+    background-color: $white;
   }
 
   &--outgoing {
@@ -45,7 +46,7 @@ $inactive-color: $grey;
 
   &--complete {
     .gift-status {
-      &__content {
+      &__card {
         background-color: $state-success-light;
       }
       &__dot,
@@ -201,7 +202,6 @@ $inactive-color: $grey;
     flex-grow: 1;
     border: none;
     outline: none;
-    font-size: 1.6rem;
     line-height: 2.5em;
     border-radius: 0 0 0.5rem 0.5rem;
     background-color: $state-success;

@@ -96,19 +96,15 @@ const GiftStatus = props => {
     </div>
   );
 
-  const renderButton = () => {
-    if (status !== GIFT_STATUS.SENT) return;
-
-    const markAs = direction === GIFT_DIRECTION.INCOMING ? "received" : "sent";
-
-    return (
-      <div className="gift-status__button-container">
-        <button className="gift-status__button" onClick={handleButtonClick}>
-          Mark as {markAs}
-        </button>
-      </div>
-    );
-  };
+  const buttonProps =
+    status !== GIFT_STATUS.SENT
+      ? {}
+      : {
+          buttonLabel: `Mark as ${
+            direction === GIFT_DIRECTION.INCOMING ? "received" : "sent"
+          }`,
+          onButtonClick: handleButtonClick
+        };
 
   return (
     <div
@@ -121,13 +117,11 @@ const GiftStatus = props => {
         }
       )}
     >
-      <Card className="gift-status__content">
+      <Card className="gift-status__card" {...buttonProps}>
         {renderTitle()}
         {renderTimeline()}
         {renderIllustrations()}
       </Card>
-
-      {renderButton()}
     </div>
   );
 };
