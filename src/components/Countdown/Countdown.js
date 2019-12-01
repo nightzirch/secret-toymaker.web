@@ -14,11 +14,13 @@ const Countdown = props => {
   const title = getCountdownTitle(stageType);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdownObject(moment(stageEnd).countdown());
-    }, 1000);
+    if (stageEnd) {
+      const timer = setInterval(() => {
+        setCountdownObject(moment(stageEnd).countdown());
+      }, 1000);
 
-    return () => clearInterval(timer);
+      return () => clearInterval(timer);
+    }
   }, [stageEnd]);
 
   const renderCountdown = () => {
