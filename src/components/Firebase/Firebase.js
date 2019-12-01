@@ -72,8 +72,9 @@ class Firebase {
     const stage = this.functions.httpsCallable("stage");
     return stage()
       .then(result => {
-        const { end, ...rest } = result.data.stage;
+        const { start, end, ...rest } = result.data;
         return {
+          start: new Date(start),
           end: new Date(end),
           ...rest
         };

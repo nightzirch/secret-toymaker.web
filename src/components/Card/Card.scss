@@ -11,11 +11,12 @@
   }
 
   &__button {
+    font-size: $text-md;
     flex-grow: 1;
     border: none;
     outline: none;
-    line-height: 2.5em;
-    border-radius: 0 0 0.25rem 0.25rem;
+    line-height: 2rem;
+    border-radius: 0 0 0.5rem 0.5rem;
     background-color: $state-success;
     color: $white;
     cursor: pointer;

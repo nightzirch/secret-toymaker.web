@@ -1,6 +1,7 @@
-export const STAGES = {
-  SIGNUP: "signup",
-  GIFTING: "gifting",
-  SPLASH: "splash",
-  INACTIVE: "inactive"
+export const StageTypes = {
+  SIGNUP: "SIGNUP",
+  MATCHING: "MATCHING",
+  GIFTING: "GIFTING",
+  SPLASH: "SPLASH",
+  INACTIVE: "INACTIVE"
 };

@@ -9,9 +9,9 @@ import { getCountdownTitle } from "./utils/utils";
 const Countdown = props => {
   const [stage] = useGlobal("stage");
   const [countdownObject, setCountdownObject] = useState(null);
-  const { end: stageEnd, name: stageName } = stage || {};
+  const { end: stageEnd, type: stageType } = stage || {};
 
-  const title = getCountdownTitle(stageName);
+  const title = getCountdownTitle(stageType);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -19,7 +19,7 @@ const Countdown = props => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [stageEnd]);
 
   const renderCountdown = () => {
     if (!countdownObject) return null;
