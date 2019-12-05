@@ -51,6 +51,10 @@
     padding-bottom: 0.5em;
     padding-top: 0.2em;
     display: block;
+
+    &--last {
+      margin-top: 2em;
+    }
   }
 
   &__backdrop {

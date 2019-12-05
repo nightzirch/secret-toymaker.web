@@ -16,9 +16,11 @@ class SignupButton extends React.Component {
   render() {
     return (
       <Button
+        icon={<ion-icon name="arrow-forward"></ion-icon>}
+        iconPlacement="right"
         onClick={this.gotoSignup}
         primary={true}
-        title="Sign up now"
+        title="Right this way"
         {...this.props}
       />
     );

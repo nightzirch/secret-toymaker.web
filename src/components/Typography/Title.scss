@@ -48,6 +48,10 @@
     color: $white;
   }
 
+  &--primary {
+    color: $primary-color;
+  }
+
   small {
     font-size: $text-sm;
   }

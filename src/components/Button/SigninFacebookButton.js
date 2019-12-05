@@ -15,7 +15,7 @@ class SigninFacebookButton extends React.Component {
   render() {
     return (
       <Button
-        icon={<span className="ion-social-facebook" />}
+        icon={<ion-icon name="logo-facebook"></ion-icon>}
         onClick={this.handleSigninClick}
         title="Sign in with Facebook"
         {...this.props}

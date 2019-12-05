@@ -14,7 +14,7 @@ const Button = props => {
     `button--${props.size}`,
     `button--${props.type}`,
     {
-      "button--with-icon": !!props.icon
+      [`button--with-icon button--with-icon-${props.iconPlacement}`]: !!props.icon
     }
   );
 
@@ -41,6 +41,7 @@ const Button = props => {
 
 Button.propTypes = {
   icon: t.oneOfType([t.object, t.element, t.bool]),
+  iconPlacement: t.oneOf(["left", "right"]),
   isCentered: t.bool,
   isDisabled: t.bool,
   title: t.string.isRequired,
@@ -51,6 +52,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  iconPlacement: "left",
   theme: "primary",
   size: "medium",
   type: "button"

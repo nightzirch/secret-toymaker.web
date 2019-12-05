@@ -15,7 +15,7 @@ class SigninGoogleButton extends React.Component {
   render() {
     return (
       <Button
-        icon={<span className="ion-social-google" />}
+        icon={<ion-icon name="logo-google"></ion-icon>}
         onClick={this.handleSigninClick}
         title="Sign in with Google"
         {...this.props}
