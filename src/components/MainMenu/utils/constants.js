@@ -3,10 +3,10 @@ import Routes from "routes";
 export const NAVIGATION_ITEMS = [
   { title: "Home", url: Routes.FRONTPAGE },
   { title: "Faq", url: Routes.FAQ },
-  { title: "Sign In", url: Routes.SIGNIN },
-  { title: "Sign Up", url: Routes.SIGNUP },
-  /*  { title: "Profile", url: Routes.PROFILE }, */
-  { title: "Gifts", url: Routes.GIFTS }
+  // { title: "Sign Up", url: Routes.SIGNUP },
+  // { title: "Profile", url: Routes.PROFILE },
+  // { title: "Gifts", url: Routes.GIFTS }
+  { title: "Log in", url: Routes.LOGIN }
 ];
 
 /*

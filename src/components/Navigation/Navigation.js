@@ -35,7 +35,7 @@ class Navigation extends React.Component {
         icon: "person",
         imageUrl: this.global.authUser && this.global.authUser.photoURL,
         title: "Profile",
-        url: this.global.authUser ? Routes.PROFILE : Routes.SIGNIN
+        url: this.global.authUser ? Routes.PROFILE : Routes.LOGIN
       }
       // {
       //   isExternal: true,

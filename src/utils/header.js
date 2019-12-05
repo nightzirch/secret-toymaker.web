@@ -5,7 +5,7 @@ export const headerTextColor = {
   [RouteTypes.FRONTPAGE]: "light",
   [RouteTypes.FAQ]: "dark",
   [RouteTypes.GIFTS]: "dark",
-  [RouteTypes.SIGNIN]: "dark",
+  [RouteTypes.LOGIN]: "dark",
   [RouteTypes.SIGNUP]: "dark",
   [RouteTypes.PROFILE]: "dark"
 };

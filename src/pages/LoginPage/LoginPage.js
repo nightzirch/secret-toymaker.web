@@ -2,16 +2,17 @@ import { SigninFacebookButton, SigninGoogleButton } from "components/Button";
 import Section from "components/Section";
 import { PageHeader } from "components/Typography";
 import React from "reactn";
-import SigninForm from "./SigninForm";
+import LoginForm from "./LoginForm";
+import "./LoginPage.scss";
 
-class SigninPage extends React.Component {
+class LoginPage extends React.Component {
   render() {
     return (
-      <div className="signin-page">
+      <div className="login-page">
         <Section>
-          <PageHeader title="Sign in" />
+          <PageHeader title="Log in" />
 
-          <SigninForm />
+          <LoginForm />
 
           <SigninGoogleButton />
           <SigninFacebookButton />
@@ -21,4 +22,4 @@ class SigninPage extends React.Component {
   }
 }
 
-export default SigninPage;
+export default LoginPage;

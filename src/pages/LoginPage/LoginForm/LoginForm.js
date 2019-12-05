@@ -4,7 +4,7 @@ import Link from "components/Link";
 import React from "reactn";
 import Routes from "routes";
 
-class SigninForm extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -33,8 +33,8 @@ class SigninForm extends React.Component {
 
   render() {
     return (
-      <div className="signin-form__container">
-        <form className="signin-form" onSubmit={this.handleFormSubmit}>
+      <div className="login-form__container">
+        <form className="login-form" onSubmit={this.handleFormSubmit}>
           <InputField
             id="email"
             label="Email"
@@ -55,10 +55,13 @@ class SigninForm extends React.Component {
 
           <Button theme="primary" title="Sign in" type="submit" />
 
-          <Link title="Sign up for a new account" url={Routes.SIGNUP} />
+          <Link
+            title="Don't have an account? Sign up here"
+            url={Routes.SIGNUP}
+          />
         </form>
       </div>
     );
   }
 }
-export default SigninForm;
+export default LoginForm;

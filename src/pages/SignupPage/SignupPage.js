@@ -1,4 +1,5 @@
 import { SigninFacebookButton, SigninGoogleButton } from "components/Button";
+import Section from "components/Section";
 import { PageHeader, Paragraphs } from "components/Typography";
 import lang from "lang/lang";
 import React from "reactn";
@@ -9,7 +10,7 @@ class SignupPage extends React.Component {
   render() {
     return (
       <div className="signup-page">
-        <div>
+        <Section>
           <PageHeader type="signup" title="Sign up">
             <Paragraphs paragraphs={lang.signup.intro} />
           </PageHeader>
@@ -18,7 +19,7 @@ class SignupPage extends React.Component {
 
           <SigninGoogleButton title="Sign up with Google" />
           <SigninFacebookButton title="Sign up with Facebook" />
-        </div>
+        </Section>
       </div>
     );
   }
