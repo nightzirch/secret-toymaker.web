@@ -6,7 +6,7 @@ export const NAVIGATION_ITEMS = [
   // { title: "Sign Up", url: Routes.SIGNUP },
   // { title: "Profile", url: Routes.PROFILE },
   // { title: "Gifts", url: Routes.GIFTS }
-  { title: "Log in", url: Routes.LOGIN }
+  { title: "Log in", url: Routes.LOGIN, isLast: true }
 ];
 
 /*

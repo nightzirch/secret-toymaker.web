@@ -16,7 +16,9 @@ const MainMenu = props => {
   const renderNavigationItems = () => {
     return NAVIGATION_ITEMS.map(item => (
       <Link
-        className="main-menu__item"
+        className={classnames("main-menu__item", {
+          "main-menu__item--last": item.isLast
+        })}
         onClick={handleMenuCloseClick}
         to={item.url}
         key={item.title}
