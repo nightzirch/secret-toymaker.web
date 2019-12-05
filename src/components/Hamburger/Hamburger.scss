@@ -18,6 +18,15 @@
     position: relative;
     display: inline-block;
 
+    &--dark span {
+      background: $meteorite;
+    }
+
+    &--in-menu span,
+    &--light span {
+      background: $white;
+    }
+
     span {
       transition: all $animation-duration/2 ease-in-out;
       transform: rotate(0deg);
@@ -25,7 +34,6 @@
       position: absolute;
       height: 0.25em;
       width: 100%;
-      background: $white;
       border-radius: 0.4em;
       opacity: 1;
       left: 0;

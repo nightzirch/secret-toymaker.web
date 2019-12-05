@@ -1,12 +1,12 @@
-import * as ROUTES from "../../../routes";
+import Routes from "routes";
 
 export const NAVIGATION_ITEMS = [
-  { title: "Home", url: ROUTES.FRONTPAGE },
-  { title: "Faq", url: ROUTES.FAQ },
-  { title: "Sign In", url: ROUTES.SIGNIN },
-  { title: "Sign Up", url: ROUTES.SIGNUP },
-  /*  { title: "Profile", url: ROUTES.PROFILE }, */
-  { title: "Gifts", url: ROUTES.GIFTS }
+  { title: "Home", url: Routes.FRONTPAGE },
+  { title: "Faq", url: Routes.FAQ },
+  { title: "Sign In", url: Routes.SIGNIN },
+  { title: "Sign Up", url: Routes.SIGNUP },
+  /*  { title: "Profile", url: Routes.PROFILE }, */
+  { title: "Gifts", url: Routes.GIFTS }
 ];
 
 /*

@@ -15,7 +15,12 @@ const MainMenu = props => {
 
   const renderNavigationItems = () => {
     return NAVIGATION_ITEMS.map(item => (
-      <Link className="main-menu__item" to={item.url} key={item.title}>
+      <Link
+        className="main-menu__item"
+        onClick={handleMenuCloseClick}
+        to={item.url}
+        key={item.title}
+      >
         {item.title}
       </Link>
     ));
@@ -30,7 +35,11 @@ const MainMenu = props => {
           className="main-menu__nav"
         >
           <div className="main-menu__hamburger-wrapper">
-            <Hamburger onClick={handleMenuCloseClick} isMenuOpen={isMenuOpen} />
+            <Hamburger
+              onClick={handleMenuCloseClick}
+              isInMenu
+              isMenuOpen={isMenuOpen}
+            />
           </div>
 
           <div className="main-menu__items-wrapper">

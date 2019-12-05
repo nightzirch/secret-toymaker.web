@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import { Link } from "react-router-dom";
 import React from "reactn";
-import * as ROUTES from "routes";
+import Routes from "routes";
 import "./Navigation.scss";
 import NavigationItem from "./NavigationItem";
 
@@ -29,13 +29,13 @@ class Navigation extends React.Component {
     var navItems = [
       // {
       //   title: "FAQ",
-      //   url: ROUTES.FAQ
+      //   url: Routes.FAQ
       // },
       {
         icon: "person",
         imageUrl: this.global.authUser && this.global.authUser.photoURL,
         title: "Profile",
-        url: this.global.authUser ? ROUTES.PROFILE : ROUTES.SIGNIN
+        url: this.global.authUser ? Routes.PROFILE : Routes.SIGNIN
       }
       // {
       //   isExternal: true,
@@ -48,12 +48,12 @@ class Navigation extends React.Component {
     // if (this.global.firebase.stage === 'SIGNUP') {
     //   navItems.splice(1, 0, {
     //     title: "Sign up",
-    //     url: ROUTES.SIGNUP
+    //     url: Routes.SIGNUP
     //   })
     // } else if (this.global.firebase.stage === 'GIFTING') {
     //   navItems.splice(1, 0, {
     //     title: "Gifts",
-    //     url: ROUTES.GIFTS
+    //     url: Routes.GIFTS
     //   })
     // }
 

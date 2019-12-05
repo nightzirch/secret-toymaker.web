@@ -1,8 +1,8 @@
 import Button from "components/Button";
 import { InputField } from "components/Form";
 import Link from "components/Link";
-import * as ROUTES from "routes";
 import React from "reactn";
+import Routes from "routes";
 
 class SigninForm extends React.Component {
   constructor(props) {
@@ -55,7 +55,7 @@ class SigninForm extends React.Component {
 
           <Button theme="primary" title="Sign in" type="submit" />
 
-          <Link title="Sign up for a new account" url={ROUTES.SIGNUP} />
+          <Link title="Sign up for a new account" url={Routes.SIGNUP} />
         </form>
       </div>
     );
