@@ -16,7 +16,7 @@ const Hero = props => {
           <GridItem span={6} spanMobile={4}>
             <div className="hero__content">
               <Title colorScheme="white" level="primary">
-                Participate <small>in the event</small>
+                It's the time <small>you've been waiting for all year!</small>
               </Title>
 
               <div className="hero__button">

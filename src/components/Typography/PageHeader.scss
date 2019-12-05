@@ -31,6 +31,10 @@
   }
 
   &--no-children {
+    .page-header__text {
+      width: 100%;
+    }
+
     .title {
       margin-bottom: 0;
     }

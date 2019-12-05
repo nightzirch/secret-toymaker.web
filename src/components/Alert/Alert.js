@@ -23,7 +23,7 @@ const Alert = props => {
         </Paragraph>
       </div>
       <button className="alert__close-button" onClick={handleCloseClick}>
-        <span className="ion-close alert__close" />
+        <ion-icon class="alert__close" name="close"></ion-icon>
       </button>
     </Card>
   ) : null;

@@ -19,11 +19,14 @@
 
   &__content {
     flex-grow: 1;
+    display: flex;
+    align-items: center;
   }
 
   &__close-button {
     background-color: transparent;
-    padding: 0 1em;
+    font-size: 1rem;
+    padding: 0 0.5em;
     margin: 0;
     outline: none;
     border: none;

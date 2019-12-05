@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
             value={this.state.password}
           />
 
-          <Button theme="primary" title="Sign in" type="submit" />
+          <Button theme="primary" title="Log in" type="submit" />
 
           <Link
             title="Don't have an account? Sign up here"

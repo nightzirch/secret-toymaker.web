@@ -29,6 +29,10 @@ $danger-color: $state-error;
     border-radius: 10em;
     border: none;
 
+    &__title {
+      display: flex;
+    }
+
     &--small {
       font-size: $text-sm;
     }
@@ -78,10 +82,27 @@ $danger-color: $state-error;
     }
 
     &--with-icon {
-      padding-left: 1.5em;
-
       .button__icon {
-        padding-right: 1em;
+        display: flex;
+        align-items: center;
+      }
+
+      &-left {
+        padding-left: 1.5em;
+
+        .button__icon {
+          padding-right: 1em;
+          order: -1;
+        }
+      }
+
+      &-right {
+        padding-right: 1.5em;
+
+        .button__icon {
+          padding-left: 1em;
+          order: 999;
+        }
       }
     }
 

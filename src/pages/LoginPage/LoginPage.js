@@ -10,7 +10,7 @@ class LoginPage extends React.Component {
     return (
       <div className="login-page">
         <Section>
-          <PageHeader title="Log in" />
+          <PageHeader title="Welcome back, toymaker!" />
 
           <LoginForm />
 
