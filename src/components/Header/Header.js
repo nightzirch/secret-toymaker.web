@@ -3,8 +3,9 @@ import Hamburger from "components/Hamburger";
 import Logo from "components/Logo";
 import Section from "components/Section";
 import { Title } from "components/Typography";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import React from "reactn";
+import { getHeaderTextColorByPathname } from "utils/header";
 import "./Header.scss";
 
 class Header extends React.Component {
@@ -34,11 +35,19 @@ class Header extends React.Component {
     </div>
   );
 
-  renderTitle = () => (
-    <span className="header__title">
-      <Title colorScheme="white">Secret Toymaker</Title>
-    </span>
-  );
+  renderTitle = () => {
+    const {
+      location: { pathname }
+    } = this.props;
+    const headerTextColor = getHeaderTextColorByPathname(pathname);
+    const colorScheme = headerTextColor === "dark" ? "primary" : "white";
+
+    return (
+      <span className="header__title">
+        <Title colorScheme={colorScheme}>Secret Toymaker</Title>
+      </span>
+    );
+  };
 
   render() {
     return (
@@ -69,4 +78,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default withRouter(Header);
