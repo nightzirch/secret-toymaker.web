@@ -7,7 +7,8 @@ import Title from "./Title";
 const PageHeader = props => {
   let pageHeaderClasses = classnames("page-header", {
     [`page-header--${props.type}`]: props.type,
-    "page-header--no-children": !props.children
+    "page-header--no-children": !props.children,
+    "page-header--centered": !props.isCentered
   });
 
   return (
@@ -21,6 +22,7 @@ const PageHeader = props => {
 };
 
 PageHeader.propTypes = {
+  isCentered: t.bool,
   type: t.oneOf(["donations", "gifts", "signup", "match", "profile"]),
   title: t.string.isRequired
 };

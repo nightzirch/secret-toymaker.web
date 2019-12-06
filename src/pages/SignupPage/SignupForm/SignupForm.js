@@ -1,8 +1,13 @@
-import Button from "components/Button";
+import Button, {
+  SigninFacebookButton,
+  SigninGoogleButton
+} from "components/Button";
 import { InputField } from "components/Form";
+import { Grid, GridItem } from "components/Grid";
 import Link from "components/Link";
 import React from "reactn";
 import Routes from "routes";
+import "./SignupForm.scss";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -36,36 +41,64 @@ class SignupForm extends React.Component {
     return (
       <div className="signup-form__container">
         <form className="signup-form" onSubmit={this.handleFormSubmit}>
-          <InputField
-            id="email"
-            label="Email"
-            onChange={this.handleInputChange}
-            placeholder="scarlet@briar.com"
-            type="email"
-            value={this.state.email}
-          />
+          <Grid>
+            <GridItem span={4} offset={5}>
+              <InputField
+                id="email"
+                label="Email"
+                onChange={this.handleInputChange}
+                placeholder="scarlet@briar.com"
+                type="email"
+                value={this.state.email}
+              />
 
-          <InputField
-            id="password"
-            label="Password"
-            onChange={this.handleInputChange}
-            placeholder="Password"
-            type="password"
-            value={this.state.password}
-          />
+              <InputField
+                id="password"
+                label="Password"
+                onChange={this.handleInputChange}
+                placeholder="Password"
+                type="password"
+                value={this.state.password}
+              />
 
-          <InputField
-            id="password2"
-            label="Repeat password"
-            onChange={this.handleInputChange}
-            placeholder="Password"
-            type="password"
-            value={this.state.password2}
-          />
+              <InputField
+                id="password2"
+                label="Repeat password"
+                onChange={this.handleInputChange}
+                placeholder="Password"
+                type="password"
+                value={this.state.password2}
+              />
 
-          <Button theme="primary" title="Sign up" type="submit" />
+              <Button
+                isCentered
+                isFullWidth
+                theme="primary"
+                title="Sign up"
+                type="submit"
+              />
 
-          <Link title="Already registered? Log in here" url={Routes.LOGIN} />
+              <Link
+                isCentered
+                isFullWidth
+                title="Already registered? Log in here"
+                url={Routes.LOGIN}
+              />
+
+              <div className="signup-form__social-buttons">
+                <SigninGoogleButton
+                  isCentered
+                  isFullWidth
+                  title="Sign up with Google"
+                />
+                <SigninFacebookButton
+                  isCentered
+                  isFullWidth
+                  title="Sign up with Facebook"
+                />
+              </div>
+            </GridItem>
+          </Grid>
         </form>
       </div>
     );

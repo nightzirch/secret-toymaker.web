@@ -1,4 +1,3 @@
-import { SigninFacebookButton, SigninGoogleButton } from "components/Button";
 import Section from "components/Section";
 import { PageHeader } from "components/Typography";
 import React from "reactn";
@@ -13,9 +12,6 @@ class LoginPage extends React.Component {
           <PageHeader title="Welcome back, toymaker!" />
 
           <LoginForm />
-
-          <SigninGoogleButton />
-          <SigninFacebookButton />
         </Section>
       </div>
     );
