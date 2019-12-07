@@ -1,10 +1,9 @@
 import classnames from "classnames";
-import { SignupButton } from "components/Button";
+import { EventButton } from "components/Button";
 import Countdown from "components/Countdown";
 import { Grid, GridItem } from "components/Grid";
 import Section from "components/Section";
 import { Title } from "components/Typography";
-import t from "prop-types";
 import React from "reactn";
 import "./Hero.scss";
 
@@ -20,7 +19,7 @@ const Hero = props => {
               </Title>
 
               <div className="hero__button">
-                <SignupButton size="large" />
+                <EventButton size="large" />
               </div>
 
               <div className="hero__countdown">
@@ -38,10 +37,6 @@ const Hero = props => {
       </Section>
     </div>
   );
-};
-
-Hero.propTypes = {
-  title: t.string
 };
 
 export default Hero;

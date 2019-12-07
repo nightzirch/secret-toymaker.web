@@ -1,16 +1,29 @@
 import Routes, { RouteTypes } from "routes";
 import { getKeyByValue } from "utils/object";
+import { getRouteRoot } from "utils/url";
 
 export const headerTextColor = {
-  [RouteTypes.FRONTPAGE]: "light",
+  [RouteTypes.EVENT]: "dark",
   [RouteTypes.FAQ]: "dark",
+  [RouteTypes.FRONTPAGE]: "light",
   [RouteTypes.GIFTS]: "dark",
   [RouteTypes.LOGIN]: "dark",
-  [RouteTypes.SIGNUP]: "dark",
-  [RouteTypes.PROFILE]: "dark"
+  [RouteTypes.PROFILE]: "dark",
+  [RouteTypes.SIGNUP]: "dark"
 };
 
 export const getHeaderTextColorByPathname = pathname => {
-  const routeName = getKeyByValue(Routes, pathname);
+  const value = getRouteRoot(pathname);
+
+  const rootRoutes = Object.assign(
+    {},
+    ...Object.keys(Routes).map(key => {
+      return {
+        [key]: getRouteRoot(Routes[key])
+      };
+    })
+  );
+
+  const routeName = getKeyByValue(rootRoutes, value);
   return headerTextColor[routeName];
 };
