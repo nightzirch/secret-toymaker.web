@@ -1,6 +1,7 @@
 import Section from "components/Section";
 import { PageHeader } from "components/Typography";
 import React from "reactn";
+import { withRedirect } from "utils/redirect";
 import LoginForm from "./LoginForm";
 import "./LoginPage.scss";
 
@@ -18,4 +19,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default withRedirect(LoginPage);

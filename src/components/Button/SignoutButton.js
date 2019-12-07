@@ -16,7 +16,7 @@ class SignoutButton extends React.Component {
     return (
       <Button
         onClick={this.handleSignoutClick}
-        title="Sign out"
+        title="Log out"
         {...this.props}
       />
     );
