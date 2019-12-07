@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import React from "reactn";
 import addReactNDevTools from "reactn-devtools";
 import App from "./pages/App";
+import EventPage from "./pages/EventPage";
 import FaqPage from "./pages/FaqPage";
 import FrontPage from "./pages/FrontPage";
 import GiftsPage from "./pages/GiftsPage";
@@ -24,12 +25,13 @@ fastclick.attach(document.body);
 ReactDOM.render(
   <Router>
     <App>
-      <Route path={Routes.FRONTPAGE} exact component={FrontPage} />
+      <Route path={Routes.EVENT} exact component={EventPage} />
       <Route path={Routes.FAQ} exact component={FaqPage} />
+      <Route path={Routes.FRONTPAGE} exact component={FrontPage} />
       <Route path={Routes.GIFTS} exact component={GiftsPage} />
       <Route path={Routes.LOGIN} exact component={LoginPage} />
-      <Route path={Routes.SIGNUP} exact component={SignupPage} />
       <Route path={Routes.PROFILE} exact component={ProfilePage} />
+      <Route path={Routes.SIGNUP} exact component={SignupPage} />
     </App>
   </Router>,
   document.getElementById("app")
