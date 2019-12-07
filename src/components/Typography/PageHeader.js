@@ -8,7 +8,7 @@ const PageHeader = props => {
   let pageHeaderClasses = classnames("page-header", {
     [`page-header--${props.type}`]: props.type,
     "page-header--no-children": !props.children,
-    "page-header--centered": !props.isCentered
+    "page-header--centered": props.isCentered
   });
 
   return (

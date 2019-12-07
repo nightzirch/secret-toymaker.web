@@ -10,7 +10,7 @@ class SignupPage extends React.Component {
     return (
       <div className="signup-page">
         <Section>
-          <PageHeader type="signup" title="Spread the joy">
+          <PageHeader isCentered type="signup" title="Spread the joy">
             <Paragraphs paragraphs={lang.signup.intro} />
           </PageHeader>
 
