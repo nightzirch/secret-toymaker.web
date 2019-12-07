@@ -112,15 +112,18 @@ $border-width: 0.1875rem;
     }
 
     &[disabled] {
+      $background-color: lighten($grey, 45%);
       cursor: default;
       color: $grey;
-      background-color: lighten($grey, 45%);
+      background-color: $background-color;
+      border-color: $background-color;
     }
 
     &--link {
       background-color: transparent;
       padding-left: 0;
       padding-right: 0;
+      border: none;
 
       &:hover {
         background-color: transparent;
