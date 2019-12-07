@@ -1,4 +1,3 @@
-import { SigninFacebookButton, SigninGoogleButton } from "components/Button";
 import Section from "components/Section";
 import { PageHeader, Paragraphs } from "components/Typography";
 import lang from "lang/lang";
@@ -16,9 +15,6 @@ class SignupPage extends React.Component {
           </PageHeader>
 
           <SignupForm />
-
-          <SigninGoogleButton title="Sign up with Google" />
-          <SigninFacebookButton title="Sign up with Facebook" />
         </Section>
       </div>
     );

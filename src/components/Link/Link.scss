@@ -7,6 +7,10 @@
 
   &--centered {
     justify-content: center;
+
+    .link {
+      text-align: center;
+    }
   }
 
   .link {

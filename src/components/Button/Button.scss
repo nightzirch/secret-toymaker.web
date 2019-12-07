@@ -4,6 +4,7 @@ $primary-color: $primary-color;
 $secondary-color: $secondary-color;
 $tertiary-color: $tertiary-color;
 $danger-color: $state-error;
+$border-width: 0.1875rem;
 
 .buttons-container {
   margin: 5rem 0;
@@ -20,17 +21,23 @@ $danger-color: $state-error;
 
   .button {
     font-size: 1rem;
-    line-height: 2.5em;
-    padding: 0 2em;
+    line-height: 1.5em;
+    padding: 0.5em 2em;
     outline: none;
     cursor: pointer;
     transition: background-color 0.05s ease-in-out;
     text-decoration: none;
     border-radius: 10em;
-    border: none;
+    border: solid $border-width;
+    transition: all #{$brendan/10}s ease-in-out;
 
     &__title {
       display: flex;
+    }
+
+    &:hover:not([disabled]) {
+      box-shadow: rgba(0, 0, 0, 0.3) 0rem 0.2rem 0.6rem;
+      transform: translateY(-1px);
     }
 
     &--small {
@@ -48,28 +55,17 @@ $danger-color: $state-error;
     &--primary {
       color: $white;
       background-color: $primary-color;
+      border-color: $primary-color;
 
       &:hover {
-        background-color: darken($primary-color, 5%);
+        background-color: lighten($primary-color, 2.5%);
       }
     }
 
     &--secondary {
-      color: $white;
-      background-color: $secondary-color;
-
-      &:hover {
-        background-color: darken($secondary-color, 5%);
-      }
-    }
-
-    &--tertiary {
-      color: $white;
-      background-color: $tertiary-color;
-
-      &:hover {
-        background-color: darken($tertiary-color, 5%);
-      }
+      color: $primary-color;
+      background-color: $white;
+      border-color: currentColor;
     }
 
     &--danger {
@@ -106,20 +102,33 @@ $danger-color: $state-error;
       }
     }
 
+    &--full-width {
+      width: 100%;
+
+      .button__title {
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
     &[disabled] {
+      $background-color: lighten($grey, 45%);
       cursor: default;
       color: $grey;
-      background-color: lighten($grey, 45%);
+      background-color: $background-color;
+      border-color: $background-color;
     }
 
     &--link {
       background-color: transparent;
       padding-left: 0;
       padding-right: 0;
+      border: none;
 
       &:hover {
         background-color: transparent;
       }
+
       &.button--primary {
         color: $primary-color;
         &:hover {
@@ -128,16 +137,9 @@ $danger-color: $state-error;
       }
 
       &.button--secondary {
-        color: $secondary-color;
+        color: $primary-color;
         &:hover {
-          color: darken($secondary-color, 20%);
-        }
-      }
-
-      &.button--tertiary {
-        color: $tertiary-color;
-        &:hover {
-          color: darken($tertiary-color, 20%);
+          color: darken($primary-color, 20%);
         }
       }
 

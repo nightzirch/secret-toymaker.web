@@ -14,7 +14,8 @@ const Button = props => {
     `button--${props.size}`,
     `button--${props.type}`,
     {
-      [`button--with-icon button--with-icon-${props.iconPlacement}`]: !!props.icon
+      [`button--with-icon button--with-icon-${props.iconPlacement}`]: !!props.icon,
+      "button--full-width": props.isFullWidth
     }
   );
 
@@ -44,11 +45,12 @@ Button.propTypes = {
   iconPlacement: t.oneOf(["left", "right"]),
   isCentered: t.bool,
   isDisabled: t.bool,
+  isFullWidth: t.bool,
   title: t.string.isRequired,
   type: t.oneOf(["button", "submit"]),
   onClick: t.func,
   size: t.oneOf(["small", "medium", "large"]),
-  theme: t.oneOf(["primary", "secondary", "tertiary", "danger"])
+  theme: t.oneOf(["primary", "secondary", "danger"])
 };
 
 Button.defaultProps = {

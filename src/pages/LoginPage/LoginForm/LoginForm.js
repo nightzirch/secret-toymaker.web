@@ -1,8 +1,13 @@
-import Button from "components/Button";
+import Button, {
+  SigninFacebookButton,
+  SigninGoogleButton
+} from "components/Button";
 import { InputField } from "components/Form";
+import { Grid, GridItem } from "components/Grid";
 import Link from "components/Link";
 import React from "reactn";
 import Routes from "routes";
+import "./LoginForm.scss";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -35,30 +40,45 @@ class LoginForm extends React.Component {
     return (
       <div className="login-form__container">
         <form className="login-form" onSubmit={this.handleFormSubmit}>
-          <InputField
-            id="email"
-            label="Email"
-            onChange={this.handleInputChange}
-            placeholder="scarlet@briar.com"
-            type="email"
-            value={this.state.email}
-          />
+          <Grid>
+            <GridItem span={4} offset={5}>
+              <InputField
+                id="email"
+                label="Email"
+                onChange={this.handleInputChange}
+                placeholder="scarlet@briar.com"
+                type="email"
+                value={this.state.email}
+              />
 
-          <InputField
-            id="password"
-            label="Password"
-            onChange={this.handleInputChange}
-            placeholder="Password"
-            type="password"
-            value={this.state.password}
-          />
+              <InputField
+                id="password"
+                label="Password"
+                onChange={this.handleInputChange}
+                placeholder="Password"
+                type="password"
+                value={this.state.password}
+              />
 
-          <Button theme="primary" title="Log in" type="submit" />
+              <Button
+                isFullWidth
+                theme="primary"
+                title="Log in"
+                type="submit"
+              />
 
-          <Link
-            title="Don't have an account? Sign up here"
-            url={Routes.SIGNUP}
-          />
+              <Link
+                isCentered
+                title="Don't have an account? Sign up here"
+                url={Routes.SIGNUP}
+              />
+
+              <div className="login-form__social-buttons">
+                <SigninGoogleButton isCentered isFullWidth />
+                <SigninFacebookButton isCentered isFullWidth />
+              </div>
+            </GridItem>
+          </Grid>
         </form>
       </div>
     );

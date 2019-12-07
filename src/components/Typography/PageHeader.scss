@@ -27,6 +27,7 @@
 
     @include media($tablet) {
       width: 50%;
+      margin: 0 auto;
     }
   }
 
@@ -37,6 +38,12 @@
 
     .title {
       margin-bottom: 0;
+    }
+  }
+
+  &--centered {
+    .page-header__text {
+      text-align: center;
     }
   }
 }
