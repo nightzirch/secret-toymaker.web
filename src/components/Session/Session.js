@@ -1,4 +1,5 @@
 import React from "reactn";
+import AuthTypes from "utils/types/AuthTypes";
 
 export const withSession = Component => {
   class WithSession extends React.Component {
@@ -12,9 +13,11 @@ export const withSession = Component => {
           authUser && authUser.uid
         );
         if (userPromise) {
-          userPromise.then(user => this.setGlobal({ user }));
+          userPromise.then(user =>
+            this.setGlobal({ user, authStatus: AuthTypes.AUTH })
+          );
         } else {
-          this.setGlobal({ user: null });
+          this.setGlobal({ user: null, authStatus: AuthTypes.NO_AUTH });
         }
       });
     }

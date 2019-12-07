@@ -8,6 +8,7 @@ import ProfilePicture from "components/ProfilePicture";
 import Section from "components/Section";
 import { PageHeader, Title } from "components/Typography";
 import React from "reactn";
+import { withRedirect } from "utils/redirect";
 import ProfileForm from "./ProfileForm";
 import "./ProfilePage.scss";
 
@@ -76,4 +77,4 @@ class ProfilePage extends React.Component {
   }
 }
 
-export default ProfilePage;
+export default withRedirect(ProfilePage);

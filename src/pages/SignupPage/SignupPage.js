@@ -2,6 +2,7 @@ import Section from "components/Section";
 import { PageHeader, Paragraphs } from "components/Typography";
 import lang from "lang/lang";
 import React from "reactn";
+import { withRedirect } from "utils/redirect";
 import SignupForm from "./SignupForm";
 import "./SignupPage.scss";
 
@@ -21,4 +22,4 @@ class SignupPage extends React.Component {
   }
 }
 
-export default SignupPage;
+export default withRedirect(SignupPage);
