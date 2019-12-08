@@ -17,6 +17,12 @@ module.exports = {
       "For this year's Secret Toymaker I have spent a lot of time adding web notifications and a report system. I hope you will get an improved Secret Toymaker experience!"
     ]
   },
+  event: {
+    login: [
+      "We're happy to see you're interested in participating!",
+      "In order to participate, you need to create or log in to your account."
+    ]
+  },
   faq: {
     short: [
       {

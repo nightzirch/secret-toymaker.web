@@ -1,6 +1,10 @@
+import { LoginButton } from "components/Button";
 import EventHero from "components/EventHero";
 import { Grid, GridItem } from "components/Grid";
+import ParticipationForm from "components/ParticipationForm";
 import Section from "components/Section";
+import { Paragraphs, Title } from "components/Typography";
+import lang from "lang/lang";
 import t from "prop-types";
 import React, { useEffect, withGlobal } from "reactn";
 import { getAuthStatus } from "utils/auth";
@@ -10,7 +14,7 @@ import "./EventPage.scss";
 
 const EventPage = props => {
   const { stage } = props;
-  const { stageType, year } = stage || {};
+  const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
 
   useEffect(() => {
@@ -25,19 +29,34 @@ const EventPage = props => {
     );
   };
 
+  const renderLoginForm = () => (
+    <>
+      <Title>Create an account</Title>
+      <Paragraphs paragraphs={lang.event.login} />
+      <LoginButton />
+    </>
+  );
+
+  const renderParticipationForm = () => (
+    <>
+      <Title>Participate</Title>
+      <ParticipationForm />
+    </>
+  );
+
   const renderContent = () => {
     // TODO: Add loading state when waiting for stage endpoint.
     let contents;
 
     if (stageType === StageTypes.SIGNUP) {
       if (authStatus === AuthTypes.NO_AUTH) {
-        // TODO: Show stats about the event. Link to login form.
-        contents = null;
+        // Link to login form.
+        contents = renderLoginForm();
       } else if (authStatus === AuthTypes.AUTH) {
         // TODO: Add if/else about user's participation status
         // IF not participating: Stats about the event. Text about they're not participating in the current event.
         // ELES IF participating: Display the participant's giftee, a list of all gifts in their own state, and a button to donate gifts.
-        contents = null;
+        contents = renderParticipationForm();
       }
     } else if (stageType === StageTypes.MATCHING) {
       // TODO: Should display a text about the system is matching the participants and the results will be available shortly.

@@ -128,15 +128,13 @@ class Firebase {
       : null;
   };
 
-  updateUser = (uid, { email, name, apiToken }) => {
+  updateUser = (uid, { email }) => {
     this.db
       .collection("participants")
       .doc(uid)
       .set(
         {
-          email,
-          name,
-          apiToken
+          email
         },
         {
           merge: true
@@ -145,6 +143,13 @@ class Firebase {
       .then(() => {
         return this.getUser(uid);
       });
+  };
+
+  updateApiToken = (uid, { apiToken }) => {
+    const updateApiKey = this.functions.httpsCallable("updateApiKey");
+    return updateApiKey({ user: uid, apiKey: apiToken }).then(result =>
+      this.getUser(uid)
+    );
   };
 
   // Imported actions from participantActions

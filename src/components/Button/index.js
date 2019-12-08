@@ -3,6 +3,7 @@ import DeleteAccountButton from "./DeleteAccountButton";
 import DonateButton from "./DonateButton";
 import EventButton from "./EventButton";
 import GiftsButton from "./GiftsButton";
+import LoginButton from "./LoginButton";
 import PasswordResetButton from "./PasswordResetButton";
 import SigninFacebookButton from "./SigninFacebookButton";
 import SigninGoogleButton from "./SigninGoogleButton";
@@ -15,6 +16,7 @@ export {
   DonateButton,
   EventButton,
   GiftsButton,
+  LoginButton,
   PasswordResetButton,
   SigninGoogleButton,
   SigninFacebookButton,

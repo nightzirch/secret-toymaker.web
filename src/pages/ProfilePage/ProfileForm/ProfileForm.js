@@ -8,9 +8,7 @@ class ProfileForm extends React.Component {
     super(props);
 
     this.state = {
-      email: op.get(props, "user.email", null),
-      name: op.get(props, "user.name", null),
-      apiToken: op.get(props, "user.apiToken", null)
+      email: op.get(props, "user.email", null)
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -20,9 +18,7 @@ class ProfileForm extends React.Component {
   componentDidUpdate = (prevProps, prevState) => {
     if (!prevProps.user && !!this.props.user) {
       this.setState({
-        email: this.props.user.email,
-        name: this.props.user.name,
-        apiToken: this.props.user.apiToken
+        email: this.props.user.email
       });
     }
   };
@@ -36,10 +32,10 @@ class ProfileForm extends React.Component {
     e.preventDefault();
 
     // TODO: Add validation
-    const { email, name, apiToken } = this.state;
+    const { email } = this.state;
 
     const updateUser = useDispatch("updateUser");
-    updateUser({ email, name, apiToken });
+    updateUser({ email });
   };
 
   render() {
@@ -54,34 +50,6 @@ class ProfileForm extends React.Component {
             type="email"
             value={this.state.email}
           />
-
-          <InputField
-            id="name"
-            label="Name"
-            onChange={this.handleInputChange}
-            placeholder="Scarlet Briar"
-            type="text"
-            value={this.state.name}
-          />
-
-          <InputField
-            id="apiToken"
-            label="API token"
-            onChange={this.handleInputChange}
-            placeholder="xxxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-            type="apiToken"
-            value={this.state.apiToken}
-          />
-
-          {op.get(this, "global.firebase.user.accname") && (
-            <InputField
-              id="accname"
-              isDisabled
-              label="Account name"
-              placeholder="Update your API token"
-              type="text"
-            />
-          )}
 
           <Button theme="primary" title="Update profile" type="submit" />
         </form>
