@@ -11,7 +11,7 @@ export const RouteTypes = {
 };
 
 const Routes = {
-  [RouteTypes.EVENT]: "/event/:year",
+  [RouteTypes.EVENT]: "/event/2019",
   [RouteTypes.FAQ]: "/faq",
   [RouteTypes.FRONTPAGE]: "/",
   [RouteTypes.GIFTS]: "/gifts",

@@ -23,7 +23,14 @@ const PageHeader = props => {
 
 PageHeader.propTypes = {
   isCentered: t.bool,
-  type: t.oneOf(["donations", "gifts", "signup", "match", "profile"]),
+  type: t.oneOf([
+    "donations",
+    "gifts",
+    "signup",
+    "signup-alt",
+    "match",
+    "profile"
+  ]),
   title: t.string.isRequired
 };
 

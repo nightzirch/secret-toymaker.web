@@ -13,6 +13,11 @@
     @include backgroundImageWithOpacity("/images/sign_t.png", 0.25);
   }
 
+  &--signup-alt {
+    @include backgroundImageWithOpacity("/images/signup_process.png", 0.75) {
+    }
+  }
+
   &--gifts {
     @include backgroundImageWithOpacity("/images/pack.png", 0.25);
   }
@@ -27,7 +32,6 @@
 
     @include media($tablet) {
       width: 50%;
-      margin: 0 auto;
     }
   }
 
@@ -44,6 +48,7 @@
   &--centered {
     .page-header__text {
       text-align: center;
+      margin: 0 auto;
     }
   }
 }

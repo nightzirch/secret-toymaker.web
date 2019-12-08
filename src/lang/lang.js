@@ -127,10 +127,11 @@ module.exports = {
     "©2010–2020 ArenaNet, LLC. All rights reserved. Guild Wars, Guild Wars 2, Heart of Thorns, Guild Wars 2: Path of Fire, ArenaNet, NCSOFT, the Interlocking NC Logo, and all associated logos and designs are trademarks or registered trademarks of NCSOFT Corporation. All other trademarks are the property of their respective owners."
   ],
   signup: {
+    lead:
+      "'Tis the season of giving, so sign up today and participate in this season's big community event!",
     intro: [
       "The Wintersday is all about sharing gifts with your friends and celebrating the past year, but what about all the Tyrians you happened to meet and share an adventure with? Those times have already passed, but the feelings are not so easily forgotten.",
-      "We cannot track down those you have played with, but we can offer a way for you to give back to the community for all the good times you have had, and  will have.",
-      "'Tis the season of giving, so sign up today and participate in this season's big community event!"
+      "We cannot track down those you have played with, but we can offer a way for you to give back to the community for all the good times you have had, and  will have."
     ],
     help: {
       apitoken: {
