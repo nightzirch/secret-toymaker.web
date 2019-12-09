@@ -129,7 +129,7 @@ class Firebase {
   };
 
   updateUser = (uid, { email }) => {
-    this.db
+    return this.db
       .collection("participants")
       .doc(uid)
       .set(
@@ -153,21 +153,39 @@ class Firebase {
   };
 
   // Imported actions from participantActions
-  registerParticipation = user => {
+  registerParticipation = (userId, notes) => {
     const participate = this.functions.httpsCallable("participate");
-    return participate(user).then(result => console.log(result.data));
+    return participate({
+      user: userId,
+      note: notes,
+      participate: true
+    }).then(result => console.log(result.data));
+  };
+
+  removeParticipation = userId => {
+    const participate = this.functions.httpsCallable("participate");
+    return participate({ user: userId, participate: false }).then(result =>
+      console.log(result.data)
+    );
   };
 
   initGift = user => {
     const initGift = this.functions.httpsCallable("initGift");
-    return initGift({ user: user, isPrimary: true }).then(result =>
+    return initGift({ user, isPrimary: true }).then(result =>
       console.log(result.data)
     );
   };
 
   initDonation = user => {
     const initGift = this.functions.httpsCallable("initGift");
-    return initGift({ user: user }).then(result => console.log(result.data));
+    return initGift({ user }).then(result => console.log(result.data));
+  };
+
+  getParticipations = (userId, apiToken) => {
+    const participations = this.functions.httpsCallable("participateStatus");
+    return participations({ user: userId, apiKey: apiToken }).then(
+      result => result.data.success
+    );
   };
 
   editParticipant = (userId, email, notes) => {};

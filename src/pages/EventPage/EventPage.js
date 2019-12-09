@@ -1,25 +1,44 @@
+import ApiTokenForm from "components/ApiTokenForm";
 import { LoginButton } from "components/Button";
 import EventHero from "components/EventHero";
+import { InputField } from "components/Form";
 import { Grid, GridItem } from "components/Grid";
 import ParticipationForm from "components/ParticipationForm";
 import Section from "components/Section";
 import { Paragraphs, Title } from "components/Typography";
 import lang from "lang/lang";
 import t from "prop-types";
-import React, { useEffect, withGlobal } from "reactn";
+import React, { useDispatch, useEffect, useState, withGlobal } from "reactn";
 import { getAuthStatus } from "utils/auth";
+import { isParticipatingInEvent } from "utils/participation";
 import AuthTypes from "utils/types/AuthTypes";
 import StageTypes from "utils/types/StageTypes";
 import "./EventPage.scss";
 
 const EventPage = props => {
-  const { stage } = props;
+  const { participations, stage, user } = props;
   const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
+  const fetchParticipationStatus = useDispatch("fetchParticipationStatus");
+  const [isParticipating, setParticipating] = useState(null);
+
+  console.log({ isParticipating });
 
   useEffect(() => {
     // TODO: add API call to fetch data about this year's event
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      fetchParticipationStatus();
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (participations) {
+      setParticipating(isParticipatingInEvent(year));
+    }
+  }, [participations]);
 
   const renderStats = () => {
     return (
@@ -40,6 +59,17 @@ const EventPage = props => {
   const renderParticipationForm = () => (
     <>
       <Title>Participate</Title>
+      {user.apiToken ? (
+        <InputField
+          id="apiToken"
+          isDisabled
+          label="API token"
+          type="apiToken"
+          value={user.apiToken}
+        />
+      ) : (
+        <ApiTokenForm />
+      )}
       <ParticipationForm />
     </>
   );
@@ -94,11 +124,15 @@ const EventPage = props => {
 };
 
 EventPage.propTypes = {
-  stage: t.object
+  participations: t.array,
+  stage: t.object,
+  user: t.object
 };
 
 const mapGlobalToProps = global => ({
-  stage: global.stage
+  participations: global.participations,
+  stage: global.stage,
+  user: global.user
 });
 
 export default withGlobal(mapGlobalToProps)(EventPage);

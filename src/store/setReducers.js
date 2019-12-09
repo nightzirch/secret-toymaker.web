@@ -16,6 +16,23 @@ const setReducers = () => {
     const stage = await global.firebase.getStage();
     return { stage };
   });
+
+  addReducer("fetchParticipationStatus", async (global, dispatch) => {
+    const participations = await global.firebase.getParticipations(
+      global.user.uid,
+      global.user.apiToken
+    );
+    return { participations };
+  });
+
+  addReducer("registerParticipation", async (global, dispatch, notes) => {
+    const registerParticipation = await global.firebase.registerParticipation(
+      global.user.uid,
+      notes
+    );
+    console.log(registerParticipation);
+    // return { participation };
+  });
 };
 
 export default setReducers;

@@ -29,12 +29,12 @@ const CreditsSection = props => (
 
           <DescriptionList>
             <DescriptionListItem
-              term="Irene Karotsi"
-              description="Visual designer"
-            />
-            <DescriptionListItem
               term="Brendan Golden"
               description="Developer"
+            />
+            <DescriptionListItem
+              term="Irene Karotsi"
+              description="Visual designer"
             />
             <DescriptionListItem
               term="Vasburg"

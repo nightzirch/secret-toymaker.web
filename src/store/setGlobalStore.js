@@ -8,6 +8,7 @@ const setGlobalStore = () => {
     authUser: null,
     firebase: new Firebase(),
     isMenuOpen: false,
+    participations: null,
     stage: null,
     user: null
   });

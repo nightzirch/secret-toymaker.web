@@ -1,7 +1,7 @@
 import Button from "components/Button";
 import { InputField } from "components/Form";
 import op from "object-path";
-import React, { useDispatch, withGlobal } from "reactn";
+import React, { withGlobal } from "reactn";
 
 class ProfileForm extends React.Component {
   constructor(props) {
@@ -34,8 +34,7 @@ class ProfileForm extends React.Component {
     // TODO: Add validation
     const { email } = this.state;
 
-    const updateUser = useDispatch("updateUser");
-    updateUser({ email });
+    this.dispatch.updateUser({ email });
   };
 
   render() {
