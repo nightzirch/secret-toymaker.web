@@ -22,10 +22,8 @@ const EventPage = props => {
   const fetchParticipationStatus = useDispatch("fetchParticipationStatus");
   const [isParticipating, setParticipating] = useState(null);
 
-  console.log({ isParticipating });
-
   useEffect(() => {
-    // TODO: add API call to fetch data about this year's event
+    // TODO: add API call to fetch stats about this year's event
   }, []);
 
   useEffect(() => {
@@ -41,6 +39,7 @@ const EventPage = props => {
   }, [participations]);
 
   const renderStats = () => {
+    // TODO: Display stats
     return (
       <Grid cols={4}>
         <GridItem span={4}>Statistics</GridItem>
@@ -48,13 +47,19 @@ const EventPage = props => {
     );
   };
 
-  const renderLoginForm = () => (
-    <>
-      <Title>Create an account</Title>
-      <Paragraphs paragraphs={lang.event.login} />
-      <LoginButton />
-    </>
-  );
+  const renderLoginForm = () => {
+    const loginFormTitle =
+      stageType === StageTypes.SIGNUP
+        ? "Create an account"
+        : "Log in to your account";
+    return (
+      <>
+        <Title>{loginFormTitle}</Title>
+        <Paragraphs paragraphs={lang.event.login} />
+        <LoginButton />
+      </>
+    );
+  };
 
   const renderParticipationForm = () => (
     <>
@@ -74,35 +79,46 @@ const EventPage = props => {
     </>
   );
 
+  const renderMatchingMessage = () => (
+    <>
+      <Title>Matching in progress</Title>
+      <Paragraphs paragraphs={lang.event.matching} />
+    </>
+  );
+
   const renderContent = () => {
     // TODO: Add loading state when waiting for stage endpoint.
     let contents;
 
     if (stageType === StageTypes.SIGNUP) {
       if (authStatus === AuthTypes.NO_AUTH) {
-        // Link to login form.
         contents = renderLoginForm();
       } else if (authStatus === AuthTypes.AUTH) {
-        // TODO: Add if/else about user's participation status
-        // IF not participating: Stats about the event. Text about they're not participating in the current event.
-        // ELES IF participating: Display the participant's giftee, a list of all gifts in their own state, and a button to donate gifts.
         contents = renderParticipationForm();
       }
     } else if (stageType === StageTypes.MATCHING) {
-      // TODO: Should display a text about the system is matching the participants and the results will be available shortly.
-      contents = null;
+      contents = renderMatchingMessage();
     } else if (stageType === StageTypes.GIFTING) {
       if (authStatus === AuthTypes.NO_AUTH) {
-        // TODO: Show stats about the event. Link to login form.
-        contents = null;
+        contents = renderLoginForm();
       } else if (authStatus === AuthTypes.AUTH) {
-        // TODO: Add if/else about user's participation status
-        // IF not participating: Stats about the event. Text about they're not participating in the current event.
-        // ELES IF participating: Display the participant's giftee, a list of all gifts in their own state, and a button to donate gifts.
-        contents = null;
+        if (isParticipating) {
+          // TODO: Display the participant's giftee, a list of all gifts in their own state, and a button to donate gifts.
+          contents = null;
+        } else {
+          // TODO: Text about they're not participating in the current event.
+          contents = null;
+        }
       }
     } else {
-      contents = null;
+      if (authStatus === AuthTypes.NO_AUTH) {
+        contents = renderLoginForm();
+      } else if (authStatus === AuthTypes.AUTH) {
+        // TODO: Display the participant's gifts
+        contents = null;
+      } else {
+        contents = null;
+      }
     }
 
     return (

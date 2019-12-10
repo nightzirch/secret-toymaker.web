@@ -1,4 +1,6 @@
-module.exports = {
+import StageTypes from "utils/types/StageTypes";
+
+export default {
   about: {
     lead: [
       "Our mission is simple: to make Wintersday more special, to bring joy to the people taking part, and to tie the community closer together."
@@ -18,9 +20,21 @@ module.exports = {
     ]
   },
   event: {
+    hero: {
+      [StageTypes.SIGNUP]: [
+        "'Tis the season of giving, so sign up today and participate in this season's big community event!"
+      ],
+      [StageTypes.MATCHING]: [""],
+      [StageTypes.GIFTING]: [""],
+      [StageTypes.INACTIVE]: [""]
+    },
     login: [
       "We're happy to see you're interested in participating!",
       "In order to participate, you need to create or log in to your account."
+    ],
+    matching: [
+      "Our beloved Toymake-o-tron is running around in ecstacy due to the amount of signups we had!",
+      "We're trying to calm him down so he can complete the task of matching everyone. This might take a little while. Check back in a few minutes."
     ]
   },
   faq: {

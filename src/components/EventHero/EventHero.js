@@ -1,24 +1,26 @@
 import classnames from "classnames";
-import { PageHeader, Paragraph } from "components/Typography";
+import { PageHeader, Paragraphs } from "components/Typography";
 import lang from "lang/lang";
 import t from "prop-types";
 import React, { withGlobal } from "reactn";
-import { getAuthStatus } from "utils/auth";
 import "./EventHero.scss";
 
 const EventHero = props => {
   const { stage } = props;
-  const { stageType, year } = stage || {};
-  const authStatus = getAuthStatus();
+  const { type: stageType, year } = stage || {};
+  const leadText = lang.event.hero[stageType];
 
-  const getTitle = () => "Secret Toymaker 2019";
+  const getTitle = () => (year ? `Secret Toymaker ${year}` : "Secret Toymaker");
 
   return (
     <div className={classnames("event-hero")}>
       <PageHeader title={getTitle()} type="signup">
-        <Paragraph className="event-page__header__lead">
-          {lang.signup.lead}
-        </Paragraph>
+        {leadText && (
+          <Paragraphs
+            className="event-page__header__lead"
+            paragraphs={leadText}
+          />
+        )}
       </PageHeader>
     </div>
   );
