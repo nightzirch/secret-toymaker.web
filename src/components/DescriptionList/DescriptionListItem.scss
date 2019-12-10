@@ -11,9 +11,16 @@
     margin-top: 0.5em;
   }
 
+  &--dark {
+    color: $dark;
+  }
+
+  &--light {
+    color: $pattens-blue;
+  }
+
   &__term,
   &__description {
-    color: $pattens-blue;
     font-size: $text-lg;
     flex-grow: 1;
     width: auto;

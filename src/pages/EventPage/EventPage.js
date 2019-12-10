@@ -5,6 +5,7 @@ import { InputField } from "components/Form";
 import { Grid, GridItem } from "components/Grid";
 import ParticipationForm from "components/ParticipationForm";
 import Section from "components/Section";
+import Stats from "components/Stats";
 import { Paragraphs, Title } from "components/Typography";
 import lang from "lang/lang";
 import t from "prop-types";
@@ -20,10 +21,12 @@ const EventPage = props => {
   const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
   const fetchParticipationStatus = useDispatch("fetchParticipationStatus");
+  const updateStats = useDispatch("updateStats");
   const [isParticipating, setParticipating] = useState(null);
 
   useEffect(() => {
     // TODO: add API call to fetch stats about this year's event
+    updateStats();
   }, []);
 
   useEffect(() => {
@@ -39,11 +42,11 @@ const EventPage = props => {
   }, [participations]);
 
   const renderStats = () => {
-    // TODO: Display stats
     return (
-      <Grid cols={4}>
-        <GridItem span={4}>Statistics</GridItem>
-      </Grid>
+      <>
+        <Title>Statistics</Title>
+        <Stats year={year} />
+      </>
     );
   };
 
@@ -110,7 +113,7 @@ const EventPage = props => {
           contents = null;
         }
       }
-    } else {
+    } else if (stageType === StageTypes.INACTIVE) {
       if (authStatus === AuthTypes.NO_AUTH) {
         contents = renderLoginForm();
       } else if (authStatus === AuthTypes.AUTH) {

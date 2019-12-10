@@ -10,6 +10,7 @@ const setGlobalStore = () => {
     isMenuOpen: false,
     participations: null,
     stage: null,
+    stats: null,
     user: null
   });
 };

@@ -15,7 +15,8 @@
     padding: 1em;
     width: 100%;
     height: 9em;
-    resize: none;
+    resize: vertical;
+    box-sizing: border-box;
 
     @media screen and (min-width: $mobile) {
       font-size: 1em;
