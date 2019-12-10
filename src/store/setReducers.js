@@ -26,12 +26,18 @@ const setReducers = () => {
   });
 
   addReducer("registerParticipation", async (global, dispatch, notes) => {
-    const registerParticipation = await global.firebase.registerParticipation(
+    const user = await global.firebase.registerParticipation(
       global.user.uid,
       notes
     );
-    console.log(registerParticipation);
-    // return { participation };
+    await dispatch.fetchParticipationStatus();
+    return { user };
+  });
+
+  addReducer("removeParticipation", async (global, dispatch) => {
+    const user = await global.firebase.removeParticipation(global.user.uid);
+    await dispatch.fetchParticipationStatus();
+    return { user };
   });
 };
 

@@ -91,25 +91,25 @@ class Firebase {
     const ref = this.db.collection("participants").doc(uid);
 
     if (isNewUser) {
-      let userObj = {
-        email: email,
+      const userObj = {
+        email,
         name: displayName,
-        uid: uid,
+        uid,
         providers: {}
       };
 
       if (providerId) {
         userObj.providers[providerId] = {
-          email: email,
-          providerId: providerId,
-          uid: uid,
+          email,
+          providerId,
+          uid,
           username: username || null
         };
       }
 
       return ref.set(userObj);
     }
-    return;
+    return null;
   };
 
   getUser = uid => {
@@ -159,26 +159,14 @@ class Firebase {
       user: userId,
       note: notes,
       participate: true
-    }).then(result => console.log(result.data));
+    }).then(result => this.getUser(userId));
   };
 
   removeParticipation = userId => {
     const participate = this.functions.httpsCallable("participate");
     return participate({ user: userId, participate: false }).then(result =>
-      console.log(result.data)
+      this.getUser(userId)
     );
-  };
-
-  initGift = user => {
-    const initGift = this.functions.httpsCallable("initGift");
-    return initGift({ user, isPrimary: true }).then(result =>
-      console.log(result.data)
-    );
-  };
-
-  initDonation = user => {
-    const initGift = this.functions.httpsCallable("initGift");
-    return initGift({ user }).then(result => console.log(result.data));
   };
 
   getParticipations = (userId, apiToken) => {
@@ -187,6 +175,18 @@ class Firebase {
       result => result.data.success
     );
   };
+
+  // initGift = user => {
+  //   const initGift = this.functions.httpsCallable("initGift");
+  //   return initGift({ user, isPrimary: true }).then(result =>
+  //     console.log(result.data)
+  //   );
+  // };
+
+  // initDonation = user => {
+  //   const initGift = this.functions.httpsCallable("initGift");
+  //   return initGift({ user }).then(result => console.log(result.data));
+  // };
 
   editParticipant = (userId, email, notes) => {};
   getParticipant = apitoken => {};

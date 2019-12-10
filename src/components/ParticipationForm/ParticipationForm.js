@@ -8,6 +8,7 @@ const ParticipationForm = props => {
   const [stage] = useGlobal("stage");
   const { year } = stage;
   const registerParticipation = useDispatch("registerParticipation");
+  const removeParticipation = useDispatch("removeParticipation");
   const [notes, setNotes] = useState("");
   const isParticipating = isParticipatingInEvent(year);
 
@@ -23,11 +24,29 @@ const ParticipationForm = props => {
     registerParticipation(notes);
   };
 
-  const getButtonTitle = () => {
-    return isParticipating
-      ? "Update notes"
-      : `Participate in Secret Toymaker ${year}`;
+  const handleRemoveParticipationClick = () => {
+    removeParticipation();
   };
+
+  const renderSubmitButton = () =>
+    isParticipating ? (
+      <Button theme="secondary" title="Update notes" type="submit" />
+    ) : (
+      <Button
+        theme="primary"
+        title="Participate in Secret Toymaker"
+        type="submit"
+      />
+    );
+
+  const renderRemoveParticipationButton = () =>
+    isParticipating && (
+      <Button
+        onClick={handleRemoveParticipationClick}
+        theme="danger"
+        title="Remove participation"
+      />
+    );
 
   return (
     <div className="participation-form__container">
@@ -39,7 +58,8 @@ const ParticipationForm = props => {
           value={notes}
         />
 
-        <Button theme="primary" title={getButtonTitle()} type="submit" />
+        {renderSubmitButton()}
+        {renderRemoveParticipationButton()}
       </form>
     </div>
   );
