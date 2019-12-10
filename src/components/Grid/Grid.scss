@@ -10,8 +10,18 @@
   grid-column-gap: 2em;
   width: 100%;
 
+  @for $i from 1 through 4 {
+    &--columns-mobile-#{$i} {
+      grid-template-columns: repeat($i, 1fr);
+    }
+  }
+
   @include media($tablet) {
-    grid-template-columns: repeat(12, 1fr);
+    @for $i from 1 through 12 {
+      &--columns-#{$i} {
+        grid-template-columns: repeat($i, 1fr);
+      }
+    }
   }
 
   &--no-margin {

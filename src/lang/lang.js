@@ -1,4 +1,6 @@
-module.exports = {
+import StageTypes from "utils/types/StageTypes";
+
+export default {
   about: {
     lead: [
       "Our mission is simple: to make Wintersday more special, to bring joy to the people taking part, and to tie the community closer together."
@@ -15,6 +17,24 @@ module.exports = {
     nightzirch: [
       "Hi! I usually go under the pseudonym nightzirch on the global web of inter, but you might've seen me ingame as Elriwun Handsome or similarly silly names. I too love Guild Wars 2 and as a web and mobile developer I love to give back to the community in one of the few ways I know how: by making useful web sites and tools. Until now I have made Guild Wars 2 Calculator and Guild Wars 2 Wardrobe (both discontinued) and also other less useful sites not worth mentioning.",
       "For this year's Secret Toymaker I have spent a lot of time adding web notifications and a report system. I hope you will get an improved Secret Toymaker experience!"
+    ]
+  },
+  event: {
+    hero: {
+      [StageTypes.SIGNUP]: [
+        "'Tis the season of giving, so sign up today and participate in this season's big community event!"
+      ],
+      [StageTypes.MATCHING]: [""],
+      [StageTypes.GIFTING]: [""],
+      [StageTypes.INACTIVE]: [""]
+    },
+    login: [
+      "We're happy to see you're interested in participating!",
+      "In order to participate, you need to create or log in to your account."
+    ],
+    matching: [
+      "Our beloved Toymake-o-tron is running around in ecstacy due to the amount of signups we had!",
+      "We're trying to calm him down so he can complete the task of matching everyone. This might take a little while. Check back in a few minutes."
     ]
   },
   faq: {
@@ -127,10 +147,11 @@ module.exports = {
     "©2010–2020 ArenaNet, LLC. All rights reserved. Guild Wars, Guild Wars 2, Heart of Thorns, Guild Wars 2: Path of Fire, ArenaNet, NCSOFT, the Interlocking NC Logo, and all associated logos and designs are trademarks or registered trademarks of NCSOFT Corporation. All other trademarks are the property of their respective owners."
   ],
   signup: {
+    lead:
+      "'Tis the season of giving, so sign up today and participate in this season's big community event!",
     intro: [
       "The Wintersday is all about sharing gifts with your friends and celebrating the past year, but what about all the Tyrians you happened to meet and share an adventure with? Those times have already passed, but the feelings are not so easily forgotten.",
-      "We cannot track down those you have played with, but we can offer a way for you to give back to the community for all the good times you have had, and  will have.",
-      "'Tis the season of giving, so sign up today and participate in this season's big community event!"
+      "We cannot track down those you have played with, but we can offer a way for you to give back to the community for all the good times you have had, and  will have."
     ],
     help: {
       apitoken: {

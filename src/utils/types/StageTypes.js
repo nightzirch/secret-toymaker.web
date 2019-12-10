@@ -1,4 +1,4 @@
-export const StageTypes = {
+export default {
   SIGNUP: "SIGNUP",
   MATCHING: "MATCHING",
   GIFTING: "GIFTING",

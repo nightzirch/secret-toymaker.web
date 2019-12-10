@@ -59,7 +59,7 @@ class TextArea extends React.Component {
         ) : null}
 
         <textarea
-          autoComplete={this.props.isAutocomplete}
+          autoComplete={this.props.isAutocomplete ? "on" : "off"}
           autoFocus={this.props.isAutofocus}
           className={inputClasses}
           disabled={this.props.isDisabled ? "disabled" : null}

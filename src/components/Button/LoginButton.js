@@ -3,15 +3,15 @@ import React from "reactn";
 import Routes from "routes";
 import Button from "./Button";
 
-class SignupButton extends React.Component {
+class LoginButton extends React.Component {
   constructor(props) {
     super(props);
 
-    this.gotoSignup = this.gotoSignup.bind(this);
+    this.gotoLogin = this.gotoLogin.bind(this);
   }
 
-  gotoSignup() {
-    this.props.history.push(Routes.SIGNUP);
+  gotoLogin() {
+    this.props.history.push(Routes.LOGIN);
   }
 
   render() {
@@ -19,13 +19,13 @@ class SignupButton extends React.Component {
       <Button
         icon={<ion-icon name="arrow-forward"></ion-icon>}
         iconPlacement="right"
-        onClick={this.gotoSignup}
-        primary={true}
-        title="Right this way"
+        onClick={this.gotoLogin}
+        primary
+        title="Go to login"
         {...this.props}
       />
     );
   }
 }
 
-export default withRouter(SignupButton);
+export default withRouter(LoginButton);

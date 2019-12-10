@@ -1,4 +1,4 @@
-import { StageTypes } from "config/constants";
+import StageTypes from "utils/types/StageTypes";
 
 export const getCountdownTitle = stageType => {
   switch (stageType) {

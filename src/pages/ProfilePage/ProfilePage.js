@@ -1,3 +1,4 @@
+import ApiTokenForm from "components/ApiTokenForm";
 import Button, {
   DeleteAccountButton,
   PasswordResetButton,
@@ -16,13 +17,6 @@ class ProfilePage extends React.Component {
   renderProfilePicture = () => (
     <>
       <ProfilePicture />
-    </>
-  );
-
-  renderProfileForm = () => (
-    <>
-      <Title level="secondary">Details</Title>
-      <ProfileForm />
     </>
   );
 
@@ -63,7 +57,9 @@ class ProfilePage extends React.Component {
             <GridItem span={3}>{this.renderProfilePicture()}</GridItem>
 
             <GridItem span={6}>
-              {this.renderProfileForm()}
+              <Title level="secondary">Details</Title>
+              <ApiTokenForm />
+              <ProfileForm />
               {this.renderDangerZone()}
             </GridItem>
 
