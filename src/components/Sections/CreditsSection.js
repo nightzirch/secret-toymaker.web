@@ -8,48 +8,67 @@ import { Title } from "components/Typography";
 import React from "reactn";
 import "./CreditsSection.scss";
 
-const CreditsSection = props => (
-  <div className="credits-section">
-    <Section backgroundColor="primary">
-      <Grid>
-        <GridItem span={5}>
-          <Title colorScheme="white">Toymaker Krewe</Title>
+const CreditsSection = props => {
+  const itemProps = {
+    color: "light"
+  };
 
-          <DescriptionList>
-            <DescriptionListItem
-              term="Christian A. Grimsgaard"
-              description="Tech lead"
-            />
-            <DescriptionListItem term="RandommUser" description="Coordinator" />
-          </DescriptionList>
-        </GridItem>
+  return (
+    <div className="credits-section">
+      <Section backgroundColor="primary">
+        <Grid>
+          <GridItem span={5}>
+            <Title colorScheme="white">Toymaker Krewe</Title>
 
-        <GridItem span={5} offset={8}>
-          <Title colorScheme="white">Contributors</Title>
+            <DescriptionList>
+              <DescriptionListItem
+                term="Christian A. Grimsgaard"
+                description="Tech lead"
+                {...itemProps}
+              />
+              <DescriptionListItem
+                term="RandommUser"
+                description="Coordinator"
+                {...itemProps}
+              />
+            </DescriptionList>
+          </GridItem>
 
-          <DescriptionList>
-            <DescriptionListItem
-              term="Brendan Golden"
-              description="Developer"
-            />
-            <DescriptionListItem
-              term="Irene Karotsi"
-              description="Visual designer"
-            />
-            <DescriptionListItem
-              term="Vasburg"
-              description="Art & illustrations"
-            />
-            <DescriptionListItem
-              term="Ryan Field"
-              description="Email developer"
-            />
-            <DescriptionListItem term="Rhayven Ayers" description="Developer" />
-          </DescriptionList>
-        </GridItem>
-      </Grid>
-    </Section>
-  </div>
-);
+          <GridItem span={5} offset={8}>
+            <Title colorScheme="white">Contributors</Title>
+
+            <DescriptionList>
+              <DescriptionListItem
+                term="Brendan Golden"
+                description="Developer"
+                {...itemProps}
+              />
+              <DescriptionListItem
+                term="Irene Karotsi"
+                description="Visual designer"
+                {...itemProps}
+              />
+              <DescriptionListItem
+                term="Vasburg"
+                description="Art & illustrations"
+                {...itemProps}
+              />
+              <DescriptionListItem
+                term="Ryan Field"
+                description="Email developer"
+                {...itemProps}
+              />
+              <DescriptionListItem
+                term="Rhayven Ayers"
+                description="Developer"
+                {...itemProps}
+              />
+            </DescriptionList>
+          </GridItem>
+        </Grid>
+      </Section>
+    </div>
+  );
+};
 
 export default CreditsSection;

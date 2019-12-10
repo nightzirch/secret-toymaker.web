@@ -14,7 +14,7 @@
     transform: rotate(0deg);
     font-size: 1rem;
     width: 2.25em;
-    height: 2em;
+    height: 1.75em;
     position: relative;
     display: inline-block;
 
@@ -43,13 +43,13 @@
       }
 
       &:nth-child(2) {
-        top: 0.9em;
+        top: 0.75em;
         width: 80%;
         left: 20%;
       }
 
       &:nth-child(3) {
-        top: 1.8em;
+        top: 1.5em;
       }
     }
 

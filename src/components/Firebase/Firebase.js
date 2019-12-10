@@ -152,7 +152,6 @@ class Firebase {
     );
   };
 
-  // Imported actions from participantActions
   registerParticipation = (userId, notes) => {
     const participate = this.functions.httpsCallable("participate");
     return participate({
@@ -176,23 +175,10 @@ class Firebase {
     );
   };
 
-  // initGift = user => {
-  //   const initGift = this.functions.httpsCallable("initGift");
-  //   return initGift({ user, isPrimary: true }).then(result =>
-  //     console.log(result.data)
-  //   );
-  // };
-
-  // initDonation = user => {
-  //   const initGift = this.functions.httpsCallable("initGift");
-  //   return initGift({ user }).then(result => console.log(result.data));
-  // };
-
-  editParticipant = (userId, email, notes) => {};
-  getParticipant = apitoken => {};
-  getAmountOfParticipants = () => {};
-  getNewDonationMatch = (userId, email, notes) => {};
-  matchChecked = userId => {};
+  getStats = () => {
+    const getStats = this.functions.httpsCallable("getStats");
+    return getStats().then(result => result.data.success);
+  };
 
   // Imported actions from notificationActions
   subscribeToNotifications = (userId, subscription) => {};

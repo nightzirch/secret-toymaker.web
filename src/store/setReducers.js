@@ -39,6 +39,13 @@ const setReducers = () => {
     await dispatch.fetchParticipationStatus();
     return { user };
   });
+
+  addReducer("updateStats", async (global, dispatch) => {
+    const stats = await global.firebase.getStats();
+    return {
+      stats: { ...global.stats, [stats.year]: stats }
+    };
+  });
 };
 
 export default setReducers;
