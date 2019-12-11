@@ -2,8 +2,14 @@
 @import "../../styles/variables";
 
 .section {
-  &--with-padding {
-    padding: 1em 0;
+  &--horizontal-padding {
+    padding-right: 1em;
+    padding-left: 1em;
+  }
+
+  &--vertical-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   &--extra-light {

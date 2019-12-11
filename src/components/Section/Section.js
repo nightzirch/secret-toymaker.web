@@ -4,13 +4,24 @@ import React from "reactn";
 import "./Section.scss";
 
 const Section = props => {
-  const { backgroundColor, children, withPadding } = props;
+  const {
+    backgroundColor,
+    children,
+    className,
+    isHorizontalPadding,
+    isVerticalPadding
+  } = props;
   return (
     <section
-      className={classnames("section", {
-        [`section--${backgroundColor}`]: !!backgroundColor,
-        "section--with-padding": withPadding
-      })}
+      className={classnames(
+        "section",
+        {
+          [`section--${backgroundColor}`]: !!backgroundColor,
+          "section--horizontal-padding": isHorizontalPadding,
+          "section--vertical-padding": isVerticalPadding
+        },
+        className
+      )}
     >
       <div className="section__inner">{children}</div>
     </section>
@@ -28,7 +39,14 @@ Section.propTypes = {
     "secondary-light",
     "secondary-dark"
   ]),
-  withPadding: t.bool
+  children: t.node,
+  className: t.string,
+  isHorizontalPadding: t.bool,
+  isVerticalPadding: t.bool
+};
+
+Section.defaultProps = {
+  isHorizontalPadding: true
 };
 
 export default Section;

@@ -1,26 +1,84 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
+.alerts-container {
+  &--event {
+  }
+
+  &--faq {
+  }
+
+  &--frontpage {
+    background-color: $pattens-blue;
+  }
+
+  &--login {
+  }
+
+  &--profile {
+  }
+
+  &--signup {
+  }
+}
+
 .alert {
-  background-color: $state-error;
   padding-top: 1em;
   padding-bottom: 1em;
   padding-right: 1em;
   display: flex;
-  margin: 1em 0;
+  margin: 0;
 
-  &:first-of-type {
-    margin-top: 0;
+  & + * {
+    margin-top: 1em;
   }
 
-  &:last-of-type {
-    margin-bottom: 0;
+  &--danger {
+    background-color: $state-error;
+    color: $white;
+
+    .paragraph,
+    .alert__close {
+      color: $white;
+    }
+  }
+
+  &--warning {
+    background-color: $state-warning;
+    color: $dark;
+
+    .paragraph,
+    .alert__close {
+      color: $dark;
+    }
+  }
+
+  &--info {
+    background-color: $state-info;
+    color: $meteorite;
+
+    .paragraph,
+    .alert__close {
+      color: $meteorite;
+    }
   }
 
   &__content {
     flex-grow: 1;
     display: flex;
     align-items: center;
+  }
+
+  &__icon {
+    display: flex;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-right: 1em;
+
+    > * {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 
   &__close-button {
@@ -37,7 +95,6 @@
   &__close {
     display: flex;
     align-items: center;
-    color: $white;
   }
 
   &--closing {

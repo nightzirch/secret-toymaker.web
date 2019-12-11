@@ -20,6 +20,7 @@ $tertiary-color: #c867b1;
 $state-error: #d93a30;
 $state-warning: #e6e404;
 $state-success: #23bb17;
+$state-info: darken($pattens-blue, 10%);
 
 $primary-color-light: lighten($primary-color, 50%);
 $primary-color-dark: darken($primary-color, 20%);
