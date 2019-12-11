@@ -4,6 +4,7 @@ import { setGlobal } from "reactn";
 // Initial state
 const setGlobalStore = () => {
   setGlobal({
+    alerts: [],
     authStatus: null,
     authUser: null,
     firebase: new Firebase(),

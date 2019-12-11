@@ -2,6 +2,16 @@ import { addReducer } from "reactn";
 
 // Initial state
 const setReducers = () => {
+  addReducer("updateAlerts", async (global, dispatch) => {
+    const alerts = await global.firebase.getAlerts();
+    return { alerts };
+  });
+
+  addReducer("closeAlert", async (global, dispatch, id) => {
+    const filteredAlerts = global.alerts.filter(alert => alert.id !== id);
+    return { alerts: filteredAlerts };
+  });
+
   addReducer("updateUser", async (global, dispatch, fields) => {
     const user = await global.firebase.updateUser(global.user.uid, fields);
     return { user };

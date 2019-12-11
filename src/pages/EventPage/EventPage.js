@@ -1,3 +1,4 @@
+import Alerts from "components/Alerts";
 import ApiTokenForm from "components/ApiTokenForm";
 import { LoginButton } from "components/Button";
 import EventHero from "components/EventHero";
@@ -12,6 +13,7 @@ import t from "prop-types";
 import React, { useDispatch, useEffect, useState, withGlobal } from "reactn";
 import { getAuthStatus } from "utils/auth";
 import { isParticipatingInEvent } from "utils/participation";
+import AlertLocationTypes from "utils/types/AlertLocationTypes";
 import AuthTypes from "utils/types/AuthTypes";
 import StageTypes from "utils/types/StageTypes";
 import "./EventPage.scss";
@@ -136,6 +138,13 @@ const EventPage = props => {
     <div className="event-page">
       <Section>
         <EventHero />
+
+        <Alerts
+          location={AlertLocationTypes.EVENT}
+          isHorizontalPadding={false}
+          isVerticalPadding
+        />
+
         {renderContent()}
       </Section>
     </div>

@@ -180,6 +180,11 @@ class Firebase {
     return getStats().then(result => result.data.success);
   };
 
+  getAlerts = () => {
+    const getAlerts = this.functions.httpsCallable("getAlerts");
+    return getAlerts().then(result => result.data.success);
+  };
+
   // Imported actions from notificationActions
   subscribeToNotifications = (userId, subscription) => {};
   unsubscribeFromNotifications = (userId, subscription) => {};
