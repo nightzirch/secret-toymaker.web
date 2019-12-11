@@ -2,35 +2,68 @@ import classnames from "classnames";
 import Card from "components/Card";
 import { Paragraph } from "components/Typography";
 import t from "prop-types";
-import React, { useState } from "reactn";
+import React, { useDispatch, useState } from "reactn";
+import AlertTypes from "utils/types/AlertTypes";
 import "./Alert.scss";
 
 const Alert = props => {
-  const { children } = props;
+  const { children, id, type } = props;
   const [isClosing, setIsClosing] = useState(false);
-  const [isClosed, setIsClosed] = useState(false);
+  const closeAlert = useDispatch("closeAlert");
 
   const handleCloseClick = () => {
     setIsClosing(true);
-    setTimeout(() => setIsClosed(true), 500);
+    setTimeout(() => {
+      closeAlert(id);
+    }, 500);
   };
 
-  return !isClosed ? (
-    <Card className={classnames("alert", { "alert--closing": isClosing })}>
+  const renderIcon = () => {
+    let icon;
+
+    switch (type) {
+      case AlertTypes.DANGER:
+        icon = <ion-icon name="nuclear" />;
+        break;
+      case AlertTypes.WARNING:
+        icon = <ion-icon name="warning" />;
+        break;
+      case AlertTypes.INFO:
+        icon = <ion-icon name="information-circle-outline" />;
+        break;
+      default:
+        break;
+    }
+
+    return icon && <span className="alert__icon">{icon}</span>;
+  };
+
+  return (
+    <Card
+      className={classnames("alert", `alert--${type}`, {
+        "alert--closing": isClosing
+      })}
+    >
       <div className="alert__content">
-        <Paragraph colorScheme="white" noMargin>
-          {children}
-        </Paragraph>
+        {renderIcon()}
+        <Paragraph noMargin>{children}</Paragraph>
       </div>
-      <button className="alert__close-button" onClick={handleCloseClick}>
-        <ion-icon class="alert__close" name="close"></ion-icon>
+
+      <button
+        className="alert__close-button"
+        onClick={handleCloseClick}
+        type="button"
+      >
+        <ion-icon class="alert__close" name="close" />
       </button>
     </Card>
-  ) : null;
+  );
 };
 
 Alert.propTypes = {
-  children: t.node
+  children: t.node,
+  id: t.string.isRequired,
+  type: t.oneOf(Object.values(AlertTypes)).isRequired
 };
 
 export default Alert;

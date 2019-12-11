@@ -24,6 +24,7 @@ class App extends Component {
 
   componentDidMount = () => {
     this.dispatch.updateStage();
+    this.dispatch.updateAlerts();
   };
 
   componentWillUnmount = () => {

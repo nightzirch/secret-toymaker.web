@@ -1,3 +1,4 @@
+import Alerts from "components/Alerts";
 import ApiTokenForm from "components/ApiTokenForm";
 import Button, {
   DeleteAccountButton,
@@ -10,6 +11,7 @@ import Section from "components/Section";
 import { PageHeader, Title } from "components/Typography";
 import React from "reactn";
 import { withRedirect } from "utils/redirect";
+import AlertLocationTypes from "utils/types/AlertLocationTypes";
 import ProfileForm from "./ProfileForm";
 import "./ProfilePage.scss";
 
@@ -52,6 +54,12 @@ class ProfilePage extends React.Component {
       <div className="profile-page">
         <Section>
           <PageHeader type="profile" title="Profile" />
+
+          <Alerts
+            isHorizontalPadding={false}
+            isVerticalPadding
+            location={AlertLocationTypes.PROFILE}
+          />
 
           <Grid>
             <GridItem span={3}>{this.renderProfilePicture()}</GridItem>

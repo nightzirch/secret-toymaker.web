@@ -1,19 +1,19 @@
+import Alerts from "components/Alerts";
 import Hero from "components/Hero";
 import { AboutSection, CreditsSection, HowSection } from "components/Sections";
 import React from "reactn";
+import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
-class FrontPage extends React.Component {
-  render() {
-    return (
-      <div className="front-page">
-        <Hero />
-
-        <AboutSection />
-        <HowSection />
-        <CreditsSection />
-      </div>
-    );
-  }
-}
+const FrontPage = props => {
+  return (
+    <div className="front-page">
+      <Hero />
+      <Alerts location={AlertLocationTypes.FRONTPAGE} isVerticalPadding />
+      <AboutSection />
+      <HowSection />
+      <CreditsSection />
+    </div>
+  );
+};
 
 export default FrontPage;
