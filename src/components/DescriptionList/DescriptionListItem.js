@@ -4,7 +4,12 @@ import React from "react";
 import "./DescriptionListItem.scss";
 
 const DescriptionListItem = props => {
-  const { color, description, term } = props;
+  const { color, description, icon, term } = props;
+
+  const renderIcon = () =>
+    icon && (
+      <span className="description-list-item__description__icon">{icon}</span>
+    );
 
   return (
     <span
@@ -14,15 +19,19 @@ const DescriptionListItem = props => {
       )}
     >
       <dt className="description-list-item__term">{term}</dt>
-      <dd className="description-list-item__description">{description}</dd>
+      <dd className="description-list-item__description">
+        {description}
+        {renderIcon()}
+      </dd>
     </span>
   );
 };
 
 DescriptionListItem.propTypes = {
   color: t.oneOf(["dark", "light"]),
-  description: t.string.isRequired,
-  term: t.string.isRequired
+  description: t.node.isRequired,
+  icon: t.node,
+  term: t.node.isRequired
 };
 
 DescriptionListItem.defaultProps = {
