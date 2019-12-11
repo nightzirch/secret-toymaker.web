@@ -32,6 +32,10 @@
     background-color: $primary-color-dark;
   }
 
+  &--primary-darker {
+    background-color: $primary-color-darker;
+  }
+
   &--secondary-light {
     background-color: $secondary-color-light;
   }
@@ -42,6 +46,10 @@
 
   &--secondary-dark {
     background-color: $secondary-color-dark;
+  }
+
+  &--secondary-darker {
+    background-color: $secondary-color-darker;
   }
 
   &__inner {

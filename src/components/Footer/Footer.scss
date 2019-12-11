@@ -3,7 +3,20 @@
 .footer {
   background-color: $primary-color;
 
-  .section {
+  &__upper {
     padding: 3rem 0;
+  }
+
+  &__lower {
+    padding: 1rem 0;
+
+    .paragraph {
+      margin: 0;
+    }
+
+    .link {
+      color: $white;
+      margin-left: 0.5rem;
+    }
   }
 }

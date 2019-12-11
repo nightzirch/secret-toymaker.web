@@ -4,6 +4,10 @@
   line-height: 1.45;
   margin-bottom: 1.25em;
 
+  &--center {
+    text-align: center;
+  }
+
   &--small {
     font-size: $text-sm;
   }

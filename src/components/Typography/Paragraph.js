@@ -4,7 +4,7 @@ import React from "reactn";
 import "./Paragraph.scss";
 
 const Paragraph = props => {
-  const { children, colorScheme, className, noMargin, size } = props;
+  const { children, colorScheme, className, isCenter, noMargin, size } = props;
   return children ? (
     <p
       className={classnames(
@@ -13,7 +13,8 @@ const Paragraph = props => {
         `paragraph--${size}`,
         className,
         {
-          "paragraph--no-margin": noMargin
+          "paragraph--no-margin": noMargin,
+          "paragraph--center": isCenter
         }
       )}
     >
@@ -33,6 +34,7 @@ Paragraph.propTypes = {
     "light",
     "white"
   ]),
+  isCenter: t.bool,
   noMargin: t.bool,
   size: t.oneOf(["small", "medium"])
 };
