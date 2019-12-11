@@ -35,9 +35,11 @@ Section.propTypes = {
     "primary",
     "primary-light",
     "primary-dark",
+    "primary-darker",
     "secondary",
     "secondary-light",
-    "secondary-dark"
+    "secondary-dark",
+    "secondary-darker"
   ]),
   children: t.node,
   className: t.string,
