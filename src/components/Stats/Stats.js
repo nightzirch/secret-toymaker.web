@@ -4,13 +4,8 @@ import {
 } from "components/DescriptionList";
 import t from "prop-types";
 import React, { useEffect, useGlobal, useState } from "reactn";
-import StatTypes from "utils/types/StatTypes";
+import { statData } from "utils/stats";
 import "./Stats.scss";
-
-const statKeysToShow = [StatTypes.PARTICIPANTS];
-const statTitles = {
-  [StatTypes.PARTICIPANTS]: "Participants"
-};
 
 const Stats = props => {
   const { year } = props;
@@ -27,11 +22,20 @@ const Stats = props => {
     if (!yearlyStats) return null;
 
     const statsToShow = Object.keys(yearlyStats)
-      .filter(key => statKeysToShow.includes(key))
-      .map(key => ({
-        term: statTitles[key],
-        description: String(yearlyStats[key])
-      }));
+      .filter(key => Object.keys(statData).includes(key))
+      .filter(key => yearlyStats[key])
+      .map(key => {
+        const { icon, render, title: term } = statData[key];
+        const description = render
+          ? render(yearlyStats[key])
+          : yearlyStats[key];
+
+        return {
+          term,
+          description,
+          icon
+        };
+      });
 
     return (
       <DescriptionList>
@@ -39,6 +43,7 @@ const Stats = props => {
           <DescriptionListItem
             term={stat.term}
             description={stat.description}
+            icon={stat.icon}
             key={stat.term}
           />
         ))}
