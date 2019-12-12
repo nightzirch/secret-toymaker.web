@@ -91,10 +91,11 @@ const EventPage = props => {
     </>
   );
 
+  // TODO: Add proper text here
   const renderNotParticipatingMessage = () => (
     <>
       <Title>Toymake-o-tron can't find you</Title>
-      <Paragraphs paragraphs={lang.event.matching} />
+      <Paragraphs paragraphs={[]} />
     </>
   );
 
