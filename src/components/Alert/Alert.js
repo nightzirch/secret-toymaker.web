@@ -2,19 +2,20 @@ import classnames from "classnames";
 import Card from "components/Card";
 import { Paragraph } from "components/Typography";
 import t from "prop-types";
-import React, { useDispatch, useState } from "reactn";
+import React, { useState } from "reactn";
+import { dispatchWithLoading } from "utils/loading";
+import ActionTypes from "utils/types/ActionTypes";
 import AlertTypes from "utils/types/AlertTypes";
 import "./Alert.scss";
 
 const Alert = props => {
   const { children, id, type } = props;
   const [isClosing, setIsClosing] = useState(false);
-  const closeAlert = useDispatch("closeAlert");
 
   const handleCloseClick = () => {
     setIsClosing(true);
     setTimeout(() => {
-      closeAlert(id);
+      dispatchWithLoading(ActionTypes.CLOSE_ALERT, id);
     }, 500);
   };
 

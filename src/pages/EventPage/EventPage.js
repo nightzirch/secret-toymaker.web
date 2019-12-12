@@ -11,9 +11,11 @@ import Stats from "components/Stats";
 import { Paragraphs, Title } from "components/Typography";
 import lang from "lang/lang";
 import t from "prop-types";
-import React, { useDispatch, useEffect, useState, withGlobal } from "reactn";
+import React, { useEffect, useState, withGlobal } from "reactn";
 import { getAuthStatus } from "utils/auth";
+import { dispatchWithLoading } from "utils/loading";
 import { isParticipatingInEvent } from "utils/participation";
+import ActionTypes from "utils/types/ActionTypes";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 import AuthTypes from "utils/types/AuthTypes";
 import StageTypes from "utils/types/StageTypes";
@@ -23,18 +25,15 @@ const EventPage = props => {
   const { participations, stage, user } = props;
   const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
-  const fetchParticipationStatus = useDispatch("fetchParticipationStatus");
-  const updateStats = useDispatch("updateStats");
   const [isParticipating, setParticipating] = useState(null);
 
   useEffect(() => {
-    // TODO: add API call to fetch stats about this year's event
-    updateStats();
+    dispatchWithLoading(ActionTypes.GET_STATS);
   }, []);
 
   useEffect(() => {
     if (user) {
-      fetchParticipationStatus();
+      dispatchWithLoading(ActionTypes.GET_PARTICIPATION_STATUS);
     }
   }, [user]);
 
