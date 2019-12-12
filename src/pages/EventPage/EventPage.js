@@ -4,6 +4,7 @@ import { LoginButton } from "components/Button";
 import EventHero from "components/EventHero";
 import { InputField } from "components/Form";
 import { Grid, GridItem } from "components/Grid";
+import LoadingIndicator from "components/LoadingIndicator";
 import ParticipationForm from "components/ParticipationForm";
 import Section from "components/Section";
 import Stats from "components/Stats";
@@ -92,7 +93,6 @@ const EventPage = props => {
   );
 
   const renderContent = () => {
-    // TODO: Add loading state when waiting for stage endpoint.
     let contents;
 
     if (stageType === StageTypes.SIGNUP) {
@@ -136,17 +136,21 @@ const EventPage = props => {
 
   return (
     <div className="event-page">
-      <Section>
-        <EventHero />
+      {isParticipating === null ? (
+        <LoadingIndicator message="Hold on as Toymake-o-tron is digging through our archives..." />
+      ) : (
+        <Section>
+          <EventHero />
 
-        <Alerts
-          location={AlertLocationTypes.EVENT}
-          isHorizontalPadding={false}
-          isVerticalPadding
-        />
+          <Alerts
+            location={AlertLocationTypes.EVENT}
+            isHorizontalPadding={false}
+            isVerticalPadding
+          />
 
-        {renderContent()}
-      </Section>
+          {renderContent()}
+        </Section>
+      )}
     </div>
   );
 };
