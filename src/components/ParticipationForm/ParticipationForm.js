@@ -25,11 +25,15 @@ const ParticipationForm = props => {
     e.preventDefault();
 
     // TODO: Add validation
-    dispatchWithLoading(ActionTypes.REGISTER_PARTICIPATION, notes);
+    dispatchWithLoading(ActionTypes.REGISTER_PARTICIPATION, notes).then(() => {
+      dispatchWithLoading(ActionTypes.GET_STATS);
+    });
   };
 
   const handleRemoveParticipationClick = () => {
-    dispatchWithLoading(ActionTypes.REMOVE_PARTICIPATION);
+    dispatchWithLoading(ActionTypes.REMOVE_PARTICIPATION).then(() => {
+      dispatchWithLoading(ActionTypes.GET_STATS);
+    });
   };
 
   const renderSubmitButton = () =>
