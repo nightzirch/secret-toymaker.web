@@ -4,15 +4,18 @@ import { LoginButton } from "components/Button";
 import EventHero from "components/EventHero";
 import { InputField } from "components/Form";
 import { Grid, GridItem } from "components/Grid";
+import LoadingIndicator from "components/LoadingIndicator";
 import ParticipationForm from "components/ParticipationForm";
 import Section from "components/Section";
 import Stats from "components/Stats";
 import { Paragraphs, Title } from "components/Typography";
 import lang from "lang/lang";
 import t from "prop-types";
-import React, { useDispatch, useEffect, useState, withGlobal } from "reactn";
+import React, { useEffect, useState, withGlobal } from "reactn";
 import { getAuthStatus } from "utils/auth";
+import { dispatchWithLoading } from "utils/loading";
 import { isParticipatingInEvent } from "utils/participation";
+import ActionTypes from "utils/types/ActionTypes";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 import AuthTypes from "utils/types/AuthTypes";
 import StageTypes from "utils/types/StageTypes";
@@ -22,18 +25,15 @@ const EventPage = props => {
   const { participations, stage, user } = props;
   const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
-  const fetchParticipationStatus = useDispatch("fetchParticipationStatus");
-  const updateStats = useDispatch("updateStats");
   const [isParticipating, setParticipating] = useState(null);
 
   useEffect(() => {
-    // TODO: add API call to fetch stats about this year's event
-    updateStats();
+    dispatchWithLoading(ActionTypes.GET_STATS);
   }, []);
 
   useEffect(() => {
     if (user) {
-      fetchParticipationStatus();
+      dispatchWithLoading(ActionTypes.GET_PARTICIPATION_STATUS);
     }
   }, [user]);
 
@@ -92,7 +92,6 @@ const EventPage = props => {
   );
 
   const renderContent = () => {
-    // TODO: Add loading state when waiting for stage endpoint.
     let contents;
 
     if (stageType === StageTypes.SIGNUP) {
@@ -136,17 +135,21 @@ const EventPage = props => {
 
   return (
     <div className="event-page">
-      <Section>
-        <EventHero />
+      {isParticipating === null ? (
+        <LoadingIndicator message="Hold on as Toymake-o-tron is digging through our archives..." />
+      ) : (
+        <Section>
+          <EventHero />
 
-        <Alerts
-          location={AlertLocationTypes.EVENT}
-          isHorizontalPadding={false}
-          isVerticalPadding
-        />
+          <Alerts
+            location={AlertLocationTypes.EVENT}
+            isHorizontalPadding={false}
+            isVerticalPadding
+          />
 
-        {renderContent()}
-      </Section>
+          {renderContent()}
+        </Section>
+      )}
     </div>
   );
 };

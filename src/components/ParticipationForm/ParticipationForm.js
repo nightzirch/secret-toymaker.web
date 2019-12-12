@@ -1,16 +1,20 @@
 import Button from "components/Button";
 import { TextArea } from "components/Form";
-import React, { useDispatch, useGlobal, useState } from "reactn";
+import React, { useGlobal, useState } from "reactn";
+import { dispatchWithLoading } from "utils/loading";
 import { isParticipatingInEvent } from "utils/participation";
+import ActionTypes from "utils/types/ActionTypes";
 import "./ParticipationForm.scss";
 
 const ParticipationForm = props => {
+  const [loading] = useGlobal("loading");
   const [stage] = useGlobal("stage");
   const { year } = stage;
-  const registerParticipation = useDispatch("registerParticipation");
-  const removeParticipation = useDispatch("removeParticipation");
   const [notes, setNotes] = useState("");
   const isParticipating = isParticipatingInEvent(year);
+  const isLoading =
+    loading[ActionTypes.REGISTER_PARTICIPATION] ||
+    loading[ActionTypes.REMOVE_PARTICIPATION];
 
   const handleInputChange = e => {
     const { value } = e.target;
@@ -21,18 +25,30 @@ const ParticipationForm = props => {
     e.preventDefault();
 
     // TODO: Add validation
-    registerParticipation(notes);
+    dispatchWithLoading(ActionTypes.REGISTER_PARTICIPATION, notes).then(() => {
+      dispatchWithLoading(ActionTypes.GET_STATS);
+    });
   };
 
   const handleRemoveParticipationClick = () => {
-    removeParticipation();
+    dispatchWithLoading(ActionTypes.REMOVE_PARTICIPATION).then(() => {
+      dispatchWithLoading(ActionTypes.GET_STATS);
+    });
   };
 
   const renderSubmitButton = () =>
     isParticipating ? (
-      <Button theme="secondary" title="Update notes" type="submit" />
+      <Button
+        isDisabled={isLoading}
+        isLoading={loading[ActionTypes.REGISTER_PARTICIPATION]}
+        theme="secondary"
+        title="Update notes"
+        type="submit"
+      />
     ) : (
       <Button
+        isDisabled={isLoading}
+        isLoading={loading[ActionTypes.REGISTER_PARTICIPATION]}
         theme="primary"
         title="Participate in Secret Toymaker"
         type="submit"
@@ -42,6 +58,8 @@ const ParticipationForm = props => {
   const renderRemoveParticipationButton = () =>
     isParticipating && (
       <Button
+        isDisabled={isLoading}
+        isLoading={loading[ActionTypes.REMOVE_PARTICIPATION]}
         onClick={handleRemoveParticipationClick}
         theme="danger"
         title="Remove participation"
@@ -53,6 +71,7 @@ const ParticipationForm = props => {
       <form className="participation-form" onSubmit={handleFormSubmit}>
         <TextArea
           id="notes"
+          isDisabled={isLoading}
           label="Notes to your secret toymaker"
           onChange={handleInputChange}
           value={notes}

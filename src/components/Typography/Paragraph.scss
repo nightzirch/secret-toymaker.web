@@ -4,6 +4,10 @@
   line-height: 1.45;
   margin-bottom: 1.25em;
 
+  &--bold {
+    font-weight: bold;
+  }
+
   &--center {
     text-align: center;
   }

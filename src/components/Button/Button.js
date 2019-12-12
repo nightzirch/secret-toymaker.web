@@ -4,25 +4,47 @@ import React from "reactn";
 import "./Button.scss";
 
 const Button = props => {
-  let containerClasses = classnames("button-container", {
-    "button-container--centered": props.isCentered
+  const {
+    icon,
+    iconPlacement,
+    isCentered,
+    isDisabled,
+    isFullWidth,
+    isLoading,
+    title,
+    type,
+    onClick,
+    size,
+    theme
+  } = props;
+
+  const containerClasses = classnames("button-container", {
+    "button-container--centered": isCentered
   });
 
-  let buttonClasses = classnames(
+  const buttonClasses = classnames(
     "button",
-    `button--${props.theme}`,
-    `button--${props.size}`,
-    `button--${props.type}`,
+    `button--${theme}`,
+    `button--${size}`,
+    `button--${type}`,
     {
-      [`button--with-icon button--with-icon-${props.iconPlacement}`]: !!props.icon,
-      "button--full-width": props.isFullWidth
+      [`button--with-icon button--with-icon-${iconPlacement}`]: !!icon,
+      "button--full-width": isFullWidth,
+      "button--loading": isLoading
     }
   );
 
-  let renderTitle = () => (
+  const renderLoading = () =>
+    isLoading && (
+      <div className="button__loading">
+        <span className="button__loading__dots" />
+      </div>
+    );
+
+  const renderTitle = () => (
     <div className="button__title">
-      {props.icon && <span className="button__icon">{props.icon}</span>}
-      {props.title}
+      {icon && <span className="button__icon">{icon}</span>}
+      {title}
     </div>
   );
 
@@ -30,10 +52,11 @@ const Button = props => {
     <div className={containerClasses}>
       <button
         className={buttonClasses}
-        disabled={props.isDisabled}
-        type={props.type}
-        onClick={props.onClick}
+        disabled={isDisabled || isLoading}
+        type={type}
+        onClick={onClick}
       >
+        {renderLoading()}
         {renderTitle()}
       </button>
     </div>
@@ -46,6 +69,7 @@ Button.propTypes = {
   isCentered: t.bool,
   isDisabled: t.bool,
   isFullWidth: t.bool,
+  isLoading: t.bool,
   title: t.string.isRequired,
   type: t.oneOf(["button", "submit"]),
   onClick: t.func,
