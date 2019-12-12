@@ -1,0 +1,83 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+$horizontalMovement: 4rem;
+$verticalMovement: 1rem;
+$scale: 0.75;
+$timing-curve: cubic-bezier(0.5, 0, 0.5, 1);
+$animation-duration: 1.5s;
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  transition: opacity #{$animation-duration/2};
+  opacity: 0;
+  height: 100%;
+
+  &--visible {
+    opacity: 1;
+  }
+
+  &__x-axis {
+    animation: horizontalMovement infinite $animation-duration;
+    animation-timing-function: $timing-curve;
+    animation-direction: alternate;
+    transform: translateX($horizontalMovement);
+  }
+
+  &__y-axis {
+    animation: verticalMovement infinite $animation-duration;
+    animation-timing-function: $timing-curve;
+    animation-delay: #{$animation-duration/2};
+    animation-direction: alternate;
+    transform: translateY($verticalMovement);
+  }
+
+  img {
+    transform: scale($scale);
+    height: 100px;
+    animation: scaling infinite $animation-duration;
+    animation-delay: #{$animation-duration/2};
+    animation-timing-function: $timing-curve;
+    animation-direction: alternate;
+  }
+
+  &__message {
+    margin-top: 2rem;
+
+    @include media($mobile) {
+      font-size: $text-lg;
+    }
+  }
+}
+
+@keyframes horizontalMovement {
+  0% {
+    transform: translateX($horizontalMovement);
+  }
+  100% {
+    transform: translateX(-$horizontalMovement);
+  }
+}
+
+@keyframes verticalMovement {
+  0% {
+    transform: translateY($verticalMovement);
+  }
+  100% {
+    transform: translateY(-$verticalMovement);
+  }
+}
+
+@keyframes scaling {
+  0% {
+    transform: scale($scale);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

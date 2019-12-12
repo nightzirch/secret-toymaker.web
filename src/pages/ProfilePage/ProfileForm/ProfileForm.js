@@ -2,6 +2,8 @@ import Button from "components/Button";
 import { InputField } from "components/Form";
 import op from "object-path";
 import React, { withGlobal } from "reactn";
+import { dispatchWithLoading } from "utils/loading";
+import ActionTypes from "utils/types/ActionTypes";
 
 class ProfileForm extends React.Component {
   constructor(props) {
@@ -34,15 +36,18 @@ class ProfileForm extends React.Component {
     // TODO: Add validation
     const { email } = this.state;
 
-    this.dispatch.updateUser({ email });
+    dispatchWithLoading(ActionTypes.UPDATE_USER, { email });
   };
 
   render() {
+    const isLoading = this.global.loading[ActionTypes.UPDATE_USER];
+
     return (
       <div className="profile-form__container">
         <form className="profile-form" onSubmit={this.handleFormSubmit}>
           <InputField
             id="email"
+            isDisabled={isLoading}
             label="Email"
             onChange={this.handleInputChange}
             placeholder="scarlet@briar.com"
@@ -50,7 +55,12 @@ class ProfileForm extends React.Component {
             value={this.state.email}
           />
 
-          <Button theme="primary" title="Update profile" type="submit" />
+          <Button
+            isLoading={isLoading}
+            theme="primary"
+            title="Update profile"
+            type="submit"
+          />
         </form>
       </div>
     );
@@ -58,6 +68,7 @@ class ProfileForm extends React.Component {
 }
 
 const mapGlobalToProps = global => ({
+  loading: global.loading,
   user: global.user
 });
 
