@@ -15,13 +15,7 @@ $animation-duration: 1.5s;
   justify-content: center;
   align-items: center;
   padding: 4rem;
-  transition: opacity #{$animation-duration/2};
-  opacity: 0;
   height: 100%;
-
-  &--visible {
-    opacity: 1;
-  }
 
   &--animating img {
     animation: vibrate 0.5s linear infinite both;
@@ -32,12 +26,7 @@ $animation-duration: 1.5s;
   }
 
   img {
-    // transform: scale($scale);
     height: 100px;
-    // animation: scaling infinite $animation-duration;
-    // animation-delay: #{$animation-duration/2};
-    // animation-timing-function: $timing-curve;
-    // animation-direction: alternate;
   }
 
   &__message {
