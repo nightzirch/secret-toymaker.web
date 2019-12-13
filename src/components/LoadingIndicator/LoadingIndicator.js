@@ -7,17 +7,8 @@ import "./LoadingIndicator.scss";
 
 const LoadingIndicator = props => {
   const { message } = props;
-  const [isVisible, setVisible] = useState(false);
   const [isAnimating, setAnimating] = useState(true);
   const [rotation, setRotation] = useState(-20);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setVisible(true);
-    }, 500);
-
-    return () => clearTimeout(timeout);
-  }, []);
 
   useEffect(() => {
     if (isAnimating) {
@@ -36,8 +27,7 @@ const LoadingIndicator = props => {
   return (
     <div
       className={classnames("loading-indicator", {
-        "loading-indicator--animating": isAnimating,
-        "loading-indicator--visible": isVisible
+        "loading-indicator--animating": isAnimating
       })}
     >
       <div
