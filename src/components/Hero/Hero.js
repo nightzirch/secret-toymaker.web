@@ -10,7 +10,7 @@ import "./Hero.scss";
 const Hero = props => {
   return (
     <div className={classnames("hero")}>
-      <Section>
+      <Section isWide>
         <Grid noMargin>
           <GridItem span={6} spanMobile={4}>
             <div className="hero__content">

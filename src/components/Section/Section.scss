@@ -55,4 +55,10 @@
   &__inner {
     @include container;
   }
+
+  &--wide {
+    .section__inner {
+      @include wide-container;
+    }
+  }
 }

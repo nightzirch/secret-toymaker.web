@@ -17,12 +17,12 @@
     outline: none;
     line-height: 2rem;
     border-radius: 0 0 0.5rem 0.5rem;
-    background-color: $state-success;
+    background-color: $meteorite;
     color: $white;
     cursor: pointer;
 
     &:hover {
-      background-color: darken($state-success, 2.5%);
+      background-color: lighten($meteorite, 2.5%);
     }
   }
 }

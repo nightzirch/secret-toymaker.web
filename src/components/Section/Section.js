@@ -9,7 +9,8 @@ const Section = props => {
     children,
     className,
     isHorizontalPadding,
-    isVerticalPadding
+    isVerticalPadding,
+    isWide
   } = props;
   return (
     <section
@@ -18,7 +19,8 @@ const Section = props => {
         {
           [`section--${backgroundColor}`]: !!backgroundColor,
           "section--horizontal-padding": isHorizontalPadding,
-          "section--vertical-padding": isVerticalPadding
+          "section--vertical-padding": isVerticalPadding,
+          "section--wide": isWide
         },
         className
       )}
@@ -44,7 +46,8 @@ Section.propTypes = {
   children: t.node,
   className: t.string,
   isHorizontalPadding: t.bool,
-  isVerticalPadding: t.bool
+  isVerticalPadding: t.bool,
+  isWide: t.bool
 };
 
 Section.defaultProps = {
