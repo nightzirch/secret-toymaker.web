@@ -1,3 +1,4 @@
+@import "../../styles/animations/animations";
 @import "../../styles/mixins";
 @import "../../styles/variables";
 
@@ -22,28 +23,21 @@ $animation-duration: 1.5s;
     opacity: 1;
   }
 
-  &__x-axis {
-    animation: horizontalMovement infinite $animation-duration;
-    animation-timing-function: $timing-curve;
-    animation-direction: alternate;
-    transform: translateX($horizontalMovement);
+  &--animating img {
+    animation: vibrate 0.5s linear infinite both;
   }
 
-  &__y-axis {
-    animation: verticalMovement infinite $animation-duration;
-    animation-timing-function: $timing-curve;
-    animation-delay: #{$animation-duration/2};
-    animation-direction: alternate;
-    transform: translateY($verticalMovement);
+  &__rotate {
+    transition: transform 0.2s ease-in-out;
   }
 
   img {
-    transform: scale($scale);
+    // transform: scale($scale);
     height: 100px;
-    animation: scaling infinite $animation-duration;
-    animation-delay: #{$animation-duration/2};
-    animation-timing-function: $timing-curve;
-    animation-direction: alternate;
+    // animation: scaling infinite $animation-duration;
+    // animation-delay: #{$animation-duration/2};
+    // animation-timing-function: $timing-curve;
+    // animation-direction: alternate;
   }
 
   &__message {
