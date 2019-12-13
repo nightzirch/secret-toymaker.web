@@ -48,7 +48,7 @@ const Header = props => {
 
   return (
     <header className="header">
-      <Section>
+      <Section isWide>
         <Grid noMargin>
           <GridItem span={1} spanMobile={1}>
             {renderLogo()}

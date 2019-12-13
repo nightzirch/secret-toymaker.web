@@ -19,7 +19,7 @@ $inactive-color: $grey;
   &__card {
     position: relative;
     z-index: $z-index-gift-status-card;
-    background-color: $white;
+    background-color: rgba($white, 0.5);
   }
 
   &--outgoing {
@@ -190,26 +190,6 @@ $inactive-color: $grey;
         height: 80%;
         width: 80%;
       }
-    }
-  }
-
-  &__button-container {
-    margin: 0 0.5em;
-    display: flex;
-  }
-
-  &__button {
-    flex-grow: 1;
-    border: none;
-    outline: none;
-    line-height: 2.5em;
-    border-radius: 0 0 0.5rem 0.5rem;
-    background-color: $state-success;
-    color: $white;
-    cursor: pointer;
-
-    &:hover {
-      background-color: darken($state-success, 2.5%);
     }
   }
 }

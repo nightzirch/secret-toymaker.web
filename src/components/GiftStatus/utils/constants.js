@@ -1,24 +1,15 @@
-export const GIFT_DIRECTION = {
-  OUTGOING: "outgoing",
-  INCOMING: "incoming"
-};
+import GiftStatusTypes from "utils/types/GiftStatusTypes";
 
-export const GIFT_STATUS = {
-  PACKING: "packing",
-  SENT: "sent",
-  RECEIVED: "received"
-};
-
-export const GIFT_STATUS_ILLUSTRATIONS = {
-  [GIFT_STATUS.PACKING]: {
+export const GiftStatusIllustrations = {
+  [GiftStatusTypes.PACKING]: {
     text: "Packing",
     imgUrl: "/images/pack.png"
   },
-  [GIFT_STATUS.SENT]: {
+  [GiftStatusTypes.SENT]: {
     text: "Sent",
     imgUrl: "/images/receiveg_t.png"
   },
-  [GIFT_STATUS.RECEIVED]: {
+  [GiftStatusTypes.RECEIVED]: {
     text: "Received",
     imgUrl: "/images/check_t.png"
   }

@@ -3,32 +3,37 @@ import Card from "components/Card";
 import { Title } from "components/Typography";
 import t from "prop-types";
 import React from "reactn";
+import GiftDirectionTypes from "utils/types/GiftDirectionTypes";
+import GiftStatusTypes from "utils/types/GiftStatusTypes";
 import "./GiftStatus.scss";
-import {
-  GIFT_DIRECTION,
-  GIFT_STATUS,
-  GIFT_STATUS_ILLUSTRATIONS
-} from "./utils/constants";
+import { GiftStatusIllustrations } from "./utils/constants";
 
-const GIFT_DIRECTION_ARRAY = Object.keys(GIFT_DIRECTION).map(
-  s => GIFT_DIRECTION[s]
+const GiftDirectionTypesArray = Object.keys(GiftDirectionTypes).map(
+  s => GiftDirectionTypes[s]
 );
-const GIFT_STATUS_ARRAY = Object.keys(GIFT_STATUS).map(s => GIFT_STATUS[s]);
+const GIFT_STATUS_ARRAY = Object.keys(GiftStatusTypes).map(
+  s => GiftStatusTypes[s]
+);
 
 const GiftStatus = props => {
-  const { direction, gifter, status } = props;
+  const { direction, gifter, isButtonHidden, status } = props;
   const activeIndex = GIFT_STATUS_ARRAY.findIndex(index => index === status);
 
-  const handleButtonClick = () => {
+  const handleSentClick = () => {
     // TODO: Do proper stuff
-    console.log("Button clicked");
+    console.log("Sent clicked");
+  };
+
+  const handleReceivedClick = () => {
+    // TODO: Do proper stuff
+    console.log("Received clicked");
   };
 
   const renderTitle = () => (
     <div className="gift-status__title">
       <Title level="tertiary">
         <span className="gift-status__title__pre">
-          {direction === GIFT_DIRECTION.INCOMING ? "From" : "To"}:
+          {`${direction === GiftDirectionTypes.INCOMING ? "From" : "To"}:`}
         </span>
         {gifter}
       </Title>
@@ -52,7 +57,7 @@ const GiftStatus = props => {
             >
               <span className="gift-status__dot__label-wrapper" key={s}>
                 <span className="gift-status__dot__label">
-                  {GIFT_STATUS_ILLUSTRATIONS[s].text}
+                  {GiftStatusIllustrations[s].text}
                 </span>
               </span>
             </span>
@@ -86,9 +91,9 @@ const GiftStatus = props => {
               key={s}
             >
               <img
-                alt={GIFT_STATUS_ILLUSTRATIONS[s].text}
-                title={GIFT_STATUS_ILLUSTRATIONS[s].text}
-                src={GIFT_STATUS_ILLUSTRATIONS[s].imgUrl}
+                alt={GiftStatusIllustrations[s].text}
+                title={GiftStatusIllustrations[s].text}
+                src={GiftStatusIllustrations[s].imgUrl}
               />
             </div>
           )
@@ -96,15 +101,27 @@ const GiftStatus = props => {
     </div>
   );
 
-  const buttonProps =
-    status !== GIFT_STATUS.SENT
-      ? {}
-      : {
-          buttonLabel: `Mark as ${
-            direction === GIFT_DIRECTION.INCOMING ? "received" : "sent"
-          }`,
-          onButtonClick: handleButtonClick
-        };
+  let buttonProps = {};
+
+  if (!isButtonHidden) {
+    if (
+      direction === GiftDirectionTypes.OUTGOING &&
+      status === GiftStatusTypes.PACKING
+    ) {
+      buttonProps = {
+        buttonLabel: "Mark as sent",
+        onButtonClick: handleSentClick
+      };
+    } else if (
+      direction === GiftDirectionTypes.INCOMING &&
+      status === GiftStatusTypes.SENT
+    ) {
+      buttonProps = {
+        buttonLabel: "Mark as received",
+        onButtonClick: handleReceivedClick
+      };
+    }
+  }
 
   return (
     <div
@@ -129,12 +146,13 @@ const GiftStatus = props => {
 GiftStatus.propTypes = {
   gifter: t.string.isRequired,
   status: t.oneOf(GIFT_STATUS_ARRAY),
-  direction: t.oneOf(GIFT_DIRECTION_ARRAY)
+  direction: t.oneOf(GiftDirectionTypesArray),
+  isButtonHidden: t.bool
 };
 
 GiftStatus.defaultProps = {
-  status: GIFT_STATUS.PACKING,
-  direction: GIFT_DIRECTION.OUTGOING
+  status: GiftStatusTypes.PACKING,
+  direction: GiftDirectionTypes.OUTGOING
 };
 
 export default GiftStatus;
