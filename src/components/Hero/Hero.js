@@ -30,7 +30,11 @@ const Hero = props => {
 
           <GridItem span={6} spanMobile={4}>
             <div className="hero__image">
-              <img src="/images/snowman.png" alt="Snowman" title="Snowman" />
+              <img
+                src="/images/snowman_magic.png"
+                alt="Snowman"
+                title="Snowman"
+              />
             </div>
           </GridItem>
         </Grid>

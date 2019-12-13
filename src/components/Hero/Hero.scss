@@ -1,4 +1,5 @@
 @import "../../styles/mixins";
+@import "../../styles/variables";
 
 .hero {
   background-color: $vivid-violet;
@@ -12,7 +13,14 @@
     height: 100%;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 2rem;
+
+    @include media($tablet) {
+      align-items: flex-start;
+      text-align: left;
+    }
   }
 
   &__button {

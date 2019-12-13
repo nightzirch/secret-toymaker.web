@@ -23,7 +23,7 @@ const CreditsSection = props => {
             <DescriptionList>
               <DescriptionListItem
                 term="Christian A. Grimsgaard"
-                description="Tech lead"
+                description="Project lead"
                 {...itemProps}
               />
               <DescriptionListItem

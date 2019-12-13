@@ -91,6 +91,14 @@ const EventPage = props => {
     </>
   );
 
+  // TODO: Add proper text here
+  const renderNotParticipatingMessage = () => (
+    <>
+      <Title>Toymake-o-tron can't find you</Title>
+      <Paragraphs paragraphs={[]} />
+    </>
+  );
+
   const renderContent = () => {
     let contents;
 
@@ -110,8 +118,7 @@ const EventPage = props => {
           // TODO: Display the participant's giftee, a list of all gifts in their own state, and a button to donate gifts.
           contents = null;
         } else {
-          // TODO: Text about they're not participating in the current event.
-          contents = null;
+          contents = renderNotParticipatingMessage();
         }
       }
     } else if (stageType === StageTypes.INACTIVE) {
