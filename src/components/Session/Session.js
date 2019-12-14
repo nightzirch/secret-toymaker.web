@@ -1,35 +1,34 @@
-import React from "reactn";
+import React, { useEffect, useGlobal } from "reactn";
+import { dispatchWithLoading } from "utils/loading";
+import ActionTypes from "utils/types/ActionTypes";
 import AuthTypes from "utils/types/AuthTypes";
 
 export const withSession = Component => {
-  class WithSession extends React.Component {
-    componentDidMount() {
-      this.listener = this.global.firebase.auth.onAuthStateChanged(authUser => {
+  const WithSession = props => {
+    const [global, setGlobal] = useGlobal();
+
+    useEffect(() => {
+      const listener = global.firebase.auth.onAuthStateChanged(authUser => {
         // Globally sets the authenticated user
-        this.setGlobal({ authUser });
+        setGlobal({ authUser });
 
         // Globally sets the authenticated user's data
-        const userPromise = this.global.firebase.getUser(
-          authUser && authUser.uid
-        );
-        if (userPromise) {
-          userPromise.then(user =>
-            this.setGlobal({ user, authStatus: AuthTypes.AUTH })
-          );
-        } else {
-          this.setGlobal({ user: null, authStatus: AuthTypes.NO_AUTH });
-        }
+        dispatchWithLoading(
+          ActionTypes.GET_USER,
+          authUser ? authUser.uid : null
+        ).then(({ user }) => {
+          setGlobal({
+            user,
+            authStatus: user ? AuthTypes.AUTH : AuthTypes.NO_AUTH
+          });
+        });
       });
-    }
 
-    componentWillUnmount() {
-      this.listener();
-    }
+      return () => listener;
+    }, []);
 
-    render() {
-      return <Component {...this.props} />;
-    }
-  }
+    return <Component {...props} />;
+  };
 
   return WithSession;
 };

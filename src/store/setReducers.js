@@ -13,6 +13,11 @@ const setReducers = () => {
     return { alerts: filteredAlerts };
   });
 
+  addReducer(ActionTypes.GET_USER, async (global, dispatch, userId) => {
+    const user = await global.firebase.getUser(userId);
+    return { user };
+  });
+
   addReducer(ActionTypes.UPDATE_USER, async (global, dispatch, fields) => {
     const user = await global.firebase.updateUser(global.user.uid, fields);
     return { user };
@@ -53,6 +58,18 @@ const setReducers = () => {
     await dispatch.fetchParticipationStatus();
     return { user };
   });
+
+  addReducer(
+    ActionTypes.SEND_GIFT,
+    async (global, dispatch, value, gifteeGameAccountUUID) => {
+      const participation = await global.firebase.sendGift(
+        global.user.uid,
+        value,
+        gifteeGameAccountUUID
+      );
+      return global;
+    }
+  );
 
   addReducer(ActionTypes.GET_STATS, async (global, dispatch) => {
     const stats = await global.firebase.getStats();

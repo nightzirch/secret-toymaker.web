@@ -4,6 +4,7 @@ export default {
   CLOSE_ALERT: "closeAlert",
 
   // User
+  GET_USER: "getUser",
   UPDATE_USER: "updateUser",
   UPDATE_API_TOKEN: "updateApiToken",
 
@@ -11,6 +12,8 @@ export default {
   GET_PARTICIPATION_STATUS: "fetchParticipationStatus",
   REGISTER_PARTICIPATION: "registerParticipation",
   REMOVE_PARTICIPATION: "removeParticipation",
+  SEND_GIFT: "sendGift",
+  RECEIVE_GIFT: "receiveGift",
 
   // Firebase
   GET_STAGE: "updateStage",
