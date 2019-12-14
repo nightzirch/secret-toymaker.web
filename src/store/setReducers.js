@@ -13,6 +13,11 @@ const setReducers = () => {
     return { alerts: filteredAlerts };
   });
 
+  addReducer(ActionTypes.GET_USER, async (global, dispatch, userId) => {
+    const user = await global.firebase.getUser(userId);
+    return { user };
+  });
+
   addReducer(ActionTypes.UPDATE_USER, async (global, dispatch, fields) => {
     const user = await global.firebase.updateUser(global.user.uid, fields);
     return { user };

@@ -4,8 +4,8 @@ export const dispatchWithLoading = async (key, ...props) => {
   const dispatches = getDispatch();
 
   dispatches.setLoading(key, true);
-  await dispatches[key](...props);
+  const results = await dispatches[key](...props);
   dispatches.setLoading(key, false);
 
-  return true;
+  return results;
 };

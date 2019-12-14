@@ -185,6 +185,15 @@ class Firebase {
     return getAlerts().then(result => result.data.success);
   };
 
+  sendGift = (userId, value, gifteeId) => {
+    const sendGift = this.functions.httpsCallable("sendGift");
+    return sendGift({
+      user: userId,
+      value,
+      giftee_uuid: gifteeId
+    }).then(result => this.getParticipations());
+  };
+
   // Imported actions from notificationActions
   subscribeToNotifications = (userId, subscription) => {};
   unsubscribeFromNotifications = (userId, subscription) => {};

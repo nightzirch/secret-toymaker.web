@@ -25,10 +25,14 @@ import StageTypes from "utils/types/StageTypes";
 import "./EventPage.scss";
 
 const EventPage = props => {
-  const { participations, stage, user } = props;
+  const { loading, participations, stage, user } = props;
   const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
   const [isParticipating, setParticipating] = useState(null);
+  const isLoading =
+    loading[ActionTypes.GET_STATS] ||
+    loading[ActionTypes.GET_PARTICIPATION_STATUS] ||
+    loading[ActionTypes.GET_USER];
 
   useEffect(() => {
     dispatchWithLoading(ActionTypes.GET_STATS);
@@ -185,7 +189,7 @@ const EventPage = props => {
 
   return (
     <div className="event-page">
-      {isParticipating === null ? (
+      {isLoading ? (
         <LoadingIndicator message="Hold on as Toymake-o-tron is digging through our archives..." />
       ) : (
         <Section isWide>
@@ -205,12 +209,14 @@ const EventPage = props => {
 };
 
 EventPage.propTypes = {
+  loading: t.object,
   participations: t.array,
   stage: t.object,
   user: t.object
 };
 
 const mapGlobalToProps = global => ({
+  loading: global.loading,
   participations: global.participations,
   stage: global.stage,
   user: global.user

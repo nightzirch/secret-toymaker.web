@@ -4,6 +4,7 @@ export default {
   CLOSE_ALERT: "closeAlert",
 
   // User
+  GET_USER: "getUser",
   UPDATE_USER: "updateUser",
   UPDATE_API_TOKEN: "updateApiToken",
 
