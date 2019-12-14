@@ -177,7 +177,7 @@ const EventPage = props => {
       }
     }
 
-    contents = renderGifts();
+    // contents = renderGifts();
 
     return (
       <Grid>

@@ -70,6 +70,7 @@ class TextArea extends React.Component {
           placeholder={this.props.placeholder}
           readOnly={this.props.isReadOnly}
           required={this.props.isRequired}
+          value={this.props.value}
         />
       </div>
     );

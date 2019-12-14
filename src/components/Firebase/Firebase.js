@@ -88,7 +88,7 @@ class Firebase {
   setUser = result => {
     const { displayName, email, uid } = result.user;
     const { isNewUser, providerId, username } = result.additionalUserInfo;
-    const ref = this.db.collection("participants").doc(uid);
+    const ref = this.db.collection("toymakers").doc(uid);
 
     if (isNewUser) {
       const userObj = {
@@ -115,7 +115,7 @@ class Firebase {
   getUser = uid => {
     return uid
       ? this.db
-          .collection("participants")
+          .collection("toymakers")
           .doc(uid)
           .get()
           .then(doc => {
@@ -130,7 +130,7 @@ class Firebase {
 
   updateUser = (uid, { email }) => {
     return this.db
-      .collection("participants")
+      .collection("toymakers")
       .doc(uid)
       .set(
         {
@@ -147,7 +147,7 @@ class Firebase {
 
   updateApiToken = (uid, { apiToken }) => {
     const updateApiKey = this.functions.httpsCallable("updateApiKey");
-    return updateApiKey({ user: uid, apiKey: apiToken }).then(result =>
+    return updateApiKey({ user: uid, apiToken: apiToken }).then(result =>
       this.getUser(uid)
     );
   };
@@ -156,7 +156,7 @@ class Firebase {
     const participate = this.functions.httpsCallable("participate");
     return participate({
       user: userId,
-      note: notes,
+      notes,
       participate: true
     }).then(result => this.getUser(userId));
   };
@@ -170,7 +170,7 @@ class Firebase {
 
   getParticipations = (userId, apiToken) => {
     const participations = this.functions.httpsCallable("participateStatus");
-    return participations({ user: userId, apiKey: apiToken }).then(
+    return participations({ user: userId, apiToken: apiToken }).then(
       result => result.data.success
     );
   };

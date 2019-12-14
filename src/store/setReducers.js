@@ -59,6 +59,18 @@ const setReducers = () => {
     return { user };
   });
 
+  addReducer(
+    ActionTypes.SEND_GIFT,
+    async (global, dispatch, value, gifteeGameAccountUUID) => {
+      const participation = await global.firebase.sendGift(
+        global.user.uid,
+        value,
+        gifteeGameAccountUUID
+      );
+      return global;
+    }
+  );
+
   addReducer(ActionTypes.GET_STATS, async (global, dispatch) => {
     const stats = await global.firebase.getStats();
     return {

@@ -1,8 +1,8 @@
 import Button from "components/Button";
 import { TextArea } from "components/Form";
-import React, { useGlobal, useState } from "reactn";
+import React, { useEffect, useGlobal, useState } from "reactn";
 import { dispatchWithLoading } from "utils/loading";
-import { isParticipatingInEvent } from "utils/participation";
+import { getParticipationByYear } from "utils/participation";
 import ActionTypes from "utils/types/ActionTypes";
 import "./ParticipationForm.scss";
 
@@ -11,10 +11,16 @@ const ParticipationForm = props => {
   const [stage] = useGlobal("stage");
   const { year } = stage;
   const [notes, setNotes] = useState("");
-  const isParticipating = isParticipatingInEvent(year);
+  const participation = getParticipationByYear(year);
+  const isParticipating = !!participation;
   const isLoading =
     loading[ActionTypes.REGISTER_PARTICIPATION] ||
     loading[ActionTypes.REMOVE_PARTICIPATION];
+
+  useEffect(() => {
+    const newNotes = participation ? participation.notes : "";
+    setNotes(newNotes);
+  }, [participation]);
 
   const handleInputChange = e => {
     const { value } = e.target;

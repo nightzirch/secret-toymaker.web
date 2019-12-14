@@ -12,6 +12,8 @@ export default {
   GET_PARTICIPATION_STATUS: "fetchParticipationStatus",
   REGISTER_PARTICIPATION: "registerParticipation",
   REMOVE_PARTICIPATION: "removeParticipation",
+  SEND_GIFT: "sendGift",
+  RECEIVE_GIFT: "receiveGift",
 
   // Firebase
   GET_STAGE: "updateStage",
