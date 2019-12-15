@@ -147,7 +147,7 @@ class Firebase {
 
   updateApiToken = (uid, { apiToken }) => {
     const updateApiKey = this.functions.httpsCallable("updateApiKey");
-    return updateApiKey({ user: uid, apiToken: apiToken }).then(result =>
+    return updateApiKey({ user: uid, apiToken }).then(result =>
       this.getUser(uid)
     );
   };
@@ -170,7 +170,7 @@ class Firebase {
 
   getParticipations = (userId, apiToken) => {
     const participations = this.functions.httpsCallable("participateStatus");
-    return participations({ user: userId, apiToken: apiToken }).then(
+    return participations({ user: userId, apiToken }).then(
       result => result.data.success
     );
   };
@@ -185,13 +185,45 @@ class Firebase {
     return getAlerts().then(result => result.data.success);
   };
 
-  sendGift = (userId, value, gifteeId) => {
-    const sendGift = this.functions.httpsCallable("sendGift");
-    return sendGift({
+  getGifts = userId => {
+    const getGifts = this.functions.httpsCallable("getGifts");
+    return getGifts({
+      user: userId
+    }).then(result => result.data.success);
+  };
+
+  sendGift = (userId, giftId, isSent) => {
+    const updateGiftSentStatus = this.functions.httpsCallable(
+      "updateGiftSentStatus"
+    );
+    return updateGiftSentStatus({
       user: userId,
-      value,
-      giftee_uuid: gifteeId
-    }).then(result => this.getParticipations());
+      giftId,
+      isSent
+    }).then(result => this.getGifts(userId));
+  };
+
+  receiveGift = (userId, giftId, isReceived) => {
+    const updateGiftReceivedStatus = this.functions.httpsCallable(
+      "updateGiftReceivedStatus"
+    );
+    return updateGiftReceivedStatus({
+      user: userId,
+      giftId,
+      isReceived
+    }).then(result => this.getGifts(userId));
+  };
+
+  reportGift = (userId, giftId, isReporting, reportMessage) => {
+    const updateGiftReportedStatus = this.functions.httpsCallable(
+      "updateGiftReportedStatus"
+    );
+    return updateGiftReportedStatus({
+      user: userId,
+      giftId,
+      isReporting,
+      reportMessage
+    }).then(result => this.getGifts(userId));
   };
 
   // Imported actions from notificationActions

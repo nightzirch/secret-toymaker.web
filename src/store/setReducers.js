@@ -59,15 +59,45 @@ const setReducers = () => {
     return { user };
   });
 
+  addReducer(ActionTypes.GET_GIFTS, async (global, dispatch) => {
+    const gifts = await global.firebase.getGifts(global.user.uid);
+    return { gifts };
+  });
+
   addReducer(
     ActionTypes.SEND_GIFT,
-    async (global, dispatch, value, gifteeGameAccountUUID) => {
-      const participation = await global.firebase.sendGift(
+    async (global, dispatch, giftId, isSent) => {
+      const gifts = await global.firebase.sendGift(
         global.user.uid,
-        value,
-        gifteeGameAccountUUID
+        giftId,
+        isSent
       );
-      return global;
+      return { gifts };
+    }
+  );
+
+  addReducer(
+    ActionTypes.RECEIVE_GIFT,
+    async (global, dispatch, giftId, isReceived) => {
+      const gifts = await global.firebase.receiveGift(
+        global.user.uid,
+        giftId,
+        isReceived
+      );
+      return { gifts };
+    }
+  );
+
+  addReducer(
+    ActionTypes.REPORT_GIFT,
+    async (global, dispatch, giftId, isReporting, reportMessage) => {
+      const gifts = await global.firebase.reportGift(
+        global.user.uid,
+        giftId,
+        isReporting,
+        reportMessage
+      );
+      return { gifts };
     }
   );
 

@@ -40,6 +40,7 @@ const EventPage = props => {
 
   useEffect(() => {
     if (user) {
+      dispatchWithLoading(ActionTypes.GET_GIFTS);
       dispatchWithLoading(ActionTypes.GET_PARTICIPATION_STATUS);
     }
   }, [user]);

@@ -7,6 +7,7 @@ const setGlobalStore = () => {
     alerts: [],
     authStatus: null,
     authUser: null,
+    gifts: {},
     firebase: new Firebase(),
     isMenuOpen: false,
     loading: {},
