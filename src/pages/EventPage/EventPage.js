@@ -20,12 +20,11 @@ import ActionTypes from "utils/types/ActionTypes";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 import AuthTypes from "utils/types/AuthTypes";
 import GiftDirectionTypes from "utils/types/GiftDirectionTypes";
-import GiftStatusTypes from "utils/types/GiftStatusTypes";
 import StageTypes from "utils/types/StageTypes";
 import "./EventPage.scss";
 
 const EventPage = props => {
-  const { loading, participations, stage, user } = props;
+  const { gifts, loading, participations, stage, user } = props;
   const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
   const [isParticipating, setParticipating] = useState(null);
@@ -50,6 +49,16 @@ const EventPage = props => {
       setParticipating(isParticipatingInEvent(year));
     }
   }, [participations]);
+
+  useEffect(() => {
+    if (
+      user &&
+      isParticipating &&
+      [StageTypes.GIFTING, StageTypes.INACTIVE].includes(stageType)
+    ) {
+      dispatchWithLoading(ActionTypes.GET_GIFTS);
+    }
+  }, [user, isParticipating, stageType]);
 
   const renderStats = () => (
     <>
@@ -107,25 +116,30 @@ const EventPage = props => {
     </>
   );
 
-  const renderPrimaryGifts = () => (
-    <>
-      <Title>Your match</Title>
-      <GiftStatus
-        gifter="Toymake-o-tron"
-        isButtonHidden={stageType === StageTypes.INACTIVE}
-        status={GiftStatusTypes.PACKING}
-        direction={GiftDirectionTypes.OUTGOING}
-      />
+  const renderPrimaryGifts = () =>
+    gifts && (
+      <>
+        {gifts.primaryOutgoing && (
+          <>
+            <Title>Your match</Title>
+            <GiftStatus
+              gift={gifts.primaryOutgoing}
+              direction={GiftDirectionTypes.OUTGOING}
+            />
+          </>
+        )}
 
-      <Title>Your secret toymaker</Title>
-      <GiftStatus
-        gifter="Toymake-o-tron"
-        isButtonHidden={stageType === StageTypes.INACTIVE}
-        status={GiftStatusTypes.SENT}
-        direction={GiftDirectionTypes.INCOMING}
-      />
-    </>
-  );
+        {gifts.primaryIncoming && (
+          <>
+            <Title>Your secret toymaker</Title>
+            <GiftStatus
+              gift={gifts.primaryIncoming}
+              direction={GiftDirectionTypes.INCOMING}
+            />
+          </>
+        )}
+      </>
+    );
 
   const renderDonations = () => (
     <>
@@ -178,8 +192,6 @@ const EventPage = props => {
       }
     }
 
-    // contents = renderGifts();
-
     return (
       <Grid>
         <GridItem span={8}>{contents}</GridItem>
@@ -210,6 +222,7 @@ const EventPage = props => {
 };
 
 EventPage.propTypes = {
+  gifts: t.object,
   loading: t.object,
   participations: t.array,
   stage: t.object,
@@ -217,6 +230,7 @@ EventPage.propTypes = {
 };
 
 const mapGlobalToProps = global => ({
+  gifts: global.gifts,
   loading: global.loading,
   participations: global.participations,
   stage: global.stage,

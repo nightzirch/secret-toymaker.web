@@ -61,7 +61,23 @@ const setReducers = () => {
 
   addReducer(ActionTypes.GET_GIFTS, async (global, dispatch) => {
     const gifts = await global.firebase.getGifts(global.user.uid);
-    return { gifts };
+    const { outgoing, incoming } = gifts;
+
+    const primaryOutgoing = gifts
+      ? outgoing.splice(outgoing.map(g => g.isPrimary).indexOf(true), 1)[0]
+      : null;
+    const primaryIncoming = gifts
+      ? incoming.splice(incoming.map(g => g.isPrimary).indexOf(true), 1)[0]
+      : null;
+
+    return {
+      gifts: {
+        primaryOutgoing,
+        primaryIncoming,
+        outgoing,
+        incoming
+      }
+    };
   });
 
   addReducer(

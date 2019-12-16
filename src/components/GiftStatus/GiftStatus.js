@@ -18,7 +18,14 @@ const GIFT_STATUS_ARRAY = Object.keys(GiftStatusTypes).map(
 );
 
 const GiftStatus = props => {
-  const { direction, gifter, id, isButtonHidden, status } = props;
+  const { direction, gift } = props;
+  const { uid: id } = gift;
+
+  // TODO: Use proper data from the gift object
+  const isButtonHidden = false;
+  const status = GiftStatusTypes.PACKING;
+  const gifter = "Toymake-o-tron";
+
   const activeIndex = GIFT_STATUS_ARRAY.findIndex(index => index === status);
 
   const handleSentClick = () => {
@@ -146,16 +153,8 @@ const GiftStatus = props => {
 };
 
 GiftStatus.propTypes = {
-  gifter: t.string.isRequired,
-  id: t.string.isRequired,
-  isButtonHidden: t.bool,
-  direction: t.oneOf(GiftDirectionTypesArray),
-  status: t.oneOf(GIFT_STATUS_ARRAY)
-};
-
-GiftStatus.defaultProps = {
-  status: GiftStatusTypes.PACKING,
-  direction: GiftDirectionTypes.OUTGOING
+  gift: t.object.isRequired,
+  direction: t.oneOf(GiftDirectionTypesArray).isRequired
 };
 
 export default GiftStatus;
