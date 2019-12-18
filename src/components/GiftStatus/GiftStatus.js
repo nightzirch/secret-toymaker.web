@@ -1,6 +1,6 @@
 import classnames from "classnames";
 import Card from "components/Card";
-import { Title } from "components/Typography";
+import { Paragraph, Title } from "components/Typography";
 import t from "prop-types";
 import React from "reactn";
 import { dispatchWithLoading } from "utils/loading";
@@ -19,12 +19,11 @@ const GIFT_STATUS_ARRAY = Object.keys(GiftStatusTypes).map(
 
 const GiftStatus = props => {
   const { direction, gift } = props;
-  const { uid: id } = gift;
+  const { id, match, notes } = gift;
 
   // TODO: Use proper data from the gift object
   const isButtonHidden = false;
   const status = GiftStatusTypes.PACKING;
-  const gifter = "Toymake-o-tron";
 
   const activeIndex = GIFT_STATUS_ARRAY.findIndex(index => index === status);
 
@@ -44,8 +43,17 @@ const GiftStatus = props => {
         <span className="gift-status__title__pre">
           {`${direction === GiftDirectionTypes.INCOMING ? "From" : "To"}:`}
         </span>
-        {gifter}
+        {match}
       </Title>
+    </div>
+  );
+
+  const renderNotes = () => (
+    <div className="gift-status__notes">
+      <Title level="tertiary" className="gift-status__notes__pre">
+        Notes:
+      </Title>
+      <Paragraph>{notes}</Paragraph>
     </div>
   );
 
@@ -145,6 +153,7 @@ const GiftStatus = props => {
     >
       <Card className="gift-status__card" {...buttonProps}>
         {renderTitle()}
+        {renderNotes()}
         {renderTimeline()}
         {renderIllustrations()}
       </Card>

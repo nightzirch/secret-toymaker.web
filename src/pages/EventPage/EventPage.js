@@ -141,23 +141,30 @@ const EventPage = props => {
       </>
     );
 
-  const renderDonations = () => (
+  const renderOutgoingDonations = () => (
     <>
       <Title>Your donations</Title>
       <Paragraph>
         Here there will be a little paragraph about how all the big boys are
         donating. And a call to action.
       </Paragraph>
-
-      <Title>Incoming donations</Title>
-      <Paragraph>Won't be visible unless there are some.</Paragraph>
     </>
   );
+
+  const renderIncomingDonations = () =>
+    gifts.incoming &&
+    gifts.incoming.length > 0 && (
+      <>
+        <Title>Incoming donations</Title>
+        <Paragraph>Won't be visible unless there are some.</Paragraph>
+      </>
+    );
 
   const renderGifts = () => (
     <>
       {renderPrimaryGifts()}
-      {renderDonations()}
+      {renderOutgoingDonations()}
+      {renderIncomingDonations()}
     </>
   );
 

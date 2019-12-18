@@ -6,20 +6,17 @@ $active-color: $primary-color;
 $inactive-color: $grey;
 
 .gift-status {
-  margin: 1em 0;
+  margin: 0;
 
-  &:first-of-type {
-    margin-top: 0;
-  }
-
-  &:last-of-type {
-    margin-bottom: 0;
+  & + * {
+    margin-top: 1em;
   }
 
   &__card {
     position: relative;
     z-index: $z-index-gift-status-card;
     background-color: rgba($white, 0.5);
+    padding-bottom: 0;
   }
 
   &--outgoing {
@@ -69,15 +66,30 @@ $inactive-color: $grey;
   }
 
   &__title {
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 
     &__pre {
-      margin-right: 1em;
+      margin-right: 1rem;
       font-weight: lighter;
     }
 
     .title {
       margin: 0;
+    }
+  }
+
+  &__notes {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    .title {
+      margin: 0 1rem 0 0;
+      font-weight: lighter;
+    }
+
+    .paragraph {
+      margin: 0.5rem 0 0;
     }
   }
 
