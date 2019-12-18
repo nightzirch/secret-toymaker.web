@@ -61,46 +61,24 @@ const setReducers = () => {
 
   addReducer(ActionTypes.GET_GIFTS, async (global, dispatch) => {
     const gifts = await global.firebase.getGifts(global.user.uid);
-    const { outgoing, incoming } = gifts;
-
-    const primaryOutgoing = gifts
-      ? outgoing.splice(outgoing.map(g => g.isPrimary).indexOf(true), 1)[0]
-      : null;
-    const primaryIncoming = gifts
-      ? incoming.splice(incoming.map(g => g.isPrimary).indexOf(true), 1)[0]
-      : null;
-
-    return {
-      gifts: {
-        primaryOutgoing,
-        primaryIncoming,
-        outgoing,
-        incoming
-      }
-    };
+    return { gifts };
   });
 
   addReducer(
     ActionTypes.SEND_GIFT,
     async (global, dispatch, giftId, isSent) => {
-      const gifts = await global.firebase.sendGift(
-        global.user.uid,
-        giftId,
-        isSent
-      );
-      return { gifts };
+      await global.firebase.sendGift(global.user.uid, giftId, isSent);
+      await dispatch[ActionTypes.GET_GIFTS]();
+      await dispatch[ActionTypes.GET_STATS]();
     }
   );
 
   addReducer(
     ActionTypes.RECEIVE_GIFT,
     async (global, dispatch, giftId, isReceived) => {
-      const gifts = await global.firebase.receiveGift(
-        global.user.uid,
-        giftId,
-        isReceived
-      );
-      return { gifts };
+      await global.firebase.receiveGift(global.user.uid, giftId, isReceived);
+      await dispatch[ActionTypes.GET_GIFTS]();
+      await dispatch[ActionTypes.GET_STATS]();
     }
   );
 

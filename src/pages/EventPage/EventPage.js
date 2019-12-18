@@ -25,6 +25,12 @@ import "./EventPage.scss";
 
 const EventPage = props => {
   const { gifts, loading, participations, stage, user } = props;
+  const {
+    outgoingPrimary: outgoingPrimaryGift,
+    outgoing: outgoingGifts,
+    incomingPrimary: incomingPrimaryGift,
+    incoming: incomingGifts
+  } = gifts;
   const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
   const [isParticipating, setParticipating] = useState(null);
@@ -116,30 +122,29 @@ const EventPage = props => {
     </>
   );
 
-  const renderPrimaryGifts = () =>
-    gifts && (
-      <>
-        {gifts.primaryOutgoing && (
-          <>
-            <Title>Your match</Title>
-            <GiftStatus
-              gift={gifts.primaryOutgoing}
-              direction={GiftDirectionTypes.OUTGOING}
-            />
-          </>
-        )}
+  const renderPrimaryGifts = () => (
+    <>
+      {outgoingPrimaryGift && (
+        <>
+          <Title>Your match</Title>
+          <GiftStatus
+            gift={outgoingPrimaryGift}
+            direction={GiftDirectionTypes.OUTGOING}
+          />
+        </>
+      )}
 
-        {gifts.primaryIncoming && (
-          <>
-            <Title>Your secret toymaker</Title>
-            <GiftStatus
-              gift={gifts.primaryIncoming}
-              direction={GiftDirectionTypes.INCOMING}
-            />
-          </>
-        )}
-      </>
-    );
+      {incomingPrimaryGift && (
+        <>
+          <Title>Your secret toymaker</Title>
+          <GiftStatus
+            gift={incomingPrimaryGift}
+            direction={GiftDirectionTypes.INCOMING}
+          />
+        </>
+      )}
+    </>
+  );
 
   const renderOutgoingDonations = () => (
     <>
@@ -152,8 +157,8 @@ const EventPage = props => {
   );
 
   const renderIncomingDonations = () =>
-    gifts.incoming &&
-    gifts.incoming.length > 0 && (
+    incomingGifts &&
+    incomingGifts.length > 0 && (
       <>
         <Title>Incoming donations</Title>
         <Paragraph>Won't be visible unless there are some.</Paragraph>
@@ -230,6 +235,10 @@ const EventPage = props => {
 
 EventPage.propTypes = {
   gifts: t.object,
+  outgoingPrimaryGift: t.object,
+  outgoingGifts: t.array,
+  incomingPrimaryGift: t.object,
+  incomingGifts: t.array,
   loading: t.object,
   participations: t.array,
   stage: t.object,

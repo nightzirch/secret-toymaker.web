@@ -2,8 +2,11 @@ import classnames from "classnames";
 import Card from "components/Card";
 import { Paragraph, Title } from "components/Typography";
 import t from "prop-types";
-import React from "reactn";
-import { dispatchWithLoading } from "utils/loading";
+import React, { useEffect, useGlobal, useState } from "reactn";
+import {
+  dispatchWithCustomLoading,
+  generateCustomGiftLoadingKey
+} from "utils/loading";
 import ActionTypes from "utils/types/ActionTypes";
 import GiftDirectionTypes from "utils/types/GiftDirectionTypes";
 import GiftStatusTypes from "utils/types/GiftStatusTypes";
@@ -19,22 +22,49 @@ const GIFT_STATUS_ARRAY = Object.keys(GiftStatusTypes).map(
 
 const GiftStatus = props => {
   const { direction, gift } = props;
-  const { id, match, notes } = gift;
+  const { id, match, notes, received, sent } = gift;
+  const [loading] = useGlobal("loading");
+  const [status, setStatus] = useState(null);
+  const [isButtonVisible, setButtonVisible] = useState(true);
+  const loadingKey = generateCustomGiftLoadingKey(id);
 
-  // TODO: Use proper data from the gift object
-  const isButtonHidden = false;
-  const status = GiftStatusTypes.PACKING;
+  useEffect(() => {
+    if (received) {
+      setStatus(GiftStatusTypes.RECEIVED);
+    } else if (sent) {
+      setStatus(GiftStatusTypes.SENT);
+    } else {
+      setStatus(GiftStatusTypes.PACKING);
+    }
+  }, [received, sent]);
+
+  useEffect(() => {
+    if (direction === GiftDirectionTypes.OUTGOING) {
+      setButtonVisible(
+        [GiftStatusTypes.PACKING, GiftStatusTypes.SENT].includes(status)
+      );
+    } else if (direction === GiftDirectionTypes.INCOMING) {
+      setButtonVisible(
+        [GiftStatusTypes.SENT, GiftStatusTypes.RECEIVED].includes(status)
+      );
+    }
+  }, [direction, status]);
 
   const activeIndex = GIFT_STATUS_ARRAY.findIndex(index => index === status);
 
   const handleSentClick = () => {
     const isSent = status === GiftStatusTypes.PACKING;
-    dispatchWithLoading(ActionTypes.SEND_GIFT, id, isSent);
+    dispatchWithCustomLoading(ActionTypes.SEND_GIFT, loadingKey, id, isSent);
   };
 
   const handleReceivedClick = () => {
     const isReceived = status === GiftStatusTypes.SENT;
-    dispatchWithLoading(ActionTypes.RECEIVE_GIFT, id, isReceived);
+    dispatchWithCustomLoading(
+      ActionTypes.RECEIVE_GIFT,
+      loadingKey,
+      id,
+      isReceived
+    );
   };
 
   const renderTitle = () => (
@@ -118,29 +148,29 @@ const GiftStatus = props => {
     </div>
   );
 
-  let buttonProps = {};
+  const cardProps = { isLoading: loading[loadingKey] };
 
-  if (!isButtonHidden) {
-    if (
-      direction === GiftDirectionTypes.OUTGOING &&
-      status === GiftStatusTypes.PACKING
-    ) {
-      buttonProps = {
-        buttonLabel: "Mark as sent",
-        onButtonClick: handleSentClick
-      };
-    } else if (
-      direction === GiftDirectionTypes.INCOMING &&
-      status === GiftStatusTypes.SENT
-    ) {
-      buttonProps = {
-        buttonLabel: "Mark as received",
-        onButtonClick: handleReceivedClick
-      };
+  if (isButtonVisible) {
+    if (direction === GiftDirectionTypes.OUTGOING) {
+      cardProps.onButtonClick = handleSentClick;
+
+      if (status === GiftStatusTypes.PACKING) {
+        cardProps.buttonLabel = "Mark as sent";
+      } else if (status === GiftStatusTypes.SENT) {
+        cardProps.buttonLabel = "Undo mark as sent";
+      }
+    } else if (direction === GiftDirectionTypes.INCOMING) {
+      cardProps.onButtonClick = handleReceivedClick;
+
+      if (status === GiftStatusTypes.SENT) {
+        cardProps.buttonLabel = "Mark as received";
+      } else if (status === GiftStatusTypes.RECEIVED) {
+        cardProps.buttonLabel = "Undo mark as received";
+      }
     }
   }
 
-  return (
+  return status ? (
     <div
       className={classnames(
         "gift-status",
@@ -151,14 +181,14 @@ const GiftStatus = props => {
         }
       )}
     >
-      <Card className="gift-status__card" {...buttonProps}>
+      <Card className="gift-status__card" {...cardProps}>
         {renderTitle()}
         {renderNotes()}
         {renderTimeline()}
         {renderIllustrations()}
       </Card>
     </div>
-  );
+  ) : null;
 };
 
 GiftStatus.propTypes = {

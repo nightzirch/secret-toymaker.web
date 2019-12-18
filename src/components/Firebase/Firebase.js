@@ -200,7 +200,7 @@ class Firebase {
       user: userId,
       giftId,
       isSent
-    }).then(result => this.getGifts(userId));
+    }).then(result => result.data.success);
   };
 
   receiveGift = (userId, giftId, isReceived) => {
@@ -211,7 +211,7 @@ class Firebase {
       user: userId,
       giftId,
       isReceived
-    }).then(result => this.getGifts(userId));
+    }).then(result => result.data.success);
   };
 
   reportGift = (userId, giftId, isReporting, reportMessage) => {
@@ -223,12 +223,14 @@ class Firebase {
       giftId,
       isReporting,
       reportMessage
-    }).then(result => this.getGifts(userId));
+    }).then(result => result.data.success);
   };
 
   // Imported actions from notificationActions
   subscribeToNotifications = (userId, subscription) => {};
+
   unsubscribeFromNotifications = (userId, subscription) => {};
+
   setSubscribedState = isSubscribed => {};
 }
 
