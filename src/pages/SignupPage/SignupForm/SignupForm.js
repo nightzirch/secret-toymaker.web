@@ -32,7 +32,7 @@ class SignupForm extends React.Component {
     this.setState({ [id]: value });
   };
 
-  handleFormSubmit = e => {
+  handleFormSubmit = async e => {
     e.preventDefault();
     const { email, password, password2 } = this.state;
 
@@ -45,10 +45,22 @@ class SignupForm extends React.Component {
     } else {
       dispatchWithLoading(ActionTypes.SET_ERROR, ErrorTypes.SIGNUP);
 
-      this.global.firebase.createUserWithEmailAndPassword({
-        email,
-        password
-      });
+      const response = await this.global.firebase.createUserWithEmailAndPassword(
+        {
+          email,
+          password
+        }
+      );
+
+      if (response.error) {
+        dispatchWithLoading(
+          ActionTypes.SET_ERROR,
+          ErrorTypes.SIGNUP,
+          response.error
+        );
+      } else {
+        dispatchWithLoading(ActionTypes.SET_ERROR, ErrorTypes.SIGNUP);
+      }
     }
   };
 
@@ -104,11 +116,13 @@ class SignupForm extends React.Component {
 
               <div className="signup-form__social-buttons">
                 <SigninGoogleButton
+                  errorType={ErrorTypes.SIGNUP}
                   isCentered
                   isFullWidth
                   title="Sign up with Google"
                 />
                 <SigninFacebookButton
+                  errorType={ErrorTypes.SIGNUP}
                   isCentered
                   isFullWidth
                   title="Sign up with Facebook"

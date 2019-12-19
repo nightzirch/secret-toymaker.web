@@ -24,15 +24,22 @@ class Firebase {
   }
 
   // AUTH
-  createUserWithEmailAndPassword = ({ email, password }) =>
-    this.auth.createUserWithEmailAndPassword(email, password).then(result => {
-      this.setUser(result).then(() =>
-        this.signInWithEmailAndPassword({ email, password })
-      );
-    });
+  createUserWithEmailAndPassword = ({ email, password }) => {
+    return this.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(result =>
+        this.setUser(result).then(() =>
+          this.signInWithEmailAndPassword({ email, password })
+        )
+      )
+      .catch(error => ({ error: error.message }));
+  };
 
   signInWithEmailAndPassword = ({ email, password }) =>
-    this.auth.signInWithEmailAndPassword(email, password);
+    this.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => ({ success: "Successfully logged in!" }))
+      .catch(error => ({ error: error.message }));
 
   signOut = () => this.auth.signOut();
 
@@ -40,26 +47,18 @@ class Firebase {
 
   passwordUpdate = password => this.auth.currentUser.updatePassword(password);
 
-  signInWithGoogle = () => {
-    this.signInWithPopup(this.googleLoginProvider);
-  };
+  signInWithGoogle = () => this.signInWithPopup(this.googleLoginProvider);
 
-  signInWithFacebook = () => {
-    this.signInWithPopup(this.facebookLoginProvider);
-  };
+  signInWithFacebook = () => this.signInWithPopup(this.facebookLoginProvider);
 
-  signInWithPopup = provider => {
-    this.auth
+  signInWithPopup = async provider => {
+    return this.auth
       .signInWithPopup(provider)
       .then(result => {
         this.setUser(result);
       })
-      .then(() => {
-        console.log("Successfully logged in!");
-      })
-      .catch(error => {
-        console.log("Error: ", error);
-      });
+      .then(() => ({ success: "Successfully logged in!" }))
+      .catch(error => ({ error: error.message }));
   };
 
   // FUNCTIONS

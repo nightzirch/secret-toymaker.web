@@ -1,10 +1,6 @@
 import Alerts from "components/Alerts";
 import ApiTokenForm from "components/ApiTokenForm";
-import Button, {
-  DeleteAccountButton,
-  PasswordResetButton,
-  SignoutButton
-} from "components/Button";
+import Button, { PasswordResetButton, SignoutButton } from "components/Button";
 import { Grid, GridItem } from "components/Grid";
 import ProfilePicture from "components/ProfilePicture";
 import Section from "components/Section";
@@ -26,9 +22,8 @@ class ProfilePage extends React.Component {
     <>
       <Title level="secondary">Danger zone</Title>
 
-      <DeleteAccountButton />
-      <PasswordResetButton />
       <SignoutButton />
+      <PasswordResetButton />
     </>
   );
 

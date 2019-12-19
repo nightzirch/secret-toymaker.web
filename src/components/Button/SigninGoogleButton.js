@@ -1,28 +1,41 @@
-import React from "reactn";
+import t from "prop-types";
+import React, { useGlobal } from "reactn";
+import { dispatchWithLoading } from "utils/loading";
+import ActionTypes from "utils/types/ActionTypes";
+import ErrorTypes from "utils/types/ErrorTypes";
 import Button from "./Button";
 
-class SigninGoogleButton extends React.Component {
-  constructor(props) {
-    super(props);
+const SigninGoogleButton = props => {
+  const { errorType } = props;
+  const [firebase] = useGlobal("firebase");
 
-    this.handleSigninClick = this.handleSigninClick.bind(this);
-  }
+  const handleSigninClick = async () => {
+    const response = await firebase.signInWithGoogle();
 
-  handleSigninClick() {
-    this.global.firebase.signInWithGoogle();
-  }
+    if (response.error) {
+      dispatchWithLoading(ActionTypes.SET_ERROR, errorType, response.error);
+    } else {
+      dispatchWithLoading(ActionTypes.SET_ERROR, errorType);
+    }
+  };
 
-  render() {
-    return (
-      <Button
-        icon={<ion-icon name="logo-google"></ion-icon>}
-        theme="secondary"
-        onClick={this.handleSigninClick}
-        title="Log in with Google"
-        {...this.props}
-      />
-    );
-  }
-}
+  return (
+    <Button
+      icon={<ion-icon name="logo-google"></ion-icon>}
+      theme="secondary"
+      onClick={handleSigninClick}
+      title="Log in with Google"
+      {...props}
+    />
+  );
+};
+
+SigninGoogleButton.propTypes = {
+  errorType: t.string
+};
+
+SigninGoogleButton.defaultProps = {
+  errorType: ErrorTypes.LOGIN
+};
 
 export default SigninGoogleButton;

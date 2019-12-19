@@ -2,11 +2,15 @@ import Button, {
   SigninFacebookButton,
   SigninGoogleButton
 } from "components/Button";
+import Error from "components/Error";
 import { InputField } from "components/Form";
 import { Grid, GridItem } from "components/Grid";
 import Link from "components/Link";
 import React from "reactn";
 import Routes from "routes";
+import { dispatchWithLoading } from "utils/loading";
+import ActionTypes from "utils/types/ActionTypes";
+import ErrorTypes from "utils/types/ErrorTypes";
 import "./LoginForm.scss";
 
 class LoginForm extends React.Component {
@@ -27,18 +31,30 @@ class LoginForm extends React.Component {
     this.setState({ [id]: value });
   };
 
-  handleFormSubmit = e => {
+  handleFormSubmit = async e => {
     e.preventDefault();
 
-    this.global.firebase.signInWithEmailAndPassword({
+    const response = await this.global.firebase.signInWithEmailAndPassword({
       email: this.state.email,
       password: this.state.password
     });
+
+    if (response.error) {
+      dispatchWithLoading(
+        ActionTypes.SET_ERROR,
+        ErrorTypes.LOGIN,
+        response.error
+      );
+    } else {
+      dispatchWithLoading(ActionTypes.SET_ERROR, ErrorTypes.LOGIN);
+    }
   };
 
   render() {
     return (
       <div className="login-form__container">
+        <Error id={ErrorTypes.LOGIN} />
+
         <form className="login-form" onSubmit={this.handleFormSubmit}>
           <Grid>
             <GridItem span={4} offset={5}>
