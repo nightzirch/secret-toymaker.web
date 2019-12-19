@@ -226,6 +226,11 @@ class Firebase {
     }).then(result => result.data.success);
   };
 
+  donateGift = userId => {
+    const donateGift = this.functions.httpsCallable("donateGift");
+    return donateGift({ user: userId }).then(result => result.data.success);
+  };
+
   // Imported actions from notificationActions
   subscribeToNotifications = (userId, subscription) => {};
 

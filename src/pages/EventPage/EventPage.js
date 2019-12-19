@@ -1,6 +1,6 @@
 import Alerts from "components/Alerts";
 import ApiTokenForm from "components/ApiTokenForm";
-import { LoginButton } from "components/Button";
+import Button, { LoginButton } from "components/Button";
 import EventHero from "components/EventHero";
 import { InputField } from "components/Form";
 import GiftStatus from "components/GiftStatus";
@@ -65,6 +65,10 @@ const EventPage = props => {
       dispatchWithLoading(ActionTypes.GET_GIFTS);
     }
   }, [user, isParticipating, stageType]);
+
+  const handleDonateClick = () => {
+    dispatchWithLoading(ActionTypes.DONATE_GIFT);
+  };
 
   const renderStats = () => (
     <>
@@ -150,9 +154,22 @@ const EventPage = props => {
     <>
       <Title>Your donations</Title>
       <Paragraph>
-        Here there will be a little paragraph about how all the big boys are
-        donating. And a call to action.
+        Is your soul overfilled with wintersday spirit? Is giving one gift not
+        enough? Fear not, we got you covered.
       </Paragraph>
+
+      <Button
+        isLoading={loading[ActionTypes.DONATE_GIFT]}
+        onClick={handleDonateClick}
+        title="Donate a gift"
+      />
+
+      {outgoingGifts.map(outgoingGift => (
+        <GiftStatus
+          direction={GiftDirectionTypes.OUTGOING}
+          gift={outgoingGift}
+        />
+      ))}
     </>
   );
 

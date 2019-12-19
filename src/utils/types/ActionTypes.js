@@ -18,6 +18,7 @@ export default {
   SEND_GIFT: "sendGift",
   RECEIVE_GIFT: "receiveGift",
   REPORT_GIFT: "reportGift",
+  DONATE_GIFT: "donateGift",
 
   // Firebase
   GET_STAGE: "updateStage",

@@ -95,6 +95,11 @@ const setReducers = () => {
     }
   );
 
+  addReducer(ActionTypes.DONATE_GIFT, async (global, dispatch) => {
+    await global.firebase.donateGift(global.user.uid);
+    await dispatch[ActionTypes.GET_GIFTS]();
+  });
+
   addReducer(ActionTypes.GET_STATS, async (global, dispatch) => {
     const stats = await global.firebase.getStats();
     return {
