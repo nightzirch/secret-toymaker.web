@@ -1,4 +1,3 @@
-import { SupportUsSection } from "components/Sections";
 import { Paragraphs, Signature, Title } from "components/Typography";
 import lang from "lang/lang";
 import { withRouter } from "react-router-dom";
@@ -42,8 +41,6 @@ class ThanksBlock extends React.Component {
             <Button onClick={this.gotoProfilePage} title="Go to profile" />
           </div>
         </div>
-
-        <SupportUsSection />
       </div>
     );
   }

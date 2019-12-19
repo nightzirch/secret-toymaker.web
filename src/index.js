@@ -7,7 +7,6 @@ import App from "./pages/App";
 import EventPage from "./pages/EventPage";
 import FaqPage from "./pages/FaqPage";
 import FrontPage from "./pages/FrontPage";
-import GiftsPage from "./pages/GiftsPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import SignupPage from "./pages/SignupPage";
@@ -28,7 +27,6 @@ ReactDOM.render(
       <Route path={Routes.EVENT} exact component={EventPage} />
       <Route path={Routes.FAQ} exact component={FaqPage} />
       <Route path={Routes.FRONTPAGE} exact component={FrontPage} />
-      <Route path={Routes.GIFTS} exact component={GiftsPage} />
       <Route path={Routes.LOGIN} exact component={LoginPage} />
       <Route path={Routes.PROFILE} exact component={ProfilePage} />
       <Route path={Routes.SIGNUP} exact component={SignupPage} />
