@@ -164,12 +164,13 @@ const EventPage = props => {
         title="Donate a gift"
       />
 
-      {outgoingGifts.map(outgoingGift => (
-        <GiftStatus
-          direction={GiftDirectionTypes.OUTGOING}
-          gift={outgoingGift}
-        />
-      ))}
+      {outgoingGifts &&
+        outgoingGifts.map(outgoingGift => (
+          <GiftStatus
+            direction={GiftDirectionTypes.OUTGOING}
+            gift={outgoingGift}
+          />
+        ))}
     </>
   );
 
