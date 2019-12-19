@@ -107,6 +107,10 @@ const setReducers = () => {
     };
   });
 
+  addReducer(ActionTypes.SET_ERROR, async (global, dispatch, key, message) => {
+    return { error: { ...global.error, [key]: message } };
+  });
+
   addReducer(ActionTypes.SET_LOADING, async (global, dispatch, key, value) => {
     return {
       loading: { ...global.loading, [key]: value }

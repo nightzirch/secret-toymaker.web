@@ -2,11 +2,15 @@ import Button, {
   SigninFacebookButton,
   SigninGoogleButton
 } from "components/Button";
+import Error from "components/Error";
 import { InputField } from "components/Form";
 import { Grid, GridItem } from "components/Grid";
 import Link from "components/Link";
 import React from "reactn";
 import Routes from "routes";
+import { dispatchWithLoading } from "utils/loading";
+import ActionTypes from "utils/types/ActionTypes";
+import ErrorTypes from "utils/types/ErrorTypes";
 import "./SignupForm.scss";
 
 class SignupForm extends React.Component {
@@ -30,16 +34,29 @@ class SignupForm extends React.Component {
 
   handleFormSubmit = e => {
     e.preventDefault();
+    const { email, password, password2 } = this.state;
 
-    this.global.firebase.createUserWithEmailAndPassword({
-      email: this.state.email,
-      password: this.state.password
-    });
+    if (password !== password2) {
+      dispatchWithLoading(
+        ActionTypes.SET_ERROR,
+        ErrorTypes.SIGNUP,
+        "Passwords do not match."
+      );
+    } else {
+      dispatchWithLoading(ActionTypes.SET_ERROR, ErrorTypes.SIGNUP);
+
+      this.global.firebase.createUserWithEmailAndPassword({
+        email,
+        password
+      });
+    }
   };
 
   render() {
     return (
       <div className="signup-form__container">
+        <Error id={ErrorTypes.SIGNUP} />
+
         <form className="signup-form" onSubmit={this.handleFormSubmit}>
           <Grid>
             <GridItem span={4} offset={5}>

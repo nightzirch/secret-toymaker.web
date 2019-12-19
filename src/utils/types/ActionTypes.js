@@ -25,5 +25,6 @@ export default {
   GET_STATS: "updateStats",
 
   // Other reducers
+  SET_ERROR: "setError",
   SET_LOADING: "setLoading"
 };
