@@ -22,12 +22,25 @@ $loading-space: 1.5em;
     outline: none;
     line-height: 2rem;
     border-radius: 0 0 0.5rem 0.5rem;
-    background-color: $meteorite;
-    color: $white;
 
-    &:hover:not([disabled]) {
-      cursor: pointer;
-      background-color: lighten($meteorite, 2.5%);
+    &--primary {
+      background-color: $meteorite;
+      color: $white;
+
+      &:hover:not([disabled]) {
+        cursor: pointer;
+        background-color: lighten($meteorite, 2.5%);
+      }
+    }
+
+    &--danger {
+      background-color: $state-error;
+      color: $white;
+
+      &:hover:not([disabled]) {
+        cursor: pointer;
+        background-color: lighten($state-error, 5%);
+      }
     }
   }
 

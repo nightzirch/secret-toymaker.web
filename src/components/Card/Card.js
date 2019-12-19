@@ -6,6 +6,7 @@ import "./Card.scss";
 const Card = props => {
   const {
     buttonLabel,
+    buttonTheme,
     children,
     className,
     isLoading,
@@ -36,7 +37,10 @@ const Card = props => {
       {buttonLabel && onButtonClick && (
         <div className="card__button-container">
           <button
-            className="card__button"
+            className={classnames(
+              "card__button",
+              `card__button--${buttonTheme}`
+            )}
             disabled={isLoading}
             onClick={onButtonClick}
             type="button"
@@ -52,10 +56,15 @@ const Card = props => {
 
 Card.propTypes = {
   buttonLabel: t.string,
+  buttonTheme: t.oneOf(["primary", "danger"]),
   children: t.node,
   className: t.string,
   isLoading: t.bool,
   onButtonClick: t.func
+};
+
+Card.defaultProps = {
+  buttonTheme: "primary"
 };
 
 export default Card;

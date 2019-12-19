@@ -158,6 +158,7 @@ const GiftStatus = props => {
         cardProps.buttonLabel = "Mark as sent";
       } else if (status === GiftStatusTypes.SENT) {
         cardProps.buttonLabel = "Undo mark as sent";
+        cardProps.buttonTheme = "danger";
       }
     } else if (direction === GiftDirectionTypes.INCOMING) {
       cardProps.onButtonClick = handleReceivedClick;
@@ -166,6 +167,7 @@ const GiftStatus = props => {
         cardProps.buttonLabel = "Mark as received";
       } else if (status === GiftStatusTypes.RECEIVED) {
         cardProps.buttonLabel = "Undo mark as received";
+        cardProps.buttonTheme = "danger";
       }
     }
   }
