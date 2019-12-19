@@ -168,20 +168,41 @@ const EventPage = props => {
         outgoingGifts.map(outgoingGift => (
           <GiftStatus
             direction={GiftDirectionTypes.OUTGOING}
+            id={outgoingGift.id}
             gift={outgoingGift}
+            key={outgoingGift.id}
           />
         ))}
     </>
   );
 
-  const renderIncomingDonations = () =>
-    incomingGifts &&
-    incomingGifts.length > 0 && (
-      <>
-        <Title>Incoming donations</Title>
-        <Paragraph>Won't be visible unless there are some.</Paragraph>
-      </>
-    );
+  const renderIncomingDonations = () => {
+    if (incomingGifts && incomingGifts.length > 0) {
+      const isPlural = incomingGifts.length > 1;
+      const text = isPlural
+        ? "Some kind souls have donated gifts to you!"
+        : "Some kind soul have donated a gift to you!";
+
+      return (
+        <>
+          <Title>Incoming donations</Title>
+          <Paragraph>{text}</Paragraph>
+
+          {incomingGifts &&
+            incomingGifts.map(incomingGift => (
+              <GiftStatus
+                direction={GiftDirectionTypes.INCOMING}
+                id={incomingGift.id}
+                gift={incomingGift}
+                key={incomingGift.id}
+              />
+            ))}
+        </>
+      );
+    }
+
+    return null;
+  };
 
   const renderGifts = () => (
     <>
