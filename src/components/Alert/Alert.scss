@@ -1,5 +1,6 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
+@import "../../styles/zIndex";
 
 .alerts-container {
   &--event {
@@ -9,7 +10,7 @@
   }
 
   &--frontpage {
-    background-color: $pattens-blue;
+    background-color: $meteorite;
   }
 
   &--login {
@@ -28,6 +29,7 @@
   padding-right: 1em;
   display: flex;
   margin: 0;
+  z-index: $z-index-alert;
 
   & + * {
     margin-top: 1em;

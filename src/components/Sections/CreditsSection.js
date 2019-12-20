@@ -3,8 +3,9 @@ import {
   DescriptionListItem
 } from "components/DescriptionList";
 import { Grid, GridItem } from "components/Grid";
+import Link from "components/Link";
 import Section from "components/Section";
-import { Title } from "components/Typography";
+import { Paragraph, Title } from "components/Typography";
 import React from "reactn";
 import "./CreditsSection.scss";
 
@@ -44,11 +45,6 @@ const CreditsSection = props => {
                 {...itemProps}
               />
               <DescriptionListItem
-                term="Irene Karotsi"
-                description="Visual designer"
-                {...itemProps}
-              />
-              <DescriptionListItem
                 term="Vasburg"
                 description="Art & illustrations"
                 {...itemProps}
@@ -58,14 +54,21 @@ const CreditsSection = props => {
                 description="Email developer"
                 {...itemProps}
               />
-              <DescriptionListItem
-                term="Rhayven Ayers"
-                description="Developer"
-                {...itemProps}
-              />
             </DescriptionList>
           </GridItem>
         </Grid>
+
+        <GridItem span={12}>
+          <Paragraph colorScheme="light" isCenter>
+            Contact us:
+            <Link
+              isExternal
+              isInContainer={false}
+              title="support@secrettoymaker.com"
+              url="mailto:support@secrettoymaker.com"
+            />
+          </Paragraph>
+        </GridItem>
       </Section>
     </div>
   );

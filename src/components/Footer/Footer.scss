@@ -4,11 +4,13 @@
   background-color: $primary-color;
 
   &__upper {
-    padding: 3rem 0;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 
   &__lower {
-    padding: 1rem 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 
     .paragraph {
       margin: 0;

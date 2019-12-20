@@ -46,7 +46,7 @@ const MainMenu = props => {
 
   return (
     <div className={classnames("main-menu", { "main-menu--open": isMenuOpen })}>
-      <Section>
+      <Section isWide>
         <nav
           aria-labelledby="main-navigation"
           role="navigation"

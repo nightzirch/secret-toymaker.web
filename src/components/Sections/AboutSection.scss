@@ -1,8 +1,9 @@
 @import "../../styles/colors";
+@import "../../styles/mixins";
 @import "../../styles/variables";
 
 .about-section {
-  background-color: $pattens-blue;
+  background-color: $meteorite;
 
   &__lead {
     font-size: $text-lg;
@@ -17,11 +18,44 @@
     .title,
     .paragraph,
     .signature {
-      color: $meteorite;
+      color: $pattens-blue;
     }
   }
 
   .section {
-    padding: 2rem 0;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  &__images {
+  }
+
+  &__image {
+    position: absolute;
+
+    &--bleak {
+      display: none;
+      width: 200px;
+      right: 100px;
+      top: 0;
+      filter: drop-shadow(2px 0.5rem 1rem rgba(0, 0, 0, 0.5));
+
+      @include media($laptop) {
+        display: block;
+      }
+    }
+
+    &--red {
+      display: none;
+      width: 400px;
+      right: -200px;
+      bottom: -100px;
+      transform: scaleX(-1);
+      filter: drop-shadow(2px 0.5rem 1rem rgba(0, 0, 0, 0.5));
+
+      @include media($tablet) {
+        display: block;
+      }
+    }
   }
 }

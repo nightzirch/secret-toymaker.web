@@ -19,7 +19,7 @@ const Hero = props => {
               </Title>
 
               <div className="hero__button">
-                <EventButton size="large" />
+                <EventButton theme="call-to-action" size="large" />
               </div>
 
               <div className="hero__countdown">

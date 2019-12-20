@@ -74,7 +74,7 @@ Button.propTypes = {
   type: t.oneOf(["button", "submit"]),
   onClick: t.func,
   size: t.oneOf(["small", "medium", "large"]),
-  theme: t.oneOf(["primary", "secondary", "danger"])
+  theme: t.oneOf(["call-to-action", "primary", "secondary", "danger"])
 };
 
 Button.defaultProps = {

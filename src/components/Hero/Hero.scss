@@ -2,7 +2,7 @@
 @import "../../styles/variables";
 
 .hero {
-  background-color: $vivid-violet;
+  background-color: $meteorite;
   padding-top: 6.4rem;
 
   &__content {
@@ -28,6 +28,8 @@
   }
 
   &__image {
+    transform: scale(1.5);
+
     img {
       height: 100%;
       width: 100%;
