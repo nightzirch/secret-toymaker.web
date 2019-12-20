@@ -16,7 +16,7 @@ export const StepData = {
   [StepTypes.SIGNUP]: {
     title: "Sign up",
     text:
-      "On the signup page, enter your API token and email, and provide a note for your Secret Toymaker.",
+      "On the signup page, enter your API token and provide a note for your Secret Toymaker.",
     number: 1,
     button: <SignupButton />,
     image: {
@@ -28,7 +28,7 @@ export const StepData = {
   [StepTypes.CHECK_MATCH]: {
     title: "Check your match",
     text:
-      "Once the deadline for signing up is due, we will remind you by email and web notifications (new this year!) to check to which lucky Tyrian you will send a gift.",
+      "Once the deadline for signing up is due, we will remind you by email to check to which lucky Tyrian you will send a gift.",
     number: 2,
     button: null,
     image: {
