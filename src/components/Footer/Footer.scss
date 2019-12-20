@@ -1,0 +1,24 @@
+@import "../../styles/variables";
+
+.footer {
+  background-color: $primary-color;
+
+  &__upper {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  &__lower {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    .paragraph {
+      margin: 0;
+    }
+
+    .link {
+      color: $white;
+      margin-left: 0.5rem;
+    }
+  }
+}

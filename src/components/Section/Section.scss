@@ -1,0 +1,64 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.section {
+  &--horizontal-padding {
+    padding-right: 1em;
+    padding-left: 1em;
+  }
+
+  &--vertical-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  &--extra-light {
+    background-color: $white;
+  }
+
+  &--dark {
+    background-color: $dark;
+  }
+
+  &--primary {
+    background-color: $primary-color;
+  }
+
+  &--primary-light {
+    background-color: $primary-color-light;
+  }
+
+  &--primary-dark {
+    background-color: $primary-color-dark;
+  }
+
+  &--primary-darker {
+    background-color: $primary-color-darker;
+  }
+
+  &--secondary-light {
+    background-color: $secondary-color-light;
+  }
+
+  &--secondary-light {
+    background-color: $secondary-color-light;
+  }
+
+  &--secondary-dark {
+    background-color: $secondary-color-dark;
+  }
+
+  &--secondary-darker {
+    background-color: $secondary-color-darker;
+  }
+
+  &__inner {
+    @include container;
+  }
+
+  &--wide {
+    .section__inner {
+      @include wide-container;
+    }
+  }
+}

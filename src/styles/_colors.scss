@@ -1,0 +1,35 @@
+$white: #fff;
+$light: #ddd;
+$grey: #999;
+$dark-grey: #666;
+$dark: #333;
+$black: #000;
+
+$haiti: #19113b;
+$meteorite: #362580;
+$vivid-violet: #92309d;
+$biloba-flower: #bfa2eb;
+$pattens-blue: #dbeeff;
+
+$primary-color: $meteorite;
+$secondary-color: $vivid-violet;
+$tertiary-color: #c867b1;
+
+$state-error: #d93a30;
+$state-warning: #e6e404;
+$state-success: #23bb17;
+$state-info: darken($pattens-blue, 10%);
+
+$primary-color-light: lighten($primary-color, 50%);
+$primary-color-dark: darken($primary-color, 20%);
+$primary-color-darker: darken($primary-color, 25%);
+$secondary-color-light: lighten($secondary-color, 50%);
+$secondary-color-dark: darken($secondary-color, 20%);
+$secondary-color-darker: darken($secondary-color, 25%);
+
+$state-error-dark: darken($state-error, 20%);
+$state-error-light: lighten($state-error, 50%);
+$state-warning-dark: darken($state-warning, 20%);
+$state-warning-light: lighten($state-warning, 50%);
+$state-success-dark: darken($state-success, 10%);
+$state-success-light: lighten($state-success, 50%);

@@ -1,0 +1,11 @@
+@import "../../styles/variables";
+
+@mixin wide-container {
+  margin: 0 auto;
+  max-width: $desktop;
+}
+
+@mixin container {
+  margin: 0 auto;
+  max-width: $laptop;
+}

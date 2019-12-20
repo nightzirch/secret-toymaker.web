@@ -1,0 +1,131 @@
+@import "../../styles/variables";
+
+$loading-duration: 0.75s;
+$loading-size: $text-sm;
+$loading-space: 1.5em;
+
+.card {
+  padding: 2em;
+  border-radius: 0.5em;
+  box-shadow: 0 0.25em 0.5em 0 rgba($dark, 0.25);
+
+  &__button-container {
+    margin: 0 0.5em;
+    display: flex;
+  }
+
+  &__button {
+    position: relative;
+    font-size: $text-md;
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    line-height: 2rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+
+    &--primary {
+      background-color: $meteorite;
+      color: $white;
+
+      &:hover:not([disabled]) {
+        cursor: pointer;
+        background-color: lighten($meteorite, 2.5%);
+      }
+    }
+
+    &--danger {
+      background-color: $state-error;
+      color: $white;
+
+      &:hover:not([disabled]) {
+        cursor: pointer;
+        background-color: lighten($state-error, 5%);
+      }
+    }
+  }
+
+  &__button-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    &__dots,
+    &__dots:before,
+    &__dots:after {
+      height: $loading-size;
+      width: $loading-size;
+      border-radius: $loading-size;
+      background-color: $white;
+      animation-duration: $loading-duration;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+      animation-name: dotFlashingLight;
+    }
+
+    &__dots {
+      position: relative;
+      animation-delay: #{$loading-duration/2};
+
+      &:before {
+        left: -$loading-space;
+        animation-delay: 0s;
+      }
+
+      &:after {
+        left: $loading-space;
+        animation-delay: $loading-duration;
+      }
+
+      &:before,
+      &:after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+
+  &--loading {
+    &:before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.5);
+      z-index: 1;
+      border-radius: 0.5em;
+    }
+
+    ~ .card__button-container {
+      .card__button {
+        color: transparent;
+      }
+    }
+  }
+}
+
+@keyframes dotFlashingLight {
+  0% {
+    background-color: $white;
+  }
+  100% {
+    background-color: rgba($white, 0.25);
+  }
+}
+
+@keyframes dotFlashingDark {
+  0% {
+    background-color: $primary-color;
+  }
+  100% {
+    background-color: rgba($primary-color, 0.25);
+  }
+}

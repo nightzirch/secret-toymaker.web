@@ -1,0 +1,75 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.hamburger-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+  @include hoverOpacity;
+
+  .hamburger {
+    transition: all $animation-duration ease-in-out;
+    transform: rotate(0deg);
+    font-size: 1rem;
+    width: 2.25em;
+    height: 1.75em;
+    position: relative;
+    display: inline-block;
+
+    &--dark span {
+      background: $meteorite;
+    }
+
+    &--in-menu span,
+    &--light span {
+      background: $white;
+    }
+
+    span {
+      transition: all $animation-duration/2 ease-in-out;
+      transform: rotate(0deg);
+      display: block;
+      position: absolute;
+      height: 0.25em;
+      width: 100%;
+      border-radius: 0.4em;
+      opacity: 1;
+      left: 0;
+
+      &:nth-child(1) {
+        top: 0px;
+      }
+
+      &:nth-child(2) {
+        top: 0.75em;
+        width: 80%;
+        left: 20%;
+      }
+
+      &:nth-child(3) {
+        top: 1.5em;
+      }
+    }
+
+    &--open {
+      span {
+        &:nth-child(1) {
+          transform: rotate(135deg);
+          top: 0.9em;
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+          left: -3em;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-135deg);
+          top: 0.9em;
+        }
+      }
+    }
+  }
+}

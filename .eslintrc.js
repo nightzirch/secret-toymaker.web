@@ -1,6 +1,10 @@
 module.exports = {
-  parser: "babel-eslint",
+  env: {
+    browser: true,
+    node: true
+  },
   extends: ["airbnb", "prettier"],
+  parser: "babel-eslint",
   plugins: ["react", "jsx-a11y", "import"],
   rules: {
     radix: "off",
@@ -11,8 +15,11 @@ module.exports = {
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
     "react/require-default-props": "off"
   },
-  env: {
-    browser: true,
-    node: true
+  settings: {
+    "import/resolver": {
+      node: {
+        moduleDirectory: ["node_modules", "src"]
+      }
+    }
   }
 };

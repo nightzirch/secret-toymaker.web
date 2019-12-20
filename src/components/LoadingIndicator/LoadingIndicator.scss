@@ -1,0 +1,66 @@
+@import "../../styles/animations/animations";
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+$horizontalMovement: 4rem;
+$verticalMovement: 1rem;
+$scale: 0.75;
+$timing-curve: cubic-bezier(0.5, 0, 0.5, 1);
+$animation-duration: 1.5s;
+
+.loading-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  height: 100%;
+
+  &--animating img {
+    animation: vibrate 0.5s linear infinite both;
+  }
+
+  &__rotate {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  img {
+    height: 100px;
+  }
+
+  &__message {
+    margin-top: 2rem;
+
+    @include media($mobile) {
+      font-size: $text-lg;
+    }
+  }
+}
+
+@keyframes horizontalMovement {
+  0% {
+    transform: translateX($horizontalMovement);
+  }
+  100% {
+    transform: translateX(-$horizontalMovement);
+  }
+}
+
+@keyframes verticalMovement {
+  0% {
+    transform: translateY($verticalMovement);
+  }
+  100% {
+    transform: translateY(-$verticalMovement);
+  }
+}
+
+@keyframes scaling {
+  0% {
+    transform: scale($scale);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
