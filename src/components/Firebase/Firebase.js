@@ -1,4 +1,5 @@
 import firebaseConfig from "config/firebaseConfig";
+import "firebase/analytics";
 import app from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
@@ -18,6 +19,7 @@ class Firebase {
     this.auth = app.auth();
     this.db = app.firestore();
     this.functions = app.functions();
+    this.analytics = app.analytics();
 
     this.googleLoginProvider = new app.auth.GoogleAuthProvider();
     this.facebookLoginProvider = new app.auth.FacebookAuthProvider();
