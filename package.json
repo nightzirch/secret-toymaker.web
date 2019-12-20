@@ -24,7 +24,7 @@
     "classnames": "^2.2.6",
     "countdown": "^2.6.0",
     "fastclick": "^1.0.6",
-    "firebase": "^5.8.4",
+    "firebase": "^7.6.1",
     "install": "^0.13.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
