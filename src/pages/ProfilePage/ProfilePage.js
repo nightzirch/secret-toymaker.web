@@ -2,6 +2,7 @@ import Alerts from "components/Alerts";
 import ApiTokenForm from "components/ApiTokenForm";
 import Button, { PasswordResetButton, SignoutButton } from "components/Button";
 import { Grid, GridItem } from "components/Grid";
+import NotificationsForm from "components/NotificationsForm";
 import ProfilePicture from "components/ProfilePicture";
 import Section from "components/Section";
 import { PageHeader, Title } from "components/Typography";
@@ -57,18 +58,25 @@ class ProfilePage extends React.Component {
           />
 
           <Grid>
-            <GridItem span={3}>{this.renderProfilePicture()}</GridItem>
+            <GridItem span={4}>
+              <Title level="secondary">Avatar</Title>
+              {this.renderProfilePicture()}
+            </GridItem>
 
-            <GridItem span={6}>
+            <GridItem span={8}>
               <Title level="secondary">Details</Title>
               <ApiTokenForm />
               <ProfileForm />
+
+              <Title level="secondary">Notifications</Title>
+              <NotificationsForm />
               {this.renderDangerZone()}
             </GridItem>
 
-            <GridItem span={3}>
-              <Title level="secondary">Awards</Title>
-            </GridItem>
+            {/* <GridItem span={3}>
+              <Title level="secondary">Notifications</Title>
+              <NotificationsForm />
+            </GridItem> */}
           </Grid>
         </Section>
       </div>

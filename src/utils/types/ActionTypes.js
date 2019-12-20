@@ -6,6 +6,7 @@ export default {
   // User
   GET_USER: "getUser",
   UPDATE_USER: "updateUser",
+  UPDATE_CONSENTS: "updateConsents",
   UPDATE_API_TOKEN: "updateApiToken",
 
   // Participation

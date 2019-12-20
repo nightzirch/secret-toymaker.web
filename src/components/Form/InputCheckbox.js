@@ -13,7 +13,6 @@ const InputCheckbox = props => {
         id={props.id}
         onChange={props.onChange}
         readOnly={props.isReadOnly}
-        ref="input"
         type="checkbox"
       />
 

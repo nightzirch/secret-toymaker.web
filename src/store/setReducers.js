@@ -34,6 +34,27 @@ const setReducers = () => {
     await dispatch[ActionTypes.GET_USER](global.user.uid);
   });
 
+  addReducer(
+    ActionTypes.UPDATE_CONSENTS,
+    async (global, dispatch, consents) => {
+      const response = await global.firebase.updateConsents(
+        global.user.uid,
+        consents
+      );
+
+      if (response.error) {
+        await dispatch[ActionTypes.SET_ERROR](
+          ErrorTypes.UPDATE_CONSENTS,
+          response.error
+        );
+      } else {
+        await dispatch[ActionTypes.SET_ERROR](ErrorTypes.UPDATE_CONSENTS);
+      }
+
+      await dispatch[ActionTypes.GET_USER](global.user.uid);
+    }
+  );
+
   addReducer(ActionTypes.UPDATE_API_TOKEN, async (global, dispatch, fields) => {
     const response = await global.firebase.updateApiToken(
       global.user.uid,

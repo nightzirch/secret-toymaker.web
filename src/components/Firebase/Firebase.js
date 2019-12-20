@@ -143,6 +143,22 @@ class Firebase {
       .catch(error => ({ error }));
   };
 
+  updateConsents = (uid, { consents }) => {
+    return this.db
+      .collection("toymakers")
+      .doc(uid)
+      .set(
+        {
+          consents
+        },
+        {
+          merge: true
+        }
+      )
+      .then(() => ({ success: "Successfully updated consents." }))
+      .catch(error => ({ error }));
+  };
+
   updateApiToken = (uid, { apiToken }) => {
     const updateApiKey = this.functions.httpsCallable("updateApiKey");
     return updateApiKey({ user: uid, apiToken }).then(result => result.data);
