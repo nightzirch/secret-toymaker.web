@@ -89,6 +89,12 @@ class LoginForm extends React.Component {
                 url={Routes.SIGNUP}
               />
 
+              <Link
+                isCentered
+                title="Forgot your password?"
+                url={Routes.RESET_PASSWORD}
+              />
+
               <div className="login-form__social-buttons">
                 <SigninGoogleButton isCentered isFullWidth />
                 <SigninFacebookButton isCentered isFullWidth />

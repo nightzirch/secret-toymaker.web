@@ -7,6 +7,7 @@ export const RouteTypes = {
   GIFTS: "GIFTS",
   LOGIN: "LOGIN",
   PROFILE: "PROFILE",
+  RESET_PASSWORD: "RESET_PASSWORD",
   SIGNUP: "SIGNUP"
 };
 
@@ -17,6 +18,7 @@ const Routes = {
   [RouteTypes.GIFTS]: "/gifts",
   [RouteTypes.LOGIN]: "/login",
   [RouteTypes.PROFILE]: "/profile",
+  [RouteTypes.RESET_PASSWORD]: "/reset-password",
   [RouteTypes.SIGNUP]: "/signup"
 };
 

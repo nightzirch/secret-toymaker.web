@@ -9,6 +9,7 @@ export const headerTextColor = {
   [RouteTypes.GIFTS]: "dark",
   [RouteTypes.LOGIN]: "dark",
   [RouteTypes.PROFILE]: "dark",
+  [RouteTypes.RESET_PASSWORD]: "dark",
   [RouteTypes.SIGNUP]: "dark"
 };
 

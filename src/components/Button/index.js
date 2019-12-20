@@ -4,7 +4,7 @@ import DonateButton from "./DonateButton";
 import EventButton from "./EventButton";
 import GiftsButton from "./GiftsButton";
 import LoginButton from "./LoginButton";
-import PasswordResetButton from "./PasswordResetButton";
+import ResetPasswordButton from "./ResetPasswordButton";
 import SigninFacebookButton from "./SigninFacebookButton";
 import SigninGoogleButton from "./SigninGoogleButton";
 import SignoutButton from "./SignoutButton";
@@ -17,7 +17,7 @@ export {
   EventButton,
   GiftsButton,
   LoginButton,
-  PasswordResetButton,
+  ResetPasswordButton,
   SigninGoogleButton,
   SigninFacebookButton,
   SignoutButton,

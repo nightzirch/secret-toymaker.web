@@ -1,6 +1,6 @@
 import Alerts from "components/Alerts";
 import ApiTokenForm from "components/ApiTokenForm";
-import Button, { PasswordResetButton, SignoutButton } from "components/Button";
+import Button, { ResetPasswordButton, SignoutButton } from "components/Button";
 import { Grid, GridItem } from "components/Grid";
 import NotificationsForm from "components/NotificationsForm";
 import ProfilePicture from "components/ProfilePicture";
@@ -24,7 +24,7 @@ class ProfilePage extends React.Component {
       <Title level="secondary">Danger zone</Title>
 
       <SignoutButton />
-      <PasswordResetButton />
+      <ResetPasswordButton />
     </>
   );
 

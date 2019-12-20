@@ -1,5 +1,6 @@
 export default {
   DANGER: "danger",
   WARNING: "warning",
-  INFO: "info"
+  INFO: "info",
+  SUCCESS: "success"
 };

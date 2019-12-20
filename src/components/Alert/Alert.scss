@@ -63,6 +63,16 @@
     }
   }
 
+  &--success {
+    background-color: $state-success-light;
+    color: $state-success-dark;
+
+    .paragraph,
+    .alert__close {
+      color: $state-success-dark;
+    }
+  }
+
   &__content {
     flex-grow: 1;
     display: flex;

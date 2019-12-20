@@ -43,7 +43,13 @@ class Firebase {
 
   signOut = () => this.auth.signOut();
 
-  passwordReset = email => this.auth.sendPasswordResetEmail(email);
+  resetPassword = email =>
+    this.auth
+      .sendPasswordResetEmail(email)
+      .then(() => ({
+        success: `Instructions on how to reset password was sent to ${email}.`
+      }))
+      .catch(error => ({ error: "Failed to reset password.", trace: error }));
 
   passwordUpdate = password => this.auth.currentUser.updatePassword(password);
 

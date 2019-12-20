@@ -9,14 +9,17 @@ import AlertTypes from "utils/types/AlertTypes";
 import "./Alert.scss";
 
 const Alert = props => {
-  const { children, id, type } = props;
+  const { children, id, isStatic, type } = props;
   const [isClosing, setIsClosing] = useState(false);
 
   const handleCloseClick = () => {
     setIsClosing(true);
-    setTimeout(() => {
-      dispatchWithLoading(ActionTypes.CLOSE_ALERT, id);
-    }, 500);
+
+    if (id) {
+      setTimeout(() => {
+        dispatchWithLoading(ActionTypes.CLOSE_ALERT, id);
+      }, 500);
+    }
   };
 
   const renderIcon = () => {
@@ -50,20 +53,23 @@ const Alert = props => {
         <Paragraph noMargin>{children}</Paragraph>
       </div>
 
-      <button
-        className="alert__close-button"
-        onClick={handleCloseClick}
-        type="button"
-      >
-        <ion-icon class="alert__close" name="close" />
-      </button>
+      {!isStatic && (
+        <button
+          className="alert__close-button"
+          onClick={handleCloseClick}
+          type="button"
+        >
+          <ion-icon class="alert__close" name="close" />
+        </button>
+      )}
     </Card>
   );
 };
 
 Alert.propTypes = {
   children: t.node,
-  id: t.string.isRequired,
+  id: t.string,
+  isStatic: t.bool,
   type: t.oneOf(Object.values(AlertTypes)).isRequired
 };
 
