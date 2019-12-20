@@ -67,7 +67,8 @@ const EventPage = props => {
     // Only showing page loading indication the first time
     if (isLoading !== false) {
       setLoading(
-        loading[ActionTypes.GET_STATS] ||
+        loading[ActionTypes.GET_STAGE] ||
+          loading[ActionTypes.GET_STATS] ||
           loading[ActionTypes.GET_PARTICIPATION_STATUS] ||
           loading[ActionTypes.GET_USER]
       );
