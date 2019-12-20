@@ -4,6 +4,8 @@ import MainMenu from "components/MainMenu";
 import { withSession } from "components/Session";
 import { withRouter } from "react-router-dom";
 import React, { Component } from "reactn";
+import { dispatchWithLoading } from "utils/loading";
+import ActionTypes from "utils/types/ActionTypes";
 import "./App.scss";
 
 class App extends Component {
@@ -23,8 +25,8 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    this.dispatch.updateStage();
-    this.dispatch.updateAlerts();
+    dispatchWithLoading(ActionTypes.GET_ALERTS);
+    dispatchWithLoading(ActionTypes.GET_STAGE);
   };
 
   componentWillUnmount = () => {
