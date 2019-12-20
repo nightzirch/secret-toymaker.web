@@ -26,6 +26,9 @@ export default {
     matching: [
       "Our beloved Toymake-o-tron is running around in ecstacy due to the amount of signups we had!",
       "We're trying to calm him down so he can complete the task of matching everyone. This might take a little while. Check back in a few minutes."
+    ],
+    notParticipating: [
+      "You're not in his hard drives. Did you sign up? Contact us if you think something is wrong."
     ]
   },
   faq: {

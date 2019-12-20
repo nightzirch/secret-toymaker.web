@@ -94,8 +94,7 @@ TextArea.propTypes = {
 TextArea.defaultProps = {
   isAutocomplete: true,
   isDisabled: false,
-  maxLength: 0,
-  minLength: 0,
+  minLength: 10,
   onChange: () => {},
   value: ""
 };

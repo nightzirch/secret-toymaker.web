@@ -1,5 +1,6 @@
 import { addReducer } from "reactn";
 import ActionTypes from "utils/types/ActionTypes";
+import ErrorTypes from "utils/types/ErrorTypes";
 
 // Initial state
 const setReducers = () => {
@@ -19,13 +20,36 @@ const setReducers = () => {
   });
 
   addReducer(ActionTypes.UPDATE_USER, async (global, dispatch, fields) => {
-    const user = await global.firebase.updateUser(global.user.uid, fields);
-    return { user };
+    const response = await global.firebase.updateUser(global.user.uid, fields);
+
+    if (response.error) {
+      await dispatch[ActionTypes.SET_ERROR](
+        ErrorTypes.UPDATE_USER,
+        response.error
+      );
+    } else {
+      await dispatch[ActionTypes.SET_ERROR](ErrorTypes.UPDATE_USER);
+    }
+
+    await dispatch[ActionTypes.GET_USER](global.user.uid);
   });
 
   addReducer(ActionTypes.UPDATE_API_TOKEN, async (global, dispatch, fields) => {
-    const user = await global.firebase.updateApiToken(global.user.uid, fields);
-    return { user };
+    const response = await global.firebase.updateApiToken(
+      global.user.uid,
+      fields
+    );
+
+    if (response.error) {
+      await dispatch[ActionTypes.SET_ERROR](
+        ErrorTypes.UPDATE_API_TOKEN,
+        response.error
+      );
+    } else {
+      await dispatch[ActionTypes.SET_ERROR](ErrorTypes.UPDATE_API_TOKEN);
+    }
+
+    await dispatch[ActionTypes.GET_USER](global.user.uid);
   });
 
   addReducer(ActionTypes.GET_STAGE, async (global, dispatch) => {
@@ -44,19 +68,16 @@ const setReducers = () => {
   addReducer(
     ActionTypes.REGISTER_PARTICIPATION,
     async (global, dispatch, notes) => {
-      const user = await global.firebase.registerParticipation(
-        global.user.uid,
-        notes
-      );
-      await dispatch.fetchParticipationStatus();
-      return { user };
+      await global.firebase.registerParticipation(global.user.uid, notes);
+      await dispatch[ActionTypes.GET_PARTICIPATION_STATUS]();
+      await dispatch[ActionTypes.GET_USER](global.user.uid);
     }
   );
 
   addReducer(ActionTypes.REMOVE_PARTICIPATION, async (global, dispatch) => {
-    const user = await global.firebase.removeParticipation(global.user.uid);
-    await dispatch.fetchParticipationStatus();
-    return { user };
+    await global.firebase.removeParticipation(global.user.uid);
+    await dispatch[ActionTypes.GET_PARTICIPATION_STATUS]();
+    await dispatch[ActionTypes.GET_USER](global.user.uid);
   });
 
   addReducer(ActionTypes.GET_GIFTS, async (global, dispatch) => {

@@ -139,16 +139,13 @@ class Firebase {
           merge: true
         }
       )
-      .then(() => {
-        return this.getUser(uid);
-      });
+      .then(() => ({ success: "Successfully updated user." }))
+      .catch(error => ({ error }));
   };
 
   updateApiToken = (uid, { apiToken }) => {
     const updateApiKey = this.functions.httpsCallable("updateApiKey");
-    return updateApiKey({ user: uid, apiToken }).then(result =>
-      this.getUser(uid)
-    );
+    return updateApiKey({ user: uid, apiToken }).then(result => result.data);
   };
 
   registerParticipation = (userId, notes) => {
@@ -157,13 +154,13 @@ class Firebase {
       user: userId,
       notes,
       participate: true
-    }).then(result => this.getUser(userId));
+    }).then(result => result);
   };
 
   removeParticipation = userId => {
     const participate = this.functions.httpsCallable("participate");
-    return participate({ user: userId, participate: false }).then(result =>
-      this.getUser(userId)
+    return participate({ user: userId, participate: false }).then(
+      result => result
     );
   };
 

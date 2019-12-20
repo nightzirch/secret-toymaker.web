@@ -10,6 +10,7 @@ const Paragraph = props => {
     className,
     isBold,
     isCenter,
+    isItalic,
     noMargin,
     size
   } = props;
@@ -23,6 +24,7 @@ const Paragraph = props => {
         {
           "paragraph--no-margin": noMargin,
           "paragraph--bold": isBold,
+          "paragraph--italic": isItalic,
           "paragraph--center": isCenter
         }
       )}
@@ -45,6 +47,7 @@ Paragraph.propTypes = {
   ]),
   isBold: t.bool,
   isCenter: t.bool,
+  isItalic: t.bool,
   noMargin: t.bool,
   size: t.oneOf(["small", "medium"])
 };

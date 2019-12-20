@@ -1,9 +1,12 @@
 import Button from "components/Button";
+import Error from "components/Error";
 import { InputField } from "components/Form";
 import op from "object-path";
 import React, { withGlobal } from "reactn";
 import { dispatchWithLoading } from "utils/loading";
 import ActionTypes from "utils/types/ActionTypes";
+import ErrorTypes from "utils/types/ErrorTypes";
+import { isApiTokenValid } from "utils/validation";
 
 class ApiTokenForm extends React.Component {
   constructor(props) {
@@ -33,10 +36,23 @@ class ApiTokenForm extends React.Component {
   handleFormSubmit = async e => {
     e.preventDefault();
 
-    // TODO: Add validation
     const { apiToken } = this.state;
 
-    dispatchWithLoading(ActionTypes.UPDATE_API_TOKEN, { apiToken });
+    if (!isApiTokenValid(apiToken)) {
+      await dispatchWithLoading(
+        ActionTypes.SET_ERROR,
+        ErrorTypes.UPDATE_API_TOKEN,
+        "API token is invalid."
+      );
+    } else {
+      await dispatchWithLoading(
+        ActionTypes.SET_ERROR,
+        ErrorTypes.UPDATE_API_TOKEN
+      );
+      await dispatchWithLoading(ActionTypes.UPDATE_API_TOKEN, {
+        apiToken
+      });
+    }
   };
 
   render() {
@@ -44,6 +60,8 @@ class ApiTokenForm extends React.Component {
 
     return (
       <div className="api-token-form__container">
+        <Error id={ErrorTypes.UPDATE_API_TOKEN} />
+
         <form className="api-token-form" onSubmit={this.handleFormSubmit}>
           <InputField
             id="apiToken"

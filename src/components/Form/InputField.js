@@ -1,6 +1,10 @@
 import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
+import {
+  validApiTokenRegExpString,
+  validEmailRegExpString
+} from "utils/validation";
 import "./InputField.scss";
 
 class InputField extends React.Component {
@@ -43,10 +47,10 @@ class InputField extends React.Component {
   inputPattern(min, max) {
     switch (this.props.type) {
       case "apiToken":
-        return "^([0-9A-Z]){8}-([0-9A-Z]){4}-([0-9A-Z]){4}-([0-9A-Z]){4}-([0-9A-Z]){20}-([0-9A-Z]){4}-([0-9A-Z]){4}-([0-9A-Z]){4}-([0-9A-Z]){12}$";
+        return validApiTokenRegExpString;
       case "email":
         // Valid characters, then @, then valid domain
-        return "\\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}\\b";
+        return validEmailRegExpString;
       case "password":
       case "text":
       default:
@@ -74,11 +78,15 @@ class InputField extends React.Component {
   }
 
   render() {
-    let containerClasses = classnames("input-field", {
-      "input-field--active": this.state.isActive,
-      "input-field--invalid": this.state.isTouched && !this.state.isValid,
-      "input-field--valid": this.state.isValid
-    });
+    let containerClasses = classnames(
+      "input-field",
+      `input-field--id-${this.props.id}`,
+      {
+        "input-field--active": this.state.isActive,
+        "input-field--invalid": this.state.isTouched && !this.state.isValid,
+        "input-field--valid": this.state.isValid
+      }
+    );
     let inputClasses = classnames("input-field__input", [
       `input-field__input--${this.props.type}`
     ]);

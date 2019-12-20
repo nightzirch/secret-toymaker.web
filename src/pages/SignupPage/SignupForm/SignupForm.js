@@ -11,6 +11,7 @@ import Routes from "routes";
 import { dispatchWithLoading } from "utils/loading";
 import ActionTypes from "utils/types/ActionTypes";
 import ErrorTypes from "utils/types/ErrorTypes";
+import { doesPasswordsMatch } from "utils/validation";
 import "./SignupForm.scss";
 
 class SignupForm extends React.Component {
@@ -36,7 +37,7 @@ class SignupForm extends React.Component {
     e.preventDefault();
     const { email, password, password2 } = this.state;
 
-    if (password !== password2) {
+    if (!doesPasswordsMatch(password, password2)) {
       dispatchWithLoading(
         ActionTypes.SET_ERROR,
         ErrorTypes.SIGNUP,

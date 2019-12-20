@@ -30,14 +30,11 @@ const EventPage = props => {
     outgoing: outgoingGifts,
     incomingPrimary: incomingPrimaryGift,
     incoming: incomingGifts
-  } = gifts;
+  } = gifts || {};
   const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
   const [isParticipating, setParticipating] = useState(null);
-  const isLoading =
-    loading[ActionTypes.GET_STATS] ||
-    loading[ActionTypes.GET_PARTICIPATION_STATUS] ||
-    loading[ActionTypes.GET_USER];
+  const [isLoading, setLoading] = useState(null);
 
   useEffect(() => {
     dispatchWithLoading(ActionTypes.GET_STATS);
@@ -65,6 +62,21 @@ const EventPage = props => {
       dispatchWithLoading(ActionTypes.GET_GIFTS);
     }
   }, [user, isParticipating, stageType]);
+
+  useEffect(() => {
+    // Only showing page loading indication the first time
+    if (isLoading !== false) {
+      setLoading(
+        loading[ActionTypes.GET_STATS] ||
+          loading[ActionTypes.GET_PARTICIPATION_STATUS] ||
+          loading[ActionTypes.GET_USER]
+      );
+    }
+  }, [
+    loading[ActionTypes.GET_STATS],
+    loading[ActionTypes.GET_PARTICIPATION_STATUS],
+    loading[ActionTypes.GET_USER]
+  ]);
 
   const handleDonateClick = () => {
     dispatchWithLoading(ActionTypes.DONATE_GIFT);
@@ -118,11 +130,10 @@ const EventPage = props => {
     </>
   );
 
-  // TODO: Add proper text here
   const renderNotParticipatingMessage = () => (
     <>
       <Title>Toymake-o-tron can't find you</Title>
-      <Paragraphs paragraphs={[]} />
+      <Paragraphs paragraphs={lang.event.notParticipating} />
     </>
   );
 

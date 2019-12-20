@@ -1,9 +1,14 @@
 import Button from "components/Button";
+import Error from "components/Error";
 import { InputField } from "components/Form";
+import { Paragraph } from "components/Typography";
 import op from "object-path";
 import React, { withGlobal } from "reactn";
 import { dispatchWithLoading } from "utils/loading";
 import ActionTypes from "utils/types/ActionTypes";
+import ErrorTypes from "utils/types/ErrorTypes";
+import { isEmailValid } from "utils/validation";
+import "./ProfileForm.scss";
 
 class ProfileForm extends React.Component {
   constructor(props) {
@@ -32,11 +37,18 @@ class ProfileForm extends React.Component {
 
   handleFormSubmit = async e => {
     e.preventDefault();
-
-    // TODO: Add validation
     const { email } = this.state;
 
-    dispatchWithLoading(ActionTypes.UPDATE_USER, { email });
+    if (!isEmailValid(email)) {
+      await dispatchWithLoading(
+        ActionTypes.SET_ERROR,
+        ErrorTypes.UPDATE_USER,
+        "Email is invalid."
+      );
+    } else {
+      await dispatchWithLoading(ActionTypes.SET_ERROR, ErrorTypes.UPDATE_USER);
+      await dispatchWithLoading(ActionTypes.UPDATE_USER, { email });
+    }
   };
 
   render() {
@@ -44,16 +56,22 @@ class ProfileForm extends React.Component {
 
     return (
       <div className="profile-form__container">
+        <Error id={ErrorTypes.UPDATE_USER} />
+
         <form className="profile-form" onSubmit={this.handleFormSubmit}>
           <InputField
             id="email"
             isDisabled={isLoading}
-            label="Email"
+            label="Contact email"
             onChange={this.handleInputChange}
             placeholder="scarlet@briar.com"
             type="email"
             value={this.state.email}
           />
+
+          <Paragraph isItalic>
+            Note: this is your contact email, not login email.
+          </Paragraph>
 
           <Button
             isLoading={isLoading}

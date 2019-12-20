@@ -1,9 +1,12 @@
 import Button from "components/Button";
+import Error from "components/Error";
 import { TextArea } from "components/Form";
 import React, { useEffect, useGlobal, useState } from "reactn";
 import { dispatchWithLoading } from "utils/loading";
 import { getParticipationByYear } from "utils/participation";
 import ActionTypes from "utils/types/ActionTypes";
+import ErrorTypes from "utils/types/ErrorTypes";
+import { isNotesValid } from "utils/validation";
 import "./ParticipationForm.scss";
 
 const ParticipationForm = props => {
@@ -30,10 +33,23 @@ const ParticipationForm = props => {
   const handleFormSubmit = e => {
     e.preventDefault();
 
-    // TODO: Add validation
-    dispatchWithLoading(ActionTypes.REGISTER_PARTICIPATION, notes).then(() => {
-      dispatchWithLoading(ActionTypes.GET_STATS);
-    });
+    if (!isNotesValid(notes)) {
+      dispatchWithLoading(
+        ActionTypes.SET_ERROR,
+        ErrorTypes.UPDATE_PARTICIPATION,
+        "Woah! I mean, you don't have to write an essay, but you can do better than that."
+      );
+    } else {
+      dispatchWithLoading(
+        ActionTypes.SET_ERROR,
+        ErrorTypes.UPDATE_PARTICIPATION
+      );
+      dispatchWithLoading(ActionTypes.REGISTER_PARTICIPATION, notes).then(
+        () => {
+          dispatchWithLoading(ActionTypes.GET_STATS);
+        }
+      );
+    }
   };
 
   const handleRemoveParticipationClick = () => {
@@ -74,6 +90,8 @@ const ParticipationForm = props => {
 
   return (
     <div className="participation-form__container">
+      <Error id={ErrorTypes.UPDATE_PARTICIPATION} />
+
       <form className="participation-form" onSubmit={handleFormSubmit}>
         <TextArea
           id="notes"
