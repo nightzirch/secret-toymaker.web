@@ -9,21 +9,32 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Setting up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.17.0"
       - name: Checkout Repo
         uses: actions/checkout@master
       - name: Install Dependencies
         run: npm i
-      - name: Remove dist directory
-        run: rm -rf dist
-      - name: Create dist directory
-        run: mkdir dist
-      - name: Build and export
-        run: npm run export
+      - name: Remove build directory
+        run: rm -rf build
+      - name: Create build directory
+        run: mkdir build
+      - name: Build
+        env:
+          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+          REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
+          REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
+          REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
+          REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
+          REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
+        run: npm run build
       - name: Archive
         uses: actions/upload-artifact@master
         with:
-          name: dist
-          path: dist
+          name: build
+          path: build
   deploy:
     name: Deploy
     needs: build
@@ -34,7 +45,7 @@ jobs:
       - name: Download Archive
         uses: actions/download-artifact@master
         with:
-          name: dist
+          name: build
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
