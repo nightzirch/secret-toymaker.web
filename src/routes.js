@@ -25,15 +25,15 @@ const Routes = {
 export const RouteRequirements = {
   [RouteTypes.LOGIN]: {
     authStatus: AuthTypes.NO_AUTH,
-    redirectRoute: Routes.PROFILE
+    redirectRoute: Routes[RouteTypes.EVENT]
   },
   [RouteTypes.PROFILE]: {
     authStatus: AuthTypes.AUTH,
-    redirectRoute: Routes.LOGIN
+    redirectRoute: Routes[RouteTypes.LOGIN]
   },
   [RouteTypes.SIGNUP]: {
     authStatus: AuthTypes.NO_AUTH,
-    redirectRoute: Routes.PROFILE
+    redirectRoute: Routes[RouteTypes.EVENT]
   }
 };
 
