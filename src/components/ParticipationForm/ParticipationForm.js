@@ -12,10 +12,13 @@ import "./ParticipationForm.scss";
 const ParticipationForm = props => {
   const [loading] = useGlobal("loading");
   const [stage] = useGlobal("stage");
+  const [user] = useGlobal("user");
   const { year } = stage;
+  const { apiToken } = user;
   const [notes, setNotes] = useState("");
   const participation = getParticipationByYear(year);
   const isParticipating = !!participation;
+  const isDisabled = !apiToken;
   const isLoading =
     loading[ActionTypes.REGISTER_PARTICIPATION] ||
     loading[ActionTypes.REMOVE_PARTICIPATION];
@@ -61,7 +64,7 @@ const ParticipationForm = props => {
   const renderSubmitButton = () =>
     isParticipating ? (
       <Button
-        isDisabled={isLoading}
+        isDisabled={isDisabled || isLoading}
         isLoading={loading[ActionTypes.REGISTER_PARTICIPATION]}
         theme="secondary"
         title="Update notes"
@@ -69,7 +72,7 @@ const ParticipationForm = props => {
       />
     ) : (
       <Button
-        isDisabled={isLoading}
+        isDisabled={isDisabled || isLoading}
         isLoading={loading[ActionTypes.REGISTER_PARTICIPATION]}
         theme="primary"
         title="Participate in Secret Toymaker"
@@ -80,7 +83,7 @@ const ParticipationForm = props => {
   const renderRemoveParticipationButton = () =>
     isParticipating && (
       <Button
-        isDisabled={isLoading}
+        isDisabled={isDisabled || isLoading}
         isLoading={loading[ActionTypes.REMOVE_PARTICIPATION]}
         onClick={handleRemoveParticipationClick}
         theme="danger"
@@ -95,7 +98,7 @@ const ParticipationForm = props => {
       <form className="participation-form" onSubmit={handleFormSubmit}>
         <TextArea
           id="notes"
-          isDisabled={isLoading}
+          isDisabled={isDisabled || isLoading}
           label="Notes to your secret toymaker"
           onChange={handleInputChange}
           value={notes}
