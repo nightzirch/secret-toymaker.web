@@ -246,6 +246,7 @@ const EventPage = props => {
         }
       }
     } else if (stageType === StageTypes.INACTIVE) {
+      // TODO: Check if the event is in the past
       if (authStatus === AuthTypes.NO_AUTH) {
         contents = renderLoginForm();
       } else if (authStatus === AuthTypes.AUTH) {
