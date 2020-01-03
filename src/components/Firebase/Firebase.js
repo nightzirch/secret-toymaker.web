@@ -92,12 +92,13 @@ class Firebase {
       });
   };
 
-  setUser = result => {
+  setUser = async result => {
     const { displayName, email, uid } = result.user;
-    const { isNewUser, providerId, username } = result.additionalUserInfo;
+    const { providerId, username } = result.additionalUserInfo;
     const ref = this.db.collection("toymakers").doc(uid);
+    const toymaker = await ref.get();
 
-    if (isNewUser) {
+    if (!toymaker.exists) {
       const userObj = {
         email,
         name: displayName,
