@@ -59,8 +59,6 @@ class SignupForm extends React.Component {
           ErrorTypes.SIGNUP,
           response.error
         );
-      } else {
-        dispatchWithLoading(ActionTypes.SET_ERROR, ErrorTypes.SIGNUP);
       }
     }
   };

@@ -1,4 +1,5 @@
 export default {
+  DONATE_GIFT: "donateGift",
   LOGIN: "login",
   RESET_PASSWORD: "resetPassword",
   SIGNUP: "signup",
