@@ -249,7 +249,7 @@ class Firebase {
 
   donateGift = userId => {
     const donateGift = this.functions.httpsCallable("donateGift");
-    return donateGift({ user: userId }).then(result => result.data.success);
+    return donateGift({ user: userId }).then(result => result.data);
   };
 
   // Imported actions from notificationActions

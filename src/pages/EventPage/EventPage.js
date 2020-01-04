@@ -1,6 +1,7 @@
 import Alerts from "components/Alerts";
 import ApiTokenForm from "components/ApiTokenForm";
 import Button, { LoginButton } from "components/Button";
+import Error from "components/Error";
 import EventHero from "components/EventHero";
 import { InputField } from "components/Form";
 import GiftStatus from "components/GiftStatus";
@@ -19,6 +20,7 @@ import { isParticipatingInEvent } from "utils/participation";
 import ActionTypes from "utils/types/ActionTypes";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 import AuthTypes from "utils/types/AuthTypes";
+import ErrorTypes from "utils/types/ErrorTypes";
 import GiftDirectionTypes from "utils/types/GiftDirectionTypes";
 import StageTypes from "utils/types/StageTypes";
 import "./EventPage.scss";
@@ -79,8 +81,8 @@ const EventPage = props => {
     loading[ActionTypes.GET_USER]
   ]);
 
-  const handleDonateClick = () => {
-    dispatchWithLoading(ActionTypes.DONATE_GIFT);
+  const handleDonateClick = async () => {
+    await dispatchWithLoading(ActionTypes.DONATE_GIFT);
   };
 
   const renderStats = () => (
@@ -169,6 +171,8 @@ const EventPage = props => {
         Is your soul overfilled with wintersday spirit? Is giving one gift not
         enough? Fear not, we got you covered.
       </Paragraph>
+
+      <Error id={ErrorTypes.DONATE_GIFT} />
 
       <Button
         isLoading={loading[ActionTypes.DONATE_GIFT]}
