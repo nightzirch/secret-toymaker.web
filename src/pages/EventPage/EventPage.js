@@ -82,16 +82,7 @@ const EventPage = props => {
   ]);
 
   const handleDonateClick = async () => {
-    dispatchWithLoading(ActionTypes.SET_ERROR, ErrorTypes.DONATE_GIFT);
-    const response = await dispatchWithLoading(ActionTypes.DONATE_GIFT);
-
-    if (response.error) {
-      dispatchWithLoading(
-        ActionTypes.SET_ERROR,
-        ErrorTypes.DONATE_GIFT,
-        response.error
-      );
-    }
+    await dispatchWithLoading(ActionTypes.DONATE_GIFT);
   };
 
   const renderStats = () => (
