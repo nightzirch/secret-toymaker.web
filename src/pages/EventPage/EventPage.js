@@ -81,8 +81,8 @@ const EventPage = props => {
     loading[ActionTypes.GET_USER]
   ]);
 
-  const handleDonateClick = async () => {
-    await dispatchWithLoading(ActionTypes.DONATE_GIFT);
+  const handleDonateClick = () => {
+    dispatchWithLoading(ActionTypes.DONATE_GIFT);
   };
 
   const renderStats = () => (
