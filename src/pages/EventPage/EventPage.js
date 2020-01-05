@@ -9,6 +9,7 @@ import { Grid, GridItem } from "components/Grid";
 import LoadingIndicator from "components/LoadingIndicator";
 import ParticipationForm from "components/ParticipationForm";
 import Section from "components/Section";
+import { CreditsSection } from "components/Sections";
 import Stats from "components/Stats";
 import { Paragraph, Paragraphs, Title } from "components/Typography";
 import lang from "lang/lang";
@@ -285,6 +286,8 @@ const EventPage = props => {
           {renderContent()}
         </Section>
       )}
+
+      <CreditsSection showOnlyContactInfo />
     </div>
   );
 };

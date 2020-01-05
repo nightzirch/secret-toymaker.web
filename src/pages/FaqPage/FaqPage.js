@@ -1,6 +1,7 @@
 import Alerts from "components/Alerts";
 import FaqBlocks from "components/FaqBlocks";
 import Section from "components/Section";
+import { CreditsSection } from "components/Sections";
 import { Title } from "components/Typography";
 import lang from "lang/lang";
 import React from "reactn";
@@ -21,6 +22,8 @@ const FaqPage = props => {
 
         <FaqBlocks blocks={lang.faq.long} />
       </Section>
+
+      <CreditsSection showOnlyContactInfo />
     </div>
   );
 };

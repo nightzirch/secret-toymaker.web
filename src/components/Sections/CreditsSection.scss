@@ -14,4 +14,15 @@
     color: $white;
     margin-left: 0.5rem;
   }
+
+  &--only-contact {
+    .section {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .paragraph {
+      margin: 0;
+    }
+  }
 }
