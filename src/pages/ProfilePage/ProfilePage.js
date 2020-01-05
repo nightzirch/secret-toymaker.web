@@ -5,6 +5,7 @@ import { Grid, GridItem } from "components/Grid";
 import NotificationsForm from "components/NotificationsForm";
 import ProfilePicture from "components/ProfilePicture";
 import Section from "components/Section";
+import { CreditsSection } from "components/Sections";
 import { PageHeader, Title } from "components/Typography";
 import React from "reactn";
 import { withRedirect } from "utils/redirect";
@@ -79,6 +80,8 @@ class ProfilePage extends React.Component {
             </GridItem> */}
           </Grid>
         </Section>
+
+        <CreditsSection showOnlyContactInfo />
       </div>
     );
   }

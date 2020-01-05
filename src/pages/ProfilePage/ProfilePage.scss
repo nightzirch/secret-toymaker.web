@@ -4,11 +4,14 @@
   background-repeat: no-repeat;
   background-size: 50%;
   min-height: 100vh;
-  margin: 0 2rem;
   padding-top: 6.4rem;
 
   &__profile-picture {
     padding-bottom: 100%;
     width: 100%;
+  }
+
+  > .section {
+    padding-bottom: 6.4rem;
   }
 }
