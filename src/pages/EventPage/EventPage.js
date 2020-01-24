@@ -147,8 +147,9 @@ const EventPage = props => {
         <>
           <Title>Your match</Title>
           <GiftStatus
-            gift={outgoingPrimaryGift}
             direction={GiftDirectionTypes.OUTGOING}
+            eventStageType={stageType}
+            gift={outgoingPrimaryGift}
           />
         </>
       )}
@@ -157,8 +158,9 @@ const EventPage = props => {
         <>
           <Title>Your secret toymaker</Title>
           <GiftStatus
-            gift={incomingPrimaryGift}
             direction={GiftDirectionTypes.INCOMING}
+            eventStageType={stageType}
+            gift={incomingPrimaryGift}
           />
         </>
       )}
@@ -185,8 +187,9 @@ const EventPage = props => {
         outgoingGifts.map(outgoingGift => (
           <GiftStatus
             direction={GiftDirectionTypes.OUTGOING}
-            id={outgoingGift.id}
+            eventStageType={stageType}
             gift={outgoingGift}
+            id={outgoingGift.id}
             key={outgoingGift.id}
           />
         ))}
@@ -209,8 +212,9 @@ const EventPage = props => {
             incomingGifts.map(incomingGift => (
               <GiftStatus
                 direction={GiftDirectionTypes.INCOMING}
-                id={incomingGift.id}
+                eventStageType={stageType}
                 gift={incomingGift}
+                id={incomingGift.id}
                 key={incomingGift.id}
               />
             ))}
