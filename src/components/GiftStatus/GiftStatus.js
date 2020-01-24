@@ -10,6 +10,7 @@ import {
 import ActionTypes from "utils/types/ActionTypes";
 import GiftDirectionTypes from "utils/types/GiftDirectionTypes";
 import GiftStatusTypes from "utils/types/GiftStatusTypes";
+import StageTypes from "utils/types/StageTypes";
 import "./GiftStatus.scss";
 import { GiftStatusIllustrations } from "./utils/constants";
 
@@ -21,11 +22,11 @@ const GIFT_STATUS_ARRAY = Object.keys(GiftStatusTypes).map(
 );
 
 const GiftStatus = props => {
-  const { direction, gift } = props;
+  const { direction, eventStageType, gift } = props;
   const { id, match, notes, received, sent } = gift;
   const [loading] = useGlobal("loading");
   const [status, setStatus] = useState(null);
-  const [isButtonVisible, setButtonVisible] = useState(true);
+  const [isButtonVisible, setButtonVisible] = useState(false);
   const loadingKey = generateCustomGiftLoadingKey(id);
 
   useEffect(() => {
@@ -39,7 +40,10 @@ const GiftStatus = props => {
   }, [received, sent]);
 
   useEffect(() => {
-    if (direction === GiftDirectionTypes.OUTGOING) {
+    if (
+      eventStageType === StageTypes.GIFTING &&
+      direction === GiftDirectionTypes.OUTGOING
+    ) {
       setButtonVisible(
         [GiftStatusTypes.PACKING, GiftStatusTypes.SENT].includes(status)
       );
@@ -194,8 +198,13 @@ const GiftStatus = props => {
 };
 
 GiftStatus.propTypes = {
-  gift: t.object.isRequired,
-  direction: t.oneOf(GiftDirectionTypesArray).isRequired
+  eventStageType: t.oneOf(Object.values(StageTypes)),
+  direction: t.oneOf(GiftDirectionTypesArray).isRequired,
+  gift: t.object.isRequired
+};
+
+GiftStatus.defaultProps = {
+  eventStageType: StageTypes.INACTIVE
 };
 
 export default GiftStatus;
