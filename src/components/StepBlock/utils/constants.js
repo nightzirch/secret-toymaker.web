@@ -1,9 +1,7 @@
-import { SignupButton } from "components/Button";
 import check from "images/check_t.png";
 import pack from "images/pack.png";
 import receive from "images/receiveg_t.png";
 import signup from "images/sign_t.png";
-import React from "react";
 
 export const StepTypes = {
   SIGNUP: "SIGNUP",
@@ -18,7 +16,7 @@ export const StepData = {
     text:
       "On the signup page, enter your API token and provide a note for your Secret Toymaker.",
     number: 1,
-    button: <SignupButton />,
+    // button: <SignupButton />,
     image: {
       alt: "Sign up",
       title: "Sign up",
