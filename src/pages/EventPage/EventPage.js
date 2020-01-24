@@ -259,7 +259,11 @@ const EventPage = props => {
       if (authStatus === AuthTypes.NO_AUTH) {
         contents = renderLoginForm();
       } else if (authStatus === AuthTypes.AUTH) {
-        contents = renderGifts();
+        if (isParticipating) {
+          contents = renderGifts();
+        } else {
+          contents = renderNotParticipatingMessage();
+        }
       } else {
         contents = null;
       }
