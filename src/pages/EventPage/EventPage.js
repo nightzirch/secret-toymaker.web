@@ -177,11 +177,13 @@ const EventPage = props => {
 
       <Error id={ErrorTypes.DONATE_GIFT} />
 
-      <Button
-        isLoading={loading[ActionTypes.DONATE_GIFT]}
-        onClick={handleDonateClick}
-        title="Donate a gift"
-      />
+      {stageType === StageTypes.GIFTING && (
+        <Button
+          isLoading={loading[ActionTypes.DONATE_GIFT]}
+          onClick={handleDonateClick}
+          title="Donate a gift"
+        />
+      )}
 
       {outgoingGifts &&
         outgoingGifts.map(outgoingGift => (
