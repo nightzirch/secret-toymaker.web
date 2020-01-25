@@ -40,17 +40,16 @@ const GiftStatus = props => {
   }, [received, sent]);
 
   useEffect(() => {
-    if (
-      eventStageType === StageTypes.GIFTING &&
-      direction === GiftDirectionTypes.OUTGOING
-    ) {
-      setButtonVisible(
-        [GiftStatusTypes.PACKING, GiftStatusTypes.SENT].includes(status)
-      );
-    } else if (direction === GiftDirectionTypes.INCOMING) {
-      setButtonVisible(
-        [GiftStatusTypes.SENT, GiftStatusTypes.RECEIVED].includes(status)
-      );
+    if (eventStageType === StageTypes.GIFTING) {
+      if (direction === GiftDirectionTypes.OUTGOING) {
+        setButtonVisible(
+          [GiftStatusTypes.PACKING, GiftStatusTypes.SENT].includes(status)
+        );
+      } else if (direction === GiftDirectionTypes.INCOMING) {
+        setButtonVisible(
+          [GiftStatusTypes.SENT, GiftStatusTypes.RECEIVED].includes(status)
+        );
+      }
     }
   }, [direction, status]);
 
