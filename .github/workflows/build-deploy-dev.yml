@@ -44,8 +44,6 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
       - name: Download Archive
         uses: actions/download-artifact@v2
         with:
@@ -60,6 +58,6 @@ jobs:
       - name: Discord notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        uses: Ilshidur/action-discord@v0.3.0
+        uses: Ilshidur/action-discord@v1
         with:
           args: "The project has been deployed to dev: https://secret-toymaker-dev.web.app"
