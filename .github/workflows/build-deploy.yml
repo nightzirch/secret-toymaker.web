@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build and Deploy (Production)
 on:
   push:
     branches:
@@ -12,9 +12,11 @@ jobs:
       - name: Setting up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: "10.17.0"
+          node-version: "14.4.0"
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
+      - name: Rebuild Node Sass
+        run: npm rebuild node-sass
       - name: Install Dependencies
         run: npm i
       - name: Remove build directory
@@ -31,9 +33,9 @@ jobs:
           REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
           REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
           REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
-        run: npm run build
+        run: CI= npm run build
       - name: Archive
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v2
         with:
           name: build
           path: build
@@ -43,13 +45,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Download Archive
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@v2
         with:
           name: build
+          path: build
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@v1.5.0
         with:
           args: deploy --only hosting
         env:
