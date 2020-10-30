@@ -48,6 +48,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
+      - name: Checkout Repo
+        uses: actions/checkout@v2
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@v1.5.0
         with:
