@@ -33,10 +33,11 @@ class LoginForm extends React.Component {
 
   handleFormSubmit = async e => {
     e.preventDefault();
+    const { email, password } = this.state;
 
     const response = await this.global.firebase.signInWithEmailAndPassword({
-      email: this.state.email,
-      password: this.state.password
+      email,
+      password,
     });
 
     if (response.error) {
@@ -51,6 +52,8 @@ class LoginForm extends React.Component {
   };
 
   render() {
+    const { email, password } = this.state;
+
     return (
       <div className="login-form__container">
         <Error id={ErrorTypes.LOGIN} />
@@ -64,7 +67,7 @@ class LoginForm extends React.Component {
                 onChange={this.handleInputChange}
                 placeholder="scarlet@briar.com"
                 type="email"
-                value={this.state.email}
+                value={email}
               />
 
               <InputField
@@ -73,7 +76,7 @@ class LoginForm extends React.Component {
                 onChange={this.handleInputChange}
                 placeholder="Password"
                 type="password"
-                value={this.state.password}
+                value={password}
               />
 
               <Button
