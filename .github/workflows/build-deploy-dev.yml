@@ -15,6 +15,8 @@ jobs:
           node-version: "14.4.0"
       - name: Checkout Repo
         uses: actions/checkout@master
+      - name: Rebuild Node Sass
+        run: npm rebuild node-sass
       - name: Install Dependencies
         run: npm i
       - name: Remove build directory
