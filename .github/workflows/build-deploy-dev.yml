@@ -58,6 +58,6 @@ jobs:
       - name: Discord notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        uses: Ilshidur/action-discord@v1
+        uses: Ilshidur/action-discord@master
         with:
           args: "The project has been deployed to dev: https://secret-toymaker-dev.web.app"
