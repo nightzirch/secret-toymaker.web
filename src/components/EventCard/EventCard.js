@@ -12,10 +12,10 @@ import { getStatusData } from "./utils/eventCardHelper";
 
 const EventCard = (props) => {
   const { event } = props;
-  const { currentStage, eventEnd, year } = event;
+  const { year } = event;
   const url = replaceString(Routes.EVENT, { ":year": year });
 
-  const { image, statusText, statusColorScheme } = getStatusData(event);
+  const { statusText, statusColorScheme } = getStatusData(event);
 
   return (
     <Link className="event-card-container" to={url}>
