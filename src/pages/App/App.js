@@ -13,7 +13,7 @@ class App extends Component {
     super(props);
 
     // Scroll to top on every new page
-    this.locationListener = this.props.history.listen(location => {
+    this.locationListener = this.props.history.listen((location) => {
       window.scrollTo(0, 0);
     });
 
@@ -26,6 +26,7 @@ class App extends Component {
 
   componentDidMount = () => {
     dispatchWithLoading(ActionTypes.GET_ALERTS);
+    dispatchWithLoading(ActionTypes.GET_EVENTS);
     dispatchWithLoading(ActionTypes.GET_STAGE);
   };
 

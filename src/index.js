@@ -5,6 +5,7 @@ import React from "reactn";
 import addReactNDevTools from "reactn-devtools";
 import App from "./pages/App";
 import EventPage from "./pages/EventPage";
+import EventsPage from "./pages/EventsPage";
 import FaqPage from "./pages/FaqPage";
 import FrontPage from "./pages/FrontPage";
 import LoginPage from "./pages/LoginPage";
@@ -26,6 +27,7 @@ ReactDOM.render(
   <Router>
     <App>
       <Route path={Routes.EVENT} exact component={EventPage} />
+      <Route path={Routes.EVENTS} exact component={EventsPage} />
       <Route path={Routes.FAQ} exact component={FaqPage} />
       <Route path={Routes.FRONTPAGE} exact component={FrontPage} />
       <Route path={Routes.LOGIN} exact component={LoginPage} />

@@ -29,44 +29,44 @@ class Firebase {
   createUserWithEmailAndPassword = ({ email, password }) => {
     return this.auth
       .createUserWithEmailAndPassword(email, password)
-      .then(result =>
+      .then((result) =>
         this.setUser(result).then(() =>
           this.signInWithEmailAndPassword({ email, password })
         )
       )
-      .catch(error => ({ error: error.message }));
+      .catch((error) => ({ error: error.message }));
   };
 
   signInWithEmailAndPassword = ({ email, password }) =>
     this.auth
       .signInWithEmailAndPassword(email, password)
       .then(() => ({ success: "Successfully logged in!" }))
-      .catch(error => ({ error: error.message }));
+      .catch((error) => ({ error: error.message }));
 
   signOut = () => this.auth.signOut();
 
-  resetPassword = email =>
+  resetPassword = (email) =>
     this.auth
       .sendPasswordResetEmail(email)
       .then(() => ({
-        success: `Instructions on how to reset password was sent to ${email}.`
+        success: `Instructions on how to reset password was sent to ${email}.`,
       }))
-      .catch(error => ({ error: "Failed to reset password.", trace: error }));
+      .catch((error) => ({ error: "Failed to reset password.", trace: error }));
 
-  passwordUpdate = password => this.auth.currentUser.updatePassword(password);
+  passwordUpdate = (password) => this.auth.currentUser.updatePassword(password);
 
   signInWithGoogle = () => this.signInWithPopup(this.googleLoginProvider);
 
   signInWithFacebook = () => this.signInWithPopup(this.facebookLoginProvider);
 
-  signInWithPopup = async provider => {
+  signInWithPopup = async (provider) => {
     return this.auth
       .signInWithPopup(provider)
-      .then(result => {
+      .then((result) => {
         this.setUser(result);
       })
       .then(() => ({ success: "Successfully logged in!" }))
-      .catch(error => ({ error: error.message }));
+      .catch((error) => ({ error: error.message }));
   };
 
   // FUNCTIONS
@@ -78,21 +78,21 @@ class Firebase {
   getStage = () => {
     const stage = this.functions.httpsCallable("stage");
     return stage()
-      .then(result => {
+      .then((result) => {
         const { start, end, ...rest } = result.data;
         return {
           start: new Date(start),
           end: new Date(end),
-          ...rest
+          ...rest,
         };
       })
-      .catch(e => {
+      .catch((e) => {
         console.log("Error getting stage", e);
         return null;
       });
   };
 
-  setUser = async result => {
+  setUser = async (result) => {
     const { displayName, email, uid } = result.user;
     const { providerId, username } = result.additionalUserInfo;
     const ref = this.db.collection("toymakers").doc(uid);
@@ -103,7 +103,7 @@ class Firebase {
         email,
         name: displayName,
         uid,
-        providers: {}
+        providers: {},
       };
 
       if (providerId) {
@@ -111,7 +111,7 @@ class Firebase {
           email,
           providerId,
           uid,
-          username: username || null
+          username: username || null,
         };
       }
 
@@ -120,16 +120,16 @@ class Firebase {
     return null;
   };
 
-  getUser = uid => {
+  getUser = (uid) => {
     return uid
       ? this.db
           .collection("toymakers")
           .doc(uid)
           .get()
-          .then(doc => {
+          .then((doc) => {
             return doc.exists ? doc.data() : null;
           })
-          .catch(error => {
+          .catch((error) => {
             console.log("Error while fetching user", error);
             return null;
           })
@@ -142,14 +142,14 @@ class Firebase {
       .doc(uid)
       .set(
         {
-          email
+          email,
         },
         {
-          merge: true
+          merge: true,
         }
       )
       .then(() => ({ success: "Successfully updated user." }))
-      .catch(error => ({ error }));
+      .catch((error) => ({ error }));
   };
 
   updateConsents = (uid, { consents }) => {
@@ -158,19 +158,19 @@ class Firebase {
       .doc(uid)
       .set(
         {
-          consents
+          consents,
         },
         {
-          merge: true
+          merge: true,
         }
       )
       .then(() => ({ success: "Successfully updated consents." }))
-      .catch(error => ({ error }));
+      .catch((error) => ({ error }));
   };
 
   updateApiToken = (uid, { apiToken }) => {
     const updateApiKey = this.functions.httpsCallable("updateApiKey");
-    return updateApiKey({ user: uid, apiToken }).then(result => result.data);
+    return updateApiKey({ user: uid, apiToken }).then((result) => result.data);
   };
 
   registerParticipation = (userId, notes) => {
@@ -178,39 +178,44 @@ class Firebase {
     return participate({
       user: userId,
       notes,
-      participate: true
-    }).then(result => result);
+      participate: true,
+    }).then((result) => result);
   };
 
-  removeParticipation = userId => {
+  removeParticipation = (userId) => {
     const participate = this.functions.httpsCallable("participate");
     return participate({ user: userId, participate: false }).then(
-      result => result
+      (result) => result
     );
   };
 
   getParticipations = (userId, apiToken) => {
     const participations = this.functions.httpsCallable("participateStatus");
     return participations({ user: userId, apiToken }).then(
-      result => result.data.success
+      (result) => result.data.success
     );
   };
 
   getStats = () => {
     const getStats = this.functions.httpsCallable("getStats");
-    return getStats().then(result => result.data.success);
+    return getStats().then((result) => result.data.success);
   };
 
   getAlerts = () => {
     const getAlerts = this.functions.httpsCallable("getAlerts");
-    return getAlerts().then(result => result.data.success);
+    return getAlerts().then((result) => result.data.success);
   };
 
-  getGifts = userId => {
+  getEvents = () => {
+    const getEvents = this.functions.httpsCallable("getEvents");
+    return getEvents().then((result) => result.data.success);
+  };
+
+  getGifts = (userId) => {
     const getGifts = this.functions.httpsCallable("getGifts");
     return getGifts({
-      user: userId
-    }).then(result => result.data.success);
+      user: userId,
+    }).then((result) => result.data.success);
   };
 
   sendGift = (userId, giftId, isSent) => {
@@ -220,8 +225,8 @@ class Firebase {
     return updateGiftSentStatus({
       user: userId,
       giftId,
-      isSent
-    }).then(result => result.data.success);
+      isSent,
+    }).then((result) => result.data.success);
   };
 
   receiveGift = (userId, giftId, isReceived) => {
@@ -231,8 +236,8 @@ class Firebase {
     return updateGiftReceivedStatus({
       user: userId,
       giftId,
-      isReceived
-    }).then(result => result.data.success);
+      isReceived,
+    }).then((result) => result.data.success);
   };
 
   reportGift = (userId, giftId, isReporting, reportMessage) => {
@@ -243,13 +248,13 @@ class Firebase {
       user: userId,
       giftId,
       isReporting,
-      reportMessage
-    }).then(result => result.data.success);
+      reportMessage,
+    }).then((result) => result.data.success);
   };
 
-  donateGift = userId => {
+  donateGift = (userId) => {
     const donateGift = this.functions.httpsCallable("donateGift");
-    return donateGift({ user: userId }).then(result => result.data);
+    return donateGift({ user: userId }).then((result) => result.data);
   };
 
   // Imported actions from notificationActions
@@ -257,7 +262,7 @@ class Firebase {
 
   unsubscribeFromNotifications = (userId, subscription) => {};
 
-  setSubscribedState = isSubscribed => {};
+  setSubscribedState = (isSubscribed) => {};
 }
 
 export default Firebase;

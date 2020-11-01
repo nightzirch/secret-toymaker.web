@@ -3,6 +3,9 @@ export default {
   GET_ALERTS: "updateAlerts",
   CLOSE_ALERT: "closeAlert",
 
+  // Events
+  GET_EVENTS: "getEvents",
+
   // User
   GET_USER: "getUser",
   UPDATE_USER: "updateUser",
@@ -27,5 +30,5 @@ export default {
 
   // Other reducers
   SET_ERROR: "setError",
-  SET_LOADING: "setLoading"
+  SET_LOADING: "setLoading",
 };

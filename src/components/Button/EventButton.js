@@ -4,9 +4,10 @@ import Routes from "routes";
 import { replaceString } from "utils/string";
 import Button from "./Button";
 
-const EventButton = props => {
+const EventButton = (props) => {
   const gotoEvent = () => {
     // I really can't find docs about how to do this the clean way...
+    // TODO: Make this the current event
     props.history.push(replaceString(Routes.EVENT, { ":year": "2019" }));
   };
 

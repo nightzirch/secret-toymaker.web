@@ -3,8 +3,8 @@ import t from "prop-types";
 import React from "react";
 import "./DescriptionListItem.scss";
 
-const DescriptionListItem = props => {
-  const { color, description, icon, term } = props;
+const DescriptionListItem = (props) => {
+  const { color, description, icon, isHorizontal, term } = props;
 
   const renderIcon = () =>
     icon && (
@@ -15,10 +15,11 @@ const DescriptionListItem = props => {
     <span
       className={classnames(
         "description-list-item",
-        `description-list-item--${color}`
+        `description-list-item--${color}`,
+        { "description-list-item--horizontal": isHorizontal }
       )}
     >
-      <dt className="description-list-item__term">{term}</dt>
+      {term && <dt className="description-list-item__term">{term}</dt>}
       <dd className="description-list-item__description">
         {description}
         {renderIcon()}
@@ -31,11 +32,12 @@ DescriptionListItem.propTypes = {
   color: t.oneOf(["dark", "light"]),
   description: t.node.isRequired,
   icon: t.node,
-  term: t.node.isRequired
+  isHorizontal: t.bool,
+  term: t.node,
 };
 
 DescriptionListItem.defaultProps = {
-  color: "dark"
+  color: "dark",
 };
 
 export default DescriptionListItem;

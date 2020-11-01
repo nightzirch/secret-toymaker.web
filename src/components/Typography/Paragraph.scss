@@ -31,24 +31,46 @@
   &--black {
     color: $black;
   }
-
   &--dark {
     color: $dark;
   }
-
   &--dark-grey {
     color: $dark-grey;
   }
-
   &--grey {
     color: $grey;
   }
-
   &--light {
     color: $light;
   }
-
   &--white {
     color: $white;
+  }
+  &--haiti {
+    color: $haiti;
+  }
+  &--meteorite {
+    color: $meteorite;
+  }
+  &--vivid-violet {
+    color: $vivid-violet;
+  }
+  &--biloba-flower {
+    color: $biloba-flower;
+  }
+  &--pattens-blue {
+    color: $pattens-blue;
+  }
+  &--error {
+    color: $state-error;
+  }
+  &--warning {
+    color: $state-warning;
+  }
+  &--success {
+    color: $state-success;
+  }
+  &--info {
+    color: $state-info;
   }
 }

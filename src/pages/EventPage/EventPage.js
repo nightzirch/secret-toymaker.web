@@ -26,13 +26,13 @@ import GiftDirectionTypes from "utils/types/GiftDirectionTypes";
 import StageTypes from "utils/types/StageTypes";
 import "./EventPage.scss";
 
-const EventPage = props => {
+const EventPage = (props) => {
   const { gifts, loading, participations, stage, user } = props;
   const {
     outgoingPrimary: outgoingPrimaryGift,
     outgoing: outgoingGifts,
     incomingPrimary: incomingPrimaryGift,
-    incoming: incomingGifts
+    incoming: incomingGifts,
   } = gifts || {};
   const { type: stageType, year } = stage || {};
   const authStatus = getAuthStatus();
@@ -79,7 +79,7 @@ const EventPage = props => {
   }, [
     loading[ActionTypes.GET_STATS],
     loading[ActionTypes.GET_PARTICIPATION_STATUS],
-    loading[ActionTypes.GET_USER]
+    loading[ActionTypes.GET_USER],
   ]);
 
   const handleDonateClick = () => {
@@ -186,7 +186,7 @@ const EventPage = props => {
       )}
 
       {outgoingGifts &&
-        outgoingGifts.map(outgoingGift => (
+        outgoingGifts.map((outgoingGift) => (
           <GiftStatus
             direction={GiftDirectionTypes.OUTGOING}
             eventStageType={stageType}
@@ -211,7 +211,7 @@ const EventPage = props => {
           <Paragraph>{text}</Paragraph>
 
           {incomingGifts &&
-            incomingGifts.map(incomingGift => (
+            incomingGifts.map((incomingGift) => (
               <GiftStatus
                 direction={GiftDirectionTypes.INCOMING}
                 eventStageType={stageType}
@@ -311,15 +311,16 @@ EventPage.propTypes = {
   loading: t.object,
   participations: t.array,
   stage: t.object,
-  user: t.object
+  user: t.object,
 };
 
-const mapGlobalToProps = global => ({
+const mapGlobalToProps = (global) => ({
+  events: global.events,
   gifts: global.gifts,
   loading: global.loading,
   participations: global.participations,
   stage: global.stage,
-  user: global.user
+  user: global.user,
 });
 
 export default withGlobal(mapGlobalToProps)(EventPage);

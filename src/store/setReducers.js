@@ -9,8 +9,13 @@ const setReducers = () => {
     return { alerts };
   });
 
+  addReducer(ActionTypes.GET_EVENTS, async (global, dispatch) => {
+    const events = await global.firebase.getEvents();
+    return { events };
+  });
+
   addReducer(ActionTypes.CLOSE_ALERT, async (global, dispatch, id) => {
-    const filteredAlerts = global.alerts.filter(alert => alert.id !== id);
+    const filteredAlerts = global.alerts.filter((alert) => alert.id !== id);
     return { alerts: filteredAlerts };
   });
 
@@ -152,7 +157,7 @@ const setReducers = () => {
   addReducer(ActionTypes.GET_STATS, async (global, dispatch) => {
     const stats = await global.firebase.getStats();
     return {
-      stats: { ...global.stats, [stats.year]: stats }
+      stats: { ...global.stats, [stats.year]: stats },
     };
   });
 
@@ -162,7 +167,7 @@ const setReducers = () => {
 
   addReducer(ActionTypes.SET_LOADING, async (global, dispatch, key, value) => {
     return {
-      loading: { ...global.loading, [key]: value }
+      loading: { ...global.loading, [key]: value },
     };
   });
 };

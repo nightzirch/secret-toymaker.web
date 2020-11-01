@@ -3,11 +3,12 @@ import t from "prop-types";
 import React from "reactn";
 import "./Title.scss";
 
-const Title = props => {
-  let titleClasses = classnames(
+const Title = (props) => {
+  const titleClasses = classnames(
     "title",
     `title--${props.colorScheme}`,
-    `title--${props.level}`
+    `title--${props.level}`,
+    props.className
   );
 
   let titleLevel;
@@ -41,14 +42,14 @@ Title.propTypes = {
     "grey",
     "light",
     "white",
-    "primary"
+    "primary",
   ]),
-  level: t.oneOf(["page", "primary", "secondary", "tertiary"])
+  level: t.oneOf(["page", "primary", "secondary", "tertiary"]),
 };
 
 Title.defaultProps = {
   colorScheme: "dark",
-  level: "secondary"
+  level: "secondary",
 };
 
 export default Title;

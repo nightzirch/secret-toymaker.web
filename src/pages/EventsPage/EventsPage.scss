@@ -1,0 +1,22 @@
+@import "../../styles/colors";
+@import "../../styles/variables";
+
+.events-page {
+  background-color: $pattens-blue;
+  padding: 6.4rem 0 0;
+
+  > .section {
+    padding-bottom: 6.4rem;
+  }
+
+  &__header {
+    &__lead {
+      font-size: $text-lg;
+      font-weight: bold;
+    }
+
+    .page-header--signup:after {
+      z-index: 0;
+    }
+  }
+}
