@@ -3144,6 +3144,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dequal@npm:2.0.2":
+  version: 2.0.2
+  resolution: "dequal@npm:2.0.2"
+  checksum: 3b5b019a873da282a25512c632c077e5e8e2a019e71c5b6968836443b861e44176ee3934facfecdc14994d553c1ff4a6c7232278d6aef87baf65e2413d41760c
+  languageName: node
+  linkType: hard
+
 "des.js@npm:^1.0.0":
   version: 1.0.1
   resolution: "des.js@npm:1.0.1"
@@ -6294,6 +6301,7 @@ fsevents@~2.1.2:
     next: 10.0.0
     react: 17.0.1
     react-dom: 17.0.1
+    swr: ^0.3.8
   languageName: unknown
   linkType: soft
 
@@ -6820,6 +6828,17 @@ fsevents@~2.1.2:
   dependencies:
     has-flag: ^4.0.0
   checksum: 8e57067c39216f3c2ffce7cc14ca934d54746192571203aa9c9922d97d2d55cc1bdaa9e41a11f91e620670b5a74ebdec6b548a885d8cc2dea7cab59e21416029
+  languageName: node
+  linkType: hard
+
+"swr@npm:^0.3.8":
+  version: 0.3.8
+  resolution: "swr@npm:0.3.8"
+  dependencies:
+    dequal: 2.0.2
+  peerDependencies:
+    react: ^16.11.0 || ^17.0.0
+  checksum: 2a971d44de4191b5fe4d523f2e18d7d022cb7c6a6c4d83b3ac3a922cfd4baac947a768cb0ee7514154d4c7dadd765de6ef8c9fcd2fe0b92b061927d18d692b1f
   languageName: node
   linkType: hard
 
