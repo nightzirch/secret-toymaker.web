@@ -5,11 +5,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta charset="utf-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-          />
+          <meta charSet="utf-8" />
 
           <link
             rel="apple-touch-icon"
@@ -33,16 +29,13 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="theme-color" content="#ffffff" />
 
-          <title>Secret Toymaker</title>
-
           <link rel="stylesheet" href="https://use.typekit.net/atr4hba.css" />
+          <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
         </Head>
 
         <body>
           <Main />
           <NextScript />
-
-          <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
         </body>
       </Html>
     );

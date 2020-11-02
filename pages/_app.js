@@ -1,19 +1,32 @@
 import Footer from "components/Footer";
 import Header from "components/Header";
+import { AuthProvider } from "contexts/AuthContext";
+import Head from "next/head";
 import "styles/style.scss";
 
 function App({ Component, pageProps }) {
   return (
-    <div className="app">
-      <Header />
+    <AuthProvider>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
 
-      <div className="app__main">
-        {/* <MainMenu /> */}
-        <Component {...pageProps} />
+        <title>Secret Toymaker</title>
+      </Head>
+
+      <div className="app">
+        <Header />
+
+        <div className="app__main">
+          {/* <MainMenu /> */}
+          <Component {...pageProps} />
+        </div>
+
+        <Footer />
       </div>
-
-      <Footer />
-    </div>
+    </AuthProvider>
   );
 }
 
