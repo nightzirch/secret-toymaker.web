@@ -2,7 +2,7 @@ import Alerts from "components/Alerts";
 import LoginForm from "components/LoginForm";
 import Section from "components/Section";
 import { PageHeader } from "components/Typography";
-import { withRedirect } from "utils/redirect";
+import { validateAuthWithRedirect } from "utils/redirect";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
 const LoginPage = (props) => {
@@ -23,4 +23,7 @@ const LoginPage = (props) => {
   );
 };
 
-export default withRedirect(LoginPage);
+export const getServerSideProps = async (ctx) =>
+  await validateAuthWithRedirect(ctx);
+
+export default LoginPage;

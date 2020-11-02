@@ -9,7 +9,7 @@ import Section from "components/Section";
 import { CreditsSection } from "components/Sections";
 import { PageHeader, Title } from "components/Typography";
 import React from "reactn";
-import { withRedirect } from "utils/redirect";
+import { validateAuthWithRedirect } from "utils/redirect";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
 class ProfilePage extends React.Component {
@@ -86,4 +86,7 @@ class ProfilePage extends React.Component {
   }
 }
 
-export default withRedirect(ProfilePage);
+export const getServerSideProps = async (ctx) =>
+  await validateAuthWithRedirect(ctx);
+
+export default ProfilePage;

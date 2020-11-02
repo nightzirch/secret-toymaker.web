@@ -1,7 +1,7 @@
 import classnames from "classnames";
+import Routes from "config/routes";
 import Link from "next/link";
 import React from "reactn";
-import Routes from "utils/routes";
 import NavigationItem from "./NavigationItem";
 
 class Navigation extends React.Component {

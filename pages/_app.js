@@ -1,6 +1,7 @@
 import Footer from "components/Footer";
 import Header from "components/Header";
 import MainMenu from "components/MainMenu";
+import { AuthProvider } from "contexts/Auth";
 import Head from "next/head";
 import { withInit } from "reactn";
 import { initialReducers, initialState } from "store";
@@ -8,7 +9,7 @@ import "styles/style.scss";
 
 function App({ Component, pageProps }) {
   return (
-    <>
+    <AuthProvider>
       <Head>
         <meta
           name="viewport"
@@ -28,7 +29,7 @@ function App({ Component, pageProps }) {
 
         <Footer />
       </div>
-    </>
+    </AuthProvider>
   );
 }
 

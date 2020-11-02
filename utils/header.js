@@ -1,5 +1,5 @@
+import Routes, { RouteTypes } from "config/routes";
 import { getKeyByValue } from "utils/object";
-import Routes, { RouteTypes } from "utils/routes";
 import { getRouteRoot } from "utils/url";
 
 export const headerTextColor = {

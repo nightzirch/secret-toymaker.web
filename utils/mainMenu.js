@@ -1,5 +1,5 @@
+import Routes from "config/routes";
 import { getGlobal } from "reactn";
-import Routes from "utils/routes";
 import AuthTypes from "utils/types/AuthTypes";
 
 export const getNavigationItems = () => {

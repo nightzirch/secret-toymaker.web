@@ -1,6 +1,6 @@
+import Routes from "config/routes";
 import { useRouter } from "next/router";
 import React from "reactn";
-import Routes from "utils/routes";
 import Button from "./Button";
 
 const LoginButton = (props) => {

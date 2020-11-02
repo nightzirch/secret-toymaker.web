@@ -1,6 +1,6 @@
+import Routes from "config/routes";
 import { useRouter } from "next/router";
 import React from "reactn";
-import Routes from "utils/routes";
 import { replaceString } from "utils/string";
 import Button from "./Button";
 
