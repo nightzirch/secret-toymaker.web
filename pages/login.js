@@ -2,7 +2,6 @@ import Alerts from "components/Alerts";
 import LoginForm from "components/LoginForm";
 import Section from "components/Section";
 import { PageHeader } from "components/Typography";
-import React from "reactn";
 import { withRedirect } from "utils/redirect";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 

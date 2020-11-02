@@ -21,7 +21,7 @@ const List = (props) => {
 
   const ListEl = props.ordered ? "ol" : "ul";
 
-  return <ListEl className="list">renderElements()</ListEl>;
+  return <ListEl className="list">{renderElements()}</ListEl>;
 };
 
 List.propTypes = {
