@@ -1,0 +1,22 @@
+.thanks-block {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__image {
+    align-self: center;
+
+    img {
+      height: 30rem;
+    }
+  }
+
+  &__text {
+  }
+
+  &__buttons {
+  }
+}

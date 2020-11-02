@@ -1,0 +1,27 @@
+.link-container {
+  display: flex;
+  justify-content: flex-start;
+  margin: 1rem 0;
+
+  &--centered {
+    justify-content: center;
+
+    .link {
+      text-align: center;
+    }
+  }
+
+  .link {
+    color: $primary-color;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:hover:not([disabled]) {
+      color: darken($primary-color, 20%);
+    }
+
+    &[disabled] {
+      cursor: default;
+    }
+  }
+}

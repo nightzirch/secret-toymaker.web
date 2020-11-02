@@ -1,0 +1,41 @@
+.description-list-item {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  & + * {
+    margin-top: 0.5em;
+  }
+
+  &--dark {
+    color: $dark;
+  }
+
+  &--light {
+    color: $pattens-blue;
+  }
+
+  &__term,
+  &__description {
+    display: flex;
+    align-items: center;
+    font-size: $text-lg;
+    flex-grow: 1;
+    width: auto;
+  }
+
+  &__term {
+    margin-right: 1rem;
+  }
+
+  &__description {
+    margin-inline-start: 0;
+    text-align: right;
+    justify-content: flex-end;
+
+    &__icon {
+      display: flex;
+      margin-left: 0.5rem;
+    }
+  }
+}

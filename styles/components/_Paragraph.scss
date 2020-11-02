@@ -1,0 +1,52 @@
+.paragraph {
+  line-height: 1.45;
+  margin-bottom: 1.25em;
+
+  &--bold {
+    font-weight: bold;
+  }
+
+  &--italic {
+    font-style: italic;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--small {
+    font-size: $text-sm;
+  }
+
+  &--medium {
+    font-size: $text-md;
+  }
+
+  &--no-margin {
+    margin: 0;
+  }
+
+  &--black {
+    color: $black;
+  }
+
+  &--dark {
+    color: $dark;
+  }
+
+  &--dark-grey {
+    color: $dark-grey;
+  }
+
+  &--grey {
+    color: $grey;
+  }
+
+  &--light {
+    color: $light;
+  }
+
+  &--white {
+    color: $white;
+  }
+}

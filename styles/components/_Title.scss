@@ -1,0 +1,56 @@
+.title {
+  margin: 2.75rem 0 1rem;
+  line-height: 1.15;
+
+  &--page {
+    margin-top: 0;
+    font-size: 4em;
+  }
+
+  &--primary {
+    margin-top: 0;
+    font-size: $text-3xl;
+  }
+
+  &--secondary {
+    font-size: $text-2xl;
+  }
+
+  &--tertiary {
+    font-size: $text-xl;
+    font-weight: light;
+    color: $dark-grey;
+  }
+
+  &--black {
+    color: $black;
+  }
+
+  &--dark {
+    color: $dark;
+  }
+
+  &--dark-grey {
+    color: $dark-grey;
+  }
+
+  &--grey {
+    color: $grey;
+  }
+
+  &--light {
+    color: $light;
+  }
+
+  &--white {
+    color: $white;
+  }
+
+  &--primary {
+    color: $primary-color;
+  }
+
+  small {
+    font-size: $text-sm;
+  }
+}
