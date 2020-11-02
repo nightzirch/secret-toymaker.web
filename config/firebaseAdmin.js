@@ -5,4 +5,4 @@ if (!firebaseAdmin.apps.length) {
   firebaseAdmin.initializeApp(firebaseConfig);
 }
 
-export { firebaseAdmin };
+export default firebaseAdmin;

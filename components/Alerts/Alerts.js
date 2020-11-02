@@ -1,10 +1,10 @@
 import Alert from "components/Alert";
 import Section from "components/Section";
 import t from "prop-types";
-import React, { useEffect, useGlobal, useState } from "reactn";
+import { useEffect, useGlobal, useState } from "reactn";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
-const Alerts = props => {
+const Alerts = (props) => {
   const { location, ...rest } = props;
   const [alerts] = useGlobal("alerts");
   const [filteredAlerts, setFilteredAlerts] = useState([]);
@@ -13,7 +13,8 @@ const Alerts = props => {
     if (alerts) {
       setFilteredAlerts(
         alerts.filter(
-          a => a.location === location || a.location === AlertLocationTypes.ALL
+          (a) =>
+            a.location === location || a.location === AlertLocationTypes.ALL
         )
       );
     }
@@ -21,7 +22,7 @@ const Alerts = props => {
 
   return filteredAlerts.length > 0 ? (
     <Section className={`alerts-container--${location}`} {...rest}>
-      {filteredAlerts.map(alert => (
+      {filteredAlerts.map((alert) => (
         <Alert id={alert.id} type={alert.type} key={alert.id}>
           {alert.message}
         </Alert>
@@ -31,7 +32,7 @@ const Alerts = props => {
 };
 
 Alerts.propTypes = {
-  location: t.oneOf(Object.values(AlertLocationTypes)).isRequired
+  location: t.oneOf(Object.values(AlertLocationTypes)).isRequired,
 };
 
 export default Alerts;

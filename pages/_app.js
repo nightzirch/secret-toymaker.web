@@ -1,12 +1,14 @@
 import Footer from "components/Footer";
 import Header from "components/Header";
-import { AuthProvider } from "contexts/AuthContext";
+import MainMenu from "components/MainMenu";
 import Head from "next/head";
+import { withInit } from "reactn";
+import { initialReducers, initialState } from "store";
 import "styles/style.scss";
 
 function App({ Component, pageProps }) {
   return (
-    <AuthProvider>
+    <>
       <Head>
         <meta
           name="viewport"
@@ -20,14 +22,14 @@ function App({ Component, pageProps }) {
         <Header />
 
         <div className="app__main">
-          {/* <MainMenu /> */}
+          <MainMenu />
           <Component {...pageProps} />
         </div>
 
         <Footer />
       </div>
-    </AuthProvider>
+    </>
   );
 }
 
-export default App;
+export default withInit(initialState, initialReducers)(App);

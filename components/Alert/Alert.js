@@ -2,7 +2,7 @@ import classnames from "classnames";
 import Card from "components/Card";
 import { Paragraph } from "components/Typography";
 import t from "prop-types";
-import React, { useState } from "reactn";
+import { useState } from "reactn";
 import { dispatchWithLoading } from "utils/loading";
 import ActionTypes from "utils/types/ActionTypes";
 import AlertTypes from "utils/types/AlertTypes";

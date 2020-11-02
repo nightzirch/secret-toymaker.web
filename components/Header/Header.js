@@ -5,13 +5,12 @@ import Section from "components/Section";
 import { Title } from "components/Typography";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useGlobal } from "reactn";
 import { getHeaderTextColorByPathname } from "utils/header";
 
 const Header = (props) => {
   const router = useRouter();
-  // const [isMenuOpen, setMenuOpen] = useGlobal("isMenuOpen");
-  const [isMenuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setMenuOpen] = useGlobal("isMenuOpen");
 
   const handleHamburgerClick = () => {
     setMenuOpen(!isMenuOpen);

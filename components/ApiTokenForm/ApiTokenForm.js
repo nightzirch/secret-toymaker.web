@@ -2,7 +2,7 @@ import Button from "components/Button";
 import Error from "components/Error";
 import { InputField } from "components/Form";
 import op from "object-path";
-import React, { withGlobal } from "reactn";
+import { withGlobal } from "reactn";
 import { dispatchWithLoading } from "utils/loading";
 import ActionTypes from "utils/types/ActionTypes";
 import ErrorTypes from "utils/types/ErrorTypes";
@@ -13,7 +13,7 @@ class ApiTokenForm extends React.Component {
     super(props);
 
     this.state = {
-      apiToken: op.get(props, "user.apiToken", null)
+      apiToken: op.get(props, "user.apiToken", null),
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -23,17 +23,17 @@ class ApiTokenForm extends React.Component {
   componentDidUpdate = (prevProps, prevState) => {
     if (!prevProps.user && !!this.props.user) {
       this.setState({
-        apiToken: this.props.user.apiToken
+        apiToken: this.props.user.apiToken,
       });
     }
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
   };
 
-  handleFormSubmit = async e => {
+  handleFormSubmit = async (e) => {
     e.preventDefault();
 
     const { apiToken } = this.state;
@@ -50,7 +50,7 @@ class ApiTokenForm extends React.Component {
         ErrorTypes.UPDATE_API_TOKEN
       );
       await dispatchWithLoading(ActionTypes.UPDATE_API_TOKEN, {
-        apiToken
+        apiToken,
       });
     }
   };
@@ -85,9 +85,9 @@ class ApiTokenForm extends React.Component {
   }
 }
 
-const mapGlobalToProps = global => ({
+const mapGlobalToProps = (global) => ({
   loading: global.loading,
-  user: global.user
+  user: global.user,
 });
 
 export default withGlobal(mapGlobalToProps)(ApiTokenForm);

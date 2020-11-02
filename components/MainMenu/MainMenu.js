@@ -2,7 +2,7 @@ import classnames from "classnames";
 import Hamburger from "components/Hamburger";
 import Section from "components/Section";
 import Link from "next/link";
-import React, { useGlobal } from "reactn";
+import { useGlobal } from "reactn";
 import { getAuthStatus } from "utils/auth";
 import { getNavigationItems } from "utils/mainMenu";
 
@@ -29,15 +29,15 @@ const MainMenu = (props) => {
     const navigationItems = filterNavigationItems();
     return navigationItems.map((item) => {
       return (
-        <Link
-          className={classnames("main-menu__item", {
-            "main-menu__item--padding": item.hasPadding,
-          })}
-          onClick={() => handleMenuCloseClick(item.onClick)}
-          href={item.route}
-          key={item.title}
-        >
-          {item.title}
+        <Link href={item.route} key={item.title}>
+          <a
+            className={classnames("main-menu__item", {
+              "main-menu__item--padding": item.hasPadding,
+            })}
+            onClick={() => handleMenuCloseClick(item.onClick)}
+          >
+            {item.title}
+          </a>
         </Link>
       );
     });
