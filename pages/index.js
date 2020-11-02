@@ -1,14 +1,15 @@
-import Head from "next/head";
+import { AboutSection, CreditsSection, HowSection } from "components/Sections";
 
-export default function Home() {
+const FrontPage = (props) => {
   return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <p>Hello world</p>
+    <div className="front-page">
+      {/* <Hero /> */}
+      {/* <Alerts location={AlertLocationTypes.FRONTPAGE} isVerticalPadding /> */}
+      <AboutSection />
+      <HowSection />
+      <CreditsSection />
     </div>
   );
-}
+};
+
+export default FrontPage;

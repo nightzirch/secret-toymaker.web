@@ -1,13 +1,8 @@
-import check from "images/check_t.png";
-import pack from "images/pack.png";
-import receive from "images/receiveg_t.png";
-import signup from "images/sign_t.png";
-
 export const StepTypes = {
   SIGNUP: "SIGNUP",
   CHECK_MATCH: "CHECK_MATCH",
   SEND: "SEND",
-  RECEIVE: "RECEIVE"
+  RECEIVE: "RECEIVE",
 };
 
 export const StepData = {
@@ -20,8 +15,8 @@ export const StepData = {
     image: {
       alt: "Sign up",
       title: "Sign up",
-      src: signup
-    }
+      src: "/images/sign_t.png",
+    },
   },
   [StepTypes.CHECK_MATCH]: {
     title: "Check your match",
@@ -32,8 +27,8 @@ export const StepData = {
     image: {
       alt: "Check your match",
       title: "Check your match",
-      src: check
-    }
+      src: "/images/check_t.png",
+    },
   },
   [StepTypes.SEND]: {
     title: "Send a gift",
@@ -44,8 +39,8 @@ export const StepData = {
     image: {
       alt: "Send a gift",
       title: "Send a gift",
-      src: pack
-    }
+      src: "/images/pack.png",
+    },
   },
   [StepTypes.RECEIVE]: {
     title: "Receive a gift",
@@ -55,7 +50,7 @@ export const StepData = {
     image: {
       alt: "Receive a gift",
       title: "Receive a gift",
-      src: receive
-    }
-  }
+      src: "/images/receiveg_t.png",
+    },
+  },
 };

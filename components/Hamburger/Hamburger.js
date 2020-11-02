@@ -1,7 +1,6 @@
 import classnames from "classnames";
 import { useRouter } from "next/router";
 import t from "prop-types";
-import React from "reactn";
 import { getHeaderTextColorByPathname } from "utils/header";
 
 const Hamburger = (props) => {

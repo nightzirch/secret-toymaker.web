@@ -3,7 +3,6 @@ import Link from "components/Link";
 import Section from "components/Section";
 import { Paragraph, Paragraphs, Title } from "components/Typography";
 import lang from "lang/lang";
-import React from "reactn";
 
 const Footer = (props) => (
   <footer className="footer">
