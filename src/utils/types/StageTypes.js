@@ -1,7 +1,0 @@
-export default {
-  SIGNUP: "SIGNUP",
-  MATCHING: "MATCHING",
-  GIFTING: "GIFTING",
-  SPLASH: "SPLASH",
-  INACTIVE: "INACTIVE"
-};
