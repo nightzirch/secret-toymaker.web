@@ -16,6 +16,8 @@ export const StepData = {
       alt: "Sign up",
       title: "Sign up",
       src: "/images/sign_t.png",
+      width: 1494,
+      height: 992,
     },
   },
   [StepTypes.CHECK_MATCH]: {
@@ -28,6 +30,8 @@ export const StepData = {
       alt: "Check your match",
       title: "Check your match",
       src: "/images/check_t.png",
+      width: 652,
+      height: 994,
     },
   },
   [StepTypes.SEND]: {
@@ -40,6 +44,8 @@ export const StepData = {
       alt: "Send a gift",
       title: "Send a gift",
       src: "/images/pack.png",
+      width: 1523,
+      height: 1080,
     },
   },
   [StepTypes.RECEIVE]: {
@@ -51,6 +57,8 @@ export const StepData = {
       alt: "Receive a gift",
       title: "Receive a gift",
       src: "/images/receiveg_t.png",
+      width: 1159,
+      height: 975,
     },
   },
 };

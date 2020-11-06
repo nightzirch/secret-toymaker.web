@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import Routes from "config/routes";
+import Image from "next/image";
 import Link from "next/link";
 import React from "reactn";
 import NavigationItem from "./NavigationItem";
@@ -94,10 +95,12 @@ class Navigation extends React.Component {
         <div className="navigation__wrapper">
           <Link href="/" alt="Secret Toymaker" title="Secret Toymaker">
             <div className="navigation__logo">
-              <img
+              <Image
                 alt="Secret Toymaker"
                 title="Secret Toymaker"
                 src="/images/logo.png"
+                width={736}
+                height={703}
               />
               <h1>Secret Toymaker</h1>
             </div>

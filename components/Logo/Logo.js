@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import Image from "next/image";
 import t from "prop-types";
 import React from "reactn";
 
@@ -12,10 +13,12 @@ const Logo = (props) => {
         "logo--with-hover": withHover,
       })}
     >
-      <img
+      <Image
         alt="Secret Toymaker"
         title="Secret Toymaker"
         src="/images/logo.png"
+        width={736}
+        height={703}
       />
     </div>
   );

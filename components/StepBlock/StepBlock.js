@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import { Grid, GridItem } from "components/Grid";
 import { Paragraph, Title } from "components/Typography";
+import Image from "next/image";
 import t from "prop-types";
 import React from "reactn";
 import { StepData, StepTypes } from "./utils/constants";
@@ -18,7 +19,7 @@ const StepBlock = (props) => {
       <Grid noRowGap noMargin>
         <GridItem span={8} className="step-block__image-container">
           <div className="step-block__image">
-            <img {...image} />
+            <Image {...image} />
           </div>
         </GridItem>
 

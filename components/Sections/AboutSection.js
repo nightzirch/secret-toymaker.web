@@ -2,6 +2,7 @@ import { Grid, GridItem } from "components/Grid";
 import Section from "components/Section";
 import { Paragraphs, Signature, Title } from "components/Typography";
 import lang from "lang/lang";
+import Image from "next/image";
 import React from "reactn";
 
 const AboutSection = (props) => (
@@ -22,18 +23,22 @@ const AboutSection = (props) => (
         </GridItem>
 
         <GridItem className="about-section__images" span={4}>
-          <img
+          <Image
             className="about-section__image about-section__image--bleak"
             src={"/images/gift-bleak.png"}
             alt="Gift"
             title="Gift"
+            width={736}
+            height={703}
           />
 
-          <img
+          <Image
             className="about-section__image about-section__image--red"
             src={"/images/gift-red.png"}
             alt="Gift"
             title="Gift"
+            width={736}
+            height={703}
           />
         </GridItem>
       </Grid>

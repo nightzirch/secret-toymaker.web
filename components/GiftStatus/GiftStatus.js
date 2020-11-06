@@ -1,6 +1,7 @@
 import classnames from "classnames";
 import Card from "components/Card";
 import { Paragraph, Title } from "components/Typography";
+import Image from "next/image";
 import t from "prop-types";
 import React, { useEffect, useGlobal, useState } from "reactn";
 import {
@@ -139,10 +140,12 @@ const GiftStatus = (props) => {
               )}
               key={s}
             >
-              <img
+              <Image
                 alt={GiftStatusIllustrations[s].text}
                 title={GiftStatusIllustrations[s].text}
                 src={GiftStatusIllustrations[s].imgUrl}
+                width={GiftStatusIllustrations[s].width}
+                height={GiftStatusIllustrations[s].height}
               />
             </div>
           )

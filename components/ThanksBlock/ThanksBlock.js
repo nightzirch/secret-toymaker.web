@@ -1,6 +1,7 @@
 import Button from "components/Button";
 import { Paragraphs, Signature, Title } from "components/Typography";
 import lang from "lang/lang";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "reactn";
 
@@ -23,7 +24,13 @@ const ThanksBlock = (props) => {
         </div>
 
         <div className="thanks-block__image">
-          <img alt="Thank you" title="Thank you" src="/images/thanks_t.png" />
+          <Image
+            alt="Thank you"
+            title="Thank you"
+            src="/images/thanks_t.png"
+            width={1523}
+            height={1080}
+          />
         </div>
 
         <div className="thanks-block__text">

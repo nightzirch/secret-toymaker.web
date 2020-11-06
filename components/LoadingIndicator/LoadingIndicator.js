@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import { Paragraph } from "components/Typography";
+import Image from "next/image";
 import t from "prop-types";
 import React, { useEffect, useState } from "react";
 import { getRandomInt } from "utils/random";
@@ -33,10 +34,12 @@ const LoadingIndicator = (props) => {
         className="loading-indicator__rotate"
         style={{ transform: `rotate(${rotation}deg)` }}
       >
-        <img
+        <Image
           src="/images/logo-large.png"
           alt="Loading indicator"
           title="Loading indicator"
+          width={736}
+          height={703}
         />
       </div>
 

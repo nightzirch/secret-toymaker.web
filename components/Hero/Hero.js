@@ -4,6 +4,7 @@ import Countdown from "components/Countdown";
 import { Grid, GridItem } from "components/Grid";
 import Section from "components/Section";
 import { Title } from "components/Typography";
+import Image from "next/image";
 import React, { useEffect, useGlobal, useState } from "reactn";
 import { getAuthStatus } from "utils/auth";
 import AuthTypes from "utils/types/AuthTypes";
@@ -96,8 +97,11 @@ const Hero = (props) => {
 
           <GridItem span={6} spanMobile={4}>
             <div className="hero__image">
-              <img
+              <Image
                 src="/images/snowman_magic.png"
+                width={1471}
+                height={1587}
+                priority={true}
                 alt="Snowman"
                 title="Snowman"
               />
