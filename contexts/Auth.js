@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import nookies from "nookies";
 import { createContext, useEffect, useState } from "react";
 import { useGlobal } from "reactn";
@@ -12,6 +13,7 @@ export const AuthContext = createContext({
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [global, setGlobal] = useGlobal();
+  const router = useRouter();
 
   useEffect(() => {
     const listener = global.firebase.auth.onIdTokenChanged(async (authUser) => {
@@ -23,6 +25,7 @@ export const AuthProvider = ({ children }) => {
           user: null,
         });
         nookies.set(undefined, "token", "", {});
+        router.push("/");
         return;
       }
 
@@ -40,6 +43,7 @@ export const AuthProvider = ({ children }) => {
           authUser,
           user,
         });
+        router.push("/profile");
       });
     });
 

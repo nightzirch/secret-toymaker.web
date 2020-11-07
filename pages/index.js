@@ -1,7 +1,6 @@
 import Alerts from "components/Alerts";
 import Hero from "components/Hero";
 import { AboutSection, CreditsSection, HowSection } from "components/Sections";
-import { validateAuthWithRedirect } from "utils/redirect";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
 const FrontPage = (props) => {
@@ -15,8 +14,5 @@ const FrontPage = (props) => {
     </div>
   );
 };
-
-export const getServerSideProps = async (ctx) =>
-  await validateAuthWithRedirect(ctx);
 
 export default FrontPage;

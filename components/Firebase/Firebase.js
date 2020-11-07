@@ -74,11 +74,6 @@ class Firebase {
       .catch((error) => ({ error: error.message }));
   };
 
-  // FUNCTIONS
-  getAmountOfParticipants = () => {
-    return 1337;
-  };
-
   // DB
   getStage = () => {
     const stage = this.functions.httpsCallable("stage");
