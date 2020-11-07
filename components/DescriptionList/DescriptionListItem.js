@@ -2,7 +2,7 @@ import classnames from "classnames";
 import t from "prop-types";
 
 const DescriptionListItem = (props) => {
-  const { color, description, icon, term } = props;
+  const { color, description, icon, isHorizontal, term } = props;
 
   const renderIcon = () =>
     icon && (
@@ -13,7 +13,10 @@ const DescriptionListItem = (props) => {
     <span
       className={classnames(
         "description-list-item",
-        `description-list-item--${color}`
+        `description-list-item--${color}`,
+        {
+          "description-list-item--horizontal": isHorizontal,
+        }
       )}
     >
       <dt className="description-list-item__term">{term}</dt>
@@ -29,6 +32,7 @@ DescriptionListItem.propTypes = {
   color: t.oneOf(["dark", "light"]),
   description: t.node.isRequired,
   icon: t.node,
+  isHorizontal: t.bool,
   term: t.node.isRequired,
 };
 
