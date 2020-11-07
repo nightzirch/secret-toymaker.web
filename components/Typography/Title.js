@@ -1,31 +1,36 @@
 import classnames from "classnames";
 import t from "prop-types";
-import React from "reactn";
+import React from "react";
 
 const Title = (props) => {
-  let titleClasses = classnames(
+  const titleClasses = classnames(
     "title",
     `title--${props.colorScheme}`,
-    `title--${props.level}`
+    `title--${props.level}`,
+    props.className
   );
 
-  let TitleLevel;
+  let titleLevel;
   switch (props.level) {
     case "secondary":
-      TitleLevel = "h2";
+      titleLevel = "h2";
       break;
     case "tertiary":
-      TitleLevel = "h3";
+      titleLevel = "h3";
       break;
     case "primary":
     default:
-      TitleLevel = "h1";
+      titleLevel = "h1";
       break;
   }
 
-  return props.children ? (
-    <TitleLevel className={titleClasses}>{props.children}</TitleLevel>
-  ) : null;
+  return props.children
+    ? React.createElement(
+        titleLevel,
+        { className: titleClasses },
+        props.children
+      )
+    : null;
 };
 
 Title.propTypes = {

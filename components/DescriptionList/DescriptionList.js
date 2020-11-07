@@ -1,14 +1,23 @@
+import classnames from "classnames";
 import t from "prop-types";
-import React from "react";
 
 const DescriptionList = (props) => {
-  const { children } = props;
+  const { children, isHorizontal } = props;
 
-  return <dl className="description-list">{children}</dl>;
+  return (
+    <dl
+      className={classnames("description-list", {
+        "description-list--horizontal": isHorizontal,
+      })}
+    >
+      {children}
+    </dl>
+  );
 };
 
 DescriptionList.propTypes = {
   children: t.node,
+  isHorizontal: t.bool,
 };
 
 export default DescriptionList;

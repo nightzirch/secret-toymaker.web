@@ -1,8 +1,7 @@
 import classnames from "classnames";
 import t from "prop-types";
-import React from "react";
 
-const DescriptionListItem = props => {
+const DescriptionListItem = (props) => {
   const { color, description, icon, term } = props;
 
   const renderIcon = () =>
@@ -30,11 +29,11 @@ DescriptionListItem.propTypes = {
   color: t.oneOf(["dark", "light"]),
   description: t.node.isRequired,
   icon: t.node,
-  term: t.node.isRequired
+  term: t.node.isRequired,
 };
 
 DescriptionListItem.defaultProps = {
-  color: "dark"
+  color: "dark",
 };
 
 export default DescriptionListItem;

@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
           authUser,
           user,
         });
-        router.push("/profile");
+        if (router.pathname === "/login") router.push("/profile");
       });
     });
 

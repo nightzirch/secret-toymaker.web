@@ -6,6 +6,7 @@ export default {
   authStatus: null,
   authUser: null,
   error: {},
+  events: {},
   gifts: {},
   firebase: new Firebase(),
   isMenuOpen: false,

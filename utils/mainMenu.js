@@ -7,7 +7,7 @@ export const getNavigationItems = () => {
 
   return [
     { title: "Home", route: Routes.FRONTPAGE },
-    { title: "Event", route: Routes.EVENT },
+    { title: "Events", route: Routes.EVENTS },
     { title: "Faq", route: Routes.FAQ },
 
     {

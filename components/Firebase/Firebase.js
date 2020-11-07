@@ -206,6 +206,11 @@ class Firebase {
     return getAlerts().then((result) => result.data.success);
   };
 
+  getEvents = () => {
+    const getEvents = this.functions.httpsCallable("getEvents");
+    return getEvents().then((result) => result.data.success);
+  };
+
   getGifts = (userId) => {
     const getGifts = this.functions.httpsCallable("getGifts");
     return getGifts({

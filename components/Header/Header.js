@@ -18,13 +18,14 @@ const Header = (props) => {
 
   const renderLogo = () => (
     <div className="header__logo">
-      <Link
-        alt="Secret Toymaker"
-        className="header__logo-link"
-        title="Secret Toymaker"
-        href="/"
-      >
-        <Logo withGlow withHover />
+      <Link href="/">
+        <a
+          alt="Secret Toymaker"
+          className="header__logo-link"
+          title="Secret Toymaker"
+        >
+          <Logo withGlow withHover />
+        </a>
       </Link>
     </div>
   );

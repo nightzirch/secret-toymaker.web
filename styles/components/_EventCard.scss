@@ -1,0 +1,32 @@
+.event-card-container {
+  display: block;
+  text-decoration: none;
+
+  &:hover {
+    .event-card {
+      &__title {
+        text-decoration: underline $dark;
+      }
+    }
+  }
+}
+
+.event-card {
+  &__title {
+    margin: 0;
+  }
+
+  &__stats {
+    display: flex;
+    align-items: flex-end;
+
+    .paragraph {
+      font-size: $text-lg;
+      margin: 1rem 1rem 0 0;
+    }
+  }
+
+  .stats .description-list {
+    margin-bottom: 0;
+  }
+}

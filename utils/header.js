@@ -4,6 +4,7 @@ import { getRouteRoot } from "utils/url";
 
 export const headerTextColor = {
   [RouteTypes.EVENT]: "dark",
+  [RouteTypes.EVENTS]: "dark",
   [RouteTypes.FAQ]: "dark",
   [RouteTypes.FRONTPAGE]: "light",
   [RouteTypes.GIFTS]: "dark",
