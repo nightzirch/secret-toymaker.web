@@ -1,7 +1,7 @@
 import Button from "components/Button";
 import Error from "components/Error";
 import { InputField } from "components/Form";
-import op from "object-path";
+import React from "react";
 import { withGlobal } from "reactn";
 import { dispatchWithLoading } from "utils/loading";
 import ActionTypes from "utils/types/ActionTypes";
@@ -13,7 +13,7 @@ class ApiTokenForm extends React.Component {
     super(props);
 
     this.state = {
-      apiToken: op.get(props, "user.apiToken", null),
+      apiToken: props?.user?.apiToken || null,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);

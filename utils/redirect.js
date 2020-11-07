@@ -27,7 +27,10 @@ export const validateAuthWithRedirect = async (
         ? routeRequirements.redirectRoute
         : redirectUrl;
 
+    if (Location === ctx.req.url) return { props: {} };
+
     ctx.res.writeHead(302, { Location });
     ctx.res.end();
+    return { props: {} };
   }
 };

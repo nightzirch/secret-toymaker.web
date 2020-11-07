@@ -32,8 +32,8 @@ const Link = (props) => {
       {title}
     </a>
   ) : (
-    <NLink className="link" disabled={isDisabled} href={url}>
-      {title}
+    <NLink href={url} className="link" disabled={isDisabled}>
+      <a>{title}</a>
     </NLink>
   );
 

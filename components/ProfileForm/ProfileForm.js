@@ -2,7 +2,6 @@ import Button from "components/Button";
 import Error from "components/Error";
 import { InputField } from "components/Form";
 import { Paragraph } from "components/Typography";
-import op from "object-path";
 import React, { withGlobal } from "reactn";
 import { dispatchWithLoading } from "utils/loading";
 import ActionTypes from "utils/types/ActionTypes";
@@ -14,7 +13,7 @@ class ProfileForm extends React.Component {
     super(props);
 
     this.state = {
-      email: op.get(props, "user.email", null),
+      email: props?.user?.email || null,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);

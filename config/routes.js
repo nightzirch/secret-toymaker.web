@@ -31,6 +31,10 @@ export const RouteRequirements = {
     authStatus: AuthTypes.AUTH,
     redirectRoute: Routes[RouteTypes.LOGIN],
   },
+  [RouteTypes.RESET_PASSWORD]: {
+    authStatus: AuthTypes.NO_AUTH,
+    redirectRoute: Routes[RouteTypes.PROFILE],
+  },
   [RouteTypes.SIGNUP]: {
     authStatus: AuthTypes.NO_AUTH,
     redirectRoute: Routes[RouteTypes.PROFILE],

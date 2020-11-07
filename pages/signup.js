@@ -3,7 +3,7 @@ import Section from "components/Section";
 import SignupForm from "components/SignupForm";
 import { PageHeader, Paragraphs } from "components/Typography";
 import lang from "lang/lang";
-import { withRedirect } from "utils/redirect";
+import { validateAuthWithRedirect } from "utils/redirect";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
 const SignupPage = (props) => {
@@ -26,4 +26,7 @@ const SignupPage = (props) => {
   );
 };
 
-export default withRedirect(SignupPage);
+export const getServerSideProps = async (ctx) =>
+  await validateAuthWithRedirect(ctx);
+
+export default SignupPage;

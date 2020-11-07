@@ -2,6 +2,7 @@ import ResetPasswordForm from "components/ResetPasswordForm";
 import Section from "components/Section";
 import { PageHeader } from "components/Typography";
 import React from "reactn";
+import { validateAuthWithRedirect } from "utils/redirect";
 
 const ResetPasswordPage = (props) => {
   return (
@@ -14,5 +15,8 @@ const ResetPasswordPage = (props) => {
     </div>
   );
 };
+
+export const getServerSideProps = async (ctx) =>
+  await validateAuthWithRedirect(ctx);
 
 export default ResetPasswordPage;

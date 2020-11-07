@@ -4,8 +4,11 @@ import MainMenu from "components/MainMenu";
 import { AuthProvider } from "contexts/Auth";
 import Head from "next/head";
 import { withInit } from "reactn";
+import addReactNDevTools from "reactn-devtools";
 import { initialReducers, initialState } from "store";
 import "styles/style.scss";
+
+addReactNDevTools();
 
 function App({ Component, pageProps }) {
   return (
