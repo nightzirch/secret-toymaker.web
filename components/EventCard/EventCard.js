@@ -1,3 +1,4 @@
+import classnames from "classnames";
 import Card from "components/Card";
 import Stats from "components/Stats";
 import { Paragraph, Title } from "components/Typography";
@@ -10,21 +11,43 @@ import { getStatusData } from "./utils/eventCardHelper";
 
 const EventCard = (props) => {
   const { event } = props;
-  const { year } = event;
+  const { currentStage, year } = event;
   const url = replaceString(Routes.EVENT, { ":year": year });
 
-  const { statusText, statusColorScheme } = getStatusData(event);
+  const {
+    fontWeight,
+    isBold,
+    isItalic,
+    statusText,
+    statusColorScheme,
+  } = getStatusData(event);
 
   return (
     <Link href={url}>
       <a className="event-card-container">
-        <Card className="event-card">
-          <Title className="event-card__title" level="tertiary">
+        <Card
+          className={classnames(
+            "event-card",
+            `event-card--${currentStage.type}`
+          )}
+        >
+          <Title
+            className="event-card__title"
+            colorScheme="primary"
+            level="tertiary"
+          >
             {year}
           </Title>
 
           <div className="event-card__stats">
-            <Paragraph colorScheme={statusColorScheme}>{statusText}</Paragraph>
+            <Paragraph
+              colorScheme={statusColorScheme}
+              isBold={isBold}
+              isItalic={isItalic}
+              weight={fontWeight}
+            >
+              {statusText}
+            </Paragraph>
             <Stats year={year} isSimplified />
           </div>
         </Card>

@@ -12,6 +12,7 @@ const Paragraph = (props) => {
     isItalic,
     noMargin,
     size,
+    weight,
   } = props;
   return children ? (
     <p
@@ -19,6 +20,7 @@ const Paragraph = (props) => {
         "paragraph",
         `paragraph--${colorScheme}`,
         `paragraph--${size}`,
+        `paragraph--weight-${weight}`,
         className,
         {
           "paragraph--no-margin": noMargin,
@@ -58,11 +60,13 @@ Paragraph.propTypes = {
   isItalic: t.bool,
   noMargin: t.bool,
   size: t.oneOf(["small", "medium"]),
+  weight: t.oneOf(["lighter", "light", "normal", "light", "lighter"]),
 };
 
 Paragraph.defaultProps = {
   colorScheme: "dark",
   size: "medium",
+  weight: "normal",
 };
 
 export default Paragraph;

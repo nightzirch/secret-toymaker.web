@@ -13,6 +13,28 @@
 
 .event-card {
   background-color: $white;
+  position: relative;
+  overflow: hidden;
+
+  &--GIFTING {
+    @include backgroundImageWithOpacity("/images/pack.png", 0.3);
+  }
+  &--MATCHING {
+    @include backgroundImageWithOpacity("/images/check_t.png", 0.3);
+  }
+  &--SIGNUP {
+    @include backgroundImageWithOpacity("/images/sign_t.png", 0.3);
+  }
+
+  &:after {
+    transition: 0.2s ease-in-out;
+    z-index: 0;
+    transform-origin: center right;
+  }
+
+  &:hover:after {
+    transform: scale(1.1);
+  }
 
   &__title.title {
     margin: 0;
@@ -33,5 +55,14 @@
       margin-top: 0;
       margin-bottom: 0;
     }
+  }
+
+  &__illustration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    object-fit: contain;
   }
 }

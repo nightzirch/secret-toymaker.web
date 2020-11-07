@@ -65,4 +65,19 @@
   &--info {
     color: $state-info;
   }
+  &--weight-lighter {
+    font-weight: 100;
+  }
+  &--weight-light {
+    font-weight: 300;
+  }
+  &--weight-normal {
+    font-weight: 500;
+  }
+  &--weight-bold {
+    font-weight: 700;
+  }
+  &--weight-bolder {
+    font-weight: 900;
+  }
 }
