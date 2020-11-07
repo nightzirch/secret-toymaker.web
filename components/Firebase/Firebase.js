@@ -5,7 +5,6 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/functions";
 import moment from "moment";
-
 moment.locale("nb");
 
 class Firebase {
@@ -45,7 +44,11 @@ class Firebase {
       .then(() => ({ success: "Successfully logged in!" }))
       .catch((error) => ({ error: error.message }));
 
-  signOut = () => this.auth.signOut();
+  signOut = () => {
+    this.auth.signOut().then((t) => {
+      console.log("Signed out successfully", t);
+    });
+  };
 
   resetPassword = (email) =>
     this.auth

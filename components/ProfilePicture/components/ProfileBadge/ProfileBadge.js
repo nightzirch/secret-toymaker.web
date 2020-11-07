@@ -1,8 +1,8 @@
 import classnames from "classnames";
 import t from "prop-types";
-import ReactSVG from "react-svg";
+import { ReactSVG } from "react-svg";
 import React, { useGlobal } from "reactn";
-import { BADGES, ROLES } from "utils/constants";
+import { BADGES, ROLES } from "../../utils/constants";
 
 const ProfileBadge = (props) => {
   const [user] = useGlobal("user");

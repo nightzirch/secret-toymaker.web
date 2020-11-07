@@ -1,7 +1,5 @@
-import Camera from "images/icons/camera.svg";
-import Person from "images/icons/person.svg";
 import t from "prop-types";
-import ReactSVG from "react-svg";
+import { ReactSVG } from "react-svg";
 import React, { useGlobal } from "reactn";
 import ProfileBadge from "./components/ProfileBadge";
 
@@ -23,7 +21,7 @@ const ProfilePicture = (props) => {
           <div className="profile-picture__overlay">
             <ReactSVG
               className="profile-picture__camera"
-              src={Camera}
+              src="/icons/camera.svg"
               alt="Camera"
               title="Camera"
             />
@@ -39,7 +37,7 @@ const ProfilePicture = (props) => {
         <div className="profile-picture__background">
           <ReactSVG
             className="profile-picture__person"
-            src={Person}
+            src="/icons/person.svg"
             alt="Person"
             title="Person"
           />

@@ -11,21 +11,6 @@ export const AuthContext = createContext({
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
-  // useEffect(() => {
-  //   return firebaseClient.auth().onIdTokenChanged(async (user) => {
-  //     if (!user) {
-  //       setUser(null);
-  //       nookies.set(undefined, "token", "", {});
-  //       return;
-  //     }
-
-  //     const token = await user.getIdToken();
-  //     setUser(user);
-  //     nookies.set(undefined, "token", token, {});
-  //   });
-  // }, []);
-
   const [global, setGlobal] = useGlobal();
 
   useEffect(() => {
@@ -34,6 +19,8 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
         setGlobal({
           authStatus: AuthTypes.NO_AUTH,
+          authUser: null,
+          user: null,
         });
         nookies.set(undefined, "token", "", {});
         return;
@@ -49,8 +36,9 @@ export const AuthProvider = ({ children }) => {
         authUser ? authUser.uid : null
       ).then(({ user }) => {
         setGlobal({
+          authStatus: AuthTypes.NO_AUTH,
+          authUser,
           user,
-          authStatus: user ? AuthTypes.AUTH : AuthTypes.NO_AUTH,
         });
       });
     });

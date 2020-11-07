@@ -8,18 +8,21 @@ import ProfilePicture from "components/ProfilePicture";
 import Section from "components/Section";
 import { CreditsSection } from "components/Sections";
 import { PageHeader, Title } from "components/Typography";
-import React from "reactn";
+import { useGlobal } from "reactn";
 import { validateAuthWithRedirect } from "utils/redirect";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
-class ProfilePage extends React.Component {
-  renderProfilePicture = () => (
+const ProfilePage = (props) => {
+  const [firebase] = useGlobal("firebase");
+  const [user] = useGlobal("user");
+
+  const renderProfilePicture = () => (
     <>
       <ProfilePicture />
     </>
   );
 
-  renderDangerZone = () => (
+  const renderDangerZone = () => (
     <>
       <Title level="secondary">Danger zone</Title>
 
@@ -28,63 +31,56 @@ class ProfilePage extends React.Component {
     </>
   );
 
-  renderTestZone = () => (
+  const renderTestZone = () => (
     <>
       <Title level="secondary">Test zone</Title>
 
       <Button
         title="Participate"
-        onClick={() =>
-          this.global.firebase.registerParticipation(this.global.user)
-        }
+        onClick={() => firebase.registerParticipation(user)}
       />
-      <Button
-        title="Init gift"
-        onClick={() => this.global.firebase.initGift(this.global.user)}
-      />
+      <Button title="Init gift" onClick={() => firebase.initGift(user)} />
     </>
   );
 
-  render() {
-    return (
-      <div className="profile-page">
-        <Section>
-          <PageHeader type="profile" title="Profile" />
+  return (
+    <div className="profile-page">
+      <Section>
+        <PageHeader type="profile" title="Profile" />
 
-          <Alerts
-            isHorizontalPadding={false}
-            isVerticalPadding
-            location={AlertLocationTypes.PROFILE}
-          />
+        <Alerts
+          isHorizontalPadding={false}
+          isVerticalPadding
+          location={AlertLocationTypes.PROFILE}
+        />
 
-          <Grid>
-            <GridItem span={4}>
-              <Title level="secondary">Avatar</Title>
-              {this.renderProfilePicture()}
-            </GridItem>
+        <Grid>
+          <GridItem span={4}>
+            <Title level="secondary">Avatar</Title>
+            {renderProfilePicture()}
+          </GridItem>
 
-            <GridItem span={8}>
-              <Title level="secondary">Details</Title>
-              <ApiTokenForm />
-              <ProfileForm />
+          <GridItem span={8}>
+            <Title level="secondary">Details</Title>
+            <ApiTokenForm />
+            <ProfileForm />
 
-              <Title level="secondary">Notifications</Title>
-              <NotificationsForm />
-              {this.renderDangerZone()}
-            </GridItem>
+            <Title level="secondary">Notifications</Title>
+            <NotificationsForm />
+            {renderDangerZone()}
+          </GridItem>
 
-            {/* <GridItem span={3}>
+          {/* <GridItem span={3}>
               <Title level="secondary">Notifications</Title>
               <NotificationsForm />
             </GridItem> */}
-          </Grid>
-        </Section>
+        </Grid>
+      </Section>
 
-        <CreditsSection showOnlyContactInfo />
-      </div>
-    );
-  }
-}
+      <CreditsSection showOnlyContactInfo />
+    </div>
+  );
+};
 
 export const getServerSideProps = async (ctx) =>
   await validateAuthWithRedirect(ctx);

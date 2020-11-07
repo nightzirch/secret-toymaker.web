@@ -8,7 +8,7 @@ const ResetPasswordPage = (props) => {
   return (
     <div className="login-page">
       <Section>
-        <PageHeader isCentered title="Feeling forgetful, are we?" />
+        <PageHeader isCentered title="A little forgetful, are we?" />
 
         <ResetPasswordForm />
       </Section>

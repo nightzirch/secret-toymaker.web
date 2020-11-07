@@ -4,33 +4,35 @@ import nookies from "nookies";
 import { getKeyByValue } from "utils/object";
 import AuthTypes from "utils/types/AuthTypes";
 
-export const validateAuthWithRedirect = async (
-  ctx,
-  callback,
-  redirectUrl = "/login"
-) => {
+const getRedirectRouteForRouteName = (url, authType = AuthTypes.NO_AUTH) => {
+  const routeName = getKeyByValue(Routes, url);
+  const routeRequirements = RouteRequirements[routeName];
+  return routeRequirements?.authStatus !== authType
+    ? routeRequirements?.redirectRoute
+    : null;
+};
+
+export const validateAuthWithRedirect = async (ctx, callback) => {
+  let token;
+
   try {
     const cookies = nookies.get(ctx);
-    const token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
-
-    // the user is authenticated!
-    const { uid, email } = token;
-
-    return callback ? callback() : { props: {} };
+    if (cookies.token) {
+      token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
+    }
   } catch (err) {
-    // Auth cookie doesn't exist or verification failed
-    const routeName = getKeyByValue(Routes, ctx.pathname);
-    const routeRequirements = RouteRequirements[routeName];
-
-    const Location =
-      routeRequirements && routeRequirements.authStatus !== AuthTypes.NO_AUTH
-        ? routeRequirements.redirectRoute
-        : redirectUrl;
-
-    if (Location === ctx.req.url) return { props: {} };
-
-    ctx.res.writeHead(302, { Location });
-    ctx.res.end();
-    return { props: {} };
+    console.log("[Redirect] Error while verifying token", err);
   }
+
+  const Location = getRedirectRouteForRouteName(
+    ctx.req.url,
+    token ? AuthTypes.AUTH : AuthTypes.NO_AUTH
+  );
+
+  if (!Location)
+    return callback ? callback(token) : { props: { auth: token || null } };
+
+  ctx.res.writeHead(302, { Location });
+  ctx.res.end();
+  return { props: {} };
 };

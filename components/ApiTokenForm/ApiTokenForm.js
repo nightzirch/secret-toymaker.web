@@ -56,7 +56,7 @@ class ApiTokenForm extends React.Component {
   };
 
   render() {
-    const isLoading = this.global.loading[ActionTypes.UPDATE_API_TOKEN];
+    const isLoading = this.props.loading[ActionTypes.UPDATE_API_TOKEN];
 
     return (
       <div className="api-token-form__container">
