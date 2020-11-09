@@ -12,7 +12,7 @@ export const RouteTypes = {
 };
 
 const Routes = {
-  [RouteTypes.EVENT]: "/events/:year",
+  [RouteTypes.EVENT]: "/events/[year]",
   [RouteTypes.EVENTS]: "/events",
   [RouteTypes.FAQ]: "/faq",
   [RouteTypes.FRONTPAGE]: "/",

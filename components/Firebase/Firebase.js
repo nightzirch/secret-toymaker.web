@@ -45,8 +45,8 @@ class Firebase {
       .catch((error) => ({ error: error.message }));
 
   signOut = () => {
-    this.auth.signOut().then((t) => {
-      console.log("Signed out successfully", t);
+    this.auth.signOut().then(() => {
+      console.log("Signed out successfully");
     });
   };
 

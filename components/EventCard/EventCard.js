@@ -12,7 +12,7 @@ import { getStatusData } from "./utils/eventCardHelper";
 const EventCard = (props) => {
   const { event } = props;
   const { currentStage, year } = event;
-  const url = replaceString(Routes.EVENT, { ":year": year });
+  const url = replaceString(Routes.EVENT, { "[year]": year });
 
   const {
     fontWeight,

@@ -3,6 +3,7 @@ import nookies from "nookies";
 import { createContext, useEffect, useState } from "react";
 import { useGlobal } from "reactn";
 import { dispatchWithLoading } from "utils/loading";
+import { getRedirectRouteForRouteName } from "utils/routes";
 import ActionTypes from "utils/types/ActionTypes";
 import AuthTypes from "utils/types/AuthTypes";
 
@@ -24,14 +25,31 @@ export const AuthProvider = ({ children }) => {
           authUser: null,
           user: null,
         });
-        nookies.set(undefined, "token", "", {});
-        router.push("/");
+        nookies.destroy(undefined, "token");
+
+        /**
+         * If user is on a page with a NO_AUTH restriction, redirect.
+         * Using window.location.pathname as router.pathname doesn't update.
+         
+         * TODO: Find a way to use router.pathname instead so this functionality
+         * can work on dynamic routes as well. There are no cases of this yet,
+         * but might be in the future.
+         */
+        const redirectUrl = getRedirectRouteForRouteName(
+          window.location.pathname,
+          AuthTypes.NO_AUTH
+        );
+
+        if (redirectUrl) router.push(redirectUrl);
+
         return;
       }
 
       const token = await authUser.getIdToken();
       setUser(authUser);
-      nookies.set(undefined, "token", token, {});
+      nookies.set(undefined, "token", token, {
+        maxAge: 60 * 60,
+      });
 
       // Globally sets the authenticated user's data
       dispatchWithLoading(
@@ -43,7 +61,20 @@ export const AuthProvider = ({ children }) => {
           authUser,
           user,
         });
-        if (router.pathname === "/login") router.push("/profile");
+
+        /**
+         * If user is on a page with a AUTH restriction, redirect.
+         * Using window.location.pathname as router.pathname doesn't update.
+         
+         * TODO: Find a way to use router.pathname instead so this functionality
+         * can work on dynamic routes as well. There are no cases of this yet,
+         * but might be in the future.
+         */
+        const redirectUrl = getRedirectRouteForRouteName(
+          window.location.pathname,
+          AuthTypes.AUTH
+        );
+        if (redirectUrl) router.push(redirectUrl);
       });
     });
 
