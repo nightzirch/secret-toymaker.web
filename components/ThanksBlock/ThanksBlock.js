@@ -28,8 +28,8 @@ const ThanksBlock = (props) => {
             alt="Thank you"
             title="Thank you"
             src="/images/thanks_t.png"
-            width={1523}
-            height={1080}
+            width={677}
+            height={480}
           />
         </div>
 

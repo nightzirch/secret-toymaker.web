@@ -23,23 +23,25 @@ const AboutSection = (props) => (
         </GridItem>
 
         <GridItem className="about-section__images" span={4}>
-          <Image
-            className="about-section__image about-section__image--bleak"
-            src={"/images/gift-bleak.png"}
-            alt="Gift"
-            title="Gift"
-            width={736}
-            height={703}
-          />
+          <div className="about-section__image about-section__image--bleak">
+            <Image
+              src={"/images/gift-bleak.png"}
+              alt="Gift"
+              title="Gift"
+              width={200}
+              height={191}
+            />
+          </div>
 
-          <Image
-            className="about-section__image about-section__image--red"
-            src={"/images/gift-red.png"}
-            alt="Gift"
-            title="Gift"
-            width={736}
-            height={703}
-          />
+          <div className="about-section__image about-section__image--red">
+            <Image
+              src={"/images/gift-red.png"}
+              alt="Gift"
+              title="Gift"
+              width={400}
+              height={382}
+            />
+          </div>
         </GridItem>
       </Grid>
     </Section>

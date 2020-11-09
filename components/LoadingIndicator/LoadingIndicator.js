@@ -35,7 +35,7 @@ const LoadingIndicator = (props) => {
         style={{ transform: `rotate(${rotation}deg)` }}
       >
         <Image
-          src="/images/logo-large.png"
+          src="/images/logo.png"
           alt="Loading indicator"
           title="Loading indicator"
           width={736}

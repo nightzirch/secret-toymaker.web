@@ -99,8 +99,8 @@ class Navigation extends React.Component {
                 alt="Secret Toymaker"
                 title="Secret Toymaker"
                 src="/images/logo.png"
-                width={736}
-                height={703}
+                width={50}
+                height={48}
               />
               <h1>Secret Toymaker</h1>
             </div>

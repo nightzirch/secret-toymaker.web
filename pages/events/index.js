@@ -5,18 +5,12 @@ import LoadingIndicator from "components/LoadingIndicator";
 import Section from "components/Section";
 import { CreditsSection } from "components/Sections";
 import t from "prop-types";
-import { useEffect } from "react";
 import { withGlobal } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
 import ActionTypes from "utils/types/ActionTypes";
 import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
 const EventsPage = (props) => {
   const { events, loading } = props;
-
-  useEffect(() => {
-    dispatchWithLoading(ActionTypes.GET_EVENTS);
-  }, []);
 
   const renderEvents = () => {
     return (
