@@ -19,7 +19,7 @@ const DescriptionListItem = (props) => {
         }
       )}
     >
-      <dt className="description-list-item__term">{term}</dt>
+      {term && <dt className="description-list-item__term">{term}</dt>}
       <dd className="description-list-item__description">
         {description}
         {renderIcon()}
@@ -33,7 +33,7 @@ DescriptionListItem.propTypes = {
   description: t.node.isRequired,
   icon: t.node,
   isHorizontal: t.bool,
-  term: t.node.isRequired,
+  term: t.node,
 };
 
 DescriptionListItem.defaultProps = {
