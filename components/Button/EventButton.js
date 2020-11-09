@@ -8,7 +8,7 @@ const EventButton = (props) => {
   const router = useRouter();
 
   const gotoEvent = () => {
-    // I really can't find docs about how to do this the clean way...
+    // TODO: change this to the current year
     router.push(replaceString(Routes.EVENT, { ":year": "2019" }));
   };
 
