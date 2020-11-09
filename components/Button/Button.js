@@ -1,8 +1,10 @@
 import classnames from "classnames";
 import t from "prop-types";
+import { forwardRef } from "react";
 
-const Button = (props) => {
+const Button = forwardRef((props, ref) => {
   const {
+    href,
     icon,
     iconPlacement,
     isCentered,
@@ -46,22 +48,27 @@ const Button = (props) => {
     </div>
   );
 
+  const Tag = href ? "a" : "button";
+
   return (
     <div className={containerClasses}>
-      <button
+      <Tag
         className={buttonClasses}
         disabled={isDisabled || isLoading}
         type={type}
         onClick={onClick}
+        href={href}
+        ref={ref}
       >
         {renderLoading()}
         {renderTitle()}
-      </button>
+      </Tag>
     </div>
   );
-};
+});
 
 Button.propTypes = {
+  href: t.string,
   icon: t.oneOfType([t.object, t.element, t.bool]),
   iconPlacement: t.oneOf(["left", "right"]),
   isCentered: t.bool,
@@ -76,6 +83,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
+  href: null,
   iconPlacement: "left",
   theme: "primary",
   size: "medium",
