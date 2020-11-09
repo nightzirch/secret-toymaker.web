@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
         authUser ? authUser.uid : null
       ).then(({ user }) => {
         setGlobal({
-          authStatus: AuthTypes.NO_AUTH,
+          authStatus: AuthTypes.AUTH,
           authUser,
           user,
         });
