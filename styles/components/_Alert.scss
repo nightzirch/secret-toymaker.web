@@ -20,12 +20,14 @@
 }
 
 .alert {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-right: 1em;
-  display: flex;
-  margin: 0;
-  z-index: $z-index-alert;
+  &.card {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    display: flex;
+    margin: 0;
+    z-index: $z-index-alert;
+  }
 
   & + * {
     margin-top: 1em;
