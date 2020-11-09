@@ -3,14 +3,23 @@ import Header from "components/Header";
 import MainMenu from "components/MainMenu";
 import { AuthProvider } from "contexts/Auth";
 import Head from "next/head";
+import { useEffect } from "react";
 import { withInit } from "reactn";
 import addReactNDevTools from "reactn-devtools";
 import { initialReducers, initialState } from "store";
 import "styles/style.scss";
+import { dispatchWithLoading } from "utils/loading";
+import ActionTypes from "utils/types/ActionTypes";
 
 addReactNDevTools();
 
 function App({ Component, pageProps }) {
+  useEffect(() => {
+    dispatchWithLoading(ActionTypes.GET_ALERTS);
+    dispatchWithLoading(ActionTypes.GET_EVENTS);
+    dispatchWithLoading(ActionTypes.GET_STAGE);
+  }, []);
+
   return (
     <AuthProvider>
       <Head>
