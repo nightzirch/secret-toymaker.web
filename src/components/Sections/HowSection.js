@@ -1,11 +1,10 @@
-import Section from "components/Section";
-import StepBlock from "components/StepBlock";
-import { StepTypes } from "components/StepBlock/utils/constants";
-import { Title } from "components/Typography";
+import Section from "@/components/Section";
+import StepBlock from "@/components/StepBlock";
+import { StepTypes } from "@/components/StepBlock/utils/constants";
+import { Title } from "@/components/Typography";
 import React from "reactn";
-import "./HowSection.scss";
 
-const HowSection = props => (
+const HowSection = (props) => (
   <div className="how-section">
     <Section>
       <Title>How does Secret Toymaker work?</Title>

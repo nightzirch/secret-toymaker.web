@@ -1,15 +1,15 @@
-import { Grid, GridItem } from "components/Grid";
-import Hamburger from "components/Hamburger";
-import Logo from "components/Logo";
-import Section from "components/Section";
-import { Title } from "components/Typography";
-import { Link, useLocation } from "react-router-dom";
-import React, { useGlobal } from "reactn";
-import { getHeaderTextColorByPathname } from "utils/header";
-import "./Header.scss";
+import { Grid, GridItem } from "@/components/Grid";
+import Hamburger from "@/components/Hamburger";
+import Logo from "@/components/Logo";
+import Section from "@/components/Section";
+import { Title } from "@/components/Typography";
+import { getHeaderTextColorByPathname } from "@/utils/header";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useGlobal } from "reactn";
 
-const Header = props => {
-  const { pathname } = useLocation();
+const Header = (props) => {
+  const router = useRouter();
   const [isMenuOpen, setMenuOpen] = useGlobal("isMenuOpen");
 
   const handleHamburgerClick = () => {
@@ -18,13 +18,14 @@ const Header = props => {
 
   const renderLogo = () => (
     <div className="header__logo">
-      <Link
-        alt="Secret Toymaker"
-        className="header__logo-link"
-        title="Secret Toymaker"
-        to="/"
-      >
-        <Logo withGlow withHover />
+      <Link href="/">
+        <a
+          alt="Secret Toymaker"
+          className="header__logo-link"
+          title="Secret Toymaker"
+        >
+          <Logo withGlow withHover />
+        </a>
       </Link>
     </div>
   );
@@ -36,7 +37,7 @@ const Header = props => {
   );
 
   const renderTitle = () => {
-    const headerTextColor = getHeaderTextColorByPathname(pathname);
+    const headerTextColor = getHeaderTextColorByPathname(router.pathname);
     const colorScheme = headerTextColor === "dark" ? "primary" : "white";
 
     return (

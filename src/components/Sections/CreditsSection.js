@@ -1,27 +1,26 @@
-import classnames from "classnames";
 import {
   DescriptionList,
-  DescriptionListItem
-} from "components/DescriptionList";
-import { Grid, GridItem } from "components/Grid";
-import Link from "components/Link";
-import Section from "components/Section";
-import { Paragraph, Title } from "components/Typography";
+  DescriptionListItem,
+} from "@/components/DescriptionList";
+import { Grid, GridItem } from "@/components/Grid";
+import Link from "@/components/Link";
+import Section from "@/components/Section";
+import { Paragraph, Title } from "@/components/Typography";
+import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
-import "./CreditsSection.scss";
 
-const CreditsSection = props => {
+const CreditsSection = (props) => {
   const { showOnlyContactInfo } = props;
 
   const itemProps = {
-    color: "light"
+    color: "light",
   };
 
   return (
     <div
       className={classnames("credits-section", {
-        "credits-section--only-contact": showOnlyContactInfo
+        "credits-section--only-contact": showOnlyContactInfo,
       })}
     >
       <Section backgroundColor="primary">
@@ -87,7 +86,7 @@ const CreditsSection = props => {
 };
 
 CreditsSection.propTypes = {
-  showOnlyContactInfo: t.bool
+  showOnlyContactInfo: t.bool,
 };
 
 export default CreditsSection;

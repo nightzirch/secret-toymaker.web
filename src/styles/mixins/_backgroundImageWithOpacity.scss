@@ -1,5 +1,3 @@
-@import "../../styles/zIndex";
-
 @mixin backgroundImageWithOpacity($imgURL, $opacity: 1) {
   position: relative;
 

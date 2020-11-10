@@ -1,10 +1,10 @@
 import classnames from "classnames";
 import t from "prop-types";
-import React from "reactn";
-import "./Button.scss";
+import { forwardRef } from "react";
 
-const Button = props => {
+const Button = forwardRef((props, ref) => {
   const {
+    href,
     icon,
     iconPlacement,
     isCentered,
@@ -15,11 +15,11 @@ const Button = props => {
     type,
     onClick,
     size,
-    theme
+    theme,
   } = props;
 
   const containerClasses = classnames("button-container", {
-    "button-container--centered": isCentered
+    "button-container--centered": isCentered,
   });
 
   const buttonClasses = classnames(
@@ -30,7 +30,7 @@ const Button = props => {
     {
       [`button--with-icon button--with-icon-${iconPlacement}`]: !!icon,
       "button--full-width": isFullWidth,
-      "button--loading": isLoading
+      "button--loading": isLoading,
     }
   );
 
@@ -48,22 +48,27 @@ const Button = props => {
     </div>
   );
 
+  const Tag = href ? "a" : "button";
+
   return (
     <div className={containerClasses}>
-      <button
+      <Tag
         className={buttonClasses}
         disabled={isDisabled || isLoading}
         type={type}
         onClick={onClick}
+        href={href}
+        ref={ref}
       >
         {renderLoading()}
         {renderTitle()}
-      </button>
+      </Tag>
     </div>
   );
-};
+});
 
 Button.propTypes = {
+  href: t.string,
   icon: t.oneOfType([t.object, t.element, t.bool]),
   iconPlacement: t.oneOf(["left", "right"]),
   isCentered: t.bool,
@@ -74,14 +79,15 @@ Button.propTypes = {
   type: t.oneOf(["button", "submit"]),
   onClick: t.func,
   size: t.oneOf(["small", "medium", "large"]),
-  theme: t.oneOf(["call-to-action", "primary", "secondary", "danger"])
+  theme: t.oneOf(["call-to-action", "primary", "secondary", "danger"]),
 };
 
 Button.defaultProps = {
+  href: null,
   iconPlacement: "left",
   theme: "primary",
   size: "medium",
-  type: "button"
+  type: "button",
 };
 
 export default Button;

@@ -1,14 +1,13 @@
 import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
-import "./PageHeader.scss";
 import Title from "./Title";
 
-const PageHeader = props => {
+const PageHeader = (props) => {
   let pageHeaderClasses = classnames("page-header", {
     [`page-header--${props.type}`]: props.type,
     "page-header--no-children": !props.children,
-    "page-header--centered": props.isCentered
+    "page-header--centered": props.isCentered,
   });
 
   return (
@@ -29,9 +28,9 @@ PageHeader.propTypes = {
     "signup",
     "signup-alt",
     "match",
-    "profile"
+    "profile",
   ]),
-  title: t.string.isRequired
+  title: t.string.isRequired,
 };
 
 export default PageHeader;

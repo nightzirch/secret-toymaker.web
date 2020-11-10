@@ -1,0 +1,10 @@
+.event-hero {
+  &__lead {
+    font-size: $text-lg;
+    font-weight: bold;
+  }
+
+  .page-header--signup:after {
+    z-index: 0;
+  }
+}

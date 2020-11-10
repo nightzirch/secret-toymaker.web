@@ -1,24 +1,23 @@
+import Hamburger from "@/components/Hamburger";
+import Section from "@/components/Section";
+import { getAuthStatus } from "@/utils/auth";
+import { getNavigationItems } from "@/utils/mainMenu";
 import classnames from "classnames";
-import Hamburger from "components/Hamburger";
-import Section from "components/Section";
-import { Link } from "react-router-dom";
-import React, { useGlobal } from "reactn";
-import { getAuthStatus } from "utils/auth";
-import { getNavigationItems } from "utils/mainMenu";
-import "./MainMenu.scss";
+import Link from "next/link";
+import { useGlobal } from "reactn";
 
-const MainMenu = props => {
+const MainMenu = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useGlobal("isMenuOpen");
 
   const filterNavigationItems = () => {
     const authStatus = getAuthStatus();
     const navigationItems = getNavigationItems();
     return navigationItems.filter(
-      item => !item.requireAuthType || item.requireAuthType === authStatus
+      (item) => !item.requireAuthType || item.requireAuthType === authStatus
     );
   };
 
-  const handleMenuCloseClick = callback => {
+  const handleMenuCloseClick = (callback) => {
     if (typeof callback === "function") {
       callback();
     }
@@ -28,17 +27,17 @@ const MainMenu = props => {
 
   const renderNavigationItems = () => {
     const navigationItems = filterNavigationItems();
-    return navigationItems.map(item => {
+    return navigationItems.map((item) => {
       return (
-        <Link
-          className={classnames("main-menu__item", {
-            "main-menu__item--padding": item.hasPadding
-          })}
-          onClick={() => handleMenuCloseClick(item.onClick)}
-          to={item.route}
-          key={item.title}
-        >
-          {item.title}
+        <Link href={item.route} key={item.title}>
+          <a
+            className={classnames("main-menu__item", {
+              "main-menu__item--padding": item.hasPadding,
+            })}
+            onClick={() => handleMenuCloseClick(item.onClick)}
+          >
+            {item.title}
+          </a>
         </Link>
       );
     });

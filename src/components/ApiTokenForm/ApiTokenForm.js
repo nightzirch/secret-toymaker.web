@@ -1,19 +1,19 @@
-import Button from "components/Button";
-import Error from "components/Error";
-import { InputField } from "components/Form";
-import op from "object-path";
-import React, { withGlobal } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import ActionTypes from "utils/types/ActionTypes";
-import ErrorTypes from "utils/types/ErrorTypes";
-import { isApiTokenValid } from "utils/validation";
+import Button from "@/components/Button";
+import Error from "@/components/Error";
+import { InputField } from "@/components/Form";
+import { dispatchWithLoading } from "@/utils/loading";
+import ActionTypes from "@/utils/types/ActionTypes";
+import ErrorTypes from "@/utils/types/ErrorTypes";
+import { isApiTokenValid } from "@/utils/validation";
+import React from "react";
+import { withGlobal } from "reactn";
 
 class ApiTokenForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      apiToken: op.get(props, "user.apiToken", null)
+      apiToken: props?.user?.apiToken || null,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -23,17 +23,17 @@ class ApiTokenForm extends React.Component {
   componentDidUpdate = (prevProps, prevState) => {
     if (!prevProps.user && !!this.props.user) {
       this.setState({
-        apiToken: this.props.user.apiToken
+        apiToken: this.props.user.apiToken,
       });
     }
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     const { id, value } = e.target;
     this.setState({ [id]: value });
   };
 
-  handleFormSubmit = async e => {
+  handleFormSubmit = async (e) => {
     e.preventDefault();
 
     const { apiToken } = this.state;
@@ -50,13 +50,13 @@ class ApiTokenForm extends React.Component {
         ErrorTypes.UPDATE_API_TOKEN
       );
       await dispatchWithLoading(ActionTypes.UPDATE_API_TOKEN, {
-        apiToken
+        apiToken,
       });
     }
   };
 
   render() {
-    const isLoading = this.global.loading[ActionTypes.UPDATE_API_TOKEN];
+    const isLoading = this.props.loading[ActionTypes.UPDATE_API_TOKEN];
 
     return (
       <div className="api-token-form__container">
@@ -85,9 +85,9 @@ class ApiTokenForm extends React.Component {
   }
 }
 
-const mapGlobalToProps = global => ({
+const mapGlobalToProps = (global) => ({
   loading: global.loading,
-  user: global.user
+  user: global.user,
 });
 
 export default withGlobal(mapGlobalToProps)(ApiTokenForm);

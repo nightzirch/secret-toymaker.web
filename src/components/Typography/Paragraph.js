@@ -1,9 +1,8 @@
 import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
-import "./Paragraph.scss";
 
-const Paragraph = props => {
+const Paragraph = (props) => {
   const {
     children,
     colorScheme,
@@ -12,7 +11,8 @@ const Paragraph = props => {
     isCenter,
     isItalic,
     noMargin,
-    size
+    size,
+    weight,
   } = props;
   return children ? (
     <p
@@ -20,12 +20,13 @@ const Paragraph = props => {
         "paragraph",
         `paragraph--${colorScheme}`,
         `paragraph--${size}`,
+        `paragraph--weight-${weight}`,
         className,
         {
           "paragraph--no-margin": noMargin,
           "paragraph--bold": isBold,
           "paragraph--italic": isItalic,
-          "paragraph--center": isCenter
+          "paragraph--center": isCenter,
         }
       )}
     >
@@ -43,18 +44,29 @@ Paragraph.propTypes = {
     "dark-grey",
     "grey",
     "light",
-    "white"
+    "white",
+    "haiti",
+    "meteorite",
+    "vivid-violet",
+    "biloba-flower",
+    "pattens-blue",
+    "error",
+    "warning",
+    "success",
+    "info",
   ]),
   isBold: t.bool,
   isCenter: t.bool,
   isItalic: t.bool,
   noMargin: t.bool,
-  size: t.oneOf(["small", "medium"])
+  size: t.oneOf(["small", "medium"]),
+  weight: t.oneOf(["lighter", "light", "normal", "light", "lighter"]),
 };
 
 Paragraph.defaultProps = {
   colorScheme: "dark",
-  size: "medium"
+  size: "medium",
+  weight: "normal",
 };
 
 export default Paragraph;

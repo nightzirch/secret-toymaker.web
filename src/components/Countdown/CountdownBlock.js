@@ -1,9 +1,8 @@
+import { prefixZero } from "@/utils/number";
 import t from "prop-types";
 import React from "reactn";
-import { prefixZero } from "utils/number";
-import "./CountdownBlock.scss";
 
-const CountdownBlock = props => {
+const CountdownBlock = (props) => {
   const { label, value } = props;
 
   return (
@@ -16,7 +15,7 @@ const CountdownBlock = props => {
 
 CountdownBlock.propTypes = {
   label: t.string.isRequired,
-  value: t.number.isRequired
+  value: t.number.isRequired,
 };
 
 export default CountdownBlock;

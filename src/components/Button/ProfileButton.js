@@ -1,12 +1,14 @@
-import { withRouter } from "react-router-dom";
+import Routes from "@/config/routes";
+import { useRouter } from "next/router";
 import React from "reactn";
-import Routes from "routes";
 import Button from "./Button";
 
-const ProfileButton = props => {
+const ProfileButton = (props) => {
+  const router = useRouter();
+
   const gotoProfile = () => {
     // I really can't find docs about how to do this the clean way...
-    props.history.push(Routes.PROFILE);
+    router.push(Routes.PROFILE);
   };
 
   return (
@@ -21,4 +23,4 @@ const ProfileButton = props => {
   );
 };
 
-export default withRouter(ProfileButton);
+export default ProfileButton;

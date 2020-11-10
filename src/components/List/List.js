@@ -1,8 +1,7 @@
 import t from "prop-types";
 import React from "reactn";
-import "./List.scss";
 
-const List = props => {
+const List = (props) => {
   let renderElements = () => {
     return props.elements.map((el, i) => {
       if (typeof el === "string") {
@@ -20,16 +19,14 @@ const List = props => {
     });
   };
 
-  return React.createElement(
-    props.ordered ? "ol" : "ul",
-    { className: "list" },
-    renderElements()
-  );
+  const ListEl = props.ordered ? "ol" : "ul";
+
+  return <ListEl className="list">{renderElements()}</ListEl>;
 };
 
 List.propTypes = {
   elements: t.array.isRequired,
-  ordered: t.bool
+  ordered: t.bool,
 };
 
 export default List;

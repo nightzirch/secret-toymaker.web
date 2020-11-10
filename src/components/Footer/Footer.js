@@ -1,12 +1,10 @@
-import { Grid, GridItem } from "components/Grid";
-import Link from "components/Link";
-import Section from "components/Section";
-import { Paragraph, Paragraphs, Title } from "components/Typography";
-import lang from "lang/lang";
-import React from "reactn";
-import "./Footer.scss";
+import { Grid, GridItem } from "@/components/Grid";
+import Link from "@/components/Link";
+import Section from "@/components/Section";
+import { Paragraph, Paragraphs, Title } from "@/components/Typography";
+import lang from "@/lang/lang";
 
-const Footer = props => (
+const Footer = (props) => (
   <footer className="footer">
     <Section backgroundColor="primary-dark" className="footer__upper">
       <Grid noMargin>

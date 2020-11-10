@@ -1,0 +1,83 @@
+.paragraph {
+  line-height: 1.45;
+  margin-bottom: 1.25em;
+
+  &--bold {
+    font-weight: bold;
+  }
+  &--italic {
+    font-style: italic;
+  }
+  &--center {
+    text-align: center;
+  }
+  &--small {
+    font-size: $text-sm;
+  }
+  &--medium {
+    font-size: $text-md;
+  }
+  &--no-margin {
+    margin: 0;
+  }
+  &--black {
+    color: $black;
+  }
+  &--dark {
+    color: $dark;
+  }
+  &--dark-grey {
+    color: $dark-grey;
+  }
+  &--grey {
+    color: $grey;
+  }
+  &--light {
+    color: $light;
+  }
+  &--white {
+    color: $white;
+  }
+  &--haiti {
+    color: $haiti;
+  }
+  &--meteorite {
+    color: $meteorite;
+  }
+  &--vivid-violet {
+    color: $vivid-violet;
+  }
+  &--biloba-flower {
+    color: $biloba-flower;
+  }
+  &--pattens-blue {
+    color: $pattens-blue;
+  }
+  &--error {
+    color: $state-error;
+  }
+  &--warning {
+    color: $state-warning;
+  }
+  &--success {
+    color: $state-success;
+  }
+  &--info {
+    color: $state-info;
+  }
+  &--weight-lighter {
+    font-weight: 100;
+  }
+  &--weight-light {
+    font-weight: 300;
+  }
+  &--weight-normal {
+    font-weight: 500;
+  }
+  &--weight-bold {
+    font-weight: 700;
+  }
+  &--weight-bolder {
+    font-weight: 900;
+  }
+}

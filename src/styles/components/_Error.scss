@@ -1,0 +1,15 @@
+.error {
+  padding: 1rem 2rem;
+  display: flex;
+  margin: 0;
+  background-color: $state-error;
+  color: $white;
+
+  & + * {
+    margin-top: 1em;
+  }
+
+  .paragraph {
+    color: $white;
+  }
+}

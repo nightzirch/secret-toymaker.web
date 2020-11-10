@@ -1,16 +1,15 @@
 import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
-import "./Section.scss";
 
-const Section = props => {
+const Section = (props) => {
   const {
     backgroundColor,
     children,
     className,
     isHorizontalPadding,
     isVerticalPadding,
-    isWide
+    isWide,
   } = props;
   return (
     <section
@@ -20,7 +19,7 @@ const Section = props => {
           [`section--${backgroundColor}`]: !!backgroundColor,
           "section--horizontal-padding": isHorizontalPadding,
           "section--vertical-padding": isVerticalPadding,
-          "section--wide": isWide
+          "section--wide": isWide,
         },
         className
       )}
@@ -41,17 +40,17 @@ Section.propTypes = {
     "secondary",
     "secondary-light",
     "secondary-dark",
-    "secondary-darker"
+    "secondary-darker",
   ]),
   children: t.node,
   className: t.string,
   isHorizontalPadding: t.bool,
   isVerticalPadding: t.bool,
-  isWide: t.bool
+  isWide: t.bool,
 };
 
 Section.defaultProps = {
-  isHorizontalPadding: true
+  isHorizontalPadding: true,
 };
 
 export default Section;

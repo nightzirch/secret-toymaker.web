@@ -1,0 +1,55 @@
+.navigation-item {
+  display: flex;
+  align-items: center;
+  padding: 0 2em;
+  color: $secondary-color;
+  text-decoration: none;
+  cursor: pointer;
+
+  &__icon {
+    // display: none;
+    font-size: 1.5em;
+
+    @include media($tablet) {
+      display: block;
+    }
+
+    &--image {
+      @include hoverOpacity;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__title {
+  }
+
+  &:hover {
+    color: darken($secondary-color, 30%);
+  }
+
+  &--block {
+    background-color: lighten($secondary-color, 40%);
+  }
+
+  &--has-icon,
+  &--has-image {
+    .navigation-item {
+      &__title {
+        @include media($tablet) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &--has-image {
+    width: 4rem;
+    // padding: 0 2em 0 1em;
+  }
+}

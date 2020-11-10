@@ -1,9 +1,8 @@
-import Card from "components/Card";
+import Card from "@/components/Card";
 import t from "prop-types";
 import React, { useGlobal } from "reactn";
-import "./Error.scss";
 
-const Error = props => {
+const Error = (props) => {
   const { id } = props;
   const [error] = useGlobal("error");
   const message = error[id];
@@ -12,7 +11,7 @@ const Error = props => {
 };
 
 Error.propTypes = {
-  id: t.string.isRequired
+  id: t.string.isRequired,
 };
 
 export default Error;

@@ -1,9 +1,8 @@
 import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
-import "./Card.scss";
 
-const Card = props => {
+const Card = (props) => {
   const {
     buttonLabel,
     buttonTheme,
@@ -60,11 +59,11 @@ Card.propTypes = {
   children: t.node,
   className: t.string,
   isLoading: t.bool,
-  onButtonClick: t.func
+  onButtonClick: t.func,
 };
 
 Card.defaultProps = {
-  buttonTheme: "primary"
+  buttonTheme: "primary",
 };
 
 export default Card;

@@ -1,30 +1,24 @@
-import Button from "components/Button";
-import FaqBlocks from "components/FaqBlocks";
-import { Title } from "components/Typography";
-import lang from "lang/lang";
-import { withRouter } from "react-router-dom";
+import Button from "@/components/Button";
+import FaqBlocks from "@/components/FaqBlocks";
+import { Title } from "@/components/Typography";
+import lang from "@/lang/lang";
+import { useRouter } from "next/router";
 import React from "reactn";
 
-class FaqSection extends React.Component {
-  constructor(props) {
-    super(props);
+const FaqSection = (props) => {
+  const router = useRouter();
 
-    this.gotoFAQ = this.gotoFAQ.bind(this);
-  }
+  const gotoFAQ = () => {
+    router.push("/faq");
+  };
 
-  gotoFAQ() {
-    this.props.history.push("/faq");
-  }
+  return (
+    <div className="faq-section">
+      <Title>Frequently Asked Questions</Title>
+      <FaqBlocks blocks={lang.faq.short} />
+      <Button onClick={gotoFAQ} title="To full FAQ" />
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div className="faq-section">
-        <Title>Frequently Asked Questions</Title>
-        <FaqBlocks blocks={lang.faq.short} />
-        <Button onClick={this.gotoFAQ} title="To full FAQ" />
-      </div>
-    );
-  }
-}
-
-export default withRouter(FaqSection);
+export default FaqSection;

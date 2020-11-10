@@ -1,24 +1,23 @@
 import classnames from "classnames";
+import NLink from "next/link";
 import t from "prop-types";
-import { Link as RRLink } from "react-router-dom";
 import React from "reactn";
-import "./Link.scss";
 
-const Link = props => {
+const Link = (props) => {
   const {
     isCentered,
     isDisabled,
     isExternal,
     isInContainer,
     title,
-    url
+    url,
   } = props;
 
   const containerClasses = classnames("link-container", {
-    "link-container--centered": isCentered
+    "link-container--centered": isCentered,
   });
 
-  const renderInContainer = content => (
+  const renderInContainer = (content) => (
     <div className={containerClasses}>{content}</div>
   );
 
@@ -33,9 +32,9 @@ const Link = props => {
       {title}
     </a>
   ) : (
-    <RRLink className="link" disabled={isDisabled} to={url}>
-      {title}
-    </RRLink>
+    <NLink href={url} className="link" disabled={isDisabled}>
+      <a>{title}</a>
+    </NLink>
   );
 
   return isInContainer ? renderInContainer(content) : content;
@@ -47,11 +46,11 @@ Link.propTypes = {
   isExternal: t.bool,
   isInContainer: t.bool,
   title: t.string.isRequired,
-  url: t.string
+  url: t.string,
 };
 
 Link.defaultProps = {
-  isInContainer: true
+  isInContainer: true,
 };
 
 export default Link;

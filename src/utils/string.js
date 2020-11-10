@@ -1,11 +1,13 @@
-export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
+import escapeStringRegexp from "escape-string-regexp";
+
+export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const replaceString = (str, replacements) => {
   let replacedString = str;
 
-  Object.keys(replacements).forEach(key => {
+  Object.keys(replacements).forEach((key) => {
     replacedString = replacedString.replace(
-      new RegExp(key, "ig"),
+      new RegExp(escapeStringRegexp(key), "ig"),
       replacements[key]
     );
   });

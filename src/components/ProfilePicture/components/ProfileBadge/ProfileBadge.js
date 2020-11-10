@@ -1,11 +1,10 @@
 import classnames from "classnames";
 import t from "prop-types";
-import ReactSVG from "react-svg";
+import { ReactSVG } from "react-svg";
 import React, { useGlobal } from "reactn";
 import { BADGES, ROLES } from "../../utils/constants";
-import "./ProfileBadge.scss";
 
-const ProfileBadge = props => {
+const ProfileBadge = (props) => {
   const [user] = useGlobal("user");
   const { roles } = user || {}; // TODO: Use this instead of admin
   const badge = BADGES[ROLES.ADMIN];
@@ -26,7 +25,7 @@ const ProfileBadge = props => {
 };
 
 ProfileBadge.propTypes = {
-  type: t.func
+  type: t.func,
 };
 
 export default ProfileBadge;

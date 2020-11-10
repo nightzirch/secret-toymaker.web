@@ -3,7 +3,6 @@ import List from "List";
 import t from "prop-types";
 import React from "reactn";
 import { Paragraphs, Title } from "Typography";
-import "./Tooltip.scss";
 
 class Tooltip extends React.Component {
   renderLeftArrow() {
@@ -43,7 +42,7 @@ class Tooltip extends React.Component {
 
   render() {
     let helpClasses = classnames("tooltip", {
-      "tooltip--active": this.props.for === this.props.form.inputFocus
+      "tooltip--active": this.props.for === this.props.form.inputFocus,
     });
 
     return (
@@ -61,7 +60,7 @@ class Tooltip extends React.Component {
 
 Tooltip.propTypes = {
   content: t.object.isRequired,
-  for: t.string.isRequired
+  for: t.string.isRequired,
 };
 
 export default Tooltip;

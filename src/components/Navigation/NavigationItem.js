@@ -1,11 +1,10 @@
 import classnames from "classnames";
+import Link from "next/link";
 import t from "prop-types";
-import { Link } from "react-router-dom";
 import React from "reactn";
-import "./NavigationItem.scss";
 
 const icons = {
-  person: "ion-person"
+  person: "ion-person",
 };
 
 class NavigationItem extends React.Component {
@@ -47,7 +46,7 @@ class NavigationItem extends React.Component {
     let itemClasses = classnames("navigation-item", {
       [`navigation-item--${this.props.type}`]: this.props.type !== "default",
       "navigation-item--has-icon": !!this.props.icon,
-      "navigation-item--has-image": !!this.props.imageUrl
+      "navigation-item--has-image": !!this.props.imageUrl,
     });
     return this.props.isExternal ? (
       <a
@@ -61,7 +60,7 @@ class NavigationItem extends React.Component {
       </a>
     ) : (
       <Link
-        to={this.props.url}
+        href={this.props.url}
         onClick={this.handleClick}
         className={itemClasses}
       >
@@ -80,12 +79,12 @@ NavigationItem.propTypes = {
   onClick: t.func,
   title: t.string,
   type: t.oneOf(["default", "block"]),
-  url: t.string.isRequired
+  url: t.string.isRequired,
 };
 
 NavigationItem.defaultProps = {
   onClick: () => {},
-  type: "default"
+  type: "default",
 };
 
 export default NavigationItem;

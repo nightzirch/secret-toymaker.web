@@ -1,21 +1,15 @@
-import { withRouter } from "react-router-dom";
+import { useRouter } from "next/router";
 import React from "reactn";
 import Button from "./Button";
 
-class GiftsButton extends React.Component {
-  constructor(props) {
-    super(props);
+const GiftsButton = (props) => {
+  const router = useRouter();
 
-    this.gotoGifts = this.gotoGifts.bind(this);
-  }
+  const gotoGifts = () => {
+    router.push("/signup");
+  };
 
-  gotoGifts() {
-    this.props.history.push("/signup");
-  }
+  return <Button onClick={gotoGifts} title="To Gifts" {...props} />;
+};
 
-  render() {
-    return <Button onClick={this.gotoGifts} title="To Gifts" {...this.props} />;
-  }
-}
-
-export default withRouter(GiftsButton);
+export default GiftsButton;
