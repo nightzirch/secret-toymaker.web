@@ -1,4 +1,4 @@
-import firebaseAdmin from "config/firebaseAdmin";
+import admin from "@/firebase/admin";
 import nookies from "nookies";
 import { getRedirectRouteForRouteName } from "utils/routes";
 import AuthTypes from "utils/types/AuthTypes";
@@ -9,7 +9,7 @@ export const validateAuthWithRedirect = async (ctx, callback) => {
   try {
     const cookies = nookies.get(ctx);
     if (cookies.token) {
-      token = await firebaseAdmin.auth().verifyIdToken(cookies.token);
+      token = await admin.auth().verifyIdToken(cookies.token);
     }
   } catch (err) {
     console.log("[Redirect] Error while verifying token", err);
