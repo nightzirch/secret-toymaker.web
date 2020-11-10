@@ -1,8 +1,8 @@
-import Alert from "components/Alert";
-import Section from "components/Section";
+import Alert from "@/components/Alert";
+import Section from "@/components/Section";
+import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
 import t from "prop-types";
 import { useEffect, useGlobal, useState } from "reactn";
-import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
 const Alerts = (props) => {
   const { location, ...rest } = props;

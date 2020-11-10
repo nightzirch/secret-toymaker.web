@@ -1,6 +1,6 @@
+import { prefixZero } from "@/utils/number";
 import t from "prop-types";
 import React from "reactn";
-import { prefixZero } from "utils/number";
 
 const CountdownBlock = (props) => {
   const { label, value } = props;

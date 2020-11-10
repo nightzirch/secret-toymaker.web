@@ -1,10 +1,10 @@
-import Alerts from "components/Alerts";
-import FaqBlocks from "components/FaqBlocks";
-import Section from "components/Section";
-import { CreditsSection } from "components/Sections";
-import { Title } from "components/Typography";
-import lang from "lang/lang";
-import AlertLocationTypes from "utils/types/AlertLocationTypes";
+import Alerts from "@/components/Alerts";
+import FaqBlocks from "@/components/FaqBlocks";
+import Section from "@/components/Section";
+import { CreditsSection } from "@/components/Sections";
+import { Title } from "@/components/Typography";
+import lang from "@/lang/lang";
+import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
 
 const FaqPage = (props) => {
   return (

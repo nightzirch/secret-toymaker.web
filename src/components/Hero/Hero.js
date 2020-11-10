@@ -1,14 +1,14 @@
+import { EventButton, LoginButton, ProfileButton } from "@/components/Button";
+import Countdown from "@/components/Countdown";
+import { Grid, GridItem } from "@/components/Grid";
+import Section from "@/components/Section";
+import { Title } from "@/components/Typography";
+import { getAuthStatus } from "@/utils/auth";
+import AuthTypes from "@/utils/types/AuthTypes";
+import StageTypes from "@/utils/types/StageTypes";
 import classnames from "classnames";
-import { EventButton, LoginButton, ProfileButton } from "components/Button";
-import Countdown from "components/Countdown";
-import { Grid, GridItem } from "components/Grid";
-import Section from "components/Section";
-import { Title } from "components/Typography";
 import Image from "next/image";
 import React, { useEffect, useGlobal, useState } from "reactn";
-import { getAuthStatus } from "utils/auth";
-import AuthTypes from "utils/types/AuthTypes";
-import StageTypes from "utils/types/StageTypes";
 
 const Hero = (props) => {
   const [stage] = useGlobal("stage");

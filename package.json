@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "countdown": "^2.6.0",
+    "escape-string-regexp": "^4.0.0",
     "firebase": "^8.0.0",
     "firebase-admin": "^9.3.0",
     "lodash": "^4.17.20",

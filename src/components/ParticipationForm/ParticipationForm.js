@@ -1,12 +1,12 @@
-import Button from "components/Button";
-import Error from "components/Error";
-import { TextArea } from "components/Form";
+import Button from "@/components/Button";
+import Error from "@/components/Error";
+import { TextArea } from "@/components/Form";
+import { dispatchWithLoading } from "@/utils/loading";
+import { getParticipationByYear } from "@/utils/participation";
+import ActionTypes from "@/utils/types/ActionTypes";
+import ErrorTypes from "@/utils/types/ErrorTypes";
+import { isNotesValid } from "@/utils/validation";
 import React, { useEffect, useGlobal, useState } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import { getParticipationByYear } from "utils/participation";
-import ActionTypes from "utils/types/ActionTypes";
-import ErrorTypes from "utils/types/ErrorTypes";
-import { isNotesValid } from "utils/validation";
 
 const ParticipationForm = (props) => {
   const [loading] = useGlobal("loading");

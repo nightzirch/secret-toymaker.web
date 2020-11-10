@@ -1,5 +1,5 @@
+import Routes from "@/config/routes";
 import classnames from "classnames";
-import Routes from "config/routes";
 import Image from "next/image";
 import Link from "next/link";
 import React from "reactn";

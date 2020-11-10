@@ -1,6 +1,6 @@
+import { PageHeader, Paragraphs } from "@/components/Typography";
+import lang from "@/lang/lang";
 import classnames from "classnames";
-import { PageHeader, Paragraphs } from "components/Typography";
-import lang from "lang/lang";
 import t from "prop-types";
 import React, { withGlobal } from "reactn";
 

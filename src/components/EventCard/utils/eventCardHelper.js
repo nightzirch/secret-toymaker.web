@@ -1,4 +1,4 @@
-import StageTypes from "utils/types/StageTypes";
+import StageTypes from "@/utils/types/StageTypes";
 
 export const getStatusData = (event) => {
   const { currentStage, eventEnd } = event;

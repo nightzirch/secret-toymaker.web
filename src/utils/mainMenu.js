@@ -1,6 +1,6 @@
-import Routes from "config/routes";
+import Routes from "@/config/routes";
+import AuthTypes from "@/utils/types/AuthTypes";
 import { getGlobal } from "reactn";
-import AuthTypes from "utils/types/AuthTypes";
 
 export const getNavigationItems = () => {
   const { firebase } = getGlobal();

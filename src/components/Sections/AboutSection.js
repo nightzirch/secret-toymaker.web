@@ -1,7 +1,7 @@
-import { Grid, GridItem } from "components/Grid";
-import Section from "components/Section";
-import { Paragraphs, Signature, Title } from "components/Typography";
-import lang from "lang/lang";
+import { Grid, GridItem } from "@/components/Grid";
+import Section from "@/components/Section";
+import { Paragraphs, Signature, Title } from "@/components/Typography";
+import lang from "@/lang/lang";
 import Image from "next/image";
 import React from "reactn";
 

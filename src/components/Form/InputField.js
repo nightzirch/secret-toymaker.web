@@ -1,10 +1,10 @@
-import classnames from "classnames";
-import t from "prop-types";
-import React from "reactn";
 import {
   validApiTokenRegExpString,
   validEmailRegExpString,
-} from "utils/validation";
+} from "@/utils/validation";
+import classnames from "classnames";
+import t from "prop-types";
+import React from "reactn";
 
 class InputField extends React.Component {
   constructor(props) {

@@ -1,15 +1,15 @@
-import Routes from "config/routes";
+import Routes from "@/config/routes";
+import { replaceString } from "@/utils/string";
 import isEmpty from "lodash/isEmpty";
 import Link from "next/link";
 import React, { useGlobal } from "reactn";
-import { replaceString } from "utils/string";
 import Button from "./Button";
 
 const EventButton = (props) => {
   const [stage] = useGlobal("stage");
 
   if (isEmpty(stage)) return null;
-
+  console.log(stage.year);
   const url = replaceString(Routes.EVENT, { "[year]": stage.year });
 
   return (

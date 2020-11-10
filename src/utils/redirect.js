@@ -1,7 +1,7 @@
 import admin from "@/firebase/admin";
+import { getRedirectRouteForRouteName } from "@/utils/routes";
+import AuthTypes from "@/utils/types/AuthTypes";
 import nookies from "nookies";
-import { getRedirectRouteForRouteName } from "utils/routes";
-import AuthTypes from "utils/types/AuthTypes";
 
 export const validateAuthWithRedirect = async (ctx, callback) => {
   let token;

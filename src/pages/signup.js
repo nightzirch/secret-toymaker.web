@@ -1,10 +1,10 @@
-import Alerts from "components/Alerts";
-import Section from "components/Section";
-import SignupForm from "components/SignupForm";
-import { PageHeader, Paragraphs } from "components/Typography";
-import lang from "lang/lang";
-import { validateAuthWithRedirect } from "utils/redirect";
-import AlertLocationTypes from "utils/types/AlertLocationTypes";
+import Alerts from "@/components/Alerts";
+import Section from "@/components/Section";
+import SignupForm from "@/components/SignupForm";
+import { PageHeader, Paragraphs } from "@/components/Typography";
+import lang from "@/lang/lang";
+import { validateAuthWithRedirect } from "@/utils/redirect";
+import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
 
 const SignupPage = (props) => {
   return (

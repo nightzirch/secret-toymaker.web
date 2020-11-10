@@ -1,11 +1,11 @@
+import Card from "@/components/Card";
+import { Paragraph } from "@/components/Typography";
+import { dispatchWithLoading } from "@/utils/loading";
+import ActionTypes from "@/utils/types/ActionTypes";
+import AlertTypes from "@/utils/types/AlertTypes";
 import classnames from "classnames";
-import Card from "components/Card";
-import { Paragraph } from "components/Typography";
 import t from "prop-types";
 import { useState } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import ActionTypes from "utils/types/ActionTypes";
-import AlertTypes from "utils/types/AlertTypes";
 
 const Alert = (props) => {
   const { children, id, isStatic, type } = props;

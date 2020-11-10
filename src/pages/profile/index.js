@@ -1,16 +1,19 @@
-import Alerts from "components/Alerts";
-import ApiTokenForm from "components/ApiTokenForm";
-import Button, { ResetPasswordButton, SignoutButton } from "components/Button";
-import { Grid, GridItem } from "components/Grid";
-import NotificationsForm from "components/NotificationsForm";
-import ProfileForm from "components/ProfileForm";
-import ProfilePicture from "components/ProfilePicture";
-import Section from "components/Section";
-import { CreditsSection } from "components/Sections";
-import { PageHeader, Title } from "components/Typography";
+import Alerts from "@/components/Alerts";
+import ApiTokenForm from "@/components/ApiTokenForm";
+import Button, {
+  ResetPasswordButton,
+  SignoutButton,
+} from "@/components/Button";
+import { Grid, GridItem } from "@/components/Grid";
+import NotificationsForm from "@/components/NotificationsForm";
+import ProfileForm from "@/components/ProfileForm";
+import ProfilePicture from "@/components/ProfilePicture";
+import Section from "@/components/Section";
+import { CreditsSection } from "@/components/Sections";
+import { PageHeader, Title } from "@/components/Typography";
+import { validateAuthWithRedirect } from "@/utils/redirect";
+import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
 import { useGlobal } from "reactn";
-import { validateAuthWithRedirect } from "utils/redirect";
-import AlertLocationTypes from "utils/types/AlertLocationTypes";
 
 const ProfilePage = (props) => {
   const [firebase] = useGlobal("firebase");

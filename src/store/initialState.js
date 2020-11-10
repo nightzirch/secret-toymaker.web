@@ -1,4 +1,4 @@
-import Firebase from "components/Firebase";
+import Firebase from "@/firebase";
 
 // Initial state
 export default {

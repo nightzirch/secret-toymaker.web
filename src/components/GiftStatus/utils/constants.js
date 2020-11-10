@@ -1,4 +1,4 @@
-import GiftStatusTypes from "utils/types/GiftStatusTypes";
+import GiftStatusTypes from "@/utils/types/GiftStatusTypes";
 
 export const GiftStatusIllustrations = {
   [GiftStatusTypes.PACKING]: {

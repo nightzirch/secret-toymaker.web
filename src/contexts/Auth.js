@@ -1,11 +1,11 @@
+import { dispatchWithLoading } from "@/utils/loading";
+import { getRedirectRouteForRouteName } from "@/utils/routes";
+import ActionTypes from "@/utils/types/ActionTypes";
+import AuthTypes from "@/utils/types/AuthTypes";
 import { useRouter } from "next/router";
 import nookies from "nookies";
 import { createContext, useEffect, useState } from "react";
 import { useGlobal } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import { getRedirectRouteForRouteName } from "utils/routes";
-import ActionTypes from "utils/types/ActionTypes";
-import AuthTypes from "utils/types/AuthTypes";
 
 export const AuthContext = createContext({
   user: null,

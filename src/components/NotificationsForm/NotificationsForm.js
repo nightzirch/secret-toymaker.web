@@ -1,20 +1,20 @@
-import { InputCheckbox } from "components/Form";
+import { InputCheckbox } from "@/components/Form";
+import { dispatchWithLoading } from "@/utils/loading";
+import ActionTypes from "@/utils/types/ActionTypes";
 import React, { useEffect, useGlobal, useReducer } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import ActionTypes from "utils/types/ActionTypes";
 
 const setStatesReducer = (state, action) => {
   const { id, checked } = action;
   return { ...state, [id]: checked };
 };
 
-const NotificationsForm = props => {
+const NotificationsForm = (props) => {
   const [user] = useGlobal("user");
   const [states, setStates] = useReducer(setStatesReducer, {
     emailEventUpdates: false,
     emailFutureEvents: false,
     pushEventUpdates: false,
-    pushFutureEvents: false
+    pushFutureEvents: false,
   });
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const NotificationsForm = props => {
       const { consents } = user;
 
       if (consents) {
-        Object.keys(consents).forEach(consentKey => {
+        Object.keys(consents).forEach((consentKey) => {
           if (states[consentKey] !== consents[consentKey]) {
             setStates({ id: consentKey, checked: consents[consentKey] });
           }
@@ -37,7 +37,7 @@ const NotificationsForm = props => {
     }
   }, [states]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { id, checked } = e.target;
     setStates({ id, checked });
   };

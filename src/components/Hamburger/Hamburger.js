@@ -1,7 +1,7 @@
+import { getHeaderTextColorByPathname } from "@/utils/header";
 import classnames from "classnames";
 import { useRouter } from "next/router";
 import t from "prop-types";
-import { getHeaderTextColorByPathname } from "utils/header";
 
 const Hamburger = (props) => {
   const { isInMenu, isMenuOpen, onClick } = props;

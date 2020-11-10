@@ -1,12 +1,12 @@
+import Card from "@/components/Card";
+import Stats from "@/components/Stats";
+import { Paragraph, Title } from "@/components/Typography";
+import Routes from "@/config/routes";
+import { replaceString } from "@/utils/string";
+import StageTypes from "@/utils/types/StageTypes";
 import classnames from "classnames";
-import Card from "components/Card";
-import Stats from "components/Stats";
-import { Paragraph, Title } from "components/Typography";
-import Routes from "config/routes";
 import Link from "next/link";
 import t from "prop-types";
-import { replaceString } from "utils/string";
-import StageTypes from "utils/types/StageTypes";
 import { getStatusData } from "./utils/eventCardHelper";
 
 const EventCard = (props) => {

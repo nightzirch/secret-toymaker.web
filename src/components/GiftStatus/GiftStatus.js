@@ -1,17 +1,17 @@
-import classnames from "classnames";
-import Card from "components/Card";
-import { Paragraph, Title } from "components/Typography";
-import Image from "next/image";
-import t from "prop-types";
-import React, { useEffect, useGlobal, useState } from "reactn";
+import Card from "@/components/Card";
+import { Paragraph, Title } from "@/components/Typography";
 import {
   dispatchWithCustomLoading,
   generateCustomGiftLoadingKey,
-} from "utils/loading";
-import ActionTypes from "utils/types/ActionTypes";
-import GiftDirectionTypes from "utils/types/GiftDirectionTypes";
-import GiftStatusTypes from "utils/types/GiftStatusTypes";
-import StageTypes from "utils/types/StageTypes";
+} from "@/utils/loading";
+import ActionTypes from "@/utils/types/ActionTypes";
+import GiftDirectionTypes from "@/utils/types/GiftDirectionTypes";
+import GiftStatusTypes from "@/utils/types/GiftStatusTypes";
+import StageTypes from "@/utils/types/StageTypes";
+import classnames from "classnames";
+import Image from "next/image";
+import t from "prop-types";
+import React, { useEffect, useGlobal, useState } from "reactn";
 import { GiftStatusIllustrations } from "./utils/constants";
 
 const GiftDirectionTypesArray = Object.keys(GiftDirectionTypes).map(

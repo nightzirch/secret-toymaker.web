@@ -1,7 +1,7 @@
-import Button from "components/Button";
-import FaqBlocks from "components/FaqBlocks";
-import { Title } from "components/Typography";
-import lang from "lang/lang";
+import Button from "@/components/Button";
+import FaqBlocks from "@/components/FaqBlocks";
+import { Title } from "@/components/Typography";
+import lang from "@/lang/lang";
 import { useRouter } from "next/router";
 import React from "reactn";
 

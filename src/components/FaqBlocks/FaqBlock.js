@@ -1,5 +1,5 @@
-import List from "components/List";
-import { Paragraphs, Title } from "components/Typography";
+import List from "@/components/List";
+import { Paragraphs, Title } from "@/components/Typography";
 import t from "prop-types";
 import React from "reactn";
 

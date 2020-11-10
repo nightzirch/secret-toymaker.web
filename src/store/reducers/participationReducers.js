@@ -1,4 +1,4 @@
-import ActionTypes from "utils/types/ActionTypes";
+import ActionTypes from "@/utils/types/ActionTypes";
 
 export default {
   [ActionTypes.GET_PARTICIPATION_STATUS]: async (global, dispatch) => {

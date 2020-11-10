@@ -1,16 +1,16 @@
 import Button, {
   SigninFacebookButton,
   SigninGoogleButton,
-} from "components/Button";
-import Error from "components/Error";
-import { InputField } from "components/Form";
-import { Grid, GridItem } from "components/Grid";
-import Link from "components/Link";
-import Routes from "config/routes";
+} from "@/components/Button";
+import Error from "@/components/Error";
+import { InputField } from "@/components/Form";
+import { Grid, GridItem } from "@/components/Grid";
+import Link from "@/components/Link";
+import Routes from "@/config/routes";
+import { dispatchWithLoading } from "@/utils/loading";
+import ActionTypes from "@/utils/types/ActionTypes";
+import ErrorTypes from "@/utils/types/ErrorTypes";
 import React from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import ActionTypes from "utils/types/ActionTypes";
-import ErrorTypes from "utils/types/ErrorTypes";
 
 class LoginForm extends React.Component {
   constructor(props) {

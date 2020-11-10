@@ -1,4 +1,4 @@
-import Routes from "config/routes";
+import Routes from "@/config/routes";
 import { useRouter } from "next/router";
 import React from "reactn";
 import Button from "./Button";

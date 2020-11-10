@@ -1,8 +1,8 @@
-import ResetPasswordForm from "components/ResetPasswordForm";
-import Section from "components/Section";
-import { PageHeader } from "components/Typography";
+import ResetPasswordForm from "@/components/ResetPasswordForm";
+import Section from "@/components/Section";
+import { PageHeader } from "@/components/Typography";
+import { validateAuthWithRedirect } from "@/utils/redirect";
 import React from "reactn";
-import { validateAuthWithRedirect } from "utils/redirect";
 
 const ResetPasswordPage = (props) => {
   return (

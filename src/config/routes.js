@@ -1,4 +1,4 @@
-import AuthTypes from "utils/types/AuthTypes";
+import AuthTypes from "@/utils/types/AuthTypes";
 
 export const RouteTypes = {
   EVENT: "EVENT",

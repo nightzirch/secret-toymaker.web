@@ -1,12 +1,12 @@
-import Button from "components/Button";
-import Error from "components/Error";
-import { InputField } from "components/Form";
-import { Paragraph } from "components/Typography";
+import Button from "@/components/Button";
+import Error from "@/components/Error";
+import { InputField } from "@/components/Form";
+import { Paragraph } from "@/components/Typography";
+import { dispatchWithLoading } from "@/utils/loading";
+import ActionTypes from "@/utils/types/ActionTypes";
+import ErrorTypes from "@/utils/types/ErrorTypes";
+import { isEmailValid } from "@/utils/validation";
 import React, { withGlobal } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import ActionTypes from "utils/types/ActionTypes";
-import ErrorTypes from "utils/types/ErrorTypes";
-import { isEmailValid } from "utils/validation";
 
 class ProfileForm extends React.Component {
   constructor(props) {

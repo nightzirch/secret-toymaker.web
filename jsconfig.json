@@ -2,7 +2,22 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@/firebase/*": ["firebase/*"]
+      "@/components": ["components"],
+      "@/components/*": ["components/*"],
+      "@/config": ["config"],
+      "@/config/*": ["config/*"],
+      "@/contexts": ["contexts"],
+      "@/contexts/*": ["contexts/*"],
+      "@/firebase": ["firebase"],
+      "@/firebase/*": ["firebase/*"],
+      "@/hooks": ["hooks"],
+      "@/hooks/*": ["hooks/*"],
+      "@/lang": ["lang"],
+      "@/lang/*": ["lang/*"],
+      "@/store": ["store"],
+      "@/store/*": ["store/*"],
+      "@/utils": ["utils"],
+      "@/utils/*": ["utils/*"]
     }
   }
 }

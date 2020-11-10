@@ -1,4 +1,4 @@
-import firebaseConfig from "config/firebaseConfig";
+import firebaseConfig from "@/config/firebaseConfig";
 import "firebase/analytics";
 import app from "firebase/app";
 import "firebase/auth";

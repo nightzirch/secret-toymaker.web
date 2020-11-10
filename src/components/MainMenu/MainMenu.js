@@ -1,10 +1,10 @@
+import Hamburger from "@/components/Hamburger";
+import Section from "@/components/Section";
+import { getAuthStatus } from "@/utils/auth";
+import { getNavigationItems } from "@/utils/mainMenu";
 import classnames from "classnames";
-import Hamburger from "components/Hamburger";
-import Section from "components/Section";
 import Link from "next/link";
 import { useGlobal } from "reactn";
-import { getAuthStatus } from "utils/auth";
-import { getNavigationItems } from "utils/mainMenu";
 
 const MainMenu = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useGlobal("isMenuOpen");

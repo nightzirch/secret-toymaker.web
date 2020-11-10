@@ -1,7 +1,7 @@
-import Section from "components/Section";
-import StepBlock from "components/StepBlock";
-import { StepTypes } from "components/StepBlock/utils/constants";
-import { Title } from "components/Typography";
+import Section from "@/components/Section";
+import StepBlock from "@/components/StepBlock";
+import { StepTypes } from "@/components/StepBlock/utils/constants";
+import { Title } from "@/components/Typography";
 import React from "reactn";
 
 const HowSection = (props) => (

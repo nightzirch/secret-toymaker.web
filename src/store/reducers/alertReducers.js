@@ -1,4 +1,4 @@
-import ActionTypes from "utils/types/ActionTypes";
+import ActionTypes from "@/utils/types/ActionTypes";
 
 // Reducers
 export default {

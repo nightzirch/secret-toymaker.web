@@ -1,6 +1,6 @@
-import Routes, { RouteTypes } from "config/routes";
-import { getKeyByValue } from "utils/object";
-import { getRouteRoot } from "utils/url";
+import Routes, { RouteTypes } from "@/config/routes";
+import { getKeyByValue } from "@/utils/object";
+import { getRouteRoot } from "@/utils/url";
 
 export const headerTextColor = {
   [RouteTypes.EVENT]: "dark",

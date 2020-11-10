@@ -1,9 +1,9 @@
+import { Paragraph } from "@/components/Typography";
+import { getRandomInt } from "@/utils/random";
 import classnames from "classnames";
-import { Paragraph } from "components/Typography";
 import Image from "next/image";
 import t from "prop-types";
 import React, { useEffect, useState } from "react";
-import { getRandomInt } from "utils/random";
 
 const LoadingIndicator = (props) => {
   const { message } = props;

@@ -1,8 +1,8 @@
-import { Grid, GridItem } from "components/Grid";
-import Link from "components/Link";
-import Section from "components/Section";
-import { Paragraph, Paragraphs, Title } from "components/Typography";
-import lang from "lang/lang";
+import { Grid, GridItem } from "@/components/Grid";
+import Link from "@/components/Link";
+import Section from "@/components/Section";
+import { Paragraph, Paragraphs, Title } from "@/components/Typography";
+import lang from "@/lang/lang";
 
 const Footer = (props) => (
   <footer className="footer">

@@ -1,5 +1,5 @@
-import ActionTypes from "utils/types/ActionTypes";
-import ErrorTypes from "utils/types/ErrorTypes";
+import ActionTypes from "@/utils/types/ActionTypes";
+import ErrorTypes from "@/utils/types/ErrorTypes";
 
 export default {
   [ActionTypes.GET_USER]: async (global, dispatch, userId) => {

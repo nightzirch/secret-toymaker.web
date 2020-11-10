@@ -1,6 +1,6 @@
+import { Grid, GridItem } from "@/components/Grid";
+import { Paragraph, Title } from "@/components/Typography";
 import classnames from "classnames";
-import { Grid, GridItem } from "components/Grid";
-import { Paragraph, Title } from "components/Typography";
 import Image from "next/image";
 import t from "prop-types";
 import React from "reactn";

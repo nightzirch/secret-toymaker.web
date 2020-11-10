@@ -1,12 +1,12 @@
-import { Grid, GridItem } from "components/Grid";
-import Hamburger from "components/Hamburger";
-import Logo from "components/Logo";
-import Section from "components/Section";
-import { Title } from "components/Typography";
+import { Grid, GridItem } from "@/components/Grid";
+import Hamburger from "@/components/Hamburger";
+import Logo from "@/components/Logo";
+import Section from "@/components/Section";
+import { Title } from "@/components/Typography";
+import { getHeaderTextColorByPathname } from "@/utils/header";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useGlobal } from "reactn";
-import { getHeaderTextColorByPathname } from "utils/header";
 
 const Header = (props) => {
   const router = useRouter();

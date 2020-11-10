@@ -1,12 +1,12 @@
-import classnames from "classnames";
 import {
   DescriptionList,
   DescriptionListItem,
-} from "components/DescriptionList";
-import { Grid, GridItem } from "components/Grid";
-import Link from "components/Link";
-import Section from "components/Section";
-import { Paragraph, Title } from "components/Typography";
+} from "@/components/DescriptionList";
+import { Grid, GridItem } from "@/components/Grid";
+import Link from "@/components/Link";
+import Section from "@/components/Section";
+import { Paragraph, Title } from "@/components/Typography";
+import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
 

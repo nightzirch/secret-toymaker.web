@@ -1,6 +1,6 @@
-import Routes, { RouteRequirements } from "config/routes";
-import { getKeyByValue } from "utils/object";
-import AuthTypes from "utils/types/AuthTypes";
+import Routes, { RouteRequirements } from "@/config/routes";
+import { getKeyByValue } from "@/utils/object";
+import AuthTypes from "@/utils/types/AuthTypes";
 
 export const getRedirectRouteForRouteName = (
   url,

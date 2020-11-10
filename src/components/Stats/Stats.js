@@ -1,11 +1,11 @@
 import {
   DescriptionList,
   DescriptionListItem,
-} from "components/DescriptionList";
+} from "@/components/DescriptionList";
+import { simplifiedStatData, statData } from "@/utils/stats";
 import t from "prop-types";
 import { useEffect, useState } from "react";
 import { useGlobal } from "reactn";
-import { simplifiedStatData, statData } from "utils/stats";
 
 const Stats = (props) => {
   const { isSimplified, year } = props;
