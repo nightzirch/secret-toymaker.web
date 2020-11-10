@@ -9,7 +9,6 @@ const EventButton = (props) => {
   const [stage] = useGlobal("stage");
 
   if (isEmpty(stage)) return null;
-  console.log(stage.year);
   const url = replaceString(Routes.EVENT, { "[year]": stage.year });
 
   return (
