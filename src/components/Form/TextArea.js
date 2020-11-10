@@ -1,7 +1,6 @@
 import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
-import "./TextArea.scss";
 
 class TextArea extends React.Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class TextArea extends React.Component {
     this.state = {
       isActive: false,
       isTouched: false,
-      isValid: false
+      isValid: false,
     };
 
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -25,13 +24,13 @@ class TextArea extends React.Component {
     }
   }
 
-  handleValueChange = e => {
+  handleValueChange = (e) => {
     let value = e.target.value;
     let matchesValidPattern = value.length > this.props.minLength;
 
     this.setState({
       isTouched: true,
-      isValid: !!matchesValidPattern
+      isValid: !!matchesValidPattern,
     });
 
     this.props.onChange(e);
@@ -45,10 +44,10 @@ class TextArea extends React.Component {
     let containerClasses = classnames("text-area", {
       "text-area--active": this.state.isActive,
       "text-area--invalid": this.state.isTouched && !this.state.isValid,
-      "text-area--valid": this.state.isValid
+      "text-area--valid": this.state.isValid,
     });
     let inputClasses = classnames("text-area__input", [
-      `text-area__input--${this.props.type}`
+      `text-area__input--${this.props.type}`,
     ]);
     return (
       <div className={containerClasses}>
@@ -88,7 +87,7 @@ TextArea.propTypes = {
   minLength: t.number,
   onChange: t.func,
   placeholder: t.string,
-  value: t.string
+  value: t.string,
 };
 
 TextArea.defaultProps = {
@@ -96,7 +95,7 @@ TextArea.defaultProps = {
   isDisabled: false,
   minLength: 10,
   onChange: () => {},
-  value: ""
+  value: "",
 };
 
 export default TextArea;

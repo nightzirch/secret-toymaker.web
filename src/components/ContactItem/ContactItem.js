@@ -1,8 +1,7 @@
 import t from "prop-types";
 import React from "reactn";
-import "./ContactItem.scss";
 
-const ContactItem = props => (
+const ContactItem = (props) => (
   <a
     className="contact-item"
     href={props.url}
@@ -17,7 +16,7 @@ const ContactItem = props => (
 ContactItem.propTypes = {
   icon: t.object,
   label: t.string.isRequired,
-  url: t.string.isRequired
+  url: t.string.isRequired,
 };
 
 export default ContactItem;

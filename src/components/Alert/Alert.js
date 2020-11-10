@@ -1,14 +1,13 @@
+import Card from "@/components/Card";
+import { Paragraph } from "@/components/Typography";
+import { dispatchWithLoading } from "@/utils/loading";
+import ActionTypes from "@/utils/types/ActionTypes";
+import AlertTypes from "@/utils/types/AlertTypes";
 import classnames from "classnames";
-import Card from "components/Card";
-import { Paragraph } from "components/Typography";
 import t from "prop-types";
-import React, { useState } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import ActionTypes from "utils/types/ActionTypes";
-import AlertTypes from "utils/types/AlertTypes";
-import "./Alert.scss";
+import { useState } from "reactn";
 
-const Alert = props => {
+const Alert = (props) => {
   const { children, id, isStatic, type } = props;
   const [isClosing, setIsClosing] = useState(false);
 
@@ -45,7 +44,7 @@ const Alert = props => {
   return (
     <Card
       className={classnames("alert", `alert--${type}`, {
-        "alert--closing": isClosing
+        "alert--closing": isClosing,
       })}
     >
       <div className="alert__content">
@@ -70,7 +69,7 @@ Alert.propTypes = {
   children: t.node,
   id: t.string,
   isStatic: t.bool,
-  type: t.oneOf(Object.values(AlertTypes)).isRequired
+  type: t.oneOf(Object.values(AlertTypes)).isRequired,
 };
 
 export default Alert;

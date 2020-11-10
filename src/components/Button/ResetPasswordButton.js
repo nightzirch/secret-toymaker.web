@@ -1,12 +1,14 @@
+import Routes from "@/config/routes";
+import { useRouter } from "next/router";
 import t from "prop-types";
-import { withRouter } from "react-router-dom";
 import React from "reactn";
-import Routes from "routes";
 import Button from "./Button";
 
-const ResetPasswordButton = props => {
+const ResetPasswordButton = (props) => {
+  const router = useRouter();
+
   const handlePasswordResetClick = () => {
-    props.history.push(Routes.RESET_PASSWORD);
+    router.push(Routes.RESET_PASSWORD);
   };
 
   return (
@@ -20,7 +22,7 @@ const ResetPasswordButton = props => {
 };
 
 ResetPasswordButton.propTypes = {
-  history: t.object
+  history: t.object,
 };
 
-export default withRouter(ResetPasswordButton);
+export default ResetPasswordButton;

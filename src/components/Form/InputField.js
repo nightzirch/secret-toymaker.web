@@ -1,11 +1,10 @@
+import {
+  validApiTokenRegExpString,
+  validEmailRegExpString,
+} from "@/utils/validation";
 import classnames from "classnames";
 import t from "prop-types";
 import React from "reactn";
-import {
-  validApiTokenRegExpString,
-  validEmailRegExpString
-} from "utils/validation";
-import "./InputField.scss";
 
 class InputField extends React.Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class InputField extends React.Component {
     this.state = {
       isActive: false,
       isTouched: false,
-      isValid: false
+      isValid: false,
     };
 
     this.handleValueChange = this.handleValueChange.bind(this);
@@ -59,7 +58,7 @@ class InputField extends React.Component {
     }
   }
 
-  handleValueChange = e => {
+  handleValueChange = (e) => {
     let value = e.target.value;
     let matchesValidPattern = value.match(
       this.inputPattern(this.props.minLength, this.props.maxLength)
@@ -67,7 +66,7 @@ class InputField extends React.Component {
 
     this.setState({
       isTouched: true,
-      isValid: !!matchesValidPattern
+      isValid: !!matchesValidPattern,
     });
 
     this.props.onChange(e);
@@ -84,11 +83,11 @@ class InputField extends React.Component {
       {
         "input-field--active": this.state.isActive,
         "input-field--invalid": this.state.isTouched && !this.state.isValid,
-        "input-field--valid": this.state.isValid
+        "input-field--valid": this.state.isValid,
       }
     );
     let inputClasses = classnames("input-field__input", [
-      `input-field__input--${this.props.type}`
+      `input-field__input--${this.props.type}`,
     ]);
     return (
       <div className={containerClasses}>
@@ -132,7 +131,7 @@ InputField.propTypes = {
   onChange: t.func,
   placeholder: t.string,
   type: t.oneOf(["apiToken", "email", "password", "text"]).isRequired,
-  value: t.string
+  value: t.string,
 };
 
 InputField.defaultProps = {
@@ -140,7 +139,7 @@ InputField.defaultProps = {
   maxLength: 0,
   minLength: 0,
   onChange: () => {},
-  value: ""
+  value: "",
 };
 
 export default InputField;

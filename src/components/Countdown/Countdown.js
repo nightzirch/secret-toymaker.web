@@ -2,11 +2,10 @@ import "countdown";
 import moment from "moment";
 import "moment-countdown";
 import React, { useEffect, useGlobal, useState } from "reactn";
-import "./Countdown.scss";
 import CountdownBlock from "./CountdownBlock";
 import { getCountdownTitle } from "./utils/utils";
 
-const Countdown = props => {
+const Countdown = (props) => {
   const [stage] = useGlobal("stage");
   const [countdownObject, setCountdownObject] = useState(null);
   const { end: stageEnd, type: stageType } = stage || {};
@@ -33,7 +32,7 @@ const Countdown = props => {
       { label: "days", value: days },
       { label: "hours", value: hours },
       { label: "minutes", value: minutes },
-      { label: "seconds", value: seconds }
+      { label: "seconds", value: seconds },
     ];
     let firstValueIndex = 3; // Defaulting to show hours as the first value
 

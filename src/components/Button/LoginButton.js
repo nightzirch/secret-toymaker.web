@@ -1,31 +1,25 @@
-import { withRouter } from "react-router-dom";
+import Routes from "@/config/routes";
+import { useRouter } from "next/router";
 import React from "reactn";
-import Routes from "routes";
 import Button from "./Button";
 
-class LoginButton extends React.Component {
-  constructor(props) {
-    super(props);
+const LoginButton = (props) => {
+  const router = useRouter();
 
-    this.gotoLogin = this.gotoLogin.bind(this);
-  }
+  const gotoLogin = () => {
+    router.push(Routes.LOGIN);
+  };
 
-  gotoLogin() {
-    this.props.history.push(Routes.LOGIN);
-  }
+  return (
+    <Button
+      icon={<ion-icon name="arrow-forward"></ion-icon>}
+      iconPlacement="right"
+      onClick={gotoLogin}
+      primary
+      title="Go to login"
+      {...props}
+    />
+  );
+};
 
-  render() {
-    return (
-      <Button
-        icon={<ion-icon name="arrow-forward"></ion-icon>}
-        iconPlacement="right"
-        onClick={this.gotoLogin}
-        primary
-        title="Go to login"
-        {...this.props}
-      />
-    );
-  }
-}
-
-export default withRouter(LoginButton);
+export default LoginButton;

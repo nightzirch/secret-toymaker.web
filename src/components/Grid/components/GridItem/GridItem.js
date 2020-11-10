@@ -1,9 +1,8 @@
 import classnames from "classnames";
 import t from "prop-types";
 import React from "react";
-import "./GridItem.scss";
 
-const GridItem = props => {
+const GridItem = (props) => {
   const {
     children,
     className,
@@ -11,7 +10,7 @@ const GridItem = props => {
     span,
     spanMobile,
     offset,
-    offsetMobile
+    offsetMobile,
   } = props;
 
   return (
@@ -23,7 +22,7 @@ const GridItem = props => {
         {
           [`grid-item--offset-${offset}`]: offset,
           [`grid-item--offset-mobile-${offsetMobile}`]: offsetMobile,
-          "grid-item--hide-on-mobile": hideOnMobile
+          "grid-item--hide-on-mobile": hideOnMobile,
         },
         className
       )}
@@ -40,12 +39,12 @@ GridItem.propTypes = {
   span: t.number,
   spanMobile: t.number,
   offset: t.number,
-  offsetMobile: t.number
+  offsetMobile: t.number,
 };
 
 GridItem.defaultProps = {
   span: 12,
-  spanMobile: 4
+  spanMobile: 4,
 };
 
 export default GridItem;

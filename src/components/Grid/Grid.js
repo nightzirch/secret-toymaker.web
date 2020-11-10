@@ -1,16 +1,15 @@
 import classnames from "classnames";
 import t from "prop-types";
 import React from "react";
-import "./Grid.scss";
 
-const Grid = props => {
+const Grid = (props) => {
   const {
     children,
     columns,
     columnsMobile,
     noMargin,
     noColumnGap,
-    noRowGap
+    noRowGap,
   } = props;
 
   return (
@@ -22,7 +21,7 @@ const Grid = props => {
         {
           "grid--no-margin": noMargin,
           "grid--no-column-gap": noColumnGap,
-          "grid--no-row-gap": noRowGap
+          "grid--no-row-gap": noRowGap,
         }
       )}
     >
@@ -37,12 +36,12 @@ Grid.propTypes = {
   columnsMobile: t.number,
   noColumnGap: t.bool,
   noRowGap: t.bool,
-  noMargin: t.bool
+  noMargin: t.bool,
 };
 
 Grid.defaultProps = {
   columns: 12,
-  columnsMobile: 4
+  columnsMobile: 4,
 };
 
 export default Grid;

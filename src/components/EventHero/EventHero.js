@@ -1,11 +1,10 @@
+import { PageHeader, Paragraphs } from "@/components/Typography";
+import lang from "@/lang/lang";
 import classnames from "classnames";
-import { PageHeader, Paragraphs } from "components/Typography";
-import lang from "lang/lang";
 import t from "prop-types";
 import React, { withGlobal } from "reactn";
-import "./EventHero.scss";
 
-const EventHero = props => {
+const EventHero = (props) => {
   const { stage } = props;
   const { type: stageType, year } = stage || {};
   const leadText = lang.event.hero[stageType];
@@ -27,11 +26,11 @@ const EventHero = props => {
 };
 
 EventHero.propTypes = {
-  stage: t.object
+  stage: t.object,
 };
 
-const mapGlobalToProps = global => ({
-  stage: global.stage
+const mapGlobalToProps = (global) => ({
+  stage: global.stage,
 });
 
 export default withGlobal(mapGlobalToProps)(EventHero);

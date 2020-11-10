@@ -1,5 +1,4 @@
 import React from "reactn";
-import "./PageSection.scss";
 
 class PageSection extends React.Component {
   render() {

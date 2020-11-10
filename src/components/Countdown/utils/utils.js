@@ -1,6 +1,6 @@
-import StageTypes from "utils/types/StageTypes";
+import StageTypes from "@/utils/types/StageTypes";
 
-export const getCountdownTitle = stageType => {
+export const getCountdownTitle = (stageType) => {
   switch (stageType) {
     case StageTypes.SIGNUP:
       return "Gifting begins in";

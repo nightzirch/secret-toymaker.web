@@ -1,27 +1,27 @@
-import classnames from "classnames";
-import Card from "components/Card";
-import { Paragraph, Title } from "components/Typography";
-import t from "prop-types";
-import React, { useEffect, useGlobal, useState } from "reactn";
+import Card from "@/components/Card";
+import { Paragraph, Title } from "@/components/Typography";
 import {
   dispatchWithCustomLoading,
-  generateCustomGiftLoadingKey
-} from "utils/loading";
-import ActionTypes from "utils/types/ActionTypes";
-import GiftDirectionTypes from "utils/types/GiftDirectionTypes";
-import GiftStatusTypes from "utils/types/GiftStatusTypes";
-import StageTypes from "utils/types/StageTypes";
-import "./GiftStatus.scss";
+  generateCustomGiftLoadingKey,
+} from "@/utils/loading";
+import ActionTypes from "@/utils/types/ActionTypes";
+import GiftDirectionTypes from "@/utils/types/GiftDirectionTypes";
+import GiftStatusTypes from "@/utils/types/GiftStatusTypes";
+import StageTypes from "@/utils/types/StageTypes";
+import classnames from "classnames";
+import Image from "next/image";
+import t from "prop-types";
+import React, { useEffect, useGlobal, useState } from "reactn";
 import { GiftStatusIllustrations } from "./utils/constants";
 
 const GiftDirectionTypesArray = Object.keys(GiftDirectionTypes).map(
-  s => GiftDirectionTypes[s]
+  (s) => GiftDirectionTypes[s]
 );
 const GIFT_STATUS_ARRAY = Object.keys(GiftStatusTypes).map(
-  s => GiftStatusTypes[s]
+  (s) => GiftStatusTypes[s]
 );
 
-const GiftStatus = props => {
+const GiftStatus = (props) => {
   const { direction, eventStageType, gift } = props;
   const { id, match, notes, received, sent } = gift;
   const [loading] = useGlobal("loading");
@@ -53,7 +53,7 @@ const GiftStatus = props => {
     }
   }, [direction, status]);
 
-  const activeIndex = GIFT_STATUS_ARRAY.findIndex(index => index === status);
+  const activeIndex = GIFT_STATUS_ARRAY.findIndex((index) => index === status);
 
   const handleSentClick = () => {
     const isSent = status === GiftStatusTypes.PACKING;
@@ -101,7 +101,7 @@ const GiftStatus = props => {
                 `gift-status__dot--${s}`,
                 {
                   "gift-status__dot--active": i < activeIndex + 1,
-                  "gift-status__dot--complete": i < activeIndex
+                  "gift-status__dot--complete": i < activeIndex,
                 }
               )}
             >
@@ -115,7 +115,7 @@ const GiftStatus = props => {
             {i < GIFT_STATUS_ARRAY.length - 1 && (
               <span
                 className={classnames("gift-status__timeline__line", {
-                  "gift-status__timeline__line--active": i < activeIndex
+                  "gift-status__timeline__line--active": i < activeIndex,
                 })}
               />
             )}
@@ -135,15 +135,17 @@ const GiftStatus = props => {
                 "gift-status__illustration",
                 `gift-status__illustration--${s}`,
                 {
-                  "gift-status__illustration--inactive": i < activeIndex
+                  "gift-status__illustration--inactive": i < activeIndex,
                 }
               )}
               key={s}
             >
-              <img
+              <Image
                 alt={GiftStatusIllustrations[s].text}
                 title={GiftStatusIllustrations[s].text}
                 src={GiftStatusIllustrations[s].imgUrl}
+                width={GiftStatusIllustrations[s].width}
+                height={GiftStatusIllustrations[s].height}
               />
             </div>
           )
@@ -182,7 +184,7 @@ const GiftStatus = props => {
         `gift-status--${status}`,
         `gift-status--${direction}`,
         {
-          "gift-status--complete": activeIndex === GIFT_STATUS_ARRAY.length - 1
+          "gift-status--complete": activeIndex === GIFT_STATUS_ARRAY.length - 1,
         }
       )}
     >
@@ -199,11 +201,11 @@ const GiftStatus = props => {
 GiftStatus.propTypes = {
   eventStageType: t.oneOf(Object.values(StageTypes)),
   direction: t.oneOf(GiftDirectionTypesArray).isRequired,
-  gift: t.object.isRequired
+  gift: t.object.isRequired,
 };
 
 GiftStatus.defaultProps = {
-  eventStageType: StageTypes.INACTIVE
+  eventStageType: StageTypes.INACTIVE,
 };
 
 export default GiftStatus;

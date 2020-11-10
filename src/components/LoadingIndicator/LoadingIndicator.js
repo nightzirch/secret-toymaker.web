@@ -1,11 +1,11 @@
+import { Paragraph } from "@/components/Typography";
+import { getRandomInt } from "@/utils/random";
 import classnames from "classnames";
-import { Paragraph } from "components/Typography";
+import Image from "next/image";
 import t from "prop-types";
 import React, { useEffect, useState } from "react";
-import { getRandomInt } from "utils/random";
-import "./LoadingIndicator.scss";
 
-const LoadingIndicator = props => {
+const LoadingIndicator = (props) => {
   const { message } = props;
   const [isAnimating, setAnimating] = useState(true);
   const [rotation, setRotation] = useState(-20);
@@ -27,17 +27,19 @@ const LoadingIndicator = props => {
   return (
     <div
       className={classnames("loading-indicator", {
-        "loading-indicator--animating": isAnimating
+        "loading-indicator--animating": isAnimating,
       })}
     >
       <div
         className="loading-indicator__rotate"
         style={{ transform: `rotate(${rotation}deg)` }}
       >
-        <img
-          src="/images/logo-large.png"
+        <Image
+          src="/images/logo.png"
           alt="Loading indicator"
           title="Loading indicator"
+          width={736}
+          height={703}
         />
       </div>
 
@@ -51,7 +53,7 @@ const LoadingIndicator = props => {
 };
 
 LoadingIndicator.propTypes = {
-  message: t.string
+  message: t.string,
 };
 
 export default LoadingIndicator;

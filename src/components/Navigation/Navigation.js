@@ -1,8 +1,8 @@
+import Routes from "@/config/routes";
 import classnames from "classnames";
-import { Link } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
 import React from "reactn";
-import Routes from "routes";
-import "./Navigation.scss";
 import NavigationItem from "./NavigationItem";
 
 class Navigation extends React.Component {
@@ -10,7 +10,7 @@ class Navigation extends React.Component {
     super(props);
 
     this.state = {
-      isMenuOpen: false
+      isMenuOpen: false,
     };
 
     this.handleHamburgerClick = this.handleHamburgerClick.bind(this);
@@ -35,8 +35,8 @@ class Navigation extends React.Component {
         icon: "person",
         imageUrl: this.global.authUser && this.global.authUser.photoURL,
         title: "Profile",
-        url: this.global.authUser ? Routes.PROFILE : Routes.LOGIN
-      }
+        url: this.global.authUser ? Routes.PROFILE : Routes.LOGIN,
+      },
       // {
       //   isExternal: true,
       //   title: "Donate",
@@ -87,18 +87,20 @@ class Navigation extends React.Component {
 
   render() {
     let navClasses = classnames("navigation__container", {
-      active: this.state.isMenuOpen
+      active: this.state.isMenuOpen,
     });
 
     return (
       <div className={navClasses}>
         <div className="navigation__wrapper">
-          <Link to="/" alt="Secret Toymaker" title="Secret Toymaker">
+          <Link href="/" alt="Secret Toymaker" title="Secret Toymaker">
             <div className="navigation__logo">
-              <img
+              <Image
                 alt="Secret Toymaker"
                 title="Secret Toymaker"
                 src="/images/logo.png"
+                width={50}
+                height={48}
               />
               <h1>Secret Toymaker</h1>
             </div>

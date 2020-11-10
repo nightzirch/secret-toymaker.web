@@ -1,13 +1,11 @@
-import { Grid, GridItem } from "components/Grid";
-import Section from "components/Section";
-import { Paragraphs, Signature, Title } from "components/Typography";
-import GiftBleak from "images/gift-bleak.png";
-import GiftRed from "images/gift-red.png";
-import lang from "lang/lang";
+import { Grid, GridItem } from "@/components/Grid";
+import Section from "@/components/Section";
+import { Paragraphs, Signature, Title } from "@/components/Typography";
+import lang from "@/lang/lang";
+import Image from "next/image";
 import React from "reactn";
-import "./AboutSection.scss";
 
-const AboutSection = props => (
+const AboutSection = (props) => (
   <div className="about-section">
     <Section>
       <Grid>
@@ -25,19 +23,25 @@ const AboutSection = props => (
         </GridItem>
 
         <GridItem className="about-section__images" span={4}>
-          <img
-            className="about-section__image about-section__image--bleak"
-            src={GiftBleak}
-            alt="Gift"
-            title="Gift"
-          />
+          <div className="about-section__image about-section__image--bleak">
+            <Image
+              src={"/images/gift-bleak.png"}
+              alt="Gift"
+              title="Gift"
+              width={200}
+              height={191}
+            />
+          </div>
 
-          <img
-            className="about-section__image about-section__image--red"
-            src={GiftRed}
-            alt="Gift"
-            title="Gift"
-          />
+          <div className="about-section__image about-section__image--red">
+            <Image
+              src={"/images/gift-red.png"}
+              alt="Gift"
+              title="Gift"
+              width={400}
+              height={382}
+            />
+          </div>
         </GridItem>
       </Grid>
     </Section>

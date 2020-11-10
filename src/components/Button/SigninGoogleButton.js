@@ -1,11 +1,11 @@
+import { dispatchWithLoading } from "@/utils/loading";
+import ActionTypes from "@/utils/types/ActionTypes";
+import ErrorTypes from "@/utils/types/ErrorTypes";
 import t from "prop-types";
 import React, { useGlobal } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import ActionTypes from "utils/types/ActionTypes";
-import ErrorTypes from "utils/types/ErrorTypes";
 import Button from "./Button";
 
-const SigninGoogleButton = props => {
+const SigninGoogleButton = (props) => {
   const { errorType } = props;
   const [firebase] = useGlobal("firebase");
 
@@ -31,11 +31,11 @@ const SigninGoogleButton = props => {
 };
 
 SigninGoogleButton.propTypes = {
-  errorType: t.string
+  errorType: t.string,
 };
 
 SigninGoogleButton.defaultProps = {
-  errorType: ErrorTypes.LOGIN
+  errorType: ErrorTypes.LOGIN,
 };
 
 export default SigninGoogleButton;

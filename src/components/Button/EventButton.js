@@ -1,25 +1,27 @@
-import { withRouter } from "react-router-dom";
-import React from "reactn";
-import Routes from "routes";
-import { replaceString } from "utils/string";
+import Routes from "@/config/routes";
+import { replaceString } from "@/utils/string";
+import isEmpty from "lodash/isEmpty";
+import Link from "next/link";
+import React, { useGlobal } from "reactn";
 import Button from "./Button";
 
-const EventButton = props => {
-  const gotoEvent = () => {
-    // I really can't find docs about how to do this the clean way...
-    props.history.push(replaceString(Routes.EVENT, { ":year": "2019" }));
-  };
+const EventButton = (props) => {
+  const [stage] = useGlobal("stage");
+
+  if (isEmpty(stage)) return null;
+  const url = replaceString(Routes.EVENT, { "[year]": stage.year });
 
   return (
-    <Button
-      icon={<ion-icon name="arrow-forward" />}
-      iconPlacement="right"
-      onClick={gotoEvent}
-      primary
-      title="Right this way"
-      {...props}
-    />
+    <Link href={url} passHref>
+      <Button
+        icon={<ion-icon name="arrow-forward" />}
+        iconPlacement="right"
+        primary
+        title="Right this way"
+        {...props}
+      />
+    </Link>
   );
 };
 
-export default withRouter(EventButton);
+export default EventButton;

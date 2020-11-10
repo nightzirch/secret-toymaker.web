@@ -1,31 +1,32 @@
 import {
   DescriptionList,
-  DescriptionListItem
-} from "components/DescriptionList";
+  DescriptionListItem,
+} from "@/components/DescriptionList";
+import { simplifiedStatData, statData } from "@/utils/stats";
 import t from "prop-types";
-import React, { useEffect, useGlobal, useState } from "reactn";
-import { statData } from "utils/stats";
-import "./Stats.scss";
+import { useEffect, useState } from "react";
+import { useGlobal } from "reactn";
 
-const Stats = props => {
-  const { year } = props;
-  const [stats] = useGlobal("stats");
+const Stats = (props) => {
+  const { isSimplified, year } = props;
+  const [events] = useGlobal("events");
   const [yearlyStats, setYearlyStats] = useState(null);
+  const selectedStatData = isSimplified ? simplifiedStatData : statData;
 
   useEffect(() => {
-    if (stats && year) {
-      setYearlyStats(stats[year]);
+    if (events && year) {
+      setYearlyStats(events[year]);
     }
-  }, [stats, year]);
+  }, [events, year]);
 
   const renderStats = () => {
     if (!yearlyStats) return null;
 
     const statsToShow = Object.keys(yearlyStats)
-      .filter(key => Object.keys(statData).includes(key))
-      .filter(key => yearlyStats[key])
-      .map(key => {
-        const { icon, render, title: term } = statData[key];
+      .filter((key) => Object.keys(selectedStatData).includes(key))
+      .filter((key) => yearlyStats[key])
+      .map((key) => {
+        const { icon, render, title: term } = selectedStatData[key];
         const description = render
           ? render(yearlyStats[key])
           : yearlyStats[key];
@@ -33,18 +34,20 @@ const Stats = props => {
         return {
           term,
           description,
-          icon
+          icon,
+          key,
         };
       });
 
     return (
-      <DescriptionList>
-        {statsToShow.map(stat => (
+      <DescriptionList isHorizontal={isSimplified}>
+        {statsToShow.map((stat) => (
           <DescriptionListItem
             term={stat.term}
             description={stat.description}
             icon={stat.icon}
-            key={stat.term}
+            isHorizontal={isSimplified}
+            key={stat.key}
           />
         ))}
       </DescriptionList>
@@ -55,7 +58,8 @@ const Stats = props => {
 };
 
 Stats.propTypes = {
-  year: t.string
+  isSimplified: t.bool,
+  year: t.string,
 };
 
 export default Stats;

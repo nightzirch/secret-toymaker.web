@@ -1,0 +1,47 @@
+.grid-item {
+  // Without offset
+  @for $spanMobile from 1 through 12 {
+    &.grid-item--span-mobile-#{$spanMobile} {
+      grid-column: span $spanMobile;
+    }
+  }
+
+  @include media($tablet) {
+    @for $span from 1 through 12 {
+      &.grid-item--span-#{$span} {
+        grid-column: span $span;
+      }
+    }
+  }
+
+  // With offset
+  @for $offsetMobile from 1 through 12 {
+    @for $spanMobile from 1 through 12 {
+      &.grid-item--offset-mobile-#{$offsetMobile} {
+        &.grid-item--span-mobile-#{$spanMobile} {
+          grid-column: $offsetMobile / span $spanMobile;
+        }
+      }
+    }
+  }
+
+  @include media($tablet) {
+    @for $offset from 1 through 12 {
+      @for $span from 1 through 12 {
+        &.grid-item--offset-#{$offset} {
+          &.grid-item--span-#{$span} {
+            grid-column: $offset / span $span;
+          }
+        }
+      }
+    }
+  }
+
+  &--hide-on-mobile {
+    display: none !important;
+
+    @include media($tablet) {
+      display: block !important;
+    }
+  }
+}

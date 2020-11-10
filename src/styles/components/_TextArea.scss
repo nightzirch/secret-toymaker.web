@@ -1,0 +1,61 @@
+.text-area {
+  font-size: 1em;
+  margin: 2rem 0;
+  padding: 0;
+  position: relative;
+
+  &__input {
+    background: $white;
+    border: 0.1em solid $light;
+    outline: none;
+    font-size: 1em;
+    margin: 0.25em 0;
+    padding: 1em;
+    width: 100%;
+    height: 9em;
+    resize: vertical;
+    box-sizing: border-box;
+
+    @media screen and (min-width: $mobile) {
+      font-size: 1em;
+      padding: 1em;
+    }
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[disabled] {
+      background-color: $light;
+      border-bottom-color: $grey !important;
+    }
+  }
+
+  &__label {
+    left: 0;
+    color: $grey;
+  }
+
+  &--active {
+    .text-area__label {
+      color: $dark;
+    }
+
+    .text-area__input {
+      border-bottom-color: $secondary-color;
+    }
+  }
+
+  &--valid {
+    .text-area__input {
+      border-bottom-color: $state-success;
+    }
+  }
+
+  &--invalid {
+    .text-area__input {
+      border-bottom-color: $state-error;
+    }
+  }
+}

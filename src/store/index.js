@@ -1,4 +1,4 @@
-import setGlobalStore from "./setGlobalStore";
-import setReducers from "./setReducers";
+import initialState from "./initialState";
+import initialReducers from "./reducers";
 
-export { setGlobalStore, setReducers };
+export { initialState, initialReducers };

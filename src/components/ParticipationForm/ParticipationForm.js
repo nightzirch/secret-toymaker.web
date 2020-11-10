@@ -1,15 +1,14 @@
-import Button from "components/Button";
-import Error from "components/Error";
-import { TextArea } from "components/Form";
+import Button from "@/components/Button";
+import Error from "@/components/Error";
+import { TextArea } from "@/components/Form";
+import { dispatchWithLoading } from "@/utils/loading";
+import { getParticipationByYear } from "@/utils/participation";
+import ActionTypes from "@/utils/types/ActionTypes";
+import ErrorTypes from "@/utils/types/ErrorTypes";
+import { isNotesValid } from "@/utils/validation";
 import React, { useEffect, useGlobal, useState } from "reactn";
-import { dispatchWithLoading } from "utils/loading";
-import { getParticipationByYear } from "utils/participation";
-import ActionTypes from "utils/types/ActionTypes";
-import ErrorTypes from "utils/types/ErrorTypes";
-import { isNotesValid } from "utils/validation";
-import "./ParticipationForm.scss";
 
-const ParticipationForm = props => {
+const ParticipationForm = (props) => {
   const [loading] = useGlobal("loading");
   const [stage] = useGlobal("stage");
   const [user] = useGlobal("user");
@@ -28,12 +27,12 @@ const ParticipationForm = props => {
     setNotes(newNotes);
   }, [participation]);
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     const { value } = e.target;
     setNotes(value);
   };
 
-  const handleFormSubmit = e => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
 
     if (!isNotesValid(notes)) {

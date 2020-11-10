@@ -1,12 +1,9 @@
-import Camera from "images/icons/camera.svg";
-import Person from "images/icons/person.svg";
 import t from "prop-types";
-import ReactSVG from "react-svg";
+import { ReactSVG } from "react-svg";
 import React, { useGlobal } from "reactn";
 import ProfileBadge from "./components/ProfileBadge";
-import "./ProfilePicture.scss";
 
-const ProfilePicture = props => {
+const ProfilePicture = (props) => {
   const { onClick } = props;
   const [authUser] = useGlobal("authUser");
   const { photoURL } = authUser || {};
@@ -24,7 +21,7 @@ const ProfilePicture = props => {
           <div className="profile-picture__overlay">
             <ReactSVG
               className="profile-picture__camera"
-              src={Camera}
+              src="/icons/camera.svg"
               alt="Camera"
               title="Camera"
             />
@@ -40,7 +37,7 @@ const ProfilePicture = props => {
         <div className="profile-picture__background">
           <ReactSVG
             className="profile-picture__person"
-            src={Person}
+            src="/icons/person.svg"
             alt="Person"
             title="Person"
           />
@@ -51,7 +48,7 @@ const ProfilePicture = props => {
 };
 
 ProfilePicture.propTypes = {
-  onClick: t.func
+  onClick: t.func,
 };
 
 export default ProfilePicture;

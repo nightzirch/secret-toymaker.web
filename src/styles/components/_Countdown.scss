@@ -1,0 +1,11 @@
+.countdown {
+  &__title {
+    font-size: $text-lg;
+    color: $pattens-blue;
+  }
+
+  &__items {
+    display: flex;
+    margin-top: 0.5rem;
+  }
+}

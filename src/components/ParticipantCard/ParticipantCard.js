@@ -1,8 +1,7 @@
 import t from "prop-types";
 import React from "reactn";
-import "./ParticipantCard.scss";
 
-const ParticipantCard = props => (
+const ParticipantCard = (props) => (
   <div className="participant-card">
     <div className="participant-card__accname">
       <span className="participant-card__label">Account name</span>
@@ -18,7 +17,7 @@ const ParticipantCard = props => (
 
 ParticipantCard.propTypes = {
   accname: t.string.isRequired,
-  notes: t.string.isRequired
+  notes: t.string.isRequired,
 };
 
 export default ParticipantCard;

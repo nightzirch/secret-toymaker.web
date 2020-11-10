@@ -1,5 +1,5 @@
+import AuthTypes from "@/utils/types/AuthTypes";
 import { getGlobal } from "reactn";
-import AuthTypes from "utils/types/AuthTypes";
 
 export const getAuthStatus = (overrideAuthUser, overrideUser) => {
   let authUser = overrideAuthUser;
