@@ -11,7 +11,7 @@ import { getStatusData } from "./utils/eventCardHelper";
 
 const EventCard = (props) => {
   const { event } = props;
-  const { currentStage, year } = event;
+  const { stage, year } = event;
   const url = replaceString(Routes.EVENT, { "[year]": year });
 
   const {
@@ -25,12 +25,7 @@ const EventCard = (props) => {
   return (
     <Link href={url}>
       <a className="event-card-container">
-        <Card
-          className={classnames(
-            "event-card",
-            `event-card--${currentStage.type}`
-          )}
-        >
+        <Card className={classnames("event-card", `event-card--${stage.type}`)}>
           <Title
             className="event-card__title"
             colorScheme="primary"
@@ -58,7 +53,7 @@ const EventCard = (props) => {
 
 EventCard.propTypes = {
   event: t.shape({
-    currentStage: t.shape({
+    stage: t.shape({
       type: t.oneOf(Object.values(StageTypes)),
       year: t.string,
       start: t.string,

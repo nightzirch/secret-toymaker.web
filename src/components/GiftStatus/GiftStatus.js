@@ -22,7 +22,7 @@ const GIFT_STATUS_ARRAY = Object.keys(GiftStatusTypes).map(
 );
 
 const GiftStatus = (props) => {
-  const { direction, eventStageType, gift } = props;
+  const { direction, eventStageType, gift, year } = props;
   const { id, match, notes, received, sent } = gift;
   const [loading] = useGlobal("loading");
   const [status, setStatus] = useState(null);
@@ -57,7 +57,13 @@ const GiftStatus = (props) => {
 
   const handleSentClick = () => {
     const isSent = status === GiftStatusTypes.PACKING;
-    dispatchWithCustomLoading(ActionTypes.SEND_GIFT, loadingKey, id, isSent);
+    dispatchWithCustomLoading(
+      ActionTypes.SEND_GIFT,
+      loadingKey,
+      id,
+      isSent,
+      year
+    );
   };
 
   const handleReceivedClick = () => {
@@ -66,7 +72,8 @@ const GiftStatus = (props) => {
       ActionTypes.RECEIVE_GIFT,
       loadingKey,
       id,
-      isReceived
+      isReceived,
+      year
     );
   };
 

@@ -1,9 +1,6 @@
 import Alerts from "@/components/Alerts";
 import ApiTokenForm from "@/components/ApiTokenForm";
-import Button, {
-  ResetPasswordButton,
-  SignoutButton,
-} from "@/components/Button";
+import { ResetPasswordButton, SignoutButton } from "@/components/Button";
 import { Grid, GridItem } from "@/components/Grid";
 import NotificationsForm from "@/components/NotificationsForm";
 import ProfileForm from "@/components/ProfileForm";
@@ -13,12 +10,8 @@ import { CreditsSection } from "@/components/Sections";
 import { PageHeader, Title } from "@/components/Typography";
 import { validateAuthWithRedirect } from "@/utils/redirect";
 import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
-import { useGlobal } from "reactn";
 
 const ProfilePage = (props) => {
-  const [firebase] = useGlobal("firebase");
-  const [user] = useGlobal("user");
-
   const renderProfilePicture = () => (
     <>
       <ProfilePicture />
@@ -31,18 +24,6 @@ const ProfilePage = (props) => {
 
       <SignoutButton />
       <ResetPasswordButton />
-    </>
-  );
-
-  const renderTestZone = () => (
-    <>
-      <Title level="secondary">Test zone</Title>
-
-      <Button
-        title="Participate"
-        onClick={() => firebase.registerParticipation(user)}
-      />
-      <Button title="Init gift" onClick={() => firebase.initGift(user)} />
     </>
   );
 
