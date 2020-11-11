@@ -1,3 +1,4 @@
+import Alert from "@/components/Alert";
 import Alerts from "@/components/Alerts";
 import ApiTokenForm from "@/components/ApiTokenForm";
 import Button, { LoginButton } from "@/components/Button";
@@ -18,6 +19,7 @@ import { dispatchWithLoading } from "@/utils/loading";
 import { isParticipatingInEvent } from "@/utils/participation";
 import ActionTypes from "@/utils/types/ActionTypes";
 import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
+import AlertTypes from "@/utils/types/AlertTypes";
 import AuthTypes from "@/utils/types/AuthTypes";
 import ErrorTypes from "@/utils/types/ErrorTypes";
 import GiftDirectionTypes from "@/utils/types/GiftDirectionTypes";
@@ -262,7 +264,6 @@ const EventPage = (props) => {
         }
       }
     } else if (stageType === StageTypes.INACTIVE) {
-      // TODO: Check if the event is in the past
       if (authStatus === AuthTypes.NO_AUTH) {
         contents = renderLoginForm();
       } else if (authStatus === AuthTypes.AUTH) {
@@ -296,7 +297,13 @@ const EventPage = (props) => {
             location={AlertLocationTypes.EVENT}
             isHorizontalPadding={false}
             isVerticalPadding
-          />
+          >
+            {stageType === StageTypes.INACTIVE && (
+              <Alert isStatic type={AlertTypes.SUCCESS}>
+                <Paragraphs paragraphs={lang.event.hasEnded} noMargin />
+              </Alert>
+            )}
+          </Alerts>
 
           {renderContent()}
         </Section>

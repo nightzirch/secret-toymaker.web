@@ -29,7 +29,7 @@
     z-index: $z-index-alert;
   }
 
-  & + * {
+  & + & {
     margin-top: 1em;
   }
 
