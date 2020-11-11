@@ -36,7 +36,7 @@ const EventPage = (props) => {
   } = gifts || {};
   const router = useRouter();
   const { year } = router.query;
-  const { stage } = events;
+  const { stage } = events?.[year] || {};
   const { type: stageType } = stage || {};
 
   const authStatus = getAuthStatus();

@@ -6,12 +6,12 @@ import t from "prop-types";
 import { withGlobal } from "reactn";
 
 const EventHero = (props) => {
-  const { events } = props;
-  const { stage } = events;
-  const { type: stageType } = stage || {};
-  const leadText = lang.event.hero[stageType];
   const router = useRouter();
   const { year } = router.query;
+  const { events } = props;
+  const { stage } = events?.[year] || {};
+  const { type: stageType } = stage || {};
+  const leadText = lang.event.hero[stageType];
 
   const getTitle = () => (year ? `Secret Toymaker ${year}` : "Secret Toymaker");
 
