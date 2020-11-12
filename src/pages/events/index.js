@@ -3,7 +3,6 @@ import EventCard from "@/components/EventCard";
 import { Grid, GridItem } from "@/components/Grid";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import Section from "@/components/Section";
-import { CreditsSection } from "@/components/Sections";
 import ActionTypes from "@/utils/types/ActionTypes";
 import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
 import t from "prop-types";
@@ -41,8 +40,6 @@ const EventsPage = (props) => {
           {renderEvents()}
         </Section>
       )}
-
-      <CreditsSection showOnlyContactInfo />
     </div>
   );
 };
