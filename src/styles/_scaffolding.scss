@@ -4,15 +4,13 @@ html {
     padding: 0;
     overflow-x: hidden;
 
-    #app {
-      .app {
-        &__main {
-          display: flex;
-          flex-direction: column;
+    .app {
+      &__main {
+        display: flex;
+        flex-direction: column;
 
-          > [class*="-page"] {
-            flex-grow: 1;
-          }
+        > [class*="-page"] {
+          flex-grow: 1;
         }
       }
     }

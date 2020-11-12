@@ -11,7 +11,7 @@ import t from "prop-types";
 import React from "reactn";
 
 const CreditsSection = (props) => {
-  const { showOnlyContactInfo } = props;
+  const { showExtendedInfo } = props;
 
   const itemProps = {
     color: "light",
@@ -20,12 +20,12 @@ const CreditsSection = (props) => {
   return (
     <div
       className={classnames("credits-section", {
-        "credits-section--only-contact": showOnlyContactInfo,
+        "credits-section--only-contact": !showExtendedInfo,
       })}
     >
       <Section backgroundColor="primary">
         <Grid>
-          {!showOnlyContactInfo && (
+          {showExtendedInfo && (
             <>
               <GridItem span={5}>
                 <Title colorScheme="white">Toymaker Krewe</Title>
@@ -86,7 +86,11 @@ const CreditsSection = (props) => {
 };
 
 CreditsSection.propTypes = {
-  showOnlyContactInfo: t.bool,
+  showExtendedInfo: t.bool,
+};
+
+CreditsSection.defaultProps = {
+  showExtendedInfo: false,
 };
 
 export default CreditsSection;

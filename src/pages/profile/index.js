@@ -6,7 +6,6 @@ import NotificationsForm from "@/components/NotificationsForm";
 import ProfileForm from "@/components/ProfileForm";
 import ProfilePicture from "@/components/ProfilePicture";
 import Section from "@/components/Section";
-import { CreditsSection } from "@/components/Sections";
 import { PageHeader, Title } from "@/components/Typography";
 import { validateAuthWithRedirect } from "@/utils/redirect";
 import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
@@ -60,8 +59,6 @@ const ProfilePage = (props) => {
             </GridItem> */}
         </Grid>
       </Section>
-
-      <CreditsSection showOnlyContactInfo />
     </div>
   );
 };
