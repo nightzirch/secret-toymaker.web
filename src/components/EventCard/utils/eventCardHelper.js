@@ -1,8 +1,8 @@
 import StageTypes from "@/utils/types/StageTypes";
 
 export const getStatusData = (event) => {
-  const { currentStage, eventEnd } = event;
-  switch (currentStage.type) {
+  const { stage, eventEnd } = event;
+  switch (stage.type) {
     case StageTypes.GIFTING:
       return {
         fontWeight: "normal",

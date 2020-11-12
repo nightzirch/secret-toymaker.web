@@ -30,6 +30,7 @@ export default {
     notParticipating: [
       "You're not in his hard drives. Did you sign up? Contact us if you think something is wrong.",
     ],
+    hasEnded: "This event has already ended.",
   },
   faq: {
     short: [

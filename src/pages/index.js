@@ -1,10 +1,6 @@
 import Alerts from "@/components/Alerts";
 import Hero from "@/components/Hero";
-import {
-  AboutSection,
-  CreditsSection,
-  HowSection,
-} from "@/components/Sections";
+import { AboutSection, HowSection } from "@/components/Sections";
 import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
 
 const FrontPage = (props) => {
@@ -14,7 +10,6 @@ const FrontPage = (props) => {
       <Alerts location={AlertLocationTypes.FRONTPAGE} isVerticalPadding />
       <AboutSection />
       <HowSection />
-      <CreditsSection />
     </div>
   );
 };

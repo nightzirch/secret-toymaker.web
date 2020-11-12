@@ -6,8 +6,8 @@ export default {
     return { stage };
   },
 
-  [ActionTypes.GET_STATS]: async (global, dispatch) => {
-    const stats = await global.firebase.getStats();
+  [ActionTypes.GET_STATS]: async (global, dispatch, year) => {
+    const stats = await global.firebase.getStats(year);
     return {
       stats: { ...global.stats, [stats.year]: stats },
     };

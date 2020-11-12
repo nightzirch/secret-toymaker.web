@@ -1,12 +1,16 @@
 import { PageHeader, Paragraphs } from "@/components/Typography";
 import lang from "@/lang/lang";
 import classnames from "classnames";
+import { useRouter } from "next/router";
 import t from "prop-types";
-import React, { withGlobal } from "reactn";
+import { withGlobal } from "reactn";
 
 const EventHero = (props) => {
-  const { stage } = props;
-  const { type: stageType, year } = stage || {};
+  const router = useRouter();
+  const { year } = router.query;
+  const { events } = props;
+  const { stage } = events?.[year] || {};
+  const { type: stageType } = stage || {};
   const leadText = lang.event.hero[stageType];
 
   const getTitle = () => (year ? `Secret Toymaker ${year}` : "Secret Toymaker");
@@ -26,11 +30,11 @@ const EventHero = (props) => {
 };
 
 EventHero.propTypes = {
-  stage: t.object,
+  events: t.object,
 };
 
 const mapGlobalToProps = (global) => ({
-  stage: global.stage,
+  events: global.events,
 });
 
 export default withGlobal(mapGlobalToProps)(EventHero);
