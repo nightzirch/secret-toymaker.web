@@ -38,8 +38,10 @@ const EventPage = (props) => {
   } = gifts || {};
   const router = useRouter();
   const { year } = router.query;
-  const { stage } = events?.[year] || {};
+  const event = events?.[year];
+  const { eventEnd, stage } = event || {};
   const { type: stageType } = stage || {};
+  const hasEnded = eventEnd ? new Date() > new Date(eventEnd) : null;
 
   const authStatus = getAuthStatus();
   const [isParticipating, setParticipating] = useState(null);
@@ -298,9 +300,9 @@ const EventPage = (props) => {
             isHorizontalPadding={false}
             isVerticalPadding
           >
-            {stageType === StageTypes.INACTIVE && (
+            {hasEnded && (
               <Alert isStatic type={AlertTypes.SUCCESS}>
-                <Paragraphs paragraphs={lang.event.hasEnded} noMargin />
+                {lang.event.hasEnded}
               </Alert>
             )}
           </Alerts>

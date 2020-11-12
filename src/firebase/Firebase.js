@@ -79,12 +79,14 @@ class Firebase {
     const stage = this.functions.httpsCallable("stage");
     return stage()
       .then((result) => {
-        const { start, end, ...rest } = result.data;
-        return {
-          start: new Date(start),
-          end: new Date(end),
-          ...rest,
-        };
+        if (result.data) {
+          const { start, end, ...rest } = result.data;
+          return {
+            start: new Date(start),
+            end: new Date(end),
+            ...rest,
+          };
+        }
       })
       .catch((e) => {
         console.log("Error getting stage", e);
