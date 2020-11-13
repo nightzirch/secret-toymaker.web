@@ -9,15 +9,15 @@ import { useGlobal } from "reactn";
 
 const Stats = (props) => {
   const { isSimplified, year } = props;
-  const [events] = useGlobal("events");
+  const [stats] = useGlobal("stats");
   const [yearlyStats, setYearlyStats] = useState(null);
   const selectedStatData = isSimplified ? simplifiedStatData : statData;
 
   useEffect(() => {
-    if (events && year) {
-      setYearlyStats(events[year]);
+    if (stats && year) {
+      setYearlyStats(stats[year]);
     }
-  }, [events, year]);
+  }, [stats, year]);
 
   const renderStats = () => {
     if (!yearlyStats) return null;

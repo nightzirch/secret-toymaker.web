@@ -79,12 +79,14 @@ class Firebase {
     const stage = this.functions.httpsCallable("stage");
     return stage()
       .then((result) => {
-        const { start, end, ...rest } = result.data;
-        return {
-          start: new Date(start),
-          end: new Date(end),
-          ...rest,
-        };
+        if (result.data) {
+          const { start, end, ...rest } = result.data;
+          return {
+            start: new Date(start),
+            end: new Date(end),
+            ...rest,
+          };
+        }
       })
       .catch((e) => {
         console.log("Error getting stage", e);
@@ -173,18 +175,19 @@ class Firebase {
     return updateApiKey({ user: uid, apiToken }).then((result) => result.data);
   };
 
-  registerParticipation = (userId, notes) => {
+  registerParticipation = (userId, notes, year) => {
     const participate = this.functions.httpsCallable("participate");
     return participate({
       user: userId,
       notes,
       participate: true,
+      year,
     }).then((result) => result);
   };
 
-  removeParticipation = (userId) => {
+  removeParticipation = (userId, year) => {
     const participate = this.functions.httpsCallable("participate");
-    return participate({ user: userId, participate: false }).then(
+    return participate({ user: userId, participate: false, year }).then(
       (result) => result
     );
   };
@@ -196,9 +199,9 @@ class Firebase {
     );
   };
 
-  getStats = () => {
+  getStats = (year) => {
     const getStats = this.functions.httpsCallable("getStats");
-    return getStats().then((result) => result.data.success);
+    return getStats({ year }).then((result) => result.data.success);
   };
 
   getAlerts = () => {
@@ -211,14 +214,15 @@ class Firebase {
     return getEvents().then((result) => result.data.success);
   };
 
-  getGifts = (userId) => {
+  getGifts = (userId, year) => {
     const getGifts = this.functions.httpsCallable("getGifts");
     return getGifts({
       user: userId,
+      year,
     }).then((result) => result.data.success);
   };
 
-  sendGift = (userId, giftId, isSent) => {
+  sendGift = (userId, giftId, isSent, year) => {
     const updateGiftSentStatus = this.functions.httpsCallable(
       "updateGiftSentStatus"
     );
@@ -226,10 +230,11 @@ class Firebase {
       user: userId,
       giftId,
       isSent,
+      year,
     }).then((result) => result.data.success);
   };
 
-  receiveGift = (userId, giftId, isReceived) => {
+  receiveGift = (userId, giftId, isReceived, year) => {
     const updateGiftReceivedStatus = this.functions.httpsCallable(
       "updateGiftReceivedStatus"
     );
@@ -237,10 +242,11 @@ class Firebase {
       user: userId,
       giftId,
       isReceived,
+      year,
     }).then((result) => result.data.success);
   };
 
-  reportGift = (userId, giftId, isReporting, reportMessage) => {
+  reportGift = (userId, giftId, isReporting, reportMessage, year) => {
     const updateGiftReportedStatus = this.functions.httpsCallable(
       "updateGiftReportedStatus"
     );
@@ -249,12 +255,13 @@ class Firebase {
       giftId,
       isReporting,
       reportMessage,
+      year,
     }).then((result) => result.data.success);
   };
 
-  donateGift = (userId) => {
+  donateGift = (userId, year) => {
     const donateGift = this.functions.httpsCallable("donateGift");
-    return donateGift({ user: userId }).then((result) => result.data);
+    return donateGift({ user: userId, year }).then((result) => result.data);
   };
 
   // Imported actions from notificationActions

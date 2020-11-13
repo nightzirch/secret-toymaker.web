@@ -5,7 +5,7 @@ import t from "prop-types";
 import { useEffect, useGlobal, useState } from "reactn";
 
 const Alerts = (props) => {
-  const { location, ...rest } = props;
+  const { children, location, ...rest } = props;
   const [alerts] = useGlobal("alerts");
   const [filteredAlerts, setFilteredAlerts] = useState([]);
 
@@ -27,11 +27,13 @@ const Alerts = (props) => {
           {alert.message}
         </Alert>
       ))}
+      {children}
     </Section>
   ) : null;
 };
 
 Alerts.propTypes = {
+  children: t.node,
   location: t.oneOf(Object.values(AlertLocationTypes)).isRequired,
 };
 

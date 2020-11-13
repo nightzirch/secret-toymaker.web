@@ -6,13 +6,13 @@ import { getParticipationByYear } from "@/utils/participation";
 import ActionTypes from "@/utils/types/ActionTypes";
 import ErrorTypes from "@/utils/types/ErrorTypes";
 import { isNotesValid } from "@/utils/validation";
+import t from "prop-types";
 import React, { useEffect, useGlobal, useState } from "reactn";
 
 const ParticipationForm = (props) => {
   const [loading] = useGlobal("loading");
-  const [stage] = useGlobal("stage");
   const [user] = useGlobal("user");
-  const { year } = stage;
+  const { year } = props;
   const { apiToken } = user;
   const [notes, setNotes] = useState("");
   const participation = getParticipationByYear(year);
@@ -46,17 +46,17 @@ const ParticipationForm = (props) => {
         ActionTypes.SET_ERROR,
         ErrorTypes.UPDATE_PARTICIPATION
       );
-      dispatchWithLoading(ActionTypes.REGISTER_PARTICIPATION, notes).then(
+      dispatchWithLoading(ActionTypes.REGISTER_PARTICIPATION, notes, year).then(
         () => {
-          dispatchWithLoading(ActionTypes.GET_STATS);
+          dispatchWithLoading(ActionTypes.GET_STATS, year);
         }
       );
     }
   };
 
   const handleRemoveParticipationClick = () => {
-    dispatchWithLoading(ActionTypes.REMOVE_PARTICIPATION).then(() => {
-      dispatchWithLoading(ActionTypes.GET_STATS);
+    dispatchWithLoading(ActionTypes.REMOVE_PARTICIPATION, year).then(() => {
+      dispatchWithLoading(ActionTypes.GET_STATS, year);
     });
   };
 
@@ -74,7 +74,7 @@ const ParticipationForm = (props) => {
         isDisabled={isDisabled || isLoading}
         isLoading={loading[ActionTypes.REGISTER_PARTICIPATION]}
         theme="primary"
-        title="Participate in Secret Toymaker"
+        title={`Participate in Secret Toymaker ${year}`}
         type="submit"
       />
     );
@@ -110,6 +110,8 @@ const ParticipationForm = (props) => {
   );
 };
 
-ParticipationForm.propTypes = {};
+ParticipationForm.propTypes = {
+  year: t.string.isRequired,
+};
 
 export default ParticipationForm;

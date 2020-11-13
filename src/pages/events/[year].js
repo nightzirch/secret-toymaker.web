@@ -1,3 +1,4 @@
+import Alert from "@/components/Alert";
 import Alerts from "@/components/Alerts";
 import ApiTokenForm from "@/components/ApiTokenForm";
 import Button, { LoginButton } from "@/components/Button";
@@ -9,7 +10,6 @@ import { Grid, GridItem } from "@/components/Grid";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import ParticipationForm from "@/components/ParticipationForm";
 import Section from "@/components/Section";
-import { CreditsSection } from "@/components/Sections";
 import Stats from "@/components/Stats";
 import { Paragraph, Paragraphs, Title } from "@/components/Typography";
 import lang from "@/lang/lang";
@@ -18,58 +18,67 @@ import { dispatchWithLoading } from "@/utils/loading";
 import { isParticipatingInEvent } from "@/utils/participation";
 import ActionTypes from "@/utils/types/ActionTypes";
 import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
+import AlertTypes from "@/utils/types/AlertTypes";
 import AuthTypes from "@/utils/types/AuthTypes";
 import ErrorTypes from "@/utils/types/ErrorTypes";
 import GiftDirectionTypes from "@/utils/types/GiftDirectionTypes";
 import StageTypes from "@/utils/types/StageTypes";
+import { useRouter } from "next/router";
 import t from "prop-types";
 import React, { useEffect, useState, withGlobal } from "reactn";
 
 const EventPage = (props) => {
-  const { gifts, loading, participations, stage, user } = props;
+  const { events, gifts, loading, participations, user } = props;
   const {
     outgoingPrimary: outgoingPrimaryGift,
     outgoing: outgoingGifts,
     incomingPrimary: incomingPrimaryGift,
     incoming: incomingGifts,
   } = gifts || {};
-  const { type: stageType, year } = stage || {};
+  const router = useRouter();
+  const { year } = router.query;
+  const event = events?.[year];
+  const { eventEnd, stage } = event || {};
+  const { type: stageType } = stage || {};
+  const hasEnded = eventEnd ? new Date() > new Date(eventEnd) : null;
+
   const authStatus = getAuthStatus();
   const [isParticipating, setParticipating] = useState(null);
   const [isLoading, setLoading] = useState(null);
 
   useEffect(() => {
-    dispatchWithLoading(ActionTypes.GET_STATS);
-  }, []);
+    if (year) dispatchWithLoading(ActionTypes.GET_STATS, year);
+  }, [year]);
 
   useEffect(() => {
-    if (user) {
-      dispatchWithLoading(ActionTypes.GET_GIFTS);
+    if (user && year) {
+      dispatchWithLoading(ActionTypes.GET_GIFTS, year);
       dispatchWithLoading(ActionTypes.GET_PARTICIPATION_STATUS);
     }
-  }, [user]);
+  }, [user, year]);
 
   useEffect(() => {
-    if (participations) {
+    if (participations && year) {
       setParticipating(isParticipatingInEvent(year));
     }
-  }, [participations]);
+  }, [participations, year]);
 
   useEffect(() => {
     if (
       user &&
       isParticipating &&
-      [StageTypes.GIFTING, StageTypes.INACTIVE].includes(stageType)
+      [StageTypes.GIFTING, StageTypes.INACTIVE].includes(stageType) &&
+      year
     ) {
-      dispatchWithLoading(ActionTypes.GET_GIFTS);
+      dispatchWithLoading(ActionTypes.GET_GIFTS, year);
     }
-  }, [user, isParticipating, stageType]);
+  }, [user, isParticipating, stageType, year]);
 
   useEffect(() => {
     // Only showing page loading indication the first time
     if (isLoading !== false) {
       setLoading(
-        loading[ActionTypes.GET_STAGE] ||
+        loading[ActionTypes.GET_EVENTS] ||
           loading[ActionTypes.GET_STATS] ||
           loading[ActionTypes.GET_PARTICIPATION_STATUS] ||
           loading[ActionTypes.GET_USER]
@@ -82,7 +91,7 @@ const EventPage = (props) => {
   ]);
 
   const handleDonateClick = () => {
-    dispatchWithLoading(ActionTypes.DONATE_GIFT);
+    dispatchWithLoading(ActionTypes.DONATE_GIFT, year);
   };
 
   const renderStats = () => (
@@ -122,7 +131,7 @@ const EventPage = (props) => {
       ) : (
         <ApiTokenForm />
       )}
-      <ParticipationForm />
+      <ParticipationForm year={year} />
     </>
   );
 
@@ -256,7 +265,6 @@ const EventPage = (props) => {
         }
       }
     } else if (stageType === StageTypes.INACTIVE) {
-      // TODO: Check if the event is in the past
       if (authStatus === AuthTypes.NO_AUTH) {
         contents = renderLoginForm();
       } else if (authStatus === AuthTypes.AUTH) {
@@ -290,18 +298,23 @@ const EventPage = (props) => {
             location={AlertLocationTypes.EVENT}
             isHorizontalPadding={false}
             isVerticalPadding
-          />
+          >
+            {hasEnded && (
+              <Alert isStatic type={AlertTypes.SUCCESS}>
+                {lang.event.hasEnded}
+              </Alert>
+            )}
+          </Alerts>
 
           {renderContent()}
         </Section>
       )}
-
-      <CreditsSection showOnlyContactInfo />
     </div>
   );
 };
 
 EventPage.propTypes = {
+  events: t.object,
   gifts: t.object,
   outgoingPrimaryGift: t.object,
   outgoingGifts: t.array,
@@ -309,15 +322,14 @@ EventPage.propTypes = {
   incomingGifts: t.array,
   loading: t.object,
   participations: t.array,
-  stage: t.object,
   user: t.object,
 };
 
 const mapGlobalToProps = (global) => ({
+  events: global.events,
   gifts: global.gifts,
   loading: global.loading,
   participations: global.participations,
-  stage: global.stage,
   user: global.user,
 });
 

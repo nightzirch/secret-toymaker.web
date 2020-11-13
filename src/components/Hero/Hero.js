@@ -34,14 +34,13 @@ const Hero = (props) => {
         );
       case StageTypes.SPLASH:
       case StageTypes.INACTIVE:
+      default:
         return (
           <>
             Welcome
             <small>to Secret Toymaker</small>
           </>
         );
-      default:
-        return null;
     }
   };
 
