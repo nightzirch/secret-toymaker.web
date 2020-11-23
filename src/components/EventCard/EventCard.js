@@ -43,7 +43,7 @@ const EventCard = (props) => {
             >
               {statusText}
             </Paragraph>
-            <Stats year={year} isSimplified />
+            <Stats event={event} isSimplified />
           </div>
         </Card>
       </a>

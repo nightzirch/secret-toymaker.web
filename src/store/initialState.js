@@ -13,6 +13,5 @@ export default {
   loading: {},
   participations: null,
   stage: null,
-  stats: null,
   user: null,
 };

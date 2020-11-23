@@ -48,7 +48,7 @@ const ParticipationForm = (props) => {
       );
       dispatchWithLoading(ActionTypes.REGISTER_PARTICIPATION, notes, year).then(
         () => {
-          dispatchWithLoading(ActionTypes.GET_STATS, year);
+          dispatchWithLoading(ActionTypes.GET_EVENTS);
         }
       );
     }
@@ -56,7 +56,7 @@ const ParticipationForm = (props) => {
 
   const handleRemoveParticipationClick = () => {
     dispatchWithLoading(ActionTypes.REMOVE_PARTICIPATION, year).then(() => {
-      dispatchWithLoading(ActionTypes.GET_STATS, year);
+      dispatchWithLoading(ActionTypes.GET_EVENTS);
     });
   };
 

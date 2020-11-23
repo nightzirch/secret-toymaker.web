@@ -26,7 +26,6 @@ export default {
 
   // Firebase
   GET_STAGE: "updateStage",
-  GET_STATS: "updateStats",
 
   // Other reducers
   SET_ERROR: "setError",

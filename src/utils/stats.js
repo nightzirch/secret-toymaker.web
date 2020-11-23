@@ -39,3 +39,17 @@ export const simplifiedStatData = {
     icon: <ion-icon name="people" />,
   },
 };
+
+export const getStatsFromEvent = (event) => {
+  if (!event) return null;
+
+  return {
+    participants: event.participants,
+    giftsSent: event.giftsSent,
+    donationsSent: event.donationsSent,
+    signupStart: event.signupStart,
+    eventStart: event.eventStart,
+    eventEnd: event.eventEnd,
+    year: event.year,
+  };
+};
