@@ -60,10 +60,12 @@ const ParticipationForm = (props) => {
     });
   };
 
+  const isNoteFieldChanged = () => notes !== participation?.notes;
+
   const renderSubmitButton = () =>
     isParticipating ? (
       <Button
-        isDisabled={isDisabled || isLoading}
+        isDisabled={!isNoteFieldChanged() || isDisabled || isLoading}
         isLoading={loading[ActionTypes.REGISTER_PARTICIPATION]}
         theme="secondary"
         title="Update notes"
