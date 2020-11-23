@@ -1,4 +1,5 @@
 import ActionTypes from "@/utils/types/ActionTypes";
+import ErrorTypes from "@/utils/types/ErrorTypes";
 
 export default {
   [ActionTypes.GET_GIFTS]: async (global, dispatch, year) => {
