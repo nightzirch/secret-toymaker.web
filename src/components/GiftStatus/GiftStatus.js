@@ -22,8 +22,8 @@ const GIFT_STATUS_ARRAY = Object.keys(GiftStatusTypes).map(
 );
 
 const GiftStatus = (props) => {
-  const { direction, eventStageType, gift, year } = props;
-  const { id, match, notes, received, sent } = gift;
+  const { direction, eventStageType, gift } = props;
+  const { id, match, notes, received, sent, year } = gift;
   const [loading] = useGlobal("loading");
   const [status, setStatus] = useState(null);
   const [isButtonVisible, setButtonVisible] = useState(false);
