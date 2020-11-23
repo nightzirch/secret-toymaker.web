@@ -47,10 +47,6 @@ const EventPage = (props) => {
   const [isLoading, setLoading] = useState(null);
 
   useEffect(() => {
-    if (year) dispatchWithLoading(ActionTypes.GET_STATS, year);
-  }, [year]);
-
-  useEffect(() => {
     if (user && year) {
       dispatchWithLoading(ActionTypes.GET_GIFTS, year);
       dispatchWithLoading(ActionTypes.GET_PARTICIPATION_STATUS);
@@ -79,15 +75,16 @@ const EventPage = (props) => {
     if (isLoading !== false) {
       setLoading(
         loading[ActionTypes.GET_EVENTS] ||
-          loading[ActionTypes.GET_STATS] ||
           loading[ActionTypes.GET_PARTICIPATION_STATUS] ||
-          loading[ActionTypes.GET_USER]
+          loading[ActionTypes.GET_USER] ||
+          loading[ActionTypes.GET_GIFTS]
       );
     }
   }, [
-    loading[ActionTypes.GET_STATS],
+    loading[ActionTypes.GET_EVENTS],
     loading[ActionTypes.GET_PARTICIPATION_STATUS],
     loading[ActionTypes.GET_USER],
+    loading[ActionTypes.GET_GIFTS],
   ]);
 
   const handleDonateClick = () => {
@@ -97,7 +94,7 @@ const EventPage = (props) => {
   const renderStats = () => (
     <>
       <Title>Statistics</Title>
-      <Stats year={year} />
+      <Stats event={event} />
     </>
   );
 

@@ -9,7 +9,7 @@ export default {
   [ActionTypes.SEND_GIFT]: async (global, dispatch, giftId, isSent, year) => {
     await global.firebase.sendGift(global.user.uid, giftId, isSent, year);
     await dispatch[ActionTypes.GET_GIFTS](year);
-    await dispatch[ActionTypes.GET_STATS](year);
+    await dispatch[ActionTypes.GET_EVENTS]();
   },
 
   [ActionTypes.RECEIVE_GIFT]: async (
@@ -26,7 +26,7 @@ export default {
       year
     );
     await dispatch[ActionTypes.GET_GIFTS](year);
-    await dispatch[ActionTypes.GET_STATS](year);
+    await dispatch[ActionTypes.GET_EVENTS]();
   },
 
   [ActionTypes.REPORT_GIFT]: async (

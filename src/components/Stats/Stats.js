@@ -2,22 +2,20 @@ import {
   DescriptionList,
   DescriptionListItem,
 } from "@/components/DescriptionList";
-import { simplifiedStatData, statData } from "@/utils/stats";
+import { getStatsFromEvent, simplifiedStatData, statData } from "@/utils/stats";
 import t from "prop-types";
 import { useEffect, useState } from "react";
-import { useGlobal } from "reactn";
 
 const Stats = (props) => {
-  const { isSimplified, year } = props;
-  const [stats] = useGlobal("stats");
+  const { isSimplified, event } = props;
   const [yearlyStats, setYearlyStats] = useState(null);
   const selectedStatData = isSimplified ? simplifiedStatData : statData;
 
   useEffect(() => {
-    if (stats && year) {
-      setYearlyStats(stats[year]);
+    if (event) {
+      setYearlyStats(getStatsFromEvent(event));
     }
-  }, [stats, year]);
+  }, [event]);
 
   const renderStats = () => {
     if (!yearlyStats) return null;
@@ -59,7 +57,7 @@ const Stats = (props) => {
 
 Stats.propTypes = {
   isSimplified: t.bool,
-  year: t.string,
+  event: t.object,
 };
 
 export default Stats;
