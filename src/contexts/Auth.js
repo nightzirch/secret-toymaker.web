@@ -1,3 +1,4 @@
+import Toymaker from "@/models/Toymaker";
 import { dispatchWithLoading } from "@/utils/loading";
 import { getRedirectRouteForRouteName } from "@/utils/routes";
 import ActionTypes from "@/utils/types/ActionTypes";
@@ -67,7 +68,7 @@ export const AuthProvider = ({ children }) => {
           authUserObj ? authUserObj.uid : null
         ).then(({ user }) => {
           setAuthStatus(AuthTypes.AUTH);
-          setUser(user);
+          setUser(user || Toymaker.fromData(authUserObj));
 
           // TODO: Slowly phase out Reactn
           setGlobal({
