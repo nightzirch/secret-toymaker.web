@@ -37,6 +37,7 @@ $loading-space: 1.5em;
 
     &__title {
       display: flex;
+      text-align: center;
     }
 
     &:hover:not([disabled]) {

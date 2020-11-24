@@ -18,7 +18,7 @@ const EventButton = (props) => {
         icon={<ion-icon name="arrow-forward" />}
         iconPlacement="right"
         primary
-        title={`Go to ${name}`}
+        title={name}
         {...props}
       />
     </Link>
