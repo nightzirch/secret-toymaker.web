@@ -36,7 +36,7 @@ const ProfilePage = (props) => {
     return (
       participationYears.length > 0 && (
         <>
-          <Title level="secondary">Participations</Title>
+          <Title level="secondary">Partici&shy;pations</Title>
 
           <Grid columns={4}>
             {Object.values(events)
@@ -86,7 +86,7 @@ const ProfilePage = (props) => {
             <ApiTokenForm />
             <ProfileForm />
 
-            <Title level="secondary">Notifications</Title>
+            <Title level="secondary">Notifi&shy;cations</Title>
             <NotificationsForm />
             {renderDangerZone()}
           </GridItem>
