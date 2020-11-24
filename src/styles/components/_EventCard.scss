@@ -43,6 +43,7 @@
   &__stats {
     color: $black;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-top: 1rem;
 

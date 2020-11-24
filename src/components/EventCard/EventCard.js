@@ -11,7 +11,7 @@ import { getStatusData } from "./utils/eventCardHelper";
 
 const EventCard = (props) => {
   const { event } = props;
-  const { stage, year } = event;
+  const { name, stage, year } = event;
   const url = replaceString(Routes.EVENT, { "[year]": year });
 
   const {
@@ -31,7 +31,7 @@ const EventCard = (props) => {
             colorScheme="primary"
             level="tertiary"
           >
-            {year}
+            {name}
           </Title>
 
           <div className="event-card__stats">
@@ -56,6 +56,7 @@ EventCard.propTypes = {
     stage: t.shape({
       type: t.oneOf(Object.values(StageTypes)),
       year: t.string,
+      name: t.string,
       start: t.string,
       end: t.string,
     }),
