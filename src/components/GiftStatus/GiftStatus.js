@@ -22,8 +22,8 @@ const GIFT_STATUS_ARRAY = Object.keys(GiftStatusTypes).map(
 );
 
 const GiftStatus = (props) => {
-  const { direction, eventStageType, gift, year } = props;
-  const { id, match, notes, received, sent } = gift;
+  const { direction, eventStageType, gift } = props;
+  const { id, match, notes, received, sent, year } = gift;
   const [loading] = useGlobal("loading");
   const [status, setStatus] = useState(null);
   const [isButtonVisible, setButtonVisible] = useState(false);
@@ -47,7 +47,11 @@ const GiftStatus = (props) => {
         );
       } else if (direction === GiftDirectionTypes.INCOMING) {
         setButtonVisible(
-          [GiftStatusTypes.SENT, GiftStatusTypes.RECEIVED].includes(status)
+          [
+            GiftStatusTypes.PACKING,
+            GiftStatusTypes.SENT,
+            GiftStatusTypes.RECEIVED,
+          ].includes(status)
         );
       }
     }
@@ -67,7 +71,9 @@ const GiftStatus = (props) => {
   };
 
   const handleReceivedClick = () => {
-    const isReceived = status === GiftStatusTypes.SENT;
+    const isReceived = [GiftStatusTypes.PACKING, GiftStatusTypes.SENT].includes(
+      status
+    );
     dispatchWithCustomLoading(
       ActionTypes.RECEIVE_GIFT,
       loadingKey,
@@ -91,7 +97,9 @@ const GiftStatus = (props) => {
   const renderNotes = () => (
     <div className="gift-status__notes">
       <Title level="tertiary" className="gift-status__notes__pre">
-        Notes:
+        {`${
+          direction === GiftDirectionTypes.INCOMING ? "Your notes" : "Notes"
+        }:`}
       </Title>
       <Paragraph>{notes}</Paragraph>
     </div>
@@ -175,7 +183,7 @@ const GiftStatus = (props) => {
     } else if (direction === GiftDirectionTypes.INCOMING) {
       cardProps.onButtonClick = handleReceivedClick;
 
-      if (status === GiftStatusTypes.SENT) {
+      if ([GiftStatusTypes.PACKING, GiftStatusTypes.SENT].includes(status)) {
         cardProps.buttonLabel = "Mark as received";
       } else if (status === GiftStatusTypes.RECEIVED) {
         cardProps.buttonLabel = "Undo mark as received";

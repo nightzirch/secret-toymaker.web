@@ -30,12 +30,12 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
 
           <link rel="stylesheet" href="https://use.typekit.net/atr4hba.css" />
-          <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
         </Head>
 
         <body>
           <Main />
           <NextScript />
+          <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
         </body>
       </Html>
     );

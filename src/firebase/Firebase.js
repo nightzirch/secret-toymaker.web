@@ -30,11 +30,7 @@ class Firebase {
   createUserWithEmailAndPassword = ({ email, password }) => {
     return this.auth
       .createUserWithEmailAndPassword(email, password)
-      .then((result) =>
-        this.setUser(result).then(() =>
-          this.signInWithEmailAndPassword({ email, password })
-        )
-      )
+      .then((result) => this.signInWithEmailAndPassword({ email, password }))
       .catch((error) => ({ error: error.message }));
   };
 
@@ -67,9 +63,6 @@ class Firebase {
   signInWithPopup = async (provider) => {
     return this.auth
       .signInWithPopup(provider)
-      .then((result) => {
-        this.setUser(result);
-      })
       .then(() => ({ success: "Successfully logged in!" }))
       .catch((error) => ({ error: error.message }));
   };
@@ -92,34 +85,6 @@ class Firebase {
         console.log("Error getting stage", e);
         return null;
       });
-  };
-
-  setUser = async (result) => {
-    const { displayName, email, uid } = result.user;
-    const { providerId, username } = result.additionalUserInfo;
-    const ref = this.db.collection("toymakers").doc(uid);
-    const toymaker = await ref.get();
-
-    if (!toymaker.exists) {
-      const userObj = {
-        email,
-        name: displayName,
-        uid,
-        providers: {},
-      };
-
-      if (providerId) {
-        userObj.providers[providerId] = {
-          email,
-          providerId,
-          uid,
-          username: username || null,
-        };
-      }
-
-      return ref.set(userObj);
-    }
-    return null;
   };
 
   getUser = (uid) => {

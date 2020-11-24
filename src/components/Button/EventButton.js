@@ -7,9 +7,10 @@ import Button from "./Button";
 
 const EventButton = (props) => {
   const [stage] = useGlobal("stage");
+  const { name, year } = stage;
 
   if (isEmpty(stage)) return null;
-  const url = replaceString(Routes.EVENT, { "[year]": stage.year });
+  const url = replaceString(Routes.EVENT, { "[year]": year });
 
   return (
     <Link href={url} passHref>
@@ -17,7 +18,7 @@ const EventButton = (props) => {
         icon={<ion-icon name="arrow-forward" />}
         iconPlacement="right"
         primary
-        title="Right this way"
+        title={name}
         {...props}
       />
     </Link>
