@@ -97,7 +97,9 @@ const GiftStatus = (props) => {
   const renderNotes = () => (
     <div className="gift-status__notes">
       <Title level="tertiary" className="gift-status__notes__pre">
-        Notes:
+        {`${
+          direction === GiftDirectionTypes.INCOMING ? "Your notes" : "Notes"
+        }:`}
       </Title>
       <Paragraph>{notes}</Paragraph>
     </div>
