@@ -36,6 +36,11 @@
     transform: scale(1.1);
   }
 
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
   &__title.title {
     margin: 0;
   }
@@ -43,6 +48,7 @@
   &__stats {
     color: $black;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     margin-top: 1rem;
 
