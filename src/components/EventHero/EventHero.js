@@ -9,15 +9,13 @@ const EventHero = (props) => {
   const router = useRouter();
   const { year } = router.query;
   const { events } = props;
-  const { stage } = events?.[year] || {};
+  const { stage, name } = events?.[year] || {};
   const { type: stageType } = stage || {};
   const leadText = lang.event.hero[stageType];
 
-  const getTitle = () => (year ? `Secret Toymaker ${year}` : "Secret Toymaker");
-
   return (
     <div className={classnames("event-hero")}>
-      <PageHeader title={getTitle()} type="signup">
+      <PageHeader title={name} type="signup">
         {leadText && (
           <Paragraphs
             className="event-page__header__lead"
