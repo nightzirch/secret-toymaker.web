@@ -38,8 +38,8 @@ const LoadingIndicator = (props) => {
           src="/images/logo.png"
           alt="Loading indicator"
           title="Loading indicator"
-          width={736}
-          height={703}
+          width={105}
+          height={100}
         />
       </div>
 
