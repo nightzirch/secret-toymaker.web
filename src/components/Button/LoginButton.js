@@ -1,25 +1,30 @@
 import Routes from "@/config/routes";
-import { useRouter } from "next/router";
-import React from "reactn";
+import Link from "next/link";
+import t from "prop-types";
 import Button from "./Button";
 
 const LoginButton = (props) => {
-  const router = useRouter();
+  const { redirectUrl } = props;
 
-  const gotoLogin = () => {
-    router.push(Routes.LOGIN);
-  };
+  const loginUrl = [Routes.LOGIN, redirectUrl && `redirect=${redirectUrl}`]
+    .filter((l) => l)
+    .join("?");
 
   return (
-    <Button
-      icon={<ion-icon name="arrow-forward"></ion-icon>}
-      iconPlacement="right"
-      onClick={gotoLogin}
-      primary
-      title="Go to login"
-      {...props}
-    />
+    <Link href={loginUrl} passHref>
+      <Button
+        icon={<ion-icon name="arrow-forward"></ion-icon>}
+        iconPlacement="right"
+        primary
+        title="Go to login"
+        {...props}
+      />
+    </Link>
   );
+};
+
+LoginButton.propTypes = {
+  redirectUrl: t.string,
 };
 
 export default LoginButton;

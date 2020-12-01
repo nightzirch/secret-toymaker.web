@@ -12,10 +12,12 @@ import ParticipationForm from "@/components/ParticipationForm";
 import Section from "@/components/Section";
 import Stats from "@/components/Stats";
 import { Paragraph, Paragraphs, Title } from "@/components/Typography";
+import Routes from "@/config/routes";
 import lang from "@/lang/lang";
 import { getAuthStatus } from "@/utils/auth";
 import { dispatchWithLoading } from "@/utils/loading";
 import { isParticipatingInEvent } from "@/utils/participation";
+import { replaceString } from "@/utils/string";
 import ActionTypes from "@/utils/types/ActionTypes";
 import AlertLocationTypes from "@/utils/types/AlertLocationTypes";
 import AlertTypes from "@/utils/types/AlertTypes";
@@ -109,7 +111,9 @@ const EventPage = (props) => {
       <>
         <Title>{loginFormTitle}</Title>
         <Paragraphs paragraphs={lang.event.login} />
-        <LoginButton />
+        <LoginButton
+          redirectUrl={replaceString(Routes.EVENT, { "[year]": year })}
+        />
       </>
     );
   };

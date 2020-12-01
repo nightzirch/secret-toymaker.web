@@ -38,6 +38,10 @@ export const AuthProvider = ({ children }) => {
           });
           nookies.destroy(undefined, "token");
 
+          // Get the redirect param
+          const params = new URL(document.location).searchParams;
+          const redirectSearchUrl = params.get("redirect");
+
           /**
          * If user is on a page with a NO_AUTH restriction, redirect.
          * Using window.location.pathname as router.pathname doesn't update.
@@ -46,10 +50,12 @@ export const AuthProvider = ({ children }) => {
          * can work on dynamic routes as well. There are no cases of this yet,
          * but might be in the future.
          */
-          const redirectUrl = getRedirectRouteForRouteName(
-            window.location.pathname,
-            AuthTypes.NO_AUTH
-          );
+          const redirectUrl =
+            redirectSearchUrl ||
+            getRedirectRouteForRouteName(
+              window.location.pathname,
+              AuthTypes.NO_AUTH
+            );
 
           if (redirectUrl) router.push(redirectUrl);
 
@@ -77,6 +83,10 @@ export const AuthProvider = ({ children }) => {
             user,
           });
 
+          // Get the redirect param
+          const params = new URL(document.location).searchParams;
+          const redirectSearchUrl = params.get("redirect");
+
           /**
          * If user is on a page with a AUTH restriction, redirect.
          * Using window.location.pathname as router.pathname doesn't update.
@@ -85,10 +95,12 @@ export const AuthProvider = ({ children }) => {
          * can work on dynamic routes as well. There are no cases of this yet,
          * but might be in the future.
          */
-          const redirectUrl = getRedirectRouteForRouteName(
-            window.location.pathname,
-            AuthTypes.AUTH
-          );
+          const redirectUrl =
+            redirectSearchUrl ||
+            getRedirectRouteForRouteName(
+              window.location.pathname,
+              AuthTypes.AUTH
+            );
           if (redirectUrl) router.push(redirectUrl);
         });
       }
