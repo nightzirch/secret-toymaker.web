@@ -4,24 +4,30 @@ import React from "reactn";
 import Title from "./Title";
 
 const PageHeader = (props) => {
-  let pageHeaderClasses = classnames("page-header", {
-    [`page-header--${props.type}`]: props.type,
-    "page-header--no-children": !props.children,
-    "page-header--centered": props.isCentered,
+  const { children, isCentered, type, title } = props;
+
+  if (!title) return null;
+
+  const pageHeaderClasses = classnames("page-header", {
+    [`page-header--${type}`]: type,
+    "page-header--no-children": !children,
+    "page-header--centered": isCentered,
   });
 
   return (
     <div className={pageHeaderClasses}>
       <div className="page-header__text">
-        <Title level="page">{props.title}</Title>
-        {props.children}
+        <Title level="page">{title}</Title>
+        {children}
       </div>
     </div>
   );
 };
 
 PageHeader.propTypes = {
+  children: t.node,
   isCentered: t.bool,
+  title: t.string,
   type: t.oneOf([
     "donations",
     "gifts",
@@ -30,7 +36,6 @@ PageHeader.propTypes = {
     "match",
     "profile",
   ]),
-  title: t.string.isRequired,
 };
 
 export default PageHeader;
