@@ -3,6 +3,7 @@ import { dispatchWithLoading } from "@/utils/loading";
 import { getRedirectRouteForRouteName } from "@/utils/routes";
 import ActionTypes from "@/utils/types/ActionTypes";
 import AuthTypes from "@/utils/types/AuthTypes";
+import { getRedirectUrl } from "@/utils/url";
 import { useRouter } from "next/router";
 import nookies from "nookies";
 import { createContext, useEffect, useState } from "react";
@@ -38,10 +39,6 @@ export const AuthProvider = ({ children }) => {
           });
           nookies.destroy(undefined, "token");
 
-          // Get the redirect param
-          const params = new URL(document.location).searchParams;
-          const redirectSearchUrl = params.get("redirect");
-
           /**
          * If user is on a page with a NO_AUTH restriction, redirect.
          * Using window.location.pathname as router.pathname doesn't update.
@@ -50,12 +47,10 @@ export const AuthProvider = ({ children }) => {
          * can work on dynamic routes as well. There are no cases of this yet,
          * but might be in the future.
          */
-          const redirectUrl =
-            redirectSearchUrl ||
-            getRedirectRouteForRouteName(
-              window.location.pathname,
-              AuthTypes.NO_AUTH
-            );
+          const redirectUrl = getRedirectRouteForRouteName(
+            window.location.pathname,
+            AuthTypes.NO_AUTH
+          );
 
           if (redirectUrl) router.push(redirectUrl);
 
@@ -83,9 +78,9 @@ export const AuthProvider = ({ children }) => {
             user,
           });
 
-          // Get the redirect param
-          const params = new URL(document.location).searchParams;
-          const redirectSearchUrl = params.get("redirect");
+          // If we have a redirect URL in the search param
+          const forceRedirectUrl = getRedirectUrl();
+          if (forceRedirectUrl) window.location.href = forceRedirectUrl;
 
           /**
          * If user is on a page with a AUTH restriction, redirect.
@@ -95,12 +90,10 @@ export const AuthProvider = ({ children }) => {
          * can work on dynamic routes as well. There are no cases of this yet,
          * but might be in the future.
          */
-          const redirectUrl =
-            redirectSearchUrl ||
-            getRedirectRouteForRouteName(
-              window.location.pathname,
-              AuthTypes.AUTH
-            );
+          const redirectUrl = getRedirectRouteForRouteName(
+            window.location.pathname,
+            AuthTypes.AUTH
+          );
           if (redirectUrl) router.push(redirectUrl);
         });
       }

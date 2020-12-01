@@ -10,6 +10,7 @@ import Routes from "@/config/routes";
 import { dispatchWithLoading } from "@/utils/loading";
 import ActionTypes from "@/utils/types/ActionTypes";
 import ErrorTypes from "@/utils/types/ErrorTypes";
+import { addRedirectUrl } from "@/utils/url";
 import React from "reactn";
 
 class LoginForm extends React.Component {
@@ -85,7 +86,7 @@ class LoginForm extends React.Component {
               <Link
                 isCentered
                 title="Don't have an account? Sign up here"
-                url={Routes.SIGNUP}
+                url={addRedirectUrl(Routes.SIGNUP)}
               />
 
               <Link
