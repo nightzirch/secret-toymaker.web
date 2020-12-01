@@ -3,6 +3,7 @@ import { dispatchWithLoading } from "@/utils/loading";
 import { getRedirectRouteForRouteName } from "@/utils/routes";
 import ActionTypes from "@/utils/types/ActionTypes";
 import AuthTypes from "@/utils/types/AuthTypes";
+import { getRedirectUrl } from "@/utils/url";
 import { useRouter } from "next/router";
 import nookies from "nookies";
 import { createContext, useEffect, useState } from "react";
@@ -76,6 +77,10 @@ export const AuthProvider = ({ children }) => {
             authUser: authUserObj,
             user,
           });
+
+          // If we have a redirect URL in the search param
+          const forceRedirectUrl = getRedirectUrl();
+          if (forceRedirectUrl) window.location.href = forceRedirectUrl;
 
           /**
          * If user is on a page with a AUTH restriction, redirect.

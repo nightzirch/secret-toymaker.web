@@ -10,6 +10,7 @@ import Routes from "@/config/routes";
 import { dispatchWithLoading } from "@/utils/loading";
 import ActionTypes from "@/utils/types/ActionTypes";
 import ErrorTypes from "@/utils/types/ErrorTypes";
+import { addRedirectUrl } from "@/utils/url";
 import { doesPasswordsMatch } from "@/utils/validation";
 import React from "reactn";
 
@@ -109,7 +110,7 @@ class SignupForm extends React.Component {
                 isCentered
                 isFullWidth
                 title="Already registered? Log in here"
-                url={Routes.LOGIN}
+                url={addRedirectUrl(Routes.LOGIN)}
               />
 
               <div className="signup-form__social-buttons">
