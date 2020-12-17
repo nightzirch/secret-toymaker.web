@@ -9,7 +9,6 @@ export const getRedirectUrl = () => {
 
 export const addRedirectUrl = (url) => {
   const redirectUrl = getRedirectUrl();
-  console.log("yaboi", url, redirectUrl);
   return [url, redirectUrl && `redirect=${redirectUrl}`]
     .filter((l) => l)
     .join("?");
