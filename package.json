@@ -4,7 +4,7 @@
   "description": "Secret Toymaker is a community-driven secret santa event for the Guild Wars 2 community",
   "author": "Christian Grimsgaard",
   "engines": {
-    "node": "12"
+    "node": "14"
   },
   "scripts": {
     "dev": "next dev",
@@ -16,8 +16,8 @@
     "escape-string-regexp": "^4.0.0",
     "firebase": "^8.0.0",
     "firebase-admin": "^9.3.0",
-    "lodash": "^4.17.20",
-    "moment": "^2.29.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
     "moment-countdown": "^0.0.3",
     "next": "10.0.0",
     "nookies": "^2.5.0",
