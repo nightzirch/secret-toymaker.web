@@ -1,6 +1,3 @@
-import "countdown";
-import moment from "moment";
-import "moment-countdown";
 import React, { useEffect, useGlobal, useState } from "reactn";
 import CountdownBlock from "./CountdownBlock";
 import { getCountdownTitle } from "./utils/utils";

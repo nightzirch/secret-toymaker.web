@@ -4,8 +4,6 @@ import app from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/functions";
-import moment from "moment";
-moment.locale("nb");
 
 class Firebase {
   constructor() {
