@@ -1,6 +1,8 @@
 import Button from "@/components/Button";
 import Error from "@/components/Error";
 import { InputField } from "@/components/Form";
+import List from "@/components/List";
+import { Paragraph } from "@/components/Typography";
 import { dispatchWithLoading } from "@/utils/loading";
 import ActionTypes from "@/utils/types/ActionTypes";
 import ErrorTypes from "@/utils/types/ErrorTypes";
@@ -72,7 +74,16 @@ class ApiTokenForm extends React.Component {
             type="apiToken"
             value={this.state.apiToken}
           />
-
+          <Paragraph isItalic>
+            <a
+              href="https://account.arena.net/applications"
+              rel="noreferrer noopener"
+            >
+              Go to ArenaNet
+            </a>{" "}
+            to create an API token with the following permissions:
+          </Paragraph>
+          <List elements={["account"]} />
           <Button
             isLoading={isLoading}
             theme="primary"
