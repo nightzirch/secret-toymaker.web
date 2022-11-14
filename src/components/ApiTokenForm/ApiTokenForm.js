@@ -76,7 +76,9 @@ class ApiTokenForm extends React.Component {
           <Button
             isLoading={isLoading}
             theme="primary"
-            title="Update API token"
+            title={
+              this.props?.user?.apiToken ? "Update API token" : "Save API token"
+            }
             type="submit"
           />
         </form>
