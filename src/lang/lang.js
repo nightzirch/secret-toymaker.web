@@ -114,11 +114,10 @@ export default {
   },
   footer: [
     "Secret Toymaker is a non-profit fan-made site for Guild Wars 2. Secret Toymaker is in no way associated with ArenaNet, NCSOFT Corporation or the Guild Wars 2 trademark.",
-    "©2010–2020 ArenaNet, LLC. All rights reserved. Guild Wars, Guild Wars 2, Heart of Thorns, Guild Wars 2: Path of Fire, ArenaNet, NCSOFT, the Interlocking NC Logo, and all associated logos and designs are trademarks or registered trademarks of NCSOFT Corporation. All other trademarks are the property of their respective owners.",
+    "© ArenaNet LLC. All rights reserved. NCSOFT, ArenaNet, Guild Wars, Guild Wars 2: Heart of Thorns, Guild Wars 2: Path of Fire, and Guild Wars 2: End of Dragons and all associated logos, designs, and composite marks are trademarks or registered trademarks of NCSOFT Corporation.",
   ],
   signup: {
-    lead:
-      "'Tis the season of giving, so sign up today and participate in this season's big community event!",
+    lead: "'Tis the season of giving, so sign up today and participate in this season's big community event!",
     intro: [
       "The Wintersday is all about sharing gifts with your friends and celebrating the past year, but what about all the Tyrians you happened to meet and share an adventure with? Those times have already passed, but the feelings are not so easily forgotten.",
       "We cannot track down those you have played with, but we can offer a way for you to give back to the community for all the good times you have had, and  will have.",

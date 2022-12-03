@@ -2,7 +2,7 @@ import Routes from "@/config/routes";
 import { replaceString } from "@/utils/string";
 import isEmpty from "lodash/isEmpty";
 import Link from "next/link";
-import React, { useGlobal } from "reactn";
+import { useGlobal } from "reactn";
 import Button from "./Button";
 
 const EventButton = (props) => {
@@ -18,7 +18,7 @@ const EventButton = (props) => {
         icon={<ion-icon name="arrow-forward" />}
         iconPlacement="right"
         primary
-        title={name}
+        title={"Spread the Wintersday spirit"}
         {...props}
       />
     </Link>

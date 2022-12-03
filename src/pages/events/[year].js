@@ -4,9 +4,9 @@ import ApiTokenForm from "@/components/ApiTokenForm";
 import Button, { LoginButton } from "@/components/Button";
 import Error from "@/components/Error";
 import EventHero from "@/components/EventHero";
-import { InputField } from "@/components/Form";
 import GiftStatus from "@/components/GiftStatus";
 import { Grid, GridItem } from "@/components/Grid";
+import Link from "@/components/Link";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import ParticipationForm from "@/components/ParticipationForm";
 import Section from "@/components/Section";
@@ -25,9 +25,10 @@ import AuthTypes from "@/utils/types/AuthTypes";
 import ErrorTypes from "@/utils/types/ErrorTypes";
 import GiftDirectionTypes from "@/utils/types/GiftDirectionTypes";
 import StageTypes from "@/utils/types/StageTypes";
+import { addRedirectUrl } from "@/utils/url";
 import { useRouter } from "next/router";
 import t from "prop-types";
-import React, { useEffect, useState, withGlobal } from "reactn";
+import { useEffect, useState, withGlobal } from "reactn";
 
 const EventPage = (props) => {
   const { events, gifts, loading, participations, user } = props;
@@ -114,6 +115,10 @@ const EventPage = (props) => {
         <LoginButton
           redirectUrl={replaceString(Routes.EVENT, { "[year]": year })}
         />
+        <Link
+          title="Don't have an account? Sign up here"
+          url={addRedirectUrl(Routes.SIGNUP)}
+        />
       </>
     );
   };
@@ -121,17 +126,7 @@ const EventPage = (props) => {
   const renderParticipationForm = () => (
     <>
       <Title>Participate</Title>
-      {user.apiToken ? (
-        <InputField
-          id="apiToken"
-          isDisabled
-          label="API token"
-          type="apiToken"
-          value={user.apiToken}
-        />
-      ) : (
-        <ApiTokenForm />
-      )}
+      {!user.apiToken && <ApiTokenForm />}
       <ParticipationForm year={year} />
     </>
   );
