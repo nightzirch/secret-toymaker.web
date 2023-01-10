@@ -12,8 +12,13 @@ class Firebase {
     if (typeof window !== "undefined" && !app.apps.length) {
       app.initializeApp(firebaseConfig);
 
-      if (process.env.USE_LOCAL_FUNCTIONS === "true") {
-        app.functions().useFunctionsEmulator("http://localhost:5000");
+      console.log(
+        "process.env.NEXT_PUBLIC_USE_LOCAL_FUNCTIONS",
+        process.env.NEXT_PUBLIC_USE_LOCAL_FUNCTIONS
+      );
+
+      if (process.env.NEXT_PUBLIC_USE_LOCAL_FUNCTIONS === "true") {
+        app.functions().useEmulator("localhost", 5001);
       }
 
       this.auth = app.auth();
