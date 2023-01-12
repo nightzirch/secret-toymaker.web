@@ -32,12 +32,11 @@ const Footer = (props) => {
       </Section>
 
       <Section backgroundColor="primary-darker" className="footer__lower">
-        <Paragraph
-          colorScheme="light"
-          isCenter
-          size="small"
-          paragraphs={lang.footer}
-        >
+        <Paragraph colorScheme="light" isCenter size="small">
+          <Link isInContainer={false} title="Privacy policy" url="/privacy" />
+        </Paragraph>
+
+        <Paragraph colorScheme="light" isCenter size="small">
           Contribute on Github:
           <Link
             isExternal

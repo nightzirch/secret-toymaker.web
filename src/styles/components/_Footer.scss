@@ -11,7 +11,11 @@
     padding-bottom: 1rem;
 
     .paragraph {
-      margin: 0;
+      margin-top: 0;
+    }
+
+    .paragraph:last-child {
+      margin-bottom: 0;
     }
 
     .link {

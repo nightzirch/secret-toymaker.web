@@ -63,26 +63,12 @@ const EventPage = (props) => {
   }, [participations, year]);
 
   useEffect(() => {
-    if (
-      user &&
-      isParticipating &&
-      [StageTypes.GIFTING, StageTypes.INACTIVE].includes(stageType) &&
-      year
-    ) {
-      dispatchWithLoading(ActionTypes.GET_GIFTS, year);
-    }
-  }, [user, isParticipating, stageType, year]);
-
-  useEffect(() => {
-    // Only showing page loading indication the first time
-    if (isLoading !== false) {
-      setLoading(
-        loading[ActionTypes.GET_EVENTS] ||
-          loading[ActionTypes.GET_PARTICIPATION_STATUS] ||
-          loading[ActionTypes.GET_USER] ||
-          loading[ActionTypes.GET_GIFTS]
-      );
-    }
+    setLoading(
+      loading[ActionTypes.GET_EVENTS] ||
+        loading[ActionTypes.GET_PARTICIPATION_STATUS] ||
+        loading[ActionTypes.GET_USER] ||
+        loading[ActionTypes.GET_GIFTS]
+    );
   }, [
     loading[ActionTypes.GET_EVENTS],
     loading[ActionTypes.GET_PARTICIPATION_STATUS],

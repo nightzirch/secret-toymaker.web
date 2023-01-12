@@ -1,17 +1,10 @@
 import classnames from "classnames";
 import NLink from "next/link";
 import t from "prop-types";
-import React from "reactn";
 
 const Link = (props) => {
-  const {
-    isCentered,
-    isDisabled,
-    isExternal,
-    isInContainer,
-    title,
-    url,
-  } = props;
+  const { isCentered, isDisabled, isExternal, isInContainer, title, url } =
+    props;
 
   const containerClasses = classnames("link-container", {
     "link-container--centered": isCentered,
@@ -32,8 +25,8 @@ const Link = (props) => {
       {title}
     </a>
   ) : (
-    <NLink href={url} className="link" disabled={isDisabled}>
-      <a>{title}</a>
+    <NLink href={url} disabled={isDisabled}>
+      <a className="link">{title}</a>
     </NLink>
   );
 
