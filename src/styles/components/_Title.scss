@@ -50,6 +50,10 @@
     color: $primary-color;
   }
 
+  &--danger {
+    color: $danger-color;
+  }
+
   small {
     font-size: $text-sm;
   }

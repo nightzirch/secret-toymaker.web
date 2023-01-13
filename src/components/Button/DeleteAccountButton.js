@@ -45,7 +45,7 @@ const DeleteAccountButton = (props) => {
         }
         {...modal}
       >
-        <Title level="tertiary">
+        <Title colorScheme="danger" level="tertiary">
           Are you sure you want to delete your account?
         </Title>
 
@@ -54,7 +54,7 @@ const DeleteAccountButton = (props) => {
           elements={[
             "Remove your login credentials from our authentication provider",
             "Remove your email and all other data collected when you created your account",
-            "Remove your account name, API token, and all other data collected from the Guild Wars 2 API",
+            "Remove your account name, API token, and all other data collected from the Guild Wars 2 API, except the unique identifier of your Guild Wars 2 account",
             "Remove the gift notes you have written for the events you participated in",
           ]}
         />
@@ -62,8 +62,10 @@ const DeleteAccountButton = (props) => {
         <Paragraph>
           Please note some data are being kept for the system to keep working.
           Any data connected to you have been removed, but the unique identifier
-          (UUID) for your Guild Wars 2 account will be kept, as will the
-          participations associated with that UUID.
+          (UUID) for your Guild Wars 2 account will be kept. As will the
+          participations associated with that UUID, though stripped of your
+          Guild Wars 2 account name and any data you provided. The UUID is kept
+          to ensure the integrity of the database.
         </Paragraph>
         <Paragraph>
           <span className="modal__strong">This is a destructive action!</span>{" "}

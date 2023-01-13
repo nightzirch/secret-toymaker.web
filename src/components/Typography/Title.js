@@ -42,6 +42,7 @@ Title.propTypes = {
     "light",
     "white",
     "primary",
+    "danger",
   ]),
   level: t.oneOf(["page", "primary", "secondary", "tertiary"]),
 };
