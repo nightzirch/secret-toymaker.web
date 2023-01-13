@@ -1,6 +1,10 @@
 import Alerts from "@/components/Alerts";
 import ApiTokenForm from "@/components/ApiTokenForm";
-import { ResetPasswordButton, SignoutButton } from "@/components/Button";
+import {
+  DeleteAccountButton,
+  ResetPasswordButton,
+  SignoutButton,
+} from "@/components/Button";
 import EventCard from "@/components/EventCard";
 import { Grid, GridItem } from "@/components/Grid";
 import NotificationsForm from "@/components/NotificationsForm";
@@ -59,6 +63,7 @@ const ProfilePage = (props) => {
 
       <SignoutButton />
       <ResetPasswordButton />
+      <DeleteAccountButton />
     </>
   );
 

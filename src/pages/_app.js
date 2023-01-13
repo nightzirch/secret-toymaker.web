@@ -7,11 +7,14 @@ import { dispatchWithLoading } from "@/utils/loading";
 import ActionTypes from "@/utils/types/ActionTypes";
 import Head from "next/head";
 import { useEffect } from "react";
+import Modal from "react-modal";
 import { withInit } from "reactn";
 import addReactNDevTools from "reactn-devtools";
 import "styles/style.scss";
 
 addReactNDevTools();
+
+Modal.setAppElement("#modals");
 
 function App({ Component, pageProps }) {
   useEffect(() => {

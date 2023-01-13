@@ -33,6 +33,7 @@ class MyDocument extends Document {
         </Head>
 
         <body>
+          <div id="modals" />
           <Main />
           <NextScript />
           <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
