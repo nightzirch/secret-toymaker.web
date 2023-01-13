@@ -1,15 +1,27 @@
+import { useState } from "react";
 import List from "../List";
 import Modal, { useModal } from "../Modal";
 import { Paragraph, Title } from "../Typography";
 import Button from "./Button";
 
 const DeleteAccountButton = (props) => {
+  const [isLoading, setLoading] = useState(false);
   const modal = useModal();
 
   const handleDelete = async () => {
+    setLoading(true);
     console.log("Delete account is not yet implemented");
     // const result = await this.global.firebase.deleteAccount();
     // console.log(result);
+
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    });
+
+    // Clean up
+    setLoading(false);
     modal.closeModal();
   };
 
@@ -25,6 +37,7 @@ const DeleteAccountButton = (props) => {
       <Modal
         actionButton={
           <Button
+            isLoading={isLoading}
             onClick={handleDelete}
             theme="danger"
             title="Delete account"
