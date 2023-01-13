@@ -7,7 +7,7 @@ const DeleteAccountButton = (props) => {
   const modal = useModal();
 
   const handleDelete = async () => {
-    console.log("Delete account clicked");
+    console.log("Delete account is not yet implemented");
     // const result = await this.global.firebase.deleteAccount();
     // console.log(result);
     modal.closeModal();
