@@ -72,6 +72,12 @@ class Firebase {
       .catch((error) => ({ error: error.message }));
   };
 
+  deleteAccount = async () =>
+    this.auth.currentUser
+      .delete()
+      .then((result) => result)
+      .catch((error) => error);
+
   // DB
   getStage = () => {
     const stage = this.functions.httpsCallable("stage");

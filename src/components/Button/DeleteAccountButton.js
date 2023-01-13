@@ -8,10 +8,10 @@ class DeleteAccountButton extends React.Component {
     this.handleDeleteAccountClick = this.handleDeleteAccountClick.bind(this);
   }
 
-  handleDeleteAccountClick() {
+  async handleDeleteAccountClick() {
     // TODO: Show popup "Are you sure?"
-    // TODO: Change this to actually deleting account
-    this.global.firebase.signOut();
+    const result = await this.global.firebase.deleteAccount();
+    console.log(result);
   }
 
   render() {
